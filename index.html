@@ -45,73 +45,91 @@
 
 <body class="bg-slate-50 min-h-screen w-full p-0 flex flex-col justify-start items-center">
 
-    <div id="cardWrapper" class="w-full min-h-screen max-w-5xl bg-white flex flex-col transition-all duration-300 shadow-md">
+    <div id="cardWrapper"
+        class="w-full min-h-screen max-w-5xl bg-white flex flex-col transition-all duration-300 shadow-md">
         <!-- Header -->
-        <div class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
+        <div
+            class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
                 <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi An Toàn Thông Tin</h1>
                 <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Học qua từ khóa (Keywords)</p>
             </div>
-            
+
             <!-- Language Switcher in Header -->
-            <div id="headerLangToggle" class="hidden items-center justify-center gap-1 bg-indigo-700/50 p-0.5 rounded-lg border border-indigo-500/30 self-center sm:self-auto flex-shrink-0">
-                <button onclick="changeLanguage('vi')" id="btnLangVi" class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">VI</button>
-                <button onclick="changeLanguage('en')" id="btnLangEn" class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">EN</button>
+            <div id="headerLangToggle"
+                class="hidden items-center justify-center gap-1 bg-indigo-700/50 p-0.5 rounded-lg border border-indigo-500/30 self-center sm:self-auto flex-shrink-0">
+                <button onclick="changeLanguage('vi')" id="btnLangVi"
+                    class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">VI</button>
+                <button onclick="changeLanguage('en')" id="btnLangEn"
+                    class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">EN</button>
             </div>
         </div>
 
         <!-- Start Screen -->
-        <div id="startScreen" class="p-6 sm:p-8 flex-1 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+        <div id="startScreen"
+            class="p-6 sm:p-8 flex-1 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
             <div class="space-y-3">
-                <div class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
+                <div
+                    class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
                     🛡️
                 </div>
-                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi An Toàn Thông Tin</h2>
-                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Chọn ngôn ngữ để bắt đầu luyện tập:</p>
+                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi An Toàn Thông
+                    Tin</h2>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Chọn ngôn ngữ để bắt
+                    đầu luyện tập:</p>
             </div>
-            
+
             <!-- Language Selector Option Cards -->
             <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md">
-                <div onclick="selectStartLang('vi')" id="cardLangVi" class="cursor-pointer p-4 sm:p-5 border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
+                <div onclick="selectStartLang('vi')" id="cardLangVi"
+                    class="cursor-pointer p-4 sm:p-5 border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
                     <span class="text-2xl sm:text-3xl">🇻🇳</span>
                     <span class="font-bold text-sm sm:text-base text-slate-800">Tiếng Việt</span>
                 </div>
-                <div onclick="selectStartLang('en')" id="cardLangEn" class="cursor-pointer p-4 sm:p-5 border-2 border-slate-200 bg-white rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
+                <div onclick="selectStartLang('en')" id="cardLangEn"
+                    class="cursor-pointer p-4 sm:p-5 border-2 border-slate-200 bg-white rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
                     <span class="text-2xl sm:text-3xl">🇬🇧</span>
                     <span class="font-bold text-sm sm:text-base text-slate-700">English</span>
                 </div>
             </div>
-            
-            <button id="btnStartPractice" onclick="startPractice()" class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
+
+            <button id="btnStartPractice" onclick="startPractice()"
+                class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
                 Bắt đầu luyện tập 🚀
             </button>
         </div>
 
         <!-- Progress & Score -->
-        <div id="quizHeader" class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
+        <div id="quizHeader"
+            class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
             <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 25</span>
-            <span class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full" id="scoreText">Điểm: 0</span>
+            <span
+                class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
+                id="scoreText">Điểm: 0</span>
         </div>
 
         <!-- Question Area -->
-        <div id="quizBody" class="hidden p-3 sm:p-6 flex-1 flex flex-col justify-start">
+        <div id="quizBody" class="hidden p-3 sm:p-6 flex flex-col justify-start">
             <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start md:flex-1 w-full max-w-7xl mx-auto">
                 <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
                 <div class="space-y-3 sm:space-y-4 text-left w-full">
                     <!-- Question and Type Hint -->
                     <div class="space-y-1">
-                        <h2 class="text-base sm:text-lg font-semibold text-slate-800 whitespace-pre-line leading-relaxed" id="questionText">Đang tải câu hỏi...</h2>
-                        <p class="text-[10px] text-indigo-600 font-bold tracking-wide uppercase" id="questionTypeHint"></p>
+                        <h2 class="text-base sm:text-lg font-semibold text-slate-800 whitespace-pre-line leading-relaxed"
+                            id="questionText">Đang tải câu hỏi...</h2>
+                        <p class="text-[10px] text-indigo-600 font-bold tracking-wide uppercase" id="questionTypeHint">
+                        </p>
                     </div>
- 
+
                     <!-- Action Buttons -->
-                    <div class="flex flex-row gap-3 justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100 flex-shrink-0">
+                    <div
+                        class="flex flex-row gap-3 justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100 flex-shrink-0">
                         <button id="btnShowHint" onclick="showHint()"
                             class="flex-1 sm:flex-initial justify-center px-3 py-1.5 bg-amber-100 text-amber-700 hover:bg-amber-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
                             Xem Mẹo Nhớ
                         </button>
- 
+
                         <div class="flex-1 sm:flex-initial flex gap-2 sm:gap-3">
                             <button id="btnConfirm" onclick="checkAnswer()"
                                 class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
@@ -123,19 +141,22 @@
                             </button>
                         </div>
                     </div>
- 
+
                     <!-- Hint Box -->
                     <div id="hintBox" class="hidden p-2.5 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
                         <div class="flex items-start">
                             <span class="text-base sm:text-xl mr-2">💡</span>
                             <div>
-                                <h3 id="hintTitle" class="font-bold text-amber-800 text-[10px] sm:text-xs uppercase text-left">Mẹo nhớ (Keyword)</h3>
-                                <p class="text-amber-900 mt-0.5 text-xs sm:text-sm font-medium text-left" id="hintText"></p>
+                                <h3 id="hintTitle"
+                                    class="font-bold text-amber-800 text-[10px] sm:text-xs uppercase text-left">Mẹo nhớ
+                                    (Keyword)</h3>
+                                <p class="text-amber-900 mt-0.5 text-xs sm:text-sm font-medium text-left" id="hintText">
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
- 
+
                 <!-- Cột phải: Danh sách các đáp án lựa chọn -->
                 <div class="space-y-2 text-left w-full" id="optionsContainer">
                     <!-- Các đáp án sẽ được render bằng JS -->
@@ -144,70 +165,87 @@
         </div>
 
         <!-- Report Area -->
-        <div id="reportArea" class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 flex flex-col justify-start">
+        <div id="reportArea"
+            class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 flex flex-col justify-start">
             <!-- Compact Single-Line Stats Row -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
+            <div
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
                 <div class="flex items-center gap-2">
-                    <span id="reportTitle" class="font-bold text-slate-800 text-sm sm:text-base">Kết Quả Luyện Tập:</span>
+                    <span id="reportTitle" class="font-bold text-slate-800 text-sm sm:text-base">Kết Quả Luyện
+                        Tập:</span>
                     <span id="reportStatStatus" class="font-bold text-xs px-2.5 py-0.5 rounded-full">ĐẠT</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
+                <div
+                    class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
                     <div>
-                        <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span> 
+                        <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span>
                         <span id="reportStatCorrect" class="font-bold text-emerald-600">20</span>
                     </div>
                     <div>
-                        <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span> 
+                        <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span>
                         <span id="reportStatPercent" class="font-bold text-indigo-600">80%</span>
                     </div>
-                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã đạt yêu cầu.</div>
+                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã
+                        đạt yêu cầu.</div>
                 </div>
             </div>
 
             <!-- Detailed Review Section -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between mb-2">
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
+            <div
+                class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between mb-2">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
                     <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
-                        <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 25</span>
+                        <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 25</span>
                     </h4>
-                    <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓ Đúng</span>
+                    <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
+                        Đúng</span>
                 </div>
-                
+
                 <!-- Review Content Grid (Side-by-side) -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4 pr-1 sm:pr-2">
                     <!-- Left: Question & Hint -->
                     <div class="space-y-3 sm:space-y-4 text-left">
-                        <p class="text-sm sm:text-base text-slate-800 font-semibold whitespace-pre-line leading-relaxed" id="reviewQuestionText"></p>
-                        
+                        <p class="text-sm sm:text-base text-slate-800 font-semibold whitespace-pre-line leading-relaxed"
+                            id="reviewQuestionText"></p>
+
                         <div id="reviewHintBox" class="p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
                             <div class="flex items-start">
                                 <span class="text-lg sm:text-xl mr-2 sm:mr-3">💡</span>
                                 <div>
-                                    <h3 id="reviewHintTitle" class="font-bold text-amber-800 text-xs sm:text-sm uppercase text-left">Mẹo nhớ (Keyword)</h3>
-                                    <p class="text-amber-900 mt-1 text-left text-xs sm:text-sm font-medium" id="reviewHintText"></p>
+                                    <h3 id="reviewHintTitle"
+                                        class="font-bold text-amber-800 text-xs sm:text-sm uppercase text-left">Mẹo nhớ
+                                        (Keyword)</h3>
+                                    <p class="text-amber-900 mt-1 text-left text-xs sm:text-sm font-medium"
+                                        id="reviewHintText"></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Right: Options -->
                     <div class="space-y-2.5 sm:space-y-3 text-left" id="reviewOptionsContainer">
                         <!-- Options will be rendered statically here -->
                     </div>
                 </div>
-                
+
                 <!-- Review Navigation and Actions -->
-                <div class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-100 pt-4 flex-shrink-0">
+                <div
+                    class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-100 pt-4 flex-shrink-0">
                     <div class="flex gap-2 w-full sm:w-auto">
-                        <button id="btnReviewPrev" onclick="prevReviewQuestion()" class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                        <button id="btnReviewPrev" onclick="prevReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
                             ⬅ Câu trước
                         </button>
-                        <button id="btnReviewNext" onclick="nextReviewQuestion()" class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                        <button id="btnReviewNext" onclick="nextReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
                             Câu tiếp theo ➡
                         </button>
                     </div>
-                    
-                    <button id="btnRestartQuiz" onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
+
+                    <button id="btnRestartQuiz" onclick="restartQuiz()"
+                        class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
                         🔄 Làm lại bài thi
                     </button>
                 </div>
@@ -930,16 +968,16 @@
                     text: opt.replace(/^[A-F]\.\s*/, ''), // Xóa ký tự prefix cũ
                     originalIndex: idx
                 }));
-                
+
                 // Trộn ngẫu nhiên câu trả lời
                 shuffle(optionsWithIndex);
-                
+
                 // Tạo mảng đáp án mới với nhãn A. B. C. D. cập nhật theo thứ tự mới
                 const newOptions = optionsWithIndex.map((item, idx) => {
                     const prefix = String.fromCharCode(65 + idx) + ". ";
                     return prefix + item.text;
                 });
-                
+
                 // Tìm lại vị trí mới của các đáp án đúng
                 const newAns = [];
                 optionsWithIndex.forEach((item, idx) => {
@@ -947,7 +985,7 @@
                         newAns.push(idx);
                     }
                 });
-                
+
                 return {
                     type: q.type,
                     q: q.q,
@@ -956,7 +994,7 @@
                     hint: q.hint
                 };
             });
-            
+
             // Xáo trộn ngẫu nhiên thứ tự các câu hỏi
             shuffle(activeQuiz);
         }
@@ -981,7 +1019,7 @@
 
         function changeLanguage(lang) {
             if (lang === currentLanguage) return;
-            
+
             const startScreenHidden = document.getElementById('startScreen').classList.contains('hidden');
             if (startScreenHidden) {
                 if (confirm(uiTranslations[currentLanguage].confirmChangeLang)) {
@@ -1003,12 +1041,12 @@
             document.getElementById('startTitle').innerText = trans.startScreenTitle;
             document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
             document.getElementById('btnStartPractice').innerText = trans.startBtn;
-            
+
             // Cập nhật nhãn thống kê báo cáo
             document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
             document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
             document.getElementById('lblReportStatStatus').innerText = trans.reportStatStatus;
-            
+
             // Cập nhật nhãn xem gợi ý và nút xem lại
             document.getElementById('btnShowHint').innerText = trans.viewHintBtn;
             document.getElementById('hintTitle').innerText = trans.hintTitle;
@@ -1033,11 +1071,11 @@
             document.getElementById('startScreen').classList.add('hidden');
             document.getElementById('headerLangToggle').classList.remove('hidden');
             document.getElementById('headerLangToggle').classList.add('flex');
-            
+
             document.getElementById('quizHeader').classList.remove('hidden');
             document.getElementById('quizHeader').classList.add('flex');
             document.getElementById('quizBody').classList.remove('hidden');
-            
+
             currentQ = 0;
             score = 0;
             userAnswers = [];
@@ -1250,9 +1288,9 @@
             const ansInfo = userAnswers[reviewCurrentQ];
             const qData = activeQuiz[ansInfo.qIndex];
             const trans = uiTranslations[currentLanguage];
-            
+
             document.getElementById('reviewProgressText').innerText = trans.progress(reviewCurrentQ + 1, activeQuiz.length);
-            
+
             const badgeEl = document.getElementById('reviewResultBadge');
             if (ansInfo.isCorrect) {
                 badgeEl.innerText = trans.reviewCorrectBadge;
@@ -1261,27 +1299,27 @@
                 badgeEl.innerText = trans.reviewWrongBadge;
                 badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-800";
             }
-            
+
             document.getElementById('reviewQuestionText').innerHTML = qData.q;
             document.getElementById('reviewHintText').innerHTML = qData.hint;
-            
+
             const container = document.getElementById('reviewOptionsContainer');
             container.innerHTML = '';
-            
+
             qData.options.forEach((opt, index) => {
                 const div = document.createElement('div');
                 div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
-                
+
                 const isSelected = ansInfo.selected.includes(index);
                 const isCorrectAnswer = qData.ans.includes(index);
-                
+
                 let iconHTML = '';
                 if (qData.type === 'multi') {
                     iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0"></div>`;
                 } else {
                     iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0"></div>`;
                 }
-                
+
                 if (isSelected && isCorrectAnswer) {
                     div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
                     iconHTML = qData.type === 'multi'
@@ -1300,14 +1338,14 @@
                 } else {
                     div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
                 }
-                
+
                 div.innerHTML = `
                     ${iconHTML}
                     <span>${opt}</span>
                 `;
                 container.appendChild(div);
             });
-            
+
             document.getElementById('btnReviewPrev').disabled = reviewCurrentQ === 0;
             document.getElementById('btnReviewNext').disabled = reviewCurrentQ === activeQuiz.length - 1;
             document.getElementById('btnReviewPrev').innerHTML = trans.btnReviewPrev;
@@ -1333,15 +1371,15 @@
             currentQ = 0;
             score = 0;
             userAnswers = [];
-            
+
             const trans = uiTranslations[currentLanguage];
             document.getElementById('scoreText').innerText = trans.score(0);
-            
+
             document.getElementById('reportArea').classList.add('hidden');
             document.getElementById('quizHeader').classList.remove('hidden');
             document.getElementById('quizHeader').classList.add('flex');
             document.getElementById('quizBody').classList.remove('hidden');
-            
+
             prepareQuiz();
             loadQuestion();
         }
