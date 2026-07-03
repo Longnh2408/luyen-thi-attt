@@ -43,9 +43,9 @@
     </style>
 </head>
 
-<body class="bg-white h-screen w-screen overflow-hidden p-0 flex items-center justify-center">
+<body class="bg-slate-50 min-h-screen w-full p-0 flex flex-col justify-start items-center">
 
-    <div id="cardWrapper" class="w-full h-full bg-white overflow-hidden flex flex-col transition-all duration-300">
+    <div id="cardWrapper" class="w-full min-h-screen max-w-5xl bg-white flex flex-col transition-all duration-300 shadow-md">
         <!-- Header -->
         <div class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Start Screen -->
-        <div id="startScreen" class="p-6 sm:p-8 flex-1 overflow-y-auto flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+        <div id="startScreen" class="p-6 sm:p-8 flex-1 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
             <div class="space-y-3">
                 <div class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
                     🛡️
@@ -94,7 +94,7 @@
         </div>
 
         <!-- Question Area -->
-        <div id="quizBody" class="hidden p-3 sm:p-6 flex-1 overflow-y-auto flex flex-col justify-start">
+        <div id="quizBody" class="hidden p-3 sm:p-6 flex-1 flex flex-col justify-start">
             <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start flex-1 w-full max-w-7xl mx-auto">
                 <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
@@ -144,7 +144,7 @@
         </div>
 
         <!-- Report Area -->
-        <div id="reportArea" class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 overflow-y-auto flex flex-col justify-start">
+        <div id="reportArea" class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 flex flex-col justify-start">
             <!-- Compact Single-Line Stats Row -->
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
                 <div class="flex items-center gap-2">
@@ -165,7 +165,7 @@
             </div>
 
             <!-- Detailed Review Section -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between flex-1 min-h-[350px] mb-2">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between mb-2">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
                     <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
                         <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 25</span>
@@ -174,7 +174,7 @@
                 </div>
                 
                 <!-- Review Content Grid (Side-by-side) -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start flex-1 overflow-y-auto mb-4 pr-1 sm:pr-2 min-h-0">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4 pr-1 sm:pr-2">
                     <!-- Left: Question & Hint -->
                     <div class="space-y-3 sm:space-y-4 text-left">
                         <p class="text-sm sm:text-base text-slate-800 font-semibold whitespace-pre-line leading-relaxed" id="reviewQuestionText"></p>
