@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Thi Trắc Nghiệm An Toàn Thông Tin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .option-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .selected {
+            border-color: #3b82f6 !important;
+            background-color: #eff6ff !important;
+        }
+
+        .correct {
+            border-color: #10b981 !important;
+            background-color: #d1fae5 !important;
+            color: #065f46 !important;
+        }
+
+        .wrong {
+            border-color: #ef4444 !important;
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+        }
+
+        .missed {
+            border-color: #f59e0b !important;
+            background-color: #fef3c7 !important;
+            color: #92400e !important;
+        }
+
+        /* Cho đáp án đúng mà người dùng quên chọn */
+    </style>
+</head>
+
+<body class="bg-white h-screen w-screen overflow-hidden p-0 flex items-center justify-center">
+
+    <div id="cardWrapper" class="w-full h-full bg-white overflow-hidden flex flex-col transition-all duration-300">
+        <!-- Header -->
+        <div class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
+            <div class="text-center sm:text-left">
+                <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi An Toàn Thông Tin</h1>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Học qua từ khóa (Keywords)</p>
+            </div>
+            
+            <!-- Language Switcher in Header -->
+            <div id="headerLangToggle" class="hidden items-center justify-center gap-1 bg-indigo-700/50 p-0.5 rounded-lg border border-indigo-500/30 self-center sm:self-auto flex-shrink-0">
+                <button onclick="changeLanguage('vi')" id="btnLangVi" class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">VI</button>
+                <button onclick="changeLanguage('en')" id="btnLangEn" class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded-md transition-all">EN</button>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="p-6 sm:p-8 flex-1 overflow-y-auto flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+            <div class="space-y-3">
+                <div class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
+                    🛡️
+                </div>
+                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi An Toàn Thông Tin</h2>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Chọn ngôn ngữ để bắt đầu luyện tập:</p>
+            </div>
+            
+            <!-- Language Selector Option Cards -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md">
+                <div onclick="selectStartLang('vi')" id="cardLangVi" class="cursor-pointer p-4 sm:p-5 border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
+                    <span class="text-2xl sm:text-3xl">🇻🇳</span>
+                    <span class="font-bold text-sm sm:text-base text-slate-800">Tiếng Việt</span>
+                </div>
+                <div onclick="selectStartLang('en')" id="cardLangEn" class="cursor-pointer p-4 sm:p-5 border-2 border-slate-200 bg-white rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200">
+                    <span class="text-2xl sm:text-3xl">🇬🇧</span>
+                    <span class="font-bold text-sm sm:text-base text-slate-700">English</span>
+                </div>
+            </div>
+            
+            <button id="btnStartPractice" onclick="startPractice()" class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
+                Bắt đầu luyện tập 🚀
+            </button>
+        </div>
+
+        <!-- Progress & Score -->
+        <div id="quizHeader" class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 25</span>
+            <span class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full" id="scoreText">Điểm: 0</span>
+        </div>
+
+        <!-- Question Area -->
+        <div id="quizBody" class="hidden p-3 sm:p-6 flex-1 overflow-y-auto flex flex-col justify-start">
+            <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start flex-1 w-full max-w-7xl mx-auto">
+                <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
+                <div class="space-y-3 sm:space-y-4 text-left w-full">
+                    <!-- Question and Type Hint -->
+                    <div class="space-y-1">
+                        <h2 class="text-base sm:text-lg font-semibold text-slate-800 whitespace-pre-line leading-relaxed" id="questionText">Đang tải câu hỏi...</h2>
+                        <p class="text-[10px] text-indigo-600 font-bold tracking-wide uppercase" id="questionTypeHint"></p>
+                    </div>
+ 
+                    <!-- Action Buttons -->
+                    <div class="flex flex-row gap-3 justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100 flex-shrink-0">
+                        <button id="btnShowHint" onclick="showHint()"
+                            class="flex-1 sm:flex-initial justify-center px-3 py-1.5 bg-amber-100 text-amber-700 hover:bg-amber-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            Xem Mẹo Nhớ
+                        </button>
+ 
+                        <div class="flex-1 sm:flex-initial flex gap-2 sm:gap-3">
+                            <button id="btnConfirm" onclick="checkAnswer()"
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Xác nhận
+                            </button>
+                            <button id="btnNext" onclick="nextQuestion()"
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Tiếp theo ➡
+                            </button>
+                        </div>
+                    </div>
+ 
+                    <!-- Hint Box -->
+                    <div id="hintBox" class="hidden p-2.5 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                        <div class="flex items-start">
+                            <span class="text-base sm:text-xl mr-2">💡</span>
+                            <div>
+                                <h3 id="hintTitle" class="font-bold text-amber-800 text-[10px] sm:text-xs uppercase text-left">Mẹo nhớ (Keyword)</h3>
+                                <p class="text-amber-900 mt-0.5 text-xs sm:text-sm font-medium text-left" id="hintText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Cột phải: Danh sách các đáp án lựa chọn -->
+                <div class="space-y-2 text-left w-full" id="optionsContainer">
+                    <!-- Các đáp án sẽ được render bằng JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Area -->
+        <div id="reportArea" class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 overflow-y-auto flex flex-col justify-start">
+            <!-- Compact Single-Line Stats Row -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
+                <div class="flex items-center gap-2">
+                    <span id="reportTitle" class="font-bold text-slate-800 text-sm sm:text-base">Kết Quả Luyện Tập:</span>
+                    <span id="reportStatStatus" class="font-bold text-xs px-2.5 py-0.5 rounded-full">ĐẠT</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
+                    <div>
+                        <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span> 
+                        <span id="reportStatCorrect" class="font-bold text-emerald-600">20</span>
+                    </div>
+                    <div>
+                        <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span> 
+                        <span id="reportStatPercent" class="font-bold text-indigo-600">80%</span>
+                    </div>
+                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã đạt yêu cầu.</div>
+                </div>
+            </div>
+
+            <!-- Detailed Review Section -->
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between flex-1 min-h-[350px] mb-2">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
+                    <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
+                        <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 25</span>
+                    </h4>
+                    <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓ Đúng</span>
+                </div>
+                
+                <!-- Review Content Grid (Side-by-side) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start flex-1 overflow-y-auto mb-4 pr-1 sm:pr-2 min-h-0">
+                    <!-- Left: Question & Hint -->
+                    <div class="space-y-3 sm:space-y-4 text-left">
+                        <p class="text-sm sm:text-base text-slate-800 font-semibold whitespace-pre-line leading-relaxed" id="reviewQuestionText"></p>
+                        
+                        <div id="reviewHintBox" class="p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                            <div class="flex items-start">
+                                <span class="text-lg sm:text-xl mr-2 sm:mr-3">💡</span>
+                                <div>
+                                    <h3 id="reviewHintTitle" class="font-bold text-amber-800 text-xs sm:text-sm uppercase text-left">Mẹo nhớ (Keyword)</h3>
+                                    <p class="text-amber-900 mt-1 text-left text-xs sm:text-sm font-medium" id="reviewHintText"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Options -->
+                    <div class="space-y-2.5 sm:space-y-3 text-left" id="reviewOptionsContainer">
+                        <!-- Options will be rendered statically here -->
+                    </div>
+                </div>
+                
+                <!-- Review Navigation and Actions -->
+                <div class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-100 pt-4 flex-shrink-0">
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button id="btnReviewPrev" onclick="prevReviewQuestion()" class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                            ⬅ Câu trước
+                        </button>
+                        <button id="btnReviewNext" onclick="nextReviewQuestion()" class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                            Câu tiếp theo ➡
+                        </button>
+                    </div>
+                    
+                    <button id="btnRestartQuiz" onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
+                        🔄 Làm lại bài thi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizDataEn = [
+            {
+                type: 'single',
+                q: "Q1: A <span class='text-red-600 font-bold'>bank</span> requires tellers to get manager approval when a customer wants to <span class='text-red-600 font-bold'>open a new account</span>. A recent audit shows that there have been four cases in the previous year where tellers opened accounts without management approval. The bank president thought separation of duties would prevent this from happening.\nIn order to implement a true separation of duties approach the bank could:",
+                options: [
+                    "A. Require the use of two different passwords held by two different individuals to open an account",
+                    "B. Administer account creation on a role based access control approach",
+                    "C. Require all new accounts to be handled by someone else other than a teller since they have different duties",
+                    "D. Administer account creation on a rule based access control approach"
+                ],
+                ans: [0],
+                hint: "A bank / open an account ➔ <span class='font-bold text-amber-600'>Require the use of two different passwords</span> (separation of duties / dual control)"
+            },
+            {
+                type: 'single',
+                q: "Q2: The IT department needs to prevent users from <span class='text-red-600 font-bold'>installing untested applications</span>.\nWhich of the following would provide the BEST solution?",
+                options: [
+                    "A. Job rotation",
+                    "B. Least privilege",
+                    "C. Account lockout",
+                    "D. Antivirus"
+                ],
+                ans: [1],
+                hint: "installing untested applications ➔ <span class='font-bold text-amber-600'>Least privilege</span>"
+            },
+            {
+                type: 'single',
+                q: "Q3: A security administrator has been assigned to review the security posture of the standard corporate system image for virtual machines. The security administrator conducts a thorough review of the system logs, installation procedures, and network configuration of the VM image.\nUpon reviewing the access logs and user accounts, the security administrator determines that several accounts <span class='text-red-600 font-bold'>will not be used in production</span>.\nWhich of the following would correct the deficiencies?",
+                options: [
+                    "A. Mandatory access controls",
+                    "B. Disable remote login",
+                    "C. Host hardening",
+                    "D. Disabling services"
+                ],
+                ans: [2],
+                hint: "not be used in production ➔ <span class='font-bold text-amber-600'>Host hardening</span> (includes removing unused accounts/services)"
+            },
+            {
+                type: 'single',
+                q: "Q4: An attacker discovers a <span class='text-red-600 font-bold'>new vulnerability</span> in an enterprise application. The attacker takes advantage of the vulnerability by <span class='text-red-600 font-bold'>developing new malware</span>. After installing the malware, the attacker is provided with access to the infected machine.\nWhich of the following is being described?",
+                options: [
+                    "A. Zero-day exploit",
+                    "B. Remote code execution",
+                    "C. Session hijacking",
+                    "D. Command injection"
+                ],
+                ans: [0],
+                hint: "new vulnerability / developing new malware ➔ <span class='font-bold text-amber-600'>Zero-day exploit</span>"
+            },
+            {
+                type: 'single',
+                q: "Q5: A web application is configured to <span class='text-red-600 font-bold'>target browsers</span> and allow access to bank accounts to <span class='text-red-600 font-bold'>siphon money</span> to a foreign account.\nThis is an example of which of the following attacks?",
+                options: [
+                    "A. SQL injection",
+                    "B. Header manipulation",
+                    "C. Cross-site scripting",
+                    "D. Flash cookie exploitation"
+                ],
+                ans: [2],
+                hint: "target browsers / siphon money ➔ <span class='font-bold text-amber-600'>Cross-site scripting (XSS)</span>"
+            },
+            {
+                type: 'single',
+                q: "Q6: Which of the following describes the key <span class='text-red-600 font-bold'>difference between vishing and phishing</span> attacks?",
+                options: [
+                    "A. Phishing is used by attackers to steal a person's identity.",
+                    "B. Vishing attacks require some knowledge of the target of attack.",
+                    "C. Vishing attacks are accomplished using telephony services.",
+                    "D. Phishing is a category of social engineering attack."
+                ],
+                ans: [2],
+                hint: "difference vishing and phishing ➔ <span class='font-bold text-amber-600'>telephony services</span>"
+            },
+            {
+                type: 'single',
+                q: "Q7: During a third-party audit, it is determined that a member of the firewall team can <span class='text-red-600 font-bold'>request, approve, and implement</span> a new rule-set on the firewall.\nWhich of the following will the audit team most likely recommend during the audit out brief?",
+                options: [
+                    "A. Discretionary access control for the firewall team",
+                    "B. Separation of duties policy for the firewall team",
+                    "C. Least privilege for the firewall team",
+                    "D. Mandatory access control for the firewall team"
+                ],
+                ans: [1],
+                hint: "request, approve, and implement ➔ <span class='font-bold text-amber-600'>Separation of duties policy for the firewall team</span>"
+            },
+            {
+                type: 'single',
+                q: "Q8: Company policy requires the use of <span class='text-red-600 font-bold'>passphrases instead of passwords</span>.\nWhich of the following technical controls MUST be in place in order to promote the use of passphrases?",
+                options: [
+                    "A. Reuse",
+                    "B. Length",
+                    "C. History",
+                    "D. Complexity"
+                ],
+                ans: [1],
+                hint: "passphrases instead of passwords ➔ <span class='font-bold text-amber-600'>Length</span> (setting a high minimum length forces passphrases)"
+            },
+            {
+                type: 'single',
+                q: "Q9: The help desk is receiving numerous <span class='text-red-600 font-bold'>password change alerts</span> from users in the accounting department. These alerts occur <span class='text-red-600 font-bold'>multiple times on the same day</span> for each of the affected users' accounts.\nWhich of the following controls should be implemented to curtail this activity?",
+                options: [
+                    "A. Password Reuse",
+                    "B. Password complexity",
+                    "C. Password History",
+                    "D. Password Minimum age"
+                ],
+                ans: [3],
+                hint: "password change alerts / multiple times same day ➔ <span class='font-bold text-amber-600'>Password Minimum age</span>"
+            },
+            {
+                type: 'single',
+                q: "Q10: Although a web enabled application appears to only allow letters in the comment field of a web form, malicious user was able to carry a <span class='text-red-600 font-bold'>SQL injection</span> attack by sending <span class='text-red-600 font-bold'>special characters</span> through the web comment field.\nWhich of the following has the application programmer failed to implement?",
+                options: [
+                    "A. Revision control system",
+                    "B. Client side exception handling",
+                    "C. Server side validation",
+                    "D. Server hardening"
+                ],
+                ans: [2],
+                hint: "SQL injection / special characters ➔ <span class='font-bold text-amber-600'>Server side validation</span>"
+            },
+            {
+                type: 'single',
+                q: "Q11: An administrator discovers the following log entry on a server:\nNov 12 2013 00:23:45 httpd[2342]: GET /app2/prod/proc/process.php?input=change;<span class='text-red-600 font-bold'>cd%20../../../etc;cat%20shadow</span>\nWhich of the following attacks is being attempted?",
+                options: [
+                    "A. Command injection",
+                    "B. Password attack",
+                    "C. Buffer overflow",
+                    "D. Cross-site scripting"
+                ],
+                ans: [0],
+                hint: "cd%20.../etc; cat%20shadow ➔ <span class='font-bold text-amber-600'>Command injection</span>"
+            },
+            {
+                type: 'single',
+                q: "Q12: An attacker uses a network sniffer to <span class='text-red-600 font-bold'>capture the packets</span> of a transaction that adds $20 to a gift card. The attacker then user a function of the sniffer to <span class='text-red-600 font-bold'>push those packets back</span> onto the network again, adding another $20 to the gift card. This can be done many times.\nWhich of the following describes this type of attack?",
+                options: [
+                    "A. Integer overflow attack",
+                    "B. Smurf attack",
+                    "C. Replay attack",
+                    "D. Buffer overflow attack",
+                    "E. Cross-site scripting attack"
+                ],
+                ans: [2],
+                hint: "capture the packets / push back ➔ <span class='font-bold text-amber-600'>Replay attack</span>"
+            },
+            {
+                type: 'single',
+                q: "Q13: A security administrator is tasked with conducting an assessment made to establish the baseline security posture of the corporate IT infrastructure. The assessment must report actual flaws and weaknesses in the infrastructure. Due to the expense of hiring outside consultants, the testing must be performed using in-house or cheaply available resource. <span class='text-red-600 font-bold'>There cannot be a possibility of any requirement being damaged</span> in the test.\nWhich of the following has the administrator been tasked to perform?",
+                options: [
+                    "A. Risk transference",
+                    "B. Penetration test",
+                    "C. Threat assessment",
+                    "D. Vulnerability assessment"
+                ],
+                ans: [3],
+                hint: "cannot be damaged ➔ <span class='font-bold text-amber-600'>Vulnerability assessment</span>"
+            },
+            {
+                type: 'single',
+                q: "Q14: A security program manager wants to actively test the security posture of a system. The system is not yet in production and has no uptime requirement or active user base.\nWhich of the following methods will produce a report which shows vulnerabilities that were <span class='text-red-600 font-bold'>actually exploited</span>?",
+                options: [
+                    "A. Peer review",
+                    "B. Component testing",
+                    "C. Penetration testing",
+                    "D. Vulnerability testing"
+                ],
+                ans: [2],
+                hint: "actually exploited ➔ <span class='font-bold text-amber-600'>Penetration testing</span>"
+            },
+            {
+                type: 'single',
+                q: "Q15: During a recent audit, it was discovered that many services and desktops were <span class='text-red-600 font-bold'>missing security patches</span>.\nWhich of the following BEST describes the assessment that was performed to discover this issue?",
+                options: [
+                    "A. Network mapping",
+                    "B. Vulnerability scan",
+                    "C. Port Scan",
+                    "D. Protocol analysis"
+                ],
+                ans: [1],
+                hint: "missing security patches ➔ <span class='font-bold text-amber-600'>Vulnerability scan</span>"
+            },
+            {
+                type: 'single',
+                q: "Q16: Which of the following best describes routine in which <span class='text-red-600 font-bold'>semicolons, dashes, quotes</span>, and commas are removed from a string?",
+                options: [
+                    "A. Error handling to protect against program exploitation",
+                    "B. Exception handling to protect against XSRF attacks.",
+                    "C. Input validation to protect against SQL injection.",
+                    "D. Padding to protect against string buffer overflows."
+                ],
+                ans: [2],
+                hint: "semicolons, dashes, quotes ➔ <span class='font-bold text-amber-600'>Input validation</span>"
+            },
+            {
+                type: 'single',
+                q: "Q17: A security analyst accesses corporate web pages and inputs random data in the forms. The response received includes the <span class='text-red-600 font-bold'>type of database</span> used and <span class='text-red-600 font-bold'>SQL commands</span> that the database accepts. Which of the following should the security analyst use to prevent this vulnerability?",
+                options: [
+                    "A. Application fuzzing",
+                    "B. Error handling",
+                    "C. Input validation",
+                    "D. Pointer dereference"
+                ],
+                ans: [1],
+                hint: "type of database / SQL commands ➔ <span class='font-bold text-amber-600'>Error handling</span>"
+            },
+            {
+                type: 'single',
+                q: "Q18: An application was recently compromised after some <span class='text-red-600 font-bold'>malformed data</span> came in via web form.\nWhich of the following would MOST likely have prevented this?",
+                options: [
+                    "A. Input validation",
+                    "B. Proxy server",
+                    "C. Stress testing",
+                    "D. Encoding"
+                ],
+                ans: [0],
+                hint: "malformed data ➔ <span class='font-bold text-amber-600'>Input validation</span>"
+            },
+            {
+                type: 'single',
+                q: "Q19: An organization has hired a penetration tester to test the security of its ten web servers. The penetration tester is able to gain root/administrative access in several servers by exploiting vulnerabilities associated with the implementation of <span class='text-red-600 font-bold'>SMTP, POP, DNS, FTP</span>, Telnet, and IMAP.\nWhich of the following recommendations should the penetration tester provide to the organization to better protect their web servers in the future?",
+                options: [
+                    "A. Use a honeypot",
+                    "B. Disable unnecessary services",
+                    "C. Implement transport layer security",
+                    "D. Increase application event logging"
+                ],
+                ans: [1],
+                hint: "SMTP, POP, DNS, FTP ➔ <span class='font-bold text-amber-600'>Disable unnecessary services</span>"
+            },
+            {
+                type: 'single',
+                q: "Q20: A <span class='text-red-600 font-bold'>buffer overflow</span> can result in:",
+                options: [
+                    "A. loss of data caused by unauthorized command execution.",
+                    "B. privilege escalation caused by TPM override.",
+                    "C. reduced key strength due to salt manipulation.",
+                    "D. repeated use of one-time keys."
+                ],
+                ans: [0],
+                hint: "buffer overflow ➔ <span class='font-bold text-amber-600'>loss of data / unauthorized command execution</span>"
+            },
+            {
+                type: 'single',
+                q: "Q21: A user has attempted to access data at a <span class='text-red-600 font-bold'>higher classification level</span> than the user's account is currently authorized to access.\nWhich of the following access control models has been applied to this user's account?",
+                options: [
+                    "A. MAC",
+                    "B. DAC",
+                    "C. RBAC",
+                    "D. ABAC"
+                ],
+                ans: [0],
+                hint: "higher classification level ➔ <span class='font-bold text-amber-600'>MAC</span>"
+            },
+            {
+                type: 'multi',
+                q: "Q22: A company's user lockout policy is enabled after five unsuccessful login attempts. The help desk notices a user is repeatedly locked out over the course of a workweek. Upon contacting the user, the help desk discovers the <span class='text-red-600 font-bold'>user is on vacation</span> and does not have network access.\nWhich of the following types of attacks are MOST likely occurring? (Select two.)",
+                options: [
+                    "A. Replay",
+                    "B. Rainbow tables",
+                    "C. Brute force",
+                    "D. Pass the hash",
+                    "E. Dictionary"
+                ],
+                ans: [2, 4],
+                hint: "user is on vacation (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Brute force & Dictionary</span>"
+            },
+            {
+                type: 'multi',
+                q: "Q23: A security analyst is investigating a security breach. Upon inspection of the audit and access logs, the analyst notices the host was accessed and the /etc/passwd file was modified with a new entry for username \"gotcha\" and <span class='text-red-600 font-bold'>user ID of 0</span>.\nWhich of the following are the MOST likely attack vector and tool the analyst should use to determine if the attack is still ongoing? (Select two.)",
+                options: [
+                    "A. Logic bomb",
+                    "B. Backdoor",
+                    "C. Keylogger",
+                    "D. Netstat",
+                    "E. Tracert",
+                    "F. Ping"
+                ],
+                ans: [1, 3],
+                hint: "user ID of 0 (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Backdoor & Netstat</span>"
+            },
+            {
+                type: 'multi',
+                q: "Q24: Which of the following would enhance the security of accessing data <span class='text-red-600 font-bold'>stored in the cloud</span>? (Select two.)",
+                options: [
+                    "A. Block level encryption",
+                    "B. SAML authentication",
+                    "C. Transport encryption",
+                    "D. Multifactor authentication",
+                    "E. Predefined challenge questions",
+                    "F. Hashing"
+                ],
+                ans: [1, 3],
+                hint: "stored in the cloud (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>SAML & Multifactor authentication</span>"
+            },
+            {
+                type: 'single',
+                q: "Q25: A security analyst is inspecting the results of a recent internal vulnerability scan that was performed against intranet services. The scan reports include the following critical-rated vulnerability:\nTitle: Remote Command Execution vulnerability in web server\nRating: Critical (<span class='text-red-600 font-bold'>CVSS 10.0</span>)\nThreat actor: any remote user of the web server\nConfidence: <span class='text-red-600 font-bold'>certain</span>\nRecommendation: apply vendor patches\nWhich of the following actions should the security analyst perform FIRST?",
+                options: [
+                    "A. Escalate the issue to senior management.",
+                    "B. Apply organizational context to the risk rating.",
+                    "C. Organize for urgent out-of-cycle patching.",
+                    "D. Exploit the server to check whether it is a false positive."
+                ],
+                ans: [1],
+                hint: "CVSS 10.0 / certain ➔ <span class='font-bold text-amber-600'>Apply organizational context to the risk rating</span>"
+            }
+        ];
+
+        const quizDataVi = [
+            {
+                type: 'single',
+                q: "Câu 1: Một <span class='text-red-600 font-bold'>ngân hàng</span> yêu cầu nhân viên giao dịch phải được sự phê duyệt của quản lý khi khách hàng muốn <span class='text-red-600 font-bold'>mở tài khoản mới</span>. Một cuộc kiểm toán gần đây cho thấy trong năm trước đã có bốn trường hợp nhân viên giao dịch tự mở tài khoản mà không có sự phê duyệt của quản lý. Giám đốc ngân hàng cho rằng nguyên tắc phân tách nhiệm vụ sẽ ngăn chặn điều này xảy ra.\nĐể thực hiện đúng nguyên tắc phân tách nhiệm vụ, ngân hàng có thể:",
+                options: [
+                    "A. Yêu cầu sử dụng hai mật khẩu khác nhau do hai cá nhân khác nhau nắm giữ để mở tài khoản",
+                    "B. Quản lý việc tạo tài khoản theo phương pháp kiểm soát truy cập dựa trên vai trò (RBAC)",
+                    "C. Yêu cầu tất cả tài khoản mới phải được xử lý bởi người khác, không phải nhân viên giao dịch vì họ có nhiệm vụ khác nhau",
+                    "D. Quản lý việc tạo tài khoản theo phương pháp kiểm soát truy cập dựa trên quy tắc (Rule-based)"
+                ],
+                ans: [0],
+                hint: "Ngân hàng / Mở tài khoản mới ➔ <span class='font-bold text-amber-600'>Yêu cầu sử dụng hai mật khẩu khác nhau</span> (Phân tách nhiệm vụ / Kiểm soát kép)"
+            },
+            {
+                type: 'single',
+                q: "Câu 2: Bộ phận IT cần ngăn người dùng <span class='text-red-600 font-bold'>cài đặt các ứng dụng chưa được kiểm thử</span>.\nGiải pháp nào sau đây sẽ cho kết quả TỐT NHẤT?",
+                options: [
+                    "A. Luân chuyển công việc (Job rotation)",
+                    "B. Đặc quyền tối thiểu (Least privilege)",
+                    "C. Khóa tài khoản (Account lockout)",
+                    "D. Phần mềm diệt virus (Antivirus)"
+                ],
+                ans: [1],
+                hint: "Ngăn cài đặt ứng dụng chưa kiểm thử ➔ <span class='font-bold text-amber-600'>Đặc quyền tối thiểu (Least privilege)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 3: Một quản trị viên bảo mật được giao nhiệm vụ xem xét tình trạng bảo mật của hình ảnh hệ thống doanh nghiệp chuẩn dành cho máy ảo. Quản trị viên tiến hành xem xét kỹ lưỡng nhật ký hệ thống, quy trình cài đặt và cấu hình mạng của VM. Sau khi xem xét nhật ký truy cập và tài khoản người dùng, quản trị viên xác định rằng một số tài khoản <span class='text-red-600 font-bold'>sẽ không được sử dụng trong môi trường thực tế</span>.\nĐiều nào sau đây sẽ khắc phục các thiếu sót đó?",
+                options: [
+                    "A. Kiểm soát truy cập bắt buộc (Mandatory access controls)",
+                    "B. Vô hiệu hóa đăng nhập từ xa",
+                    "C. Tăng cường bảo mật máy chủ (Host hardening)",
+                    "D. Vô hiệu hóa các dịch vụ không cần thiết"
+                ],
+                ans: [2],
+                hint: "Không sử dụng trong thực tế ➔ <span class='font-bold text-amber-600'>Tăng cường bảo mật máy chủ (Host hardening)</span> (bao gồm vô hiệu hóa/xóa tài khoản dư thừa)"
+            },
+            {
+                type: 'single',
+                q: "Câu 4: Một kẻ tấn công phát hiện ra một <span class='text-red-600 font-bold'>lỗ hổng mới</span> trong một ứng dụng doanh nghiệp. Kẻ tấn công khai thác lỗ hổng đó bằng cách <span class='text-red-600 font-bold'>phát triển phần mềm độc hại mới</span>. Sau khi cài đặt phần mềm độc hại, kẻ tấn công được cấp quyền truy cập vào máy bị nhiễm.\nĐiều nào sau đây mô tả đúng tình huống trên?",
+                options: [
+                    "A. Khai thác lỗ hổng zero-day (Zero-day exploit)",
+                    "B. Thực thi mã từ xa (Remote code execution)",
+                    "C. Chiếm quyền phiên làm việc (Session hijacking)",
+                    "D. Chèn lệnh (Command injection)"
+                ],
+                ans: [0],
+                hint: "Lỗ hổng mới / Phát triển malware mới ➔ <span class='font-bold text-amber-600'>Khai thác lỗ hổng zero-day (Zero-day exploit)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 5: Một ứng dụng web được cấu hình để <span class='text-red-600 font-bold'>nhắm mục tiêu vào trình duyệt</span> và cho phép truy cập vào tài khoản ngân hàng nhằm <span class='text-red-600 font-bold'>chuyển tiền</span> sang tài khoản nước ngoài.\nĐây là ví dụ của loại tấn công nào?",
+                options: [
+                    "A. SQL injection",
+                    "B. Thao túng tiêu đề (Header manipulation)",
+                    "C. Tấn công cross-site scripting (XSS)",
+                    "D. Khai thác Flash cookie"
+                ],
+                ans: [2],
+                hint: "Nhắm mục tiêu trình duyệt / Chuyển tiền ➔ <span class='font-bold text-amber-600'>Tấn công cross-site scripting (XSS)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 6: Điều nào sau đây mô tả sự <span class='text-red-600 font-bold'>khác biệt chính giữa tấn công vishing và phishing</span>?",
+                options: [
+                    "A. Phishing được kẻ tấn công sử dụng để đánh cắp danh tính của một người",
+                    "B. Tấn công vishing đòi hỏi phải có một số hiểu biết về mục tiêu tấn công",
+                    "C. Tấn công vishing được thực hiện thông qua dịch vụ điện thoại",
+                    "D. Phishing là một dạng tấn công kỹ nghệ xã hội (social engineering)"
+                ],
+                ans: [2],
+                hint: "Khác biệt giữa vishing và phishing ➔ <span class='font-bold text-amber-600'>Dịch vụ điện thoại (Telephony services)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 7: Trong một cuộc kiểm toán bên thứ ba, người ta xác định rằng một thành viên của nhóm tường lửa có thể <span class='text-red-600 font-bold'>yêu cầu, phê duyệt và triển khai</span> một bộ quy tắc mới trên tường lửa.\nĐiều nào sau đây mà nhóm kiểm toán có khả năng cao nhất sẽ khuyến nghị?",
+                options: [
+                    "A. Kiểm soát truy cập tùy quyền (DAC) cho nhóm tường lửa",
+                    "B. Chính sách phân tách nhiệm vụ cho nhóm tường lửa",
+                    "C. Đặc quyền tối thiểu (Least privilege) cho nhóm tường lửa",
+                    "D. Kiểm soát truy cập bắt buộc (MAC) cho nhóm tường lửa"
+                ],
+                ans: [1],
+                hint: "Yêu cầu, phê duyệt và triển khai ➔ <span class='font-bold text-amber-600'>Chính sách phân tách nhiệm vụ (Separation of duties policy)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 8: Chính sách công ty yêu cầu sử dụng <span class='text-red-600 font-bold'>cụm mật khẩu (passphrase) thay vì mật khẩu thông thường</span>.\nKiểm soát kỹ thuật nào sau đây BẮT BUỘC phải có để thúc đẩy việc sử dụng passphrase?",
+                options: [
+                    "A. Tái sử dụng (Reuse)",
+                    "B. Độ dài (Length)",
+                    "C. Lịch sử (History)",
+                    "D. Độ phức tạp (Complexity)"
+                ],
+                ans: [1],
+                hint: "Sử dụng cụm mật khẩu (passphrase) thay vì mật khẩu ➔ <span class='font-bold text-amber-600'>Độ dài (Length)</span> (yêu cầu độ dài tối thiểu lớn sẽ bắt buộc người dùng chọn cụm mật khẩu)"
+            },
+            {
+                type: 'single',
+                q: "Câu 9: Bộ phận hỗ trợ nhận được nhiều <span class='text-red-600 font-bold'>cảnh báo thay đổi mật khẩu</span> từ người dùng trong phòng kế toán. Các cảnh báo này xảy ra <span class='text-red-600 font-bold'>nhiều lần trong cùng một ngày</span> đối với từng tài khoản bị ảnh hưởng.\nKiểm soát nào sau đây nên được triển khai để ngăn chặn hoạt động này?",
+                options: [
+                    "A. Tái sử dụng mật khẩu (Password Reuse)",
+                    "B. Độ phức tạp mật khẩu (Password Complexity)",
+                    "C. Lịch sử mật khẩu (Password History)",
+                    "D. Tuổi tối thiểu của mật khẩu (Password Minimum Age)"
+                ],
+                ans: [3],
+                hint: "Cảnh báo thay đổi mật khẩu / Nhiều lần trong cùng một ngày ➔ <span class='font-bold text-amber-600'>Tuổi tối thiểu của mật khẩu (Password Minimum Age)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 10: Mặc dù một ứng dụng web có vẻ chỉ cho phép nhập chữ cái vào trường bình luận của biểu mẫu, một người dùng độc hại vẫn có thể thực hiện tấn công <span class='text-red-600 font-bold'>SQL injection</span> bằng cách gửi <span class='text-red-600 font-bold'>các ký tự đặc biệt</span> qua trường bình luận đó.\nLập trình viên ứng dụng đã không triển khai điều nào sau đây?",
+                options: [
+                    "A. Hệ thống kiểm soát phiên bản (Revision control system)",
+                    "B. Xử lý ngoại lệ phía client (Client-side exception handling)",
+                    "C. Kiểm tra dữ liệu đầu vào phía server (Server-side validation)",
+                    "D. Tăng cường bảo mật server (Server hardening)"
+                ],
+                ans: [2],
+                hint: "SQL injection / Gửi ký tự đặc biệt ➔ <span class='font-bold text-amber-600'>Kiểm tra dữ liệu đầu vào phía server (Server-side validation)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 11: Một quản trị viên phát hiện mục nhật ký sau trên máy chủ:\nNov 12 2013 00:23:45 httpd[2342]: GET /app2/prod/proc/process.php?input=change;<span class='text-red-600 font-bold'>cd%20../../../etc;cat%20shadow</span>\nLoại tấn công nào đang được thực hiện?",
+                options: [
+                    "A. Chèn lệnh (Command injection)",
+                    "B. Tấn công mật khẩu (Password attack)",
+                    "C. Tràn bộ đệm (Buffer overflow)",
+                    "D. Tấn công cross-site scripting (XSS)"
+                ],
+                ans: [0],
+                hint: "cd%20.../etc; cat%20shadow ➔ <span class='font-bold text-amber-600'>Chèn lệnh (Command injection)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 12: Kẻ tấn công dùng công cụ nghe lén mạng để <span class='text-red-600 font-bold'>bắt các gói tin</span> của một giao dịch nạp 20 USD vào thẻ quà tặng. Sau đó, kẻ tấn công sử dụng chức năng của công cụ để <span class='text-red-600 font-bold'>đẩy lại các gói tin đó</span> lên mạng, nạp thêm 20 USD vào thẻ. Thao tác này có thể lặp lại nhiều lần.\nĐiều nào sau đây mô tả đúng loại tấn công này?",
+                options: [
+                    "A. Tấn công tràn số nguyên (Integer overflow)",
+                    "B. Tấn công Smurf",
+                    "C. Tấn công phát lại (Replay attack)",
+                    "D. Tấn công tràn bộ đệm (Buffer overflow)",
+                    "E. Tấn công cross-site scripting (XSS)"
+                ],
+                ans: [2],
+                hint: "Bắt các gói tin / Đẩy lại các gói tin đó ➔ <span class='font-bold text-amber-600'>Tấn công phát lại (Replay attack)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 13: Một quản trị viên bảo mật được giao nhiệm vụ thực hiện đánh giá nhằm xác lập tình trạng bảo mật cơ sở của hạ tầng IT doanh nghiệp. Đánh giá phải báo cáo các lỗ hổng và điểm yếu thực sự trong hạ tầng. Do chi phí thuê chuyên gia bên ngoài cao, việc kiểm thử phải được thực hiện bằng nguồn lực nội bộ hoặc tài nguyên giá rẻ. <span class='text-red-600 font-bold'>Không được có khả năng làm hỏng bất kỳ thành phần nào</span> trong quá trình kiểm thử.\nQuản trị viên được giao thực hiện loại đánh giá nào?",
+                options: [
+                    "A. Chuyển giao rủi ro (Risk transference)",
+                    "B. Kiểm thử xâm nhập (Penetration test)",
+                    "C. Đánh giá mối đe dọa (Threat assessment)",
+                    "D. Đánh giá lỗ hổng (Vulnerability assessment)"
+                ],
+                ans: [3],
+                hint: "Không được có khả năng làm hỏng thành phần nào ➔ <span class='font-bold text-amber-600'>Đánh giá lỗ hổng (Vulnerability assessment)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 14: Một quản lý chương trình bảo mật muốn kiểm thử chủ động tình trạng bảo mật của một hệ thống. Hệ thống chưa đưa vào sản xuất và không có yêu cầu về thời gian hoạt động hay người dùng thực tế.\nPhương pháp nào sau đây sẽ tạo ra báo cáo cho thấy các lỗ hổng đã <span class='text-red-600 font-bold'>thực sự bị khai thác</span>?",
+                options: [
+                    "A. Đánh giá ngang hàng (Peer review)",
+                    "B. Kiểm thử thành phần (Component testing)",
+                    "C. Kiểm thử xâm nhập (Penetration testing)",
+                    "D. Kiểm thử lỗ hổng (Vulnerability testing)"
+                ],
+                ans: [2],
+                hint: "Lỗ hổng đã thực sự bị khai thác ➔ <span class='font-bold text-amber-600'>Kiểm thử xâm nhập (Penetration testing)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 15: Trong một cuộc kiểm toán gần đây, người ta phát hiện rằng nhiều dịch vụ và máy tính để bàn bị <span class='text-red-600 font-bold'>thiếu các bản vá bảo mật</span>.\nĐiều nào sau đây MÔ TẢ TỐT NHẤT loại đánh giá đã được thực hiện để phát hiện vấn đề này?",
+                options: [
+                    "A. Lập bản đồ mạng (Network mapping)",
+                    "B. Quét lỗ hổng (Vulnerability scan)",
+                    "C. Quét cổng (Port scan)",
+                    "D. Phân tích giao thức (Protocol analysis)"
+                ],
+                ans: [1],
+                hint: "Thiếu các bản vá bảo mật ➔ <span class='font-bold text-amber-600'>Quét lỗ hổng (Vulnerability scan)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 16: Điều nào sau đây mô tả đúng nhất quy trình trong đó <span class='text-red-600 font-bold'>các ký tự dấu chấm phẩy, dấu gạch ngang, dấu nháy</span> và dấu phẩy bị loại bỏ khỏi một chuỗi?",
+                options: [
+                    "A. Xử lý lỗi để bảo vệ chống lại việc khai thác chương trình",
+                    "B. Xử lý ngoại lệ để bảo vệ chống lại tấn công XSRF",
+                    "C. Kiểm tra đầu vào để bảo vệ chống lại SQL injection",
+                    "D. Đệm dữ liệu (Padding) để bảo vệ chống lại tràn bộ đệm chuỗi"
+                ],
+                ans: [2],
+                hint: "Ký tự dấu chấm phẩy, dấu gạch ngang, dấu nháy ➔ <span class='font-bold text-amber-600'>Kiểm tra đầu vào (Input validation)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 17: Một nhà phân tích bảo mật truy cập các trang web của công ty và nhập dữ liệu ngẫu nhiên vào các biểu mẫu. Phản hồi nhận được bao gồm <span class='text-red-600 font-bold'>loại cơ sở dữ liệu</span> đang sử dụng và <span class='text-red-600 font-bold'>các lệnh SQL</span> mà cơ sở dữ liệu chấp nhận.\nNhà phân tích nên sử dụng biện pháp nào để ngăn chặn lỗ hổng này?",
+                options: [
+                    "A. Fuzzing ứng dụng (Application fuzzing)",
+                    "B. Xử lý lỗi (Error handling)",
+                    "C. Kiểm tra đầu vào (Input validation)",
+                    "D. Hủy tham chiếu con trỏ (Pointer dereference)"
+                ],
+                ans: [1],
+                hint: "Loại cơ sở dữ liệu / Các lệnh SQL được hiển thị ➔ <span class='font-bold text-amber-600'>Xử lý lỗi (Error handling)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 18: Một ứng dụng gần đây bị xâm phạm sau khi nhận <span class='text-red-600 font-bold'>dữ liệu không hợp lệ</span> qua biểu mẫu web.\nĐiều nào sau đây CÓ KHẢ NĂNG CAO NHẤT đã ngăn chặn được điều này?",
+                options: [
+                    "A. Kiểm tra đầu vào (Input validation)",
+                    "B. Máy chủ proxy (Proxy server)",
+                    "C. Kiểm thử tải (Stress testing)",
+                    "D. Mã hóa (Encoding)"
+                ],
+                ans: [0],
+                hint: "Dữ liệu không hợp lệ qua biểu mẫu web ➔ <span class='font-bold text-amber-600'>Kiểm tra đầu vào (Input validation)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 19: Một tổ chức thuê chuyên gia kiểm thử xâm nhập để kiểm tra bảo mật mười máy chủ web. Chuyên gia có thể giành được quyền truy cập root/quản trị viên trên nhiều máy chủ bằng cách khai thác các lỗ hổng liên quan đến việc triển khai <span class='text-red-600 font-bold'>SMTP, POP, DNS, FTP</span>, Telnet và IMAP.\nChuyên gia nên đưa ra khuyến nghị nào để bảo vệ máy chủ web tốt hơn trong tương lai?",
+                options: [
+                    "A. Sử dụng honeypot",
+                    "B. Vô hiệu hóa các dịch vụ không cần thiết",
+                    "C. Triển khai bảo mật tầng truyền tải (TLS)",
+                    "D. Tăng cường ghi nhật ký sự kiện ứng dụng"
+                ],
+                ans: [1],
+                hint: "Khai thác lỗ hổng SMTP, POP, DNS, FTP... ➔ <span class='font-bold text-amber-600'>Vô hiệu hóa các dịch vụ không cần thiết</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 20: <span class='text-red-600 font-bold'>Tràn bộ đệm (Buffer overflow)</span> có thể dẫn đến:",
+                options: [
+                    "A. Mất dữ liệu do thực thi lệnh trái phép",
+                    "B. Leo thang đặc quyền do ghi đè TPM",
+                    "C. Giảm độ mạnh của khóa do thao túng salt",
+                    "D. Sử dụng lặp lại các khóa một lần (one-time keys)"
+                ],
+                ans: [0],
+                hint: "Tràn bộ đệm (Buffer overflow) ➔ <span class='font-bold text-amber-600'>Mất dữ liệu do thực thi lệnh trái phép</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 21: Một người dùng đã cố gắng truy cập dữ liệu ở <span class='text-red-600 font-bold'>cấp độ phân loại cao hơn</span> mức tài khoản của họ được phép.\nMô hình kiểm soát truy cập nào sau đây đã được áp dụng cho tài khoản này?",
+                options: [
+                    "A. MAC (Kiểm soát truy cập bắt buộc)",
+                    "B. DAC (Kiểm soát truy cập tùy quyền)",
+                    "C. RBAC (Kiểm soát truy cập dựa trên vai trò)",
+                    "D. ABAC (Kiểm soát truy cập dựa trên thuộc tính)"
+                ],
+                ans: [0],
+                hint: "Cấp độ phân loại cao hơn ➔ <span class='font-bold text-amber-600'>MAC (Kiểm soát truy cập bắt buộc)</span>"
+            },
+            {
+                type: 'multi',
+                q: "Câu 22: Chính sách khóa tài khoản của công ty được kích hoạt sau năm lần đăng nhập thất bại. Bộ phận hỗ trợ nhận thấy một người dùng liên tục bị khóa tài khoản trong suốt một tuần làm việc. Khi liên hệ với người dùng, bộ phận hỗ trợ phát hiện ra <span class='text-red-600 font-bold'>người dùng đang đi nghỉ</span> và không có quyền truy cập mạng.\nLoại tấn công nào sau đây CÓ KHẢ NĂNG CAO NHẤT đang xảy ra? (Chọn hai)",
+                options: [
+                    "A. Tấn công phát lại (Replay)",
+                    "B. Bảng cầu vồng (Rainbow tables)",
+                    "C. Tấn công vét cạn (Brute force)",
+                    "D. Truyền hash (Pass the hash)",
+                    "E. Tấn công từ điển (Dictionary)"
+                ],
+                ans: [2, 4],
+                hint: "Người dùng đi nghỉ (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Tấn công vét cạn (Brute force) & Tấn công từ điển (Dictionary)</span>"
+            },
+            {
+                type: 'multi',
+                q: "Câu 23: Một nhà phân tích bảo mật đang điều tra một vụ vi phạm bảo mật. Khi kiểm tra nhật ký kiểm toán và truy cập, nhà phân tích nhận thấy máy chủ đã bị truy cập và file /etc/passwd đã bị chỉnh sửa với một mục mới cho tên người dùng \"gotcha\" và <span class='text-red-600 font-bold'>ID người dùng là 0</span>.\nĐiều nào sau đây là vector tấn công có khả năng nhất và công cụ nhà phân tích nên sử dụng để xác định xem cuộc tấn công có đang tiếp diễn không? (Chọn hai)",
+                options: [
+                    "A. Logic bomb",
+                    "B. Backdoor (Cửa hậu)",
+                    "C. Keylogger",
+                    "D. Netstat",
+                    "E. Tracert",
+                    "F. Ping"
+                ],
+                ans: [1, 3],
+                hint: "ID người dùng là 0 (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Backdoor (Cửa hậu) & Netstat</span>"
+            },
+            {
+                type: 'multi',
+                q: "Câu 24: Điều nào sau đây sẽ tăng cường bảo mật khi truy cập dữ liệu <span class='text-red-600 font-bold'>lưu trữ trên đám mây</span>? (Chọn hai)",
+                options: [
+                    "A. Mã hóa cấp khối (Block level encryption)",
+                    "B. Xác thực SAML",
+                    "C. Mã hóa truyền tải (Transport encryption)",
+                    "D. Xác thực đa yếu tố (Multifactor authentication)",
+                    "E. Câu hỏi bảo mật được xác định trước",
+                    "F. Băm (Hashing)"
+                ],
+                ans: [1, 3],
+                hint: "Lưu trữ trên đám mây (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Xác thực SAML & Xác thực đa yếu tố (Multifactor authentication)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 25: Một nhà phân tích bảo mật đang kiểm tra kết quả quét lỗ hổng nội bộ gần đây thực hiện đối với các dịch vụ mạng nội bộ. Báo cáo quét bao gồm lỗ hổng được đánh giá nghiêm trọng sau:\nTiêu đề: Lỗ hổng thực thi lệnh từ xa trong máy chủ web\nMức độ: Nghiêm trọng (<span class='text-red-600 font-bold'>CVSS 10.0</span>)\nTác nhân đe dọa: Bất kỳ người dùng từ xa nào của máy chủ web\nĐộ tin cậy: <span class='text-red-600 font-bold'>chắc chắn</span>\nKhuyến nghị: Áp dụng bản vá từ nhà cung cấp\nHành động nào nhà phân tích nên thực hiện TRƯỚC TIÊN?",
+                options: [
+                    "A. Báo cáo vấn đề lên ban quản lý cấp cao",
+                    "B. Áp dụng bối cảnh tổ chức vào mức độ rủi ro",
+                    "C. Tổ chức vá lỗi khẩn cấp ngoài chu kỳ",
+                    "D. Khai thác máy chủ để kiểm tra xem đây có phải là kết quả dương tính giả không"
+                ],
+                ans: [1],
+                hint: "CVSS 10.0 / chắc chắn ➔ <span class='font-bold text-amber-600'>Áp dụng bối cảnh tổ chức vào mức độ rủi ro (Apply organizational context)</span>"
+            }
+        ];
+
+        const uiTranslations = {
+            vi: {
+                title: "Luyện Thi An Toàn Thông Tin",
+                subtitle: "Học qua từ khóa (Keywords)",
+                progress: (curr, total) => `Câu ${curr} / ${total}`,
+                score: (score) => `Điểm: ${score}`,
+                confirmBtn: "Xác nhận",
+                nextBtn: "Tiếp theo ➡",
+                viewHintBtn: "Xem Mẹo Nhớ",
+                hintTitle: "Mẹo nhớ (Keyword)",
+                reportTitle: "Kết Quả Luyện Tập",
+                reportStatCorrect: "Số câu đúng",
+                reportStatPercent: "Tỷ lệ chính xác",
+                reportStatStatus: "Kết quả",
+                statusPass: "ĐẠT",
+                statusFail: "CHƯA ĐẠT",
+                reviewTitle: (curr, total) => `Xem lại bài làm: Câu ${curr} / ${total}`,
+                reviewTitleHeading: "Xem lại bài làm:",
+                reviewCorrectBadge: "✓ Đúng",
+                reviewWrongBadge: "✗ Sai",
+                btnReviewPrev: "⬅ Câu trước",
+                btnReviewNext: "Câu tiếp theo ➡",
+                restartBtn: "🔄 Làm lại bài thi",
+                startScreenTitle: "Luyện Thi An Toàn Thông Tin",
+                startScreenSubtitle: "Chọn ngôn ngữ để bắt đầu luyện tập:",
+                startBtn: "Bắt đầu luyện tập 🚀",
+                selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
+                selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
+                confirmChangeLang: "Bạn có chắc muốn chuyển đổi ngôn ngữ? Tiến độ làm bài hiện tại sẽ bị đặt lại.",
+                alertSelectAtLeastOne: "Vui lòng chọn ít nhất 1 đáp án!",
+                evalPerfect: "Xuất sắc! Bạn đã đạt điểm tuyệt đối! 🎉",
+                evalExcellent: "Tuyệt vời! Bạn đã nắm rất vững các từ khóa! 🌟",
+                evalGood: "Khá tốt! Bạn đã vượt qua bài luyện tập! 👍",
+                evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các mẹo nhớ bên dưới. 💪"
+            },
+            en: {
+                title: "Information Security Exam Practice",
+                subtitle: "Learn via Keywords",
+                progress: (curr, total) => `Question ${curr} / ${total}`,
+                score: (score) => `Score: ${score}`,
+                confirmBtn: "Confirm",
+                nextBtn: "Next ➡",
+                viewHintBtn: "Show Mnemonic Hint",
+                hintTitle: "Mnemonic (Keyword)",
+                reportTitle: "Practice Results",
+                reportStatCorrect: "Correct Answers",
+                reportStatPercent: "Accuracy Rate",
+                reportStatStatus: "Status",
+                statusPass: "PASS",
+                statusFail: "FAIL",
+                reviewTitle: (curr, total) => `Review: Question ${curr} / ${total}`,
+                reviewTitleHeading: "Review Answers:",
+                reviewCorrectBadge: "✓ Correct",
+                reviewWrongBadge: "✗ Wrong",
+                btnReviewPrev: "⬅ Previous",
+                btnReviewNext: "Next ➡",
+                restartBtn: "🔄 Restart Quiz",
+                startScreenTitle: "Information Security Exam Practice",
+                startScreenSubtitle: "Select a language to start practicing:",
+                startBtn: "Start Practicing 🚀",
+                selectSingleHint: "* Select the best answer.",
+                selectMultiHint: (count) => `* Note: This question has ${count} correct answers. Select all and click "Confirm".`,
+                confirmChangeLang: "Are you sure you want to change language? Your current progress will be reset.",
+                alertSelectAtLeastOne: "Please select at least 1 option!",
+                evalPerfect: "Perfect! You achieved a perfect score! 🎉",
+                evalExcellent: "Excellent! You have a great grasp of the keywords! 🌟",
+                evalGood: "Good job! You passed the practice test! 👍",
+                evalTryHarder: "Needs improvement! Carefully review the hints below. 💪"
+            }
+        };
+
+        let currentLanguage = 'vi'; // Mặc định là Tiếng Việt
+        let currentQ = 0;
+        let score = 0;
+        let selectedOptions = [];
+        let hasAnswered = false;
+        let userAnswers = [];
+        let activeQuiz = [];
+        let reviewCurrentQ = 0;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function prepareQuiz() {
+            const sourceData = currentLanguage === 'vi' ? quizDataVi : quizDataEn;
+            // Sao chép từ quizData gốc và trộn các câu trả lời
+            activeQuiz = sourceData.map(q => {
+                // Tách phần chữ và lưu lại chỉ mục ban đầu để kiểm tra đáp án đúng
+                const optionsWithIndex = q.options.map((opt, idx) => ({
+                    text: opt.replace(/^[A-F]\.\s*/, ''), // Xóa ký tự prefix cũ
+                    originalIndex: idx
+                }));
+                
+                // Trộn ngẫu nhiên câu trả lời
+                shuffle(optionsWithIndex);
+                
+                // Tạo mảng đáp án mới với nhãn A. B. C. D. cập nhật theo thứ tự mới
+                const newOptions = optionsWithIndex.map((item, idx) => {
+                    const prefix = String.fromCharCode(65 + idx) + ". ";
+                    return prefix + item.text;
+                });
+                
+                // Tìm lại vị trí mới của các đáp án đúng
+                const newAns = [];
+                optionsWithIndex.forEach((item, idx) => {
+                    if (q.ans.includes(item.originalIndex)) {
+                        newAns.push(idx);
+                    }
+                });
+                
+                return {
+                    type: q.type,
+                    q: q.q,
+                    options: newOptions,
+                    ans: newAns,
+                    hint: q.hint
+                };
+            });
+            
+            // Xáo trộn ngẫu nhiên thứ tự các câu hỏi
+            shuffle(activeQuiz);
+        }
+
+        function selectStartLang(lang) {
+            currentLanguage = lang;
+            updateLanguageUI();
+            updateStartLangCards();
+        }
+
+        function updateStartLangCards() {
+            const cardVi = document.getElementById('cardLangVi');
+            const cardEn = document.getElementById('cardLangEn');
+            if (currentLanguage === 'vi') {
+                cardVi.className = "cursor-pointer p-5 border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200";
+                cardEn.className = "cursor-pointer p-5 border-2 border-slate-200 bg-white rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200";
+            } else {
+                cardEn.className = "cursor-pointer p-5 border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200";
+                cardVi.className = "cursor-pointer p-5 border-2 border-slate-200 bg-white rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-all duration-200";
+            }
+        }
+
+        function changeLanguage(lang) {
+            if (lang === currentLanguage) return;
+            
+            const startScreenHidden = document.getElementById('startScreen').classList.contains('hidden');
+            if (startScreenHidden) {
+                if (confirm(uiTranslations[currentLanguage].confirmChangeLang)) {
+                    currentLanguage = lang;
+                    updateLanguageUI();
+                    restartQuiz();
+                }
+            } else {
+                currentLanguage = lang;
+                updateLanguageUI();
+                updateStartLangCards();
+            }
+        }
+
+        function updateLanguageUI() {
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('appTitle').innerText = trans.title;
+            document.getElementById('appSubtitle').innerText = trans.subtitle;
+            document.getElementById('startTitle').innerText = trans.startScreenTitle;
+            document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
+            document.getElementById('btnStartPractice').innerText = trans.startBtn;
+            
+            // Cập nhật nhãn thống kê báo cáo
+            document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
+            document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
+            document.getElementById('lblReportStatStatus').innerText = trans.reportStatStatus;
+            
+            // Cập nhật nhãn xem gợi ý và nút xem lại
+            document.getElementById('btnShowHint').innerText = trans.viewHintBtn;
+            document.getElementById('hintTitle').innerText = trans.hintTitle;
+            document.getElementById('reviewHintTitle').innerText = trans.hintTitle;
+            document.getElementById('lblReviewTitle').innerText = trans.reviewTitleHeading;
+            document.getElementById('btnRestartQuiz').innerText = trans.restartBtn;
+            document.getElementById('reportTitle').innerText = trans.reportTitle;
+
+            // Cập nhật nút chuyển đổi ngôn ngữ ở Header
+            const btnVi = document.getElementById('btnLangVi');
+            const btnEn = document.getElementById('btnLangEn');
+            if (currentLanguage === 'vi') {
+                btnVi.className = "px-2.5 py-1 text-xs font-bold rounded-md bg-white text-indigo-700 shadow-sm transition-all";
+                btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded-md text-indigo-200 hover:text-white transition-all";
+            } else {
+                btnEn.className = "px-2.5 py-1 text-xs font-bold rounded-md bg-white text-indigo-700 shadow-sm transition-all";
+                btnVi.className = "px-2.5 py-1 text-xs font-semibold rounded-md text-indigo-200 hover:text-white transition-all";
+            }
+        }
+
+        function startPractice() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('headerLangToggle').classList.remove('hidden');
+            document.getElementById('headerLangToggle').classList.add('flex');
+            
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+            
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = activeQuiz[currentQ];
+            selectedOptions = [];
+            hasAnswered = false;
+            const trans = uiTranslations[currentLanguage];
+
+            // Cập nhật UI
+            document.getElementById('progressText').innerText = trans.progress(currentQ + 1, activeQuiz.length);
+            document.getElementById('questionText').innerHTML = qData.q;
+            document.getElementById('hintBox').classList.add('hidden');
+            document.getElementById('btnNext').classList.add('hidden');
+
+            // Hiển thị gợi ý loại câu hỏi
+            const hintEl = document.getElementById('questionTypeHint');
+            const confirmBtn = document.getElementById('btnConfirm');
+            if (qData.type === 'multi') {
+                hintEl.innerText = trans.selectMultiHint(qData.ans.length);
+                confirmBtn.innerText = trans.confirmBtn;
+                confirmBtn.classList.remove('hidden');
+            } else {
+                hintEl.innerText = trans.selectSingleHint;
+                confirmBtn.classList.add('hidden');
+            }
+
+            // Render danh sách đáp án
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'option-item p-3 sm:p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 text-slate-700 text-sm sm:text-base font-medium flex items-center gap-3';
+                div.id = `option-${index}`;
+
+                // Icon checkbox/radio
+                const iconHTML = qData.type === 'multi'
+                    ? `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`
+                    : `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`;
+
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span>${opt}</span>
+                `;
+
+                div.onclick = () => handleSelect(index);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function handleSelect(index) {
+            if (hasAnswered) return;
+
+            const qData = activeQuiz[currentQ];
+            const div = document.getElementById(`option-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+
+            if (qData.type === 'single') {
+                if (selectedOptions.length > 0) {
+                    const oldIndex = selectedOptions[0];
+                    document.getElementById(`option-${oldIndex}`).classList.remove('selected');
+                    document.getElementById(`icon-${oldIndex}`).innerHTML = '';
+                    document.getElementById(`icon-${oldIndex}`).classList.remove('border-blue-500');
+                }
+
+                selectedOptions = [index];
+                div.classList.add('selected');
+                icon.classList.add('border-blue-500');
+                icon.innerHTML = `<div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div>`;
+
+                // Tự động kiểm tra luôn với câu 1 đáp án
+                checkAnswer();
+            } else {
+                // Xử lý đa chọn (Multi-select)
+                const pos = selectedOptions.indexOf(index);
+                if (pos === -1) {
+                    selectedOptions.push(index);
+                    div.classList.add('selected');
+                    icon.classList.add('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = `<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
+                } else {
+                    selectedOptions.splice(pos, 1);
+                    div.classList.remove('selected');
+                    icon.classList.remove('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = '';
+                }
+            }
+        }
+
+        function checkAnswer() {
+            const qData = activeQuiz[currentQ];
+            const trans = uiTranslations[currentLanguage];
+
+            // Validate: Nếu là câu đa chọn mà chưa chọn đủ
+            if (qData.type === 'multi' && selectedOptions.length === 0) {
+                alert(trans.alertSelectAtLeastOne);
+                return;
+            }
+
+            hasAnswered = true;
+            document.getElementById('btnConfirm').classList.add('hidden');
+
+            let isCorrect = true;
+
+            // Kiểm tra tính đúng đắn
+            if (selectedOptions.length !== qData.ans.length) {
+                isCorrect = false;
+            } else {
+                for (let ans of qData.ans) {
+                    if (!selectedOptions.includes(ans)) isCorrect = false;
+                }
+            }
+
+            // Lưu lịch sử làm bài của người dùng
+            userAnswers.push({
+                qIndex: currentQ,
+                selected: [...selectedOptions],
+                isCorrect: isCorrect
+            });
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('scoreText').innerText = trans.score(score);
+            }
+
+            // Đổi màu hiển thị
+            qData.options.forEach((_, index) => {
+                const div = document.getElementById(`option-${index}`);
+                const isSelected = selectedOptions.includes(index);
+                const isTrueAnswer = qData.ans.includes(index);
+
+                div.classList.remove('selected');
+
+                if (isSelected && isTrueAnswer) {
+                    div.classList.add('correct');
+                } else if (isSelected && !isTrueAnswer) {
+                    div.classList.add('wrong');
+                } else if (!isSelected && isTrueAnswer) {
+                    div.classList.add('missed');
+                }
+            });
+
+            showHint();
+            document.getElementById('btnNext').innerText = trans.nextBtn;
+            document.getElementById('btnNext').classList.remove('hidden');
+        }
+
+        function showHint() {
+            const hintBox = document.getElementById('hintBox');
+            document.getElementById('hintText').innerHTML = activeQuiz[currentQ].hint;
+            hintBox.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ >= activeQuiz.length) {
+                showReport();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function showReport() {
+
+            document.getElementById('quizHeader').classList.add('hidden');
+            document.getElementById('quizBody').classList.add('hidden');
+
+            const reportArea = document.getElementById('reportArea');
+            reportArea.classList.remove('hidden');
+
+            const trans = uiTranslations[currentLanguage];
+
+            const accuracyPercent = Math.round((score / activeQuiz.length) * 100);
+            document.getElementById('reportStatCorrect').innerText = `${score} / ${activeQuiz.length}`;
+            document.getElementById('reportStatPercent').innerText = `${accuracyPercent}%`;
+
+            // Kết quả Đạt hay Không Đạt (Đạt nếu từ 75% trở lên)
+            const isPassed = accuracyPercent >= 75;
+            const statusEl = document.getElementById('reportStatStatus');
+            if (isPassed) {
+                statusEl.innerText = trans.statusPass;
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex-shrink-0";
+            } else {
+                statusEl.innerText = trans.statusFail;
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200 flex-shrink-0";
+            }
+
+            // Đánh giá chung
+            const evalEl = document.getElementById('reportEvaluation');
+            if (score === activeQuiz.length) {
+                evalEl.innerText = trans.evalPerfect;
+            } else if (score >= 20) {
+                evalEl.innerText = trans.evalExcellent;
+            } else if (score >= 15) {
+                evalEl.innerText = trans.evalGood;
+            } else {
+                evalEl.innerText = trans.evalTryHarder;
+            }
+
+            reviewCurrentQ = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const ansInfo = userAnswers[reviewCurrentQ];
+            const qData = activeQuiz[ansInfo.qIndex];
+            const trans = uiTranslations[currentLanguage];
+            
+            document.getElementById('reviewProgressText').innerText = trans.progress(reviewCurrentQ + 1, activeQuiz.length);
+            
+            const badgeEl = document.getElementById('reviewResultBadge');
+            if (ansInfo.isCorrect) {
+                badgeEl.innerText = trans.reviewCorrectBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800";
+            } else {
+                badgeEl.innerText = trans.reviewWrongBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-800";
+            }
+            
+            document.getElementById('reviewQuestionText').innerHTML = qData.q;
+            document.getElementById('reviewHintText').innerHTML = qData.hint;
+            
+            const container = document.getElementById('reviewOptionsContainer');
+            container.innerHTML = '';
+            
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
+                
+                const isSelected = ansInfo.selected.includes(index);
+                const isCorrectAnswer = qData.ans.includes(index);
+                
+                let iconHTML = '';
+                if (qData.type === 'multi') {
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0"></div>`;
+                } else {
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0"></div>`;
+                }
+                
+                if (isSelected && isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (isSelected && !isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-rose-500 bg-rose-50 text-rose-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (!isSelected && isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-amber-500 bg-amber-50 text-amber-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
+                }
+                
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span>${opt}</span>
+                `;
+                container.appendChild(div);
+            });
+            
+            document.getElementById('btnReviewPrev').disabled = reviewCurrentQ === 0;
+            document.getElementById('btnReviewNext').disabled = reviewCurrentQ === activeQuiz.length - 1;
+            document.getElementById('btnReviewPrev').innerHTML = trans.btnReviewPrev;
+            document.getElementById('btnReviewNext').innerHTML = trans.btnReviewNext;
+        }
+
+        function prevReviewQuestion() {
+            if (reviewCurrentQ > 0) {
+                reviewCurrentQ--;
+                loadReviewQuestion();
+            }
+        }
+
+        function nextReviewQuestion() {
+            if (reviewCurrentQ < activeQuiz.length - 1) {
+                reviewCurrentQ++;
+                loadReviewQuestion();
+            }
+        }
+
+        function restartQuiz() {
+
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+            
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('scoreText').innerText = trans.score(0);
+            
+            document.getElementById('reportArea').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+            
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        // Khởi tạo giao diện ngôn ngữ ban đầu (mặc định Tiếng Việt)
+        updateLanguageUI();
+        updateStartLangCards();
+    </script>
+</body>
+
+</html>
