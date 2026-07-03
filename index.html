@@ -1174,7 +1174,7 @@
             const qData = activeQuiz[currentQ];
             const trans = uiTranslations[currentLanguage];
 
-            // Validate: Nếu là câu đa chọn mà chưa chọn đủ
+            // Validate: Nếu là câu đa chọn mà chưa chọn đủ.
             if (qData.type === 'multi' && selectedOptions.length === 0) {
                 alert(trans.alertSelectAtLeastOne);
                 return;
