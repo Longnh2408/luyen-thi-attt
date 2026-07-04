@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Thi Trắc Nghiệm AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .option-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .selected {
+            border-color: #3b82f6 !important;
+            background-color: #eff6ff !important;
+        }
+
+        .correct {
+            border-color: #10b981 !important;
+            background-color: #d1fae5 !important;
+            color: #065f46 !important;
+        }
+
+        .wrong {
+            border-color: #ef4444 !important;
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+        }
+
+        .missed {
+            border-color: #f59e0b !important;
+            background-color: #fef3c7 !important;
+            color: #92400e !important;
+        }
+        
+        .code-block {
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen w-full p-0 flex flex-col justify-start items-center">
+
+    <div id="cardWrapper"
+        class="w-full min-h-screen max-w-5xl bg-white flex flex-col transition-all duration-300 shadow-md">
+        <!-- Header -->
+        <div
+            class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
+            <div class="text-center sm:text-left">
+                <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm AI</h1>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Trắc nghiệm tổng quan AI, Python & NumPy, Đạo đức AI, Thuật toán tìm kiếm, Biểu diễn tri thức, Học máy & Hệ chuyên gia</p>
+            </div>
+            <div class="text-center self-center sm:self-auto">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-700/50 hover:bg-indigo-700/80 text-[11px] sm:text-xs font-semibold rounded-full border border-indigo-500/30 transition-all text-indigo-100">
+                    🏠 Trang chủ
+                </a>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen"
+            class="p-6 sm:p-8 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
+                    🤖
+                </div>
+                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm AI</h2>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập gồm 8 chương bao quát lý thuyết AI, lập trình Python & NumPy, đạo đức pháp luật, thuật toán tìm kiếm, logic vị từ, học sâu và hệ chuyên gia.</p>
+            </div>
+
+            <button id="btnStartPractice" onclick="startPractice()"
+                class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
+                Bắt đầu luyện tập 🚀
+            </button>
+        </div>
+
+        <!-- Progress & Score -->
+        <div id="quizHeader"
+            class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 100</span>
+            <span
+                class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
+                id="scoreText">Điểm: 0</span>
+        </div>
+
+        <!-- Question Area -->
+        <div id="quizBody" class="hidden p-3 sm:p-6 flex flex-col justify-start">
+            <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start md:flex-1 w-full max-w-7xl mx-auto">
+                <!-- Cột trái: Đề bài, nút bấm và giải thích code -->
+                <div class="space-y-3 sm:space-y-4 text-left w-full">
+                    <!-- Question and Type Hint -->
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-indigo-600 font-bold tracking-wide uppercase" id="questionTypeHint">
+                        </p>
+                        <!-- Code format rendering container -->
+                        <div id="questionContainer" class="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+                            <!-- Đề bài chữ -->
+                            <div id="questionDesc" class="p-3 sm:p-4 bg-slate-50 text-slate-800 font-bold text-base sm:text-lg border-b border-slate-200">
+                                Đang tải câu hỏi...
+                            </div>
+                            <!-- Đoạn mã code snippet -->
+                            <pre id="questionCode" class="p-3 sm:p-4 text-sm sm:text-base font-medium overflow-x-auto code-block leading-relaxed whitespace-pre"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div
+                        class="flex flex-row gap-3 justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100 flex-shrink-0">
+                        <button id="btnShowHint" onclick="showHint()"
+                            class="flex-1 sm:flex-initial justify-center px-3 py-1.5 bg-amber-100 text-amber-700 hover:bg-amber-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            Xem Giải Thích Code
+                        </button>
+
+                        <div class="flex-1 sm:flex-initial flex gap-2 sm:gap-3">
+                            <button id="btnConfirm" onclick="checkAnswer()"
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Xác nhận
+                            </button>
+                            <button id="btnNext" onclick="nextQuestion()"
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Tiếp theo ➡
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hint Box -->
+                    <div id="hintBox" class="hidden p-2.5 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                        <div class="flex items-start">
+                            <span class="text-base sm:text-xl mr-2">💡</span>
+                            <div>
+                                <h3 id="hintTitle"
+                                    class="font-bold text-amber-800 text-[11px] sm:text-xs uppercase text-left">Giải thích code</h3>
+                                <p class="text-amber-900 mt-0.5 text-xs sm:text-base font-medium text-left" id="hintText">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột phải: Danh sách các đáp án lựa chọn -->
+                <div class="space-y-2 text-left w-full" id="optionsContainer">
+                    <!-- Các đáp án sẽ được render bằng JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Area -->
+        <div id="reportArea"
+            class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 flex flex-col justify-start">
+            <!-- Compact Single-Line Stats Row -->
+            <div
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
+                <div class="flex items-center gap-2">
+                    <span id="reportTitle" class="font-bold text-slate-800 text-sm sm:text-base">Kết Quả Luyện
+                        Tập:</span>
+                    <span id="reportStatStatus" class="font-bold text-xs px-2.5 py-0.5 rounded-full">ĐẠT</span>
+                </div>
+                <div
+                    class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
+                    <div>
+                        <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span>
+                        <span id="reportStatCorrect" class="font-bold text-emerald-600">0</span>
+                    </div>
+                    <div>
+                        <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span>
+                        <span id="reportStatPercent" class="font-bold text-indigo-600">0%</span>
+                    </div>
+                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã
+                        đạt yêu cầu.</div>
+                </div>
+            </div>
+
+            <!-- Detailed Review Section -->
+            <div
+                class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between mb-2">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
+                    <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
+                        <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 100</span>
+                    </h4>
+                    <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
+                        Đúng</span>
+                </div>
+
+                <!-- Review Content Grid (Side-by-side) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4 pr-1 sm:pr-2">
+                    <!-- Left: Question & Hint -->
+                    <div class="space-y-3 sm:space-y-4 text-left">
+                        <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+                            <div id="reviewQuestionDesc" class="p-3 bg-slate-50 text-slate-800 font-bold text-sm sm:text-base border-b border-slate-200"></div>
+                            <pre id="reviewQuestionCode" class="p-3 text-xs sm:text-sm font-medium overflow-x-auto code-block leading-relaxed whitespace-pre"></pre>
+                        </div>
+
+                        <div id="reviewHintBox" class="p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                            <div class="flex items-start">
+                                <span class="text-lg sm:text-xl mr-2 sm:mr-3">💡</span>
+                                <div>
+                                    <h3 id="reviewHintTitle"
+                                        class="font-bold text-amber-800 text-xs sm:text-sm uppercase text-left">Giải thích code</h3>
+                                    <p class="text-amber-900 mt-1 text-left text-xs sm:text-sm font-medium"
+                                        id="reviewHintText"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Options -->
+                    <div class="space-y-2.5 sm:space-y-3 text-left" id="reviewOptionsContainer">
+                        <!-- Options will be rendered statically here -->
+                    </div>
+                </div>
+
+                <!-- Review Navigation and Actions -->
+                <div
+                    class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-100 pt-4 flex-shrink-0">
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button id="btnReviewPrev" onclick="prevReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                            ⬅ Câu trước
+                        </button>
+                        <button id="btnReviewNext" onclick="nextReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
+                            Câu tiếp theo ➡
+                        </button>
+                    </div>
+
+                    <button id="btnRestartQuiz" onclick="restartQuiz()"
+                        class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
+                        🔄 Làm lại bài thi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizDataVi = [
+            // CHƯƠNG 1: TỔNG QUAN AI
+            {
+                type: 'single',
+                desc: "Câu 1. Mục tiêu chính của Trí tuệ nhân tạo (AI) là gì?",
+                options: [
+                    "A. Phát triển các máy tính có tốc độ xử lý nhanh nhất thế giới.",
+                    "B. Phát triển các máy móc có hành vi thông minh tương đương hoặc giống con người.",
+                    "C. Thay thế hoàn toàn con người trong mọi công việc chân tay.",
+                    "D. Xây dựng các hệ thống lưu trữ dữ liệu khổng lồ."
+                ],
+                ans: [1],
+                hint: "Mục tiêu cốt lõi của AI là xây dựng các hệ thống máy móc thông minh có thể tư duy, học hỏi và hành động như con người ➔ <span class='font-bold text-amber-600'>Phát triển các máy móc có hành vi thông minh tương đương hoặc giống con người.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 2. Ba yếu tố cốt lõi nào sau đây thúc đẩy sự phát triển mạnh mẽ của AI?",
+                options: [
+                    "A. Con người, máy móc và ngân sách đầu tư.",
+                    "B. Thuật toán (Algorithms), Dữ liệu (Data) và Năng lực tính toán (Computing Power).",
+                    "C. Internet, mạng xã hội và điện thoại thông minh.",
+                    "D. Lập trình truyền thống, phần cứng và người dùng cuối."
+                ],
+                ans: [1],
+                hint: "Sự kết hợp giữa dữ liệu lớn (Big Data), thuật toán cải tiến (nhất là Deep Learning) và sức mạnh tính toán vượt trội (GPU, Cloud) là 3 động lực chính thúc đẩy AI phát triển vượt bậc ➔ <span class='font-bold text-amber-600'>Thuật toán (Algorithms), Dữ liệu (Data) và Năng lực tính toán (Computing Power).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 3. Thuật ngữ Artificial Narrow Intelligence (ANI) dùng để chỉ loại AI nào?",
+                options: [
+                    "A. AI có khả năng tự nhận thức và có cảm xúc như con người.",
+                    "B. AI được thiết kế để thực hiện một nhiệm vụ cụ thể hoặc một tập hợp nhiệm vụ hạn hẹp.",
+                    "C. AI có trí thông minh vượt xa mọi khả năng của con người.",
+                    "D. AI có thể tự học mọi lĩnh vực mà không cần dữ liệu đầu vào."
+                ],
+                ans: [1],
+                hint: "ANI (Trí tuệ nhân tạo hẹp) chỉ tập trung giải quyết xuất sắc một tác vụ chuyên biệt cụ thể mà không thể tự mở rộng sang các nhiệm vụ khác ➔ <span class='font-bold text-amber-600'>AI được thiết kế để thực hiện một nhiệm vụ cụ thể hoặc một tập hợp nhiệm vụ hạn hẹp.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 4. Hệ thống AI nào sau đây là một ví dụ điển hình của Trí tuệ nhân tạo hẹp (ANI)?",
+                options: [
+                    "A. Một hệ thống có thể giải quyết mọi vấn đề tri thức của nhân loại.",
+                    "B. Bộ lọc thư rác (Email spam filter).",
+                    "C. Một robot có thể tự suy nghĩ và thực hiện mọi công việc của con người.",
+                    "D. Một thực thể siêu trí tuệ kiểm soát toàn bộ hạ tầng kỹ thuật số."
+                ],
+                ans: [1],
+                hint: "Bộ lọc spam chỉ làm một việc là phân loại thư rác dựa trên các quy tắc hoặc mô hình phân loại học máy hẹp ➔ <span class='font-bold text-amber-600'>Bộ lọc thư rác (Email spam filter).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 5. Đặc điểm Veracity (Tính xác thực) trong Big Data mô tả khía cạnh nào của dữ liệu?",
+                options: [
+                    "A. Khối lượng dữ liệu cực kỳ khổng lồ.",
+                    "B. Tốc độ tạo ra và xử lý dữ liệu nhanh chóng.",
+                    "C. Sự không chính xác hoặc tính không đáng tin cậy của một số nguồn dữ liệu.",
+                    "D. Sự đa dạng về định dạng như văn bản, hình ảnh và âm thanh."
+                ],
+                ans: [2],
+                hint: "Veracity đề cập đến tính chính xác, chất lượng, độ nhiễu và độ tin cậy của dữ liệu đầu vào ➔ <span class='font-bold text-amber-600'>Sự không chính xác hoặc tính không đáng tin cậy của một số nguồn dữ liệu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 6. Lĩnh vực nghiên cứu cách làm cho máy tính thực hiện những nhiệm vụ mà tại thời điểm đó con người đang làm tốt hơn máy tính được gọi là gì?",
+                options: [
+                    "A. Trí tuệ nhân tạo (theo định nghĩa của Elaine Rich).",
+                    "B. Lập trình vạn vật (IoT).",
+                    "C. Khoa học dữ liệu (Data Science).",
+                    "D. Điện toán đám mây (Cloud Computing)."
+                ],
+                ans: [0],
+                hint: "Đây là định nghĩa kinh điển của nhà khoa học Elaine Rich về mục tiêu nghiên cứu của AI ➔ <span class='font-bold text-amber-600'>Trí tuệ nhân tạo (theo định nghĩa của Elaine Rich).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 7. Mục đích chính của phép thử Turing là gì?",
+                options: [
+                    "A. Đo lường dung lượng bộ nhớ tối đa của một máy tính.",
+                    "B. Kiểm tra xem máy tính có thể bắt chước hành vi thông minh khiến con người không thể phân biệt được hay không.",
+                    "C. Đánh giá khả năng tiết kiệm năng lượng của các hệ thống AI.",
+                    "D. Xác định khả năng xử lý đồ họa của siêu máy tính."
+                ],
+                ans: [1],
+                hint: "Phép thử Turing (Turing Test) do Alan Turing đề xuất để đánh giá xem máy tính có khả năng giao tiếp và tư duy thông minh ngang hàng với con người hay không ➔ <span class='font-bold text-amber-600'>Kiểm tra xem máy tính có thể bắt chước hành vi thông minh khiến con người không thể phân biệt được hay không.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 8. Phương pháp học nào trong Machine Learning dựa trên cơ chế thử và sai (Trial & Error) để tối ưu hóa kết quả thông qua phần thưởng?",
+                options: [
+                    "A. Supervised Learning (Học có giám sát).",
+                    "B. Unsupervised Learning (Học không giám sát).",
+                    "C. Reinforcement Learning (Học tăng cường).",
+                    "D. Traditional Programming (Lập trình truyền thống)."
+                ],
+                ans: [2],
+                hint: "Học tăng cường (Reinforcement Learning) mô tả việc một tác tử tự tương tác với môi trường, nhận điểm thưởng/phạt và tự tối ưu hóa hành động của mình qua các lần thử sai ➔ <span class='font-bold text-amber-600'>Reinforcement Learning (Học tăng cường).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 9. Điểm khác biệt căn bản giữa AI và Lập trình truyền thống (Traditional Programming) là gì?",
+                options: [
+                    "A. AI không sử dụng bất kỳ thuật toán nào.",
+                    "B. AI có khả năng học hỏi và tự điều chỉnh từ dữ liệu thay vì chỉ chạy theo các quy tắc cố định.",
+                    "C. Lập trình truyền thống luôn xử lý dữ liệu lớn tốt hơn AI.",
+                    "D. AI luôn cho kết quả chính xác tuyệt đối trong mọi tình huống."
+                ],
+                ans: [1],
+                hint: "Lập trình truyền thống đòi hỏi con người cung cấp cả quy tắc và dữ liệu để máy tính chạy. AI (đặc biệt là Machine Learning) nhận dữ liệu và kết quả mong muốn để tự tìm ra quy tắc ➔ <span class='font-bold text-amber-600'>AI có khả năng học hỏi và tự điều chỉnh từ dữ liệu thay vì chỉ chạy theo các quy tắc cố định.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 10. Đơn vị dữ liệu nào sau đây có giá trị lớn nhất?",
+                options: [
+                    "A. Terabyte (TB).",
+                    "B. Petabyte (PB).",
+                    "C. Exabyte (EB).",
+                    "D. Zettabyte (ZB)."
+                ],
+                ans: [3],
+                hint: "Thứ tự dung lượng lưu trữ tăng dần là: Terabyte (TB) < Petabyte (PB) < Exabyte (EB) < Zettabyte (ZB) ➔ <span class='font-bold text-amber-600'>Zettabyte (ZB).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 11. Thuật ngữ Black Box (Hộp đen) thường dùng để chỉ vấn đề gì của các hệ thống AI hiện đại?",
+                options: [
+                    "A. Hệ thống tiêu tốn quá nhiều điện năng.",
+                    "B. Khó khăn trong việc hiểu hoặc giải thích cách thức AI đưa ra một kết quả cụ thể.",
+                    "C. AI chỉ có thể hoạt động trong môi trường thiếu ánh sáng.",
+                    "D. Dữ liệu nạp vào AI luôn bị mất đi sau khi xử lý."
+                ],
+                ans: [1],
+                hint: "Các mô hình học sâu phức tạp chứa hàng tỷ tham số, con người chỉ biết đầu vào và đầu ra chứ khó giải thích cặn kẽ đường đi của quyết định bên trong, gọi là hiện tượng hộp đen ➔ <span class='font-bold text-amber-600'>Khó khăn trong việc hiểu hoặc giải thích cách thức AI đưa ra một kết quả cụ thể.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 12. Việc sử dụng AI trong sàng lọc ung thư vú mang lại lợi ích gì (ví dụ từ nghiên cứu năm 2023)?",
+                options: [
+                    "A. Tự động chữa khỏi bệnh mà không cần can thiệp y tế.",
+                    "B. Giảm 50% khối lượng công việc và tăng khả năng phát hiện ung thư sớm.",
+                    "C. Chỉ chẩn đoán chính xác cho các trường hợp bệnh nhân trẻ tuổi.",
+                    "D. Thay thế hoàn toàn nhu cầu về máy chụp nhũ ảnh."
+                ],
+                ans: [1],
+                hint: "Ứng dụng AI giúp hỗ trợ phân tích hình ảnh y học, giảm thiểu sai sót chủ quan của bác sĩ, đồng thời cắt giảm một nửa thời gian làm việc của chuyên viên y tế ➔ <span class='font-bold text-amber-600'>Giảm 50% khối lượng công việc và tăng khả năng phát hiện ung thư sớm.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 13. Những chuyên gia nào được mệnh danh là cha đẻ của AI (Godfathers of AI) vì những đóng góp cho Deep Learning?",
+                options: [
+                    "A. Alan Turing, John McCarthy và Marvin Minsky.",
+                    "B. Yann LeCun, Geoffrey Hinton và Yoshua Bengio.",
+                    "C. Bill Gates, Steve Jobs và Elon Musk.",
+                    "D. Sam Altman, Sundar Pichai và Satya Nadella."
+                ],
+                ans: [1],
+                hint: "Bộ ba Yann LeCun, Geoffrey Hinton và Yoshua Bengio đã có công lao to lớn đưa mạng nơ-ron sâu (Deep Learning) trở lại đỉnh cao và nhận giải Turing danh giá năm 2018 ➔ <span class='font-bold text-amber-600'>Yann LeCun, Geoffrey Hinton và Yoshua Bengio.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 14. Giải pháp Explainable AI (XAI) được phát triển nhằm mục đích gì?",
+                options: [
+                    "A. Tăng tốc độ xử lý của thuật toán Deep Learning.",
+                    "B. Giúp con người hiểu và tin tưởng vào cách AI đưa ra quyết định.",
+                    "C. Giảm lượng dữ liệu cần thiết để huấn luyện AI.",
+                    "D. Tự động hóa việc viết mã nguồn cho các hệ thống AI."
+                ],
+                ans: [1],
+                hint: "XAI (Trí tuệ nhân tạo có thể giải thích) hướng tới việc phá vỡ tính chất 'hộp đen' của AI, cung cấp các giải thích logic giúp gia tăng độ tin cậy và tuân thủ pháp lý ➔ <span class='font-bold text-amber-600'>Giúp con người hiểu và tin tưởng vào cách AI đưa ra quyết định.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 15. Loại phần cứng nào thực hiện xử lý song song (Parallel Processing) hiệu quả cho các ứng dụng AI?",
+                options: [
+                    "A. CPU truyền thống.",
+                    "B. GPU (Graphics Processing Unit).",
+                    "C. Bộ nhớ RAM.",
+                    "D. Ổ cứng HDD."
+                ],
+                ans: [1],
+                hint: "Khác với CPU xử lý tuần tự tốt, GPU được thiết kế với hàng ngàn nhân xử lý nhỏ hoạt động song song, cực kỳ phù hợp cho các phép toán nhân ma trận khổng lồ của học sâu ➔ <span class='font-bold text-amber-600'>GPU (Graphics Processing Unit).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 16. Khái niệm Artificial General Intelligence (AGI) mô tả một hệ thống AI như thế nào?",
+                options: [
+                    "A. Chỉ có khả năng chơi cờ vua ở mức độ chuyên gia.",
+                    "B. Có khả năng thực hiện đa dạng các nhiệm vụ và áp dụng trí tuệ vào nhiều lĩnh vực như con người.",
+                    "C. Một hệ thống AI đơn giản được tích hợp trong máy tính bỏ túi.",
+                    "D. AI chỉ hoạt động dựa trên các quy tắc Nếu - Thì cố định."
+                ],
+                ans: [1],
+                hint: "AGI (Trí tuệ nhân tạo tổng quát) đại diện cho mức độ AI toàn năng, có khả năng học tập, tự suy luận giải quyết bất kỳ công việc trí tuệ nào mà con người có thể làm được ➔ <span class='font-bold text-amber-600'>Có khả năng thực hiện đa dạng các nhiệm vụ và áp dụng trí tuệ vào nhiều lĩnh vực như con người.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 17. Sự kiện lịch sử nào vào năm 1997 đã đánh dấu việc siêu máy tính đánh bại nhà vô địch cờ vua thế giới?",
+                options: [
+                    "A. Hội nghị Dartmouth đưa ra thuật ngữ AI.",
+                    "B. IBM Watson thắng giải Jeopardy.",
+                    "C. Siêu máy tính Deep Blue đánh bại Garry Kasparov.",
+                    "D. AlphaFold dự đoán cấu trúc Protein."
+                ],
+                ans: [2],
+                hint: "Năm 1997, siêu máy tính Deep Blue của hãng IBM đã tạo chấn động khi đánh bại nhà vô địch cờ vua thế giới Garry Kasparov trong một loạt trận đấu chính thức ➔ <span class='font-bold text-amber-600'>Siêu máy tính Deep Blue đánh bại Garry Kasparov.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 18. Khái niệm Singularity (Điểm kỳ dị) thường được gắn liền với sự phát triển của loại AI nào?",
+                options: [
+                    "A. Trí tuệ nhân tạo hẹp (ANI).",
+                    "B. Hệ chuyên gia (Expert Systems).",
+                    "C. Siêu trí tuệ nhân tạo (Artificial Super Intelligence - ASI).",
+                    "D. AI dự báo (Predictive AI)."
+                ],
+                ans: [2],
+                hint: "Singularity chỉ thời điểm giả thuyết khi trí tuệ máy móc phát triển vượt bậc (đạt ngưỡng ASI), tự cải tiến liên tục ở tốc độ chóng mặt vượt xa tầm kiểm soát của nhân loại ➔ <span class='font-bold text-amber-600'>Siêu trí tuệ nhân tạo (Artificial Super Intelligence - ASI).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 19. Thành phần nào được coi là bộ não (brains) chỉ dẫn máy tính cách thức thực hiện nhiệm vụ trong AI?",
+                options: [
+                    "A. Dữ liệu (Data).",
+                    "B. Thuật toán (Algorithms).",
+                    "C. Thiết bị lưu trữ.",
+                    "D. Cảm biến ngoại vi."
+                ],
+                ans: [1],
+                hint: "Thuật toán là tập hợp các chỉ thị logic và toán học chỉ đường cho máy tính xử lý dữ liệu và học hỏi để đưa ra quyết định ➔ <span class='font-bold text-amber-600'>Thuật toán (Algorithms).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 20. Hệ chuyên gia (AI Expert System) thường bao gồm các thành phần chính nào để đưa ra lời khuyên?",
+                options: [
+                    "A. Giao diện người dùng, Công cụ suy diễn và Cơ sở tri thức.",
+                    "B. Bàn phím, chuột và màn hình.",
+                    "C. Hệ điều hành và các ứng dụng văn phòng.",
+                    "D. Cáp mạng và bộ định tuyến."
+                ],
+                ans: [0],
+                hint: "Hệ chuyên gia cổ điển hoạt động dựa trên tri thức lưu trong Cơ sở tri thức (Knowledge Base), dùng Công cụ suy diễn (Inference Engine) để lập luận và giao tiếp qua Giao diện ➔ <span class='font-bold text-amber-600'>Giao diện người dùng, Công cụ suy diễn và Cơ sở tri thức.</span>"
+            },
+
+            // CHƯƠNG 2: PYTHON & NUMPY
+            {
+                type: 'single',
+                desc: "Câu 21. Trong Python, kết quả của biểu thức 3 + 2 * 2 là bao nhiêu?",
+                options: ["A. 7.", "B. 10.", "C. 9.", "D. 8."],
+                ans: [0],
+                hint: "Python áp dụng đúng quy tắc ưu tiên toán tử số học: phép nhân thực hiện trước phép cộng (3 + 4 = 7) ➔ <span class='font-bold text-amber-600'>7.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 22. Kiểu dữ liệu nào sau đây là immutable (không thể thay đổi sau khi tạo) trong Python?",
+                options: ["A. List.", "B. Dictionary.", "C. Tuple.", "D. Set."],
+                ans: [2],
+                hint: "Tuple là kiểu dữ liệu có cấu trúc danh sách bất biến (immutable), không thể thay đổi giá trị hay thêm bớt phần tử sau khi tạo ➔ <span class='font-bold text-amber-600'>Tuple.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 23. Cú pháp nào sau đây là cách đúng để khai báo một hàm trong Python?",
+                options: [
+                    "A. function myFunc():",
+                    "B. def myFunc():",
+                    "C. void myFunc()",
+                    "D. define myFunc:"
+                ],
+                ans: [1],
+                hint: "Python sử dụng từ khóa `def` để bắt đầu định nghĩa một hàm ➔ <span class='font-bold text-amber-600'>def myFunc():</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 24. Kết quả của đoạn mã sau là gì?",
+                code: "x = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)",
+                options: ["A. [1, 2, 3]", "B. [1, 2, 3, 4]", "C. Error", "D. [1, 2, 3, [4]]"],
+                ans: [1],
+                hint: "Phép gán `y = x` sao chép địa chỉ ô nhớ (tham chiếu) của đối tượng List. Do đó, thao tác append trên `y` tác động trực tiếp tới nội dung biến `x` ➔ <span class='font-bold text-amber-600'>[1, 2, 3, 4]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 25. Biểu thức List Comprehension nào sau đây tạo ra danh sách các số chẵn từ 0 đến 8?",
+                options: [
+                    "A. [i for i in range(10) if i % 2 == 0]",
+                    "B. [i if i % 2 == 0 for i in range(10)]",
+                    "C. [i for i in range(0, 8)]",
+                    "D. list(range(0, 9, 1))"
+                ],
+                ans: [0],
+                hint: "`range(10)` sinh ra chuỗi số từ 0 đến 9. Biểu thức `if i % 2 == 0` lọc lại các số chia hết cho 2 ➔ <span class='font-bold text-amber-600'>[i for i in range(10) if i % 2 == 0]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 26. Để truy cập vào giá trị 'AI' trong dictionary d = {'course': 'AI', 'code': 123}, ta sử dụng lệnh nào?",
+                options: ["A. d[0]", "B. d['AI']", "C. d['course']", "D. d.get(0)"],
+                ans: [2],
+                hint: "Trong Dictionary, phần tử được truy xuất thông qua nhãn khóa (key) tương ứng là `'course'` ➔ <span class='font-bold text-amber-600'>d['course']</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 27. Trong thư viện NumPy, thuộc tính nào cho biết số chiều và kích thước các chiều của mảng?",
+                options: ["A. .size", "B. .shape", "C. .dim", "D. .length"],
+                ans: [1],
+                hint: "Thuộc tính `.shape` của mảng NumPy trả về một tuple chứa kích thước cụ thể của từng chiều dữ liệu ➔ <span class='font-bold text-amber-600'>.shape</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 28. Lệnh nào dùng để cài đặt thư viện bên thứ ba (như numpy) từ cửa sổ dòng lệnh (terminal)?",
+                options: ["A. install numpy", "B. python get numpy", "C. pip install numpy", "D. import numpy"],
+                ans: [2],
+                hint: "Công cụ `pip` (Python Package Installer) là trình cài đặt thư viện chính thức của Python ➔ <span class='font-bold text-amber-600'>pip install numpy</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 29. Kết quả của lệnh print('AI' * 3) trong Python là gì?",
+                options: ["A. AIAIAI", "B. AI 3", "C. Error", "D. ['AI', 'AI', 'AI']"],
+                ans: [0],
+                hint: "Toán tử `*` khi dùng giữa một chuỗi và một số nguyên sẽ nhân bản nội dung chuỗi đó lên nhiều lần ➔ <span class='font-bold text-amber-600'>AIAIAI</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 30. Cấu trúc nào sau đây được dùng để xử lý ngoại lệ (lỗi) trong Python?",
+                options: ["A. if...else", "B. try...except", "C. catch...throw", "D. error...handle"],
+                ans: [1],
+                hint: "Python sử dụng khối lệnh `try` chứa mã nguồn có thể lỗi và khối `except` để bắt và xử lý ngoại lệ ➔ <span class='font-bold text-amber-600'>try...except</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 31. Tại sao mảng NumPy thường được ưu tiên sử dụng hơn List của Python trong các bài toán AI lớn?",
+                options: [
+                    "A. Vì NumPy hỗ trợ nhiều kiểu dữ liệu hỗn hợp trong cùng một mảng tốt hơn.",
+                    "B. Vì mảng NumPy tiêu tốn ít bộ nhớ và có tốc độ tính toán nhanh hơn nhờ thực thi bằng mã C tối ưu.",
+                    "C. Vì List của Python không thể chứa được các số thực (float).",
+                    "D. Vì NumPy tự động đồng bộ dữ liệu lên các hệ thống lưu trữ đám mây."
+                ],
+                ans: [1],
+                hint: "Mảng NumPy phân bổ các ô nhớ liên tục và đồng nhất kiểu dữ liệu, cho phép tối ưu phần cứng tính toán vector hóa nhanh hơn hẳn List hỗn hợp của Python ➔ <span class='font-bold text-amber-600'>Vì mảng NumPy tiêu tốn ít bộ nhớ và có tốc độ tính toán nhanh hơn nhờ thực thi bằng mã C tối ưu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 32. Cho mảng a = np.array([[1, 2], [3, 4]]). Lệnh print(a.sum(axis=0)) sẽ in ra kết quả nào?",
+                options: ["A. [3, 7]", "B. [4, 6]", "C. 10", "D. [1, 2, 3, 4]"],
+                ans: [1],
+                hint: "Trong NumPy, `axis=0` đại diện cho chiều dọc (cột). Tổng các cột sẽ là: [1+3, 2+4] = [4, 6] ➔ <span class='font-bold text-amber-600'>[4, 6]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 33. Đâu là cách tạo mảng NumPy chứa chính xác 5 số 0 liên tiếp?",
+                options: ["A. np.zeros(5)", "B. np.empty(5)", "C. np.array([0]*5)", "D. np.make_zeros(5)"],
+                ans: [0],
+                hint: "Hàm `np.zeros(size)` được thiết kế để tạo nhanh một mảng chứa toàn bộ giá trị 0 với kích thước chỉ định ➔ <span class='font-bold text-amber-600'>np.zeros(5)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 34. Điểm khác biệt cơ bản giữa range(5) và np.arange(5) là gì?",
+                options: [
+                    "A. Không có sự khác biệt về chức năng và kiểu dữ liệu trả về.",
+                    "B. range(5) trả về một đối tượng generator, trong khi np.arange(5) trả về một mảng NumPy.",
+                    "C. range(5) cho tốc độ tính toán trên mảng nhanh hơn np.arange(5).",
+                    "D. range(5) bao gồm cả số 5, còn np.arange(5) thì không."
+                ],
+                ans: [1],
+                hint: "Hàm `range()` là hàm dựng sẵn của Python trả về đối tượng sinh số lười (lazy), còn `np.arange()` lập tức cấp phát một mảng NumPy đầy đủ phần tử trong bộ nhớ ➔ <span class='font-bold text-amber-600'>range(5) trả về một đối tượng generator, trong khi np.arange(5) trả về một mảng NumPy.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 35. Để lấy ra phần tử có giá trị '3' từ mảng arr = np.array([1, 2, 3, 4, 5]), ta dùng chỉ số (index) nào?",
+                options: ["A. arr[3]", "B. arr[2]", "C. arr[1]", "D. arr.get(3)"],
+                ans: [1],
+                hint: "Vì chỉ mục index của mảng bắt đầu từ số 0, phần tử thứ ba (giá trị 3) nằm tại vị trí chỉ mục 2 ➔ <span class='font-bold text-amber-600'>arr[2]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 36. Sự khác biệt giữa toán tử and và toán tử & khi làm việc với mảng NumPy là gì?",
+                options: [
+                    "A. Chúng hoàn toàn giống nhau về cách thức hoạt động.",
+                    "B. and dùng cho so sánh logic đơn lẻ, & dùng cho so sánh từng phần tử (bitwise/elementwise) trong mảng.",
+                    "C. and có tốc độ xử lý mảng nhanh hơn toán tử &.",
+                    "D. & chỉ dùng được cho số nguyên, còn and dùng được cho mọi kiểu dữ liệu."
+                ],
+                ans: [1],
+                hint: "Toán tử `and` so sánh toàn bộ đối tượng (chân trị đơn lẻ), còn `&` thực hiện phép toán AND logic song song cho từng cặp phần tử tương ứng trong mảng ➔ <span class='font-bold text-amber-600'>and dùng cho so sánh logic đơn lẻ, & dùng cho so sánh từng phần tử (bitwise/elementwise) trong mảng.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 37. Lệnh arr.reshape(2, -1) có ý nghĩa gì nếu mảng arr ban đầu có 6 phần tử?",
+                options: [
+                    "A. Chuyển mảng thành cấu trúc 2 hàng và 3 cột (tự động tính toán số cột).",
+                    "B. Gây ra lỗi vì thiếu thông số xác định số cột cụ thể.",
+                    "C. Chuyển mảng thành mảng một chiều chỉ còn 2 phần tử.",
+                    "D. Xóa bớt các phần tử dư thừa để mảng chỉ còn 2 hàng."
+                ],
+                ans: [0],
+                hint: "Khi truyền tham số `-1`, NumPy sẽ tự động tính toán kích thước chiều đó dựa trên tổng số phần tử ban đầu (6 phần tử / 2 hàng = 3 cột) ➔ <span class='font-bold text-amber-600'>Chuyển mảng thành cấu trúc 2 hàng và 3 cột (tự động tính toán số cột).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 38. Trong Python, Indentation (khoảng thụt đầu dòng) có vai trò bắt buộc gì?",
+                options: [
+                    "A. Chỉ dùng để làm cho mã nguồn dễ đọc hơn (không bắt buộc).",
+                    "B. Dùng để xác định các khối lệnh (scope) như trong hàm, vòng lặp hoặc câu lệnh điều kiện.",
+                    "C. Có thể sử dụng tùy ý và không gây ra lỗi nếu thực hiện không nhất quán.",
+                    "D. Chỉ được phép sử dụng cho các dòng chú thích (comment)."
+                ],
+                ans: [1],
+                hint: "Khác với các ngôn ngữ dùng dấu ngoặc nhọn `{}`, Python bắt buộc thụt lề bằng khoảng trắng/tab để gom nhóm và xác định phạm vi hoạt động của khối lệnh ➔ <span class='font-bold text-amber-600'>Dùng để xác định các khối lệnh (scope) như trong hàm, vòng lặp hoặc câu lệnh điều kiện.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 39. Kết quả của phép so sánh nội dung [1, 2] == [1, 2] trong Python là gì?",
+                options: ["A. True", "B. False", "C. Error", "D. None"],
+                ans: [0],
+                hint: "Toán tử `==` kiểm tra sự bằng nhau về mặt giá trị của từng phần tử bên trong hai danh sách, do giá trị tương ứng trùng khớp hoàn toàn nên trả về True ➔ <span class='font-bold text-amber-600'>True</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 40. Hàm nào sau đây được dùng để tạo một mảng NumPy từ một List sẵn có của Python?",
+                options: ["A. np.from_list()", "B. np.array()", "C. np.tolist()", "D. np.convert()"],
+                ans: [1],
+                hint: "Hàm `np.array(object)` nhận đầu vào là các cấu trúc lặp như List, Tuple để chuyển đổi sang cấu trúc mảng NumPy ➔ <span class='font-bold text-amber-600'>np.array()</span>"
+            },
+
+            // CHƯƠNG 3: ĐẠO ĐỨC & PHÁP LUẬT TRONG AI
+            {
+                type: 'single',
+                desc: "Câu 41. Định kiến thuật toán (Algorithmic Bias) xảy ra do nguyên nhân chủ yếu nào?",
+                options: [
+                    "A. Do lập trình viên cố ý phân biệt đối xử.",
+                    "B. Do dữ liệu huấn luyện không đại diện hoặc chứa định kiến lịch sử của con người.",
+                    "C. Do năng lực xử lý của GPU kém.",
+                    "D. Do mô hình AI quá nhỏ."
+                ],
+                ans: [1],
+                hint: "Algorithmic Bias phát sinh chủ yếu do tập dữ liệu huấn luyện bị thiên lệch, mất cân bằng hoặc phản ánh định kiến sẵn có trong xã hội ➔ <span class='font-bold text-amber-600'>Do dữ liệu huấn luyện không đại diện hoặc chứa định kiến lịch sử của con người.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 42. Thuật ngữ Deepfake dùng để chỉ công nghệ nào?",
+                options: [
+                    "A. Tự động hóa dịch thuật ngôn ngữ.",
+                    "B. Kỹ thuật tổng hợp hình ảnh/video giả mạo mô phỏng chân dung người thật bằng AI.",
+                    "C. Bảo mật thông tin đa lớp.",
+                    "D. Phát hiện lỗ hổng phần mềm."
+                ],
+                ans: [1],
+                hint: "Deepfake sử dụng các mạng học sâu (GANs) để tráo đổi khuôn mặt hoặc mô phỏng giọng nói của một người chân thực như thật ➔ <span class='font-bold text-amber-600'>Kỹ thuật tổng hợp hình ảnh/video giả mạo mô phỏng chân dung người thật bằng AI.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 43. Khái niệm Quyền riêng tư của dữ liệu (Data Privacy) yêu cầu điều gì khi huấn luyện AI?",
+                options: [
+                    "A. Dữ liệu người dùng phải được thu thập tự do mà không cần xin phép.",
+                    "B. Dữ liệu cá nhân phải được ẩn danh hóa và bảo vệ nghiêm ngặt.",
+                    "C. AI không được phép sử dụng bất kỳ dữ liệu số nào.",
+                    "D. Dữ liệu chỉ được lưu trữ trên giấy."
+                ],
+                ans: [1],
+                hint: "Data Privacy yêu cầu mọi thông tin định danh cá nhân phải được che giấu hoặc ẩn danh hóa trước khi đưa vào huấn luyện mô hình ➔ <span class='font-bold text-amber-600'>Dữ liệu cá nhân phải được ẩn danh hóa và bảo vệ nghiêm ngặt.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 44. Trách nhiệm giải trình (Accountability) trong AI nghĩa là gì?",
+                options: [
+                    "A. Máy tính tự chịu mọi hình phạt pháp lý.",
+                    "B. Tổ chức/cá nhân phát triển và vận hành AI phải chịu trách nhiệm về hậu quả của nó.",
+                    "C. Hệ thống tự động xóa toàn bộ mã nguồn khi có lỗi.",
+                    "D. Người dùng cuối phải chịu mọi trách nhiệm thay cho nhà phát triển."
+                ],
+                ans: [1],
+                hint: "Trách nhiệm giải trình nhấn mạnh thực thể con người (doanh nghiệp phát triển hoặc vận hành mô hình) phải chịu trách nhiệm pháp lý cho hành vi và lỗi của AI ➔ <span class='font-bold text-amber-600'>Tổ chức/cá nhân phát triển và vận hành AI phải chịu trách nhiệm về hậu quả của nó.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 45. Hiệp định AI Act của Liên minh Châu Âu (EU) phân loại rủi ro AI thành mấy nhóm chính?",
+                options: ["A. 2 nhóm", "B. 3 nhóm", "C. 4 nhóm", "D. 5 nhóm"],
+                ans: [2],
+                hint: "EU AI Act phân loại các hệ thống AI thành 4 cấp độ rủi ro: rủi ro không thể chấp nhận được, rủi ro cao, rủi ro hạn chế và rủi ro tối thiểu ➔ <span class='font-bold text-amber-600'>4 nhóm</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 46. Nguyên tắc Công bằng (Fairness) trong AI hướng tới điều gì?",
+                options: [
+                    "A. Đảm bảo mọi mô hình AI đều có tốc độ xử lý như nhau.",
+                    "B. Đảm bảo AI đưa ra quyết định không phân biệt đối xử dựa trên giới tính, chủng tộc, tôn giáo.",
+                    "C. Chia đều lợi nhuận bán hàng cho tất cả nhân viên.",
+                    "D. Bắt buộc mọi người dân phải sử dụng AI."
+                ],
+                ans: [1],
+                hint: "Sự công bằng yêu cầu thuật toán phải đối xử bình đẳng và đưa ra kết quả không thiên vị các thuộc tính nhạy cảm của các nhóm người khác nhau ➔ <span class='font-bold text-amber-600'>Đảm bảo AI đưa ra quyết định không phân biệt đối xử dựa trên giới tính, chủng tộc, tôn giáo.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 47. Vấn đề Bản quyền tác giả (Copyright) nổi bật nhất đối với Generative AI hiện nay là gì?",
+                options: [
+                    "A. Bản quyền của hệ điều hành chạy AI.",
+                    "B. Việc AI tự do sử dụng các tác phẩm nghệ thuật, văn bản có bản quyền để huấn luyện mà không xin phép.",
+                    "C. Giá tiền mua phần cứng GPU tăng cao.",
+                    "D. Lập trình viên không được sở hữu máy tính cá nhân."
+                ],
+                ans: [1],
+                hint: "Tranh chấp nổ ra do các mô hình AI tạo sinh tự động thu thập (web scraping) các tác phẩm nghệ thuật, bài viết được bảo hộ bản quyền để làm dữ liệu huấn luyện mà không trả phí ➔ <span class='font-bold text-amber-600'>Việc AI tự do sử dụng các tác phẩm nghệ thuật, văn bản có bản quyền để huấn luyện mà không xin phép.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 48. Kỹ thuật Adversarial Attack (Tấn công đối nghịch) nhắm vào mục tiêu gì?",
+                options: [
+                    "A. Phá hủy phần cứng vật lý của máy chủ.",
+                    "B. Đưa các nhiễu nhỏ vào dữ liệu đầu vào để đánh lừa mô hình AI đưa ra kết quả sai lệch.",
+                    "C. Đánh cắp thông tin tài khoản ngân hàng.",
+                    "D. Gửi hàng loạt email spam làm nghẽn mạng."
+                ],
+                ans: [1],
+                hint: "Tấn công đối nghịch tạo ra các thay đổi rất nhỏ trên dữ liệu đầu vào (như ảnh) khiến con người không nhận ra nhưng làm mô hình AI phân loại sai lệch hoàn toàn ➔ <span class='font-bold text-amber-600'>Đưa các nhiễu nhỏ vào dữ liệu đầu vào để đánh lừa mô hình AI đưa ra kết quả sai lệch.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 49. Khái niệm Autonomous Weapons (Vũ khí tự hành) sử dụng AI gây ra mối lo ngại đạo đức lớn nhất nào?",
+                options: [
+                    "A. Tốc độ di chuyển của vũ khí quá chậm.",
+                    "B. Khả năng tự động đưa ra quyết định tiêu diệt sinh mạng mà không có sự kiểm soát trực tiếp của con người.",
+                    "C. Chi phí bảo trì vũ khí đắt đỏ.",
+                    "D. Trọng lượng của vũ khí quá nặng."
+                ],
+                ans: [1],
+                hint: "Việc giao phó quyết định tước đoạt sinh mạng con người cho các thuật toán tự động mà thiếu sự can thiệp và kiểm soát đạo đức của con người là lo ngại lớn nhất ➔ <span class='font-bold text-amber-600'>Khả năng tự động đưa ra quyết định tiêu diệt sinh mạng mà không có sự kiểm soát trực tiếp của con người.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 50. Giải pháp nào giúp kiểm tra mức độ thiên vị của một mô hình học máy?",
+                options: [
+                    "A. Tăng dung lượng RAM máy chủ.",
+                    "B. Sử dụng các bộ dữ liệu kiểm thử cân bằng và tính toán các chỉ số đo lường công bằng (Fairness Metrics).",
+                    "C. Đổi ngôn ngữ lập trình sang C++.",
+                    "D. Tắt máy tính và khởi động lại."
+                ],
+                ans: [1],
+                hint: "Đánh giá sự thiên vị đòi hỏi kiểm nghiệm hiệu năng của mô hình một cách định lượng trên các phân khúc dữ liệu khác nhau để đo tính công bằng ➔ <span class='font-bold text-amber-600'>Sử dụng các bộ dữ liệu kiểm thử cân bằng và tính toán các chỉ số đo lường công bằng (Fairness Metrics).</span>"
+            },
+
+            // CHƯƠNG 4: CÁC THUẬT TOÁN TÌM KIẾM
+            {
+                type: 'single',
+                desc: "Câu 51. Thuật toán tìm kiếm theo chiều rộng (BFS - Breadth-First Search) sử dụng cấu trúc dữ liệu nào để lưu trạng thái chờ duyệt?",
+                options: ["A. Stack (Ngăn xếp)", "B. Queue (Hàng đợi)", "C. Tree (Cây)", "D. Hash Table (Bảng băm)"],
+                ans: [1],
+                hint: "BFS duyệt các nút theo từng tầng từ nông đến sâu, tuân theo nguyên lý FIFO (vào trước ra trước) nên sử dụng cấu trúc Queue ➔ <span class='font-bold text-amber-600'>Queue (Hàng đợi)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 52. Thuật toán tìm kiếm theo chiều sâu (DFS - Depth-First Search) sử dụng cấu trúc dữ liệu nào để quản lý các nút?",
+                options: ["A. Queue (Hàng đợi)", "B. Stack (Ngăn xếp)", "C. Array (Mảng)", "D. Heap (Đống)"],
+                ans: [1],
+                hint: "DFS khám phá đi sâu hết một nhánh trước khi quay lui, hoạt động theo nguyên lý LIFO (vào sau ra trước) nên sử dụng cấu trúc Stack hoặc đệ quy ➔ <span class='font-bold text-amber-600'>Stack (Ngăn xếp)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 53. Điểm khác biệt lớn nhất giữa Tìm kiếm mù (Uninformed Search) và Tìm kiếm Heuristic (Informed Search) là gì?",
+                options: [
+                    "A. Tìm kiếm mù luôn tìm được đường đi ngắn nhất.",
+                    "B. Tìm kiếm Heuristic sử dụng tri thức bổ trợ (hàm đánh giá) để định hướng tìm kiếm hiệu quả hơn.",
+                    "C. Tìm kiếm mù có tốc độ chạy nhanh hơn tìm kiếm Heuristic.",
+                    "D. Tìm kiếm Heuristic không cần biết trạng thái đích."
+                ],
+                ans: [1],
+                hint: "Tìm kiếm Informed sử dụng thông tin định lượng để đánh giá khoảng cách từ nút hiện tại tới đích (thông qua hàm Heuristic), giúp giảm thiểu tối đa số lượng nút cần tìm kiếm ➔ <span class='font-bold text-amber-600'>Tìm kiếm Heuristic sử dụng tri thức bổ trợ (hàm đánh giá) để định hướng tìm kiếm hiệu quả hơn.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 54. Thuật toán A* (A-Star) kết hợp hai thành phần nào để tính toán giá trị hàm đánh giá f(n)?",
+                options: [
+                    "A. Chi phí đi từ trạng thái bắt đầu g(n) và ước lượng chi phí đến đích h(n).",
+                    "B. Độ sâu của nút và số lượng nút con.",
+                    "C. Thời gian chạy và dung lượng bộ nhớ.",
+                    "D. Trọng số của đồ thị và số lượng cung."
+                ],
+                ans: [0],
+                hint: "Hàm đánh giá f(n) của A* là tổng của g(n) (chi phí thực tế từ điểm đầu đến nút n) và h(n) (chi phí ước lượng từ n đến đích) ➔ <span class='font-bold text-amber-600'>Chi phí đi từ trạng thái bắt đầu g(n) và ước lượng chi phí đến đích h(n).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 55. Điều kiện để một hàm Heuristic h(n) được coi là chấp nhận được (admissible) trong thuật toán A* là gì?",
+                options: [
+                    "A. h(n) luôn lớn hơn chi phí thực tế.",
+                    "B. h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n đến đích.",
+                    "C. h(n) luôn bằng 0 với mọi nút.",
+                    "D. h(n) phải là một số âm."
+                ],
+                ans: [1],
+                hint: "Heuristic được coi là admissible nếu nó luôn đánh giá thấp hơn hoặc bằng chi phí thực tế tối ưu (không bao giờ đánh giá quá cao chi phí thực tế) ➔ <span class='font-bold text-amber-600'>h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n đến đích.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 56. Thuật toán tìm kiếm tham lam (Greedy Best-First Search) chọn nút tiếp theo dựa trên tiêu chí nào?",
+                options: [
+                    "A. Chỉ dựa trên hàm Heuristic h(n) (chọn nút có vẻ gần đích nhất).",
+                    "B. Chỉ dựa trên chi phí đường đi thực tế g(n).",
+                    "C. Tổng chi phí f(n) = g(n) + h(n).",
+                    "D. Lựa chọn ngẫu nhiên các nút con."
+                ],
+                ans: [0],
+                hint: "Tìm kiếm tham lam chỉ lựa chọn nút kế tiếp có giá trị Heuristic h(n) nhỏ nhất (có vẻ gần đích nhất) mà bỏ qua chi phí tích lũy g(n) ➔ <span class='font-bold text-amber-600'>Chỉ dựa trên hàm Heuristic h(n) (chọn nút có vẻ gần đích nhất).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 57. Trong lý thuyết trò chơi đối kháng (Game Playing), thuật toán Minimax được dùng để làm gì?",
+                options: [
+                    "A. Tìm đường đi ngắn nhất trong mê cung.",
+                    "B. Tối thiểu hóa tổn thất tối đa của người chơi bằng cách giả định đối thủ cũng chơi tối ưu.",
+                    "C. Phân cụm dữ liệu khách hàng.",
+                    "D. Nén hình ảnh số."
+                ],
+                ans: [1],
+                hint: "Thuật toán Minimax tìm kiếm nước đi tối ưu bằng cách giả định người chơi muốn tối đa hóa điểm mình (MAX), trong khi đối thủ muốn tối thiểu hóa điểm của mình (MIN) ➔ <span class='font-bold text-amber-600'>Tối thiểu hóa tổn thất tối đa của người chơi bằng cách giả định đối thủ cũng chơi tối ưu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 58. Kỹ thuật Cắt tỉa Alpha-Beta (Alpha-Beta Pruning) giúp cải tiến thuật toán Minimax như thế nào?",
+                options: [
+                    "A. Tăng dung lượng bộ nhớ lưu trữ cây trò chơi.",
+                    "B. Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi kết quả lựa chọn tối ưu.",
+                    "C. Làm cho trò chơi kết thúc nhanh hơn.",
+                    "D. Thay đổi luật chơi của trò chơi."
+                ],
+                ans: [1],
+                hint: "Alpha-Beta Pruning cắt bỏ các nhánh cây tìm kiếm chắc chắn không ảnh hưởng đến quyết định cuối cùng, giúp giảm độ phức tạp thời gian đáng kể ➔ <span class='font-bold text-amber-600'>Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi kết quả lựa chọn tối ưu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 59. Thuật toán Tìm kiếm leo đồi (Hill Climbing) có thể gặp phải nhược điểm lớn nào sau đây?",
+                options: [
+                    "A. Luôn rơi vào vòng lặp vô hạn.",
+                    "B. Bị kẹt tại các cực trị địa phương (Local Maxima).",
+                    "C. Không thể bắt đầu nếu đồ thị có chu trình.",
+                    "D. Tiêu tốn quá nhiều bộ nhớ lưu trữ Stack."
+                ],
+                ans: [1],
+                hint: "Leo đồi chỉ nhìn quanh các nút lân cận và đi lên, nên dễ bị mắc kẹt tại đỉnh của các đồi nhỏ cục bộ (Local Maxima) mà không thể tới đỉnh cao nhất toàn cục ➔ <span class='font-bold text-amber-600'>Bị kẹt tại các cực trị địa phương (Local Maxima).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 60. BFS là thuật toán tìm kiếm tối ưu (optimal) trong trường hợp nào?",
+                options: [
+                    "A. Đồ thị có chu trình.",
+                    "B. Chi phí giữa các bước chuyển trạng thái (trọng số các cạnh) là bằng nhau.",
+                    "C. Có nhiều trạng thái đích.",
+                    "D. Không có lời giải."
+                ],
+                ans: [1],
+                hint: "Khi chi phí bước đi là đồng nhất (cạnh không trọng số hoặc trọng số bằng nhau), BFS luôn tìm thấy đường đi ngắn nhất (ít cạnh nhất) đầu tiên tới đích ➔ <span class='font-bold text-amber-600'>Chi phí giữa các bước chuyển trạng thái (trọng số các cạnh) là bằng nhau.</span>"
+            },
+
+            // CHƯƠNG 5: BIỂU DIỄN TRI THỨC & LOGIC
+            {
+                type: 'single',
+                desc: "Câu 61. Logic mệnh đề (Propositional Logic) không thể biểu diễn tốt điều nào sau đây?",
+                options: [
+                    "A. Các mệnh đề đúng/sai đơn giản.",
+                    "B. Phép kéo theo và phép hội/tuyển.",
+                    "C. Các đối tượng cụ thể và mối quan hệ định lượng giữa chúng (ví dụ: 'Mọi con người đều phải chết').",
+                    "D. Giá trị chân lý của biểu thức."
+                ],
+                ans: [2],
+                hint: "Logic mệnh đề chỉ xử lý các khẳng định thô, thiếu cấu trúc vị từ và lượng từ để định lượng hay mô tả thuộc tính các đối tượng riêng lẻ ➔ <span class='font-bold text-amber-600'>Các đối tượng cụ thể và mối quan hệ định lượng giữa chúng (ví dụ: 'Mọi con người đều phải chết').</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 62. Lượng từ Với Mọi (Universal Quantifier) được ký hiệu bằng ký tự nào?",
+                options: ["A. \u2203", "B. \u2200", "C. \u00AC", "D. \u2192"],
+                ans: [1],
+                hint: "Ký hiệu toán học và logic đại diện cho lượng từ 'với mọi' là \u2200 ➔ <span class='font-bold text-amber-600'>\u2200</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 63. Ký hiệu \u2203 đại diện cho lượng từ nào trong Logic vị từ bậc một (First-Order Logic)?",
+                options: [
+                    "A. Lượng từ Với Mọi (Universal Quantifier).",
+                    "B. Lượng từ Tồn Tại (Existential Quantifier).",
+                    "C. Phép phủ định.",
+                    "D. Phép kéo theo."
+                ],
+                ans: [1],
+                hint: "Ký hiệu logic \u2203 đại diện cho lượng từ 'tồn tại ít nhất một đối tượng' thỏa mãn mệnh đề ➔ <span class='font-bold text-amber-600'>Lượng từ Tồn Tại (Existential Quantifier).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 64. Trong Logic, biểu thức P \u2192 Q tương đương logic với biểu thức nào sau đây?",
+                options: ["A. \u00ACP \u2228 Q", "B. P \u2227 \u00ACQ", "C. \u00ACP \u2227 Q", "D. P \u2228 Q"],
+                ans: [0],
+                hint: "Theo luật tương đương của phép kéo theo, biểu thức P \u2192 Q có giá trị logic giống hệt với \u00ACP \u2228 Q (phủ định P hoặc Q) ➔ <span class='font-bold text-amber-600'>\u00ACP \u2228 Q</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 65. Phương pháp suy diễn tiến (Forward Chaining) trong hệ thống dựa trên luật (Rule-based Systems) bắt đầu từ đâu?",
+                options: [
+                    "A. Bắt đầu từ giả thuyết/mục tiêu và tìm luật để chứng minh.",
+                    "B. Bắt đầu từ các sự kiện đã biết (Facts) để suy ra các sự kiện mới cho đến khi đạt đích.",
+                    "C. Lựa chọn ngẫu nhiên các luật.",
+                    "D. Đọc dữ liệu từ cơ sở dữ liệu ngoài."
+                ],
+                ans: [1],
+                hint: "Suy diễn tiến là cơ chế hướng dữ liệu (data-driven), bắt đầu từ tập tri thức sự kiện ban đầu để áp dụng luật và suy dẫn xuôi về đích ➔ <span class='font-bold text-amber-600'>Bắt đầu từ các sự kiện đã biết (Facts) để suy ra các sự kiện mới cho đến khi đạt đích.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 66. Phương pháp suy diễn lùi (Backward Chaining) bắt đầu từ đâu?",
+                options: [
+                    "A. Đi từ các sự kiện ban đầu để rút ra luật.",
+                    "B. Bắt đầu từ mục tiêu (Goal) cần chứng minh, tìm ngược lại các sự kiện cần thiết để hỗ trợ mục tiêu đó.",
+                    "C. Không có điểm bắt đầu cố định.",
+                    "D. Duyệt ngẫu nhiên đồ thị."
+                ],
+                ans: [1],
+                hint: "Suy diễn lùi là cơ chế hướng mục tiêu (goal-driven), đi ngược từ kết luận giả thuyết để tìm kiếm các sự kiện chứng minh giả thuyết đó là đúng ➔ <span class='font-bold text-amber-600'>Bắt đầu từ mục tiêu (Goal) cần chứng minh, tìm ngược lại các sự kiện cần thiết để hỗ trợ mục tiêu đó.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 67. Cấu trúc biểu diễn tri thức dạng Mạng ngữ nghĩa (Semantic Web/Semantic Network) biểu diễn thông tin dưới dạng nào?",
+                options: [
+                    "A. Bảng dữ liệu hai chiều.",
+                    "B. Đồ thị gồm các nút (đối tượng) và các cạnh có nhãn (mối quan hệ).",
+                    "C. Một danh sách các luật Đúng/Sai.",
+                    "D. Các tệp văn bản thô."
+                ],
+                ans: [1],
+                hint: "Mạng ngữ nghĩa sử dụng cấu trúc đồ thị liên kết, trong đó các nút đại diện cho thực thể và các cung có nhãn kết nối mô tả quan hệ ngữ nghĩa giữa chúng ➔ <span class='font-bold text-amber-600'>Đồ thị gồm các nút (đối tượng) và các cạnh có nhãn (mối quan hệ).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 68. Khái niệm Bản đồ tri thức (Ontology) trong AI dùng để làm gì?",
+                options: [
+                    "A. Biểu diễn cấu trúc địa lý của một khu vực.",
+                    "B. Định nghĩa tường minh các khái niệm, thực thể và mối quan hệ trong một lĩnh vực cụ thể để máy tính hiểu được.",
+                    "C. Lưu trữ mật khẩu người dùng.",
+                    "D. Vẽ sơ đồ tư duy của con người."
+                ],
+                ans: [1],
+                hint: "Ontology thiết lập cấu trúc từ vựng, định nghĩa các lớp đối tượng và quan hệ đặc thù của một chuyên ngành hẹp giúp hệ thống máy tính chia sẻ tri thức tự động ➔ <span class='font-bold text-amber-600'>Định nghĩa tường minh các khái niệm, thực thể và mối quan hệ trong một lĩnh vực cụ thể để máy tính hiểu được.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 69. Thuật ngữ Resolution (Phép giải) trong logic dùng để chứng minh điều gì?",
+                options: [
+                    "A. Rút gọn kích thước biểu thức mệnh đề.",
+                    "B. Chứng minh tính mâu thuẫn (bằng phản chứng) để kiểm tra một mệnh đề có là hệ quả logic của một tập mệnh đề hay không.",
+                    "C. Tính toán độ phân giải của hình ảnh số.",
+                    "D. So sánh độ chính xác của hai thuật toán."
+                ],
+                ans: [1],
+                hint: "Phép giải chứng minh giả thuyết bằng cách giả định phủ định của giả thuyết đó và kết hợp phép hội để tìm ra mâu thuẫn (mệnh đề rỗng) ➔ <span class='font-bold text-amber-600'>Chứng minh tính mâu thuẫn (bằng phản chứng) để kiểm tra một mệnh đề có là hệ quả logic của một tập mệnh đề hay không.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 70. Một hệ chuyên gia (Expert System) lưu giữ tri thức chuyên môn của con người dưới dạng phổ biến nào?",
+                options: [
+                    "A. Các hàm số học phức tạp.",
+                    "B. Tập hợp các luật dạng NẾU - THÌ (IF-THEN Rules).",
+                    "C. Các khối mã nhị phân.",
+                    "D. Các mảng số thực."
+                ],
+                ans: [1],
+                hint: "Tri thức chuyên gia trong hệ thống dựa trên tri thức thường được mã hóa trực quan dưới dạng các luật logic IF-THEN ➔ <span class='font-bold text-amber-600'>Tập hợp các luật dạng NẾU - THÌ (IF-THEN Rules).</span>"
+            },
+
+            // CHƯƠNG 6: HỌC MÁY & HỌC SÂU
+            {
+                type: 'single',
+                desc: "Câu 71. Trong Học máy có giám sát (Supervised Learning), dữ liệu huấn luyện bắt buộc phải có thành phần nào?",
+                options: [
+                    "A. Nhãn kết quả (Labels/Targets).",
+                    "B. Các thuộc tính ẩn.",
+                    "C. Các hàm chi phí phức tạp.",
+                    "D. Toàn bộ là số nguyên dương."
+                ],
+                ans: [0],
+                hint: "Học có giám sát bắt buộc phải có nhãn đầu ra Y đi kèm với đặc trưng đầu vào X để mô hình đối chiếu và tối ưu sai số ➔ <span class='font-bold text-amber-600'>Nhãn kết quả (Labels/Targets).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 72. Thuật toán nào sau đây thuộc nhóm Học không giám sát (Unsupervised Learning)?",
+                options: [
+                    "A. Linear Regression (Hồi quy tuyến tính).",
+                    "B. K-Means Clustering (Phân cụm K-Means).",
+                    "C. Support Vector Machine (SVM).",
+                    "D. Decision Tree (Cây quyết định)."
+                ],
+                ans: [1],
+                hint: "K-Means không cần dữ liệu nhãn đầu ra, nó phân cụm dữ liệu tự động dựa trên mức độ tương đồng và khoảng cách các đặc trưng ➔ <span class='font-bold text-amber-600'>K-Means Clustering (Phân cụm K-Means).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 73. Hiện tượng Quá khớp (Overfitting) xảy ra khi nào?",
+                options: [
+                    "A. Mô hình hoạt động kém trên cả tập huấn luyện và tập kiểm thử.",
+                    "B. Mô hình học quá kỹ dữ liệu huấn luyện (bao gồm cả nhiễu) dẫn đến khả năng tổng quát hóa kém trên dữ liệu mới.",
+                    "C. Mô hình tính toán quá nhanh.",
+                    "D. Dữ liệu huấn luyện có quá ít thuộc tính."
+                ],
+                ans: [1],
+                hint: "Mô hình overfit giống như việc 'học vẹt', đạt điểm tối đa trên tập ôn luyện nhưng không có khả năng suy rộng chính xác khi gặp dữ liệu thực tế mới ➔ <span class='font-bold text-amber-600'>Mô hình học quá kỹ dữ liệu huấn luyện (bao gồm cả nhiễu) dẫn đến khả năng tổng quát hóa kém trên dữ liệu mới.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 74. Hàm kích hoạt (Activation Function) trong mạng nơ-ron nhân tạo có vai trò chính là gì?",
+                options: [
+                    "A. Giảm số lượng tham số của mạng.",
+                    "B. Giúp mạng học được các mối quan hệ phi tuyến (non-linear) phức tạp.",
+                    "C. Tăng tốc độ đọc dữ liệu từ ổ cứng.",
+                    "D. Xóa bỏ các nơ-ron không hoạt động."
+                ],
+                ans: [1],
+                hint: "Hàm kích hoạt đưa tính phi tuyến vào mạng nơ-ron, giúp mô hình biểu diễn được các hàm toán học phức tạp thay vì chỉ là các phép biến đổi tuyến tính đơn thuần ➔ <span class='font-bold text-amber-600'>Giúp mạng học được các mối quan hệ phi tuyến (non-linear) phức tạp.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 75. Thuật toán Lan truyền ngược (Backpropagation) được dùng để làm gì trong mạng nơ-ron?",
+                options: [
+                    "A. Khởi tạo trọng số ngẫu nhiên.",
+                    "B. Tính toán gradient của hàm mất mát theo các trọng số để cập nhật chúng ngược từ đầu ra về đầu vào.",
+                    "C. Xóa các lớp ẩn của mạng.",
+                    "D. Chuyển đổi dữ liệu hình ảnh sang văn bản."
+                ],
+                ans: [1],
+                hint: "Backpropagation lan truyền sai số từ lớp đầu ra ngược về các lớp trước, tính đạo hàm riêng (gradient) để thuật toán tối ưu cập nhật trọng số mạng ➔ <span class='font-bold text-amber-600'>Tính toán gradient của hàm mất mát theo các trọng số để cập nhật chúng ngược từ đầu ra về đầu vào.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 76. Thuật toán hồi quy tuyến tính (Linear Regression) được sử dụng cho bài toán nào?",
+                options: [
+                    "A. Phân loại ảnh chó và mèo.",
+                    "B. Dự đoán một giá trị liên tục (Regression).",
+                    "C. Phân nhóm khách hàng.",
+                    "D. Giảm chiều dữ liệu."
+                ],
+                ans: [1],
+                hint: "Hồi quy tuyến tính khớp một đường thẳng/mặt phẳng tối ưu để dự đoán giá trị liên tục (như giá nhà, nhiệt độ) ➔ <span class='font-bold text-amber-600'>Dự đoán một giá trị liên tục (Regression).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 77. Đâu là hàm mất mát (Loss Function) phổ biến cho bài toán phân loại nhị phân (Binary Classification)?",
+                options: [
+                    "A. Mean Squared Error (MSE).",
+                    "B. Binary Cross-Entropy.",
+                    "C. Mean Absolute Error (MAE).",
+                    "D. R-squared."
+                ],
+                ans: [1],
+                hint: "Binary Cross-Entropy đo lường sai số khoảng cách giữa phân phối xác suất dự báo và nhãn thực tế của bài toán phân loại 2 lớp ➔ <span class='font-bold text-amber-600'>Binary Cross-Entropy.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 78. Mạng nơ-ron tích chập (CNN - Convolutional Neural Network) thường hoạt động hiệu quả nhất trên loại dữ liệu nào?",
+                options: [
+                    "A. Dữ liệu bảng (Tabular Data).",
+                    "B. Dữ liệu hình ảnh (Image Data).",
+                    "C. Dữ liệu âm thanh thô.",
+                    "D. Dữ liệu văn bản không cấu trúc."
+                ],
+                ans: [1],
+                hint: "Các phép toán tích chập trong CNN trích xuất các đặc trưng không gian đa lớp của điểm ảnh hiệu quả nhất, đưa nó thành kiến trúc tiêu chuẩn cho Computer Vision ➔ <span class='font-bold text-amber-600'>Dữ liệu hình ảnh (Image Data).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 79. Mạng nơ-ron tái phát (RNN - Recurrent Neural Network) được thiết kế chuyên biệt để xử lý loại dữ liệu nào?",
+                options: [
+                    "A. Dữ liệu dạng bảng tĩnh.",
+                    "B. Dữ liệu dạng chuỗi/thời gian (Sequential Data như văn bản, âm thanh).",
+                    "C. Dữ liệu hình ảnh độ phân giải cao.",
+                    "D. Dữ liệu nhị phân thuần túy."
+                ],
+                ans: [1],
+                hint: "RNN lưu trữ trạng thái ẩn (hidden state) có tính tuần tự, giúp ghi nhớ ngữ cảnh lịch sử phù hợp cho dữ liệu văn bản, thời tiết, chứng khoán ➔ <span class='font-bold text-amber-600'>Dữ liệu dạng chuỗi/thời gian (Sequential Data như văn bản, âm thanh).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 80. Kiến trúc mạng Transformer (được giới thiệu năm 2017) nổi bật nhờ cơ chế nào?",
+                options: [
+                    "A. Cơ chế chú ý (Self-Attention mechanism).",
+                    "B. Cơ chế tích chập nhiều lớp.",
+                    "C. Cơ chế học tăng cường thử và sai.",
+                    "D. Cơ chế suy diễn hệ chuyên gia."
+                ],
+                ans: [0],
+                hint: "Cơ chế Self-Attention cho phép Transformer tính toán song song mức độ liên quan ngữ nghĩa giữa toàn bộ các từ trong câu cùng lúc ➔ <span class='font-bold text-amber-600'>Cơ chế chú ý (Self-Attention mechanism).</span>"
+            },
+
+            // CHƯƠNG 7: XỬ LÝ NGÔN NGỮ TỰ NHIÊN & THỊ GIÁC MÁY TÍNH
+            {
+                type: 'single',
+                desc: "Câu 81. Trong xử lý ngôn ngữ tự nhiên (NLP), kỹ thuật Tokenization là gì?",
+                options: [
+                    "A. Mã hóa bảo mật thông tin tài khoản.",
+                    "B. Chia nhỏ một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).",
+                    "C. Dịch tự động từ ngôn ngữ này sang ngôn ngữ khác.",
+                    "D. Sửa lỗi chính tả trong văn bản."
+                ],
+                ans: [1],
+                hint: "Tokenization phân rã chuỗi ký tự dài thành các mảnh từ vựng cấu trúc (tokens) phục vụ cho các bước xử lý sau ➔ <span class='font-bold text-amber-600'>Chia nhỏ một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 82. Mục đích của kỹ thuật Stemming và Lemmatization trong NLP là gì?",
+                options: [
+                    "A. Tìm các từ đồng nghĩa.",
+                    "B. Đưa các từ biến thể về dạng gốc hoặc dạng từ điển của chúng.",
+                    "C. Loại bỏ các ký tự đặc biệt.",
+                    "D. Tách đoạn văn thành các câu riêng biệt."
+                ],
+                ans: [1],
+                hint: "Các kỹ thuật này chuẩn hóa từ ngữ, giảm thiểu sự phức tạp ngữ pháp bằng cách thu gọn các biến thể từ về gốc từ hoặc từ điển ➔ <span class='font-bold text-amber-600'>Đưa các từ biến thể về dạng gốc hoặc dạng từ điển của chúng.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 83. TF-IDF trong xử lý văn bản dùng để làm gì?",
+                options: [
+                    "A. Tính độ tương đồng giữa hai hình ảnh.",
+                    "B. Đánh giá mức độ quan trọng của một từ trong một tài liệu hoặc toàn bộ tập văn bản.",
+                    "C. Nén file văn bản.",
+                    "D. Phân tích cú pháp câu."
+                ],
+                ans: [1],
+                hint: "TF-IDF cân bằng tần suất xuất hiện của từ trong văn bản cụ thể và tần suất xuất hiện của nó trong toàn bộ thư viện tài liệu để gán trọng số ý nghĩa ➔ <span class='font-bold text-amber-600'>Đánh giá mức độ quan trọng của một từ trong một tài liệu hoặc toàn bộ tập văn bản.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 84. Word Embedding (như Word2Vec) thực hiện chuyển đổi gì?",
+                options: [
+                    "A. Chuyển đổi file pdf sang file docx.",
+                    "B. Biểu diễn các từ thành các vector số thực nhiều chiều sao cho các từ có ngữ nghĩa gần nhau sẽ có vector nằm gần nhau.",
+                    "C. Dịch từ tiếng Anh sang tiếng Việt.",
+                    "D. Chuyển văn bản thành giọng nói."
+                ],
+                ans: [1],
+                hint: "Nhờ Word Embedding, máy tính có thể thực hiện các phép tính khoảng cách không gian (Cosine Similarity) để hiểu quan hệ ngữ nghĩa giữa các từ dạng số ➔ <span class='font-bold text-amber-600'>Biểu diễn các từ thành các vector số thực nhiều chiều sao cho các từ có ngữ nghĩa gần nhau sẽ có vector nằm gần nhau.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 85. Trong thị giác máy tính, tác vụ Object Detection (Phát hiện đối tượng) giải quyết vấn đề gì?",
+                options: [
+                    "A. Chỉ phân loại xem trong ảnh có đối tượng nào hay không.",
+                    "B. Định vị vị trí đối tượng bằng khung bao (Bounding Box) và đồng thời phân loại đối tượng đó.",
+                    "C. Vẽ lại bức ảnh bằng nét chì.",
+                    "D. Thay đổi độ sáng của ảnh."
+                ],
+                ans: [1],
+                hint: "Object Detection không chỉ nhận diện vật thể là gì (classification) mà còn phải tìm ra chính xác tọa độ vị trí của nó (localization) ➔ <span class='font-bold text-amber-600'>Định vị vị trí đối tượng bằng khung bao (Bounding Box) và đồng thời phân loại đối tượng đó.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 86. Tác vụ Image Segmentation (Phân đoạn hình ảnh) ở mức pixel là gì?",
+                options: [
+                    "A. Cắt ảnh thành 4 phần bằng nhau.",
+                    "B. Phân loại từng pixel trong ảnh thuộc về đối tượng hay lớp cụ thể nào.",
+                    "C. Giảm độ phân giải của ảnh.",
+                    "D. Chuyển ảnh màu sang ảnh đen trắng."
+                ],
+                ans: [1],
+                hint: "Phân đoạn ảnh tô màu nhận dạng từng pixel cụ thể để tìm ra đường biên đối tượng chính xác tuyệt đối ở mức chi tiết ➔ <span class='font-bold text-amber-600'>Phân loại từng pixel trong ảnh thuộc về đối tượng hay lớp cụ thể nào.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 87. Bộ lọc (Filter/Kernel) trong phép toán tích chập hình ảnh có nhiệm vụ gì?",
+                options: [
+                    "A. Xóa ảnh khỏi bộ nhớ.",
+                    "B. Trích xuất các đặc trưng biên (edges), góc, hoặc họa tiết từ hình ảnh gốc.",
+                    "C. Phóng to kích thước hình ảnh lên nhiều lần.",
+                    "D. Lưu trữ thẻ metadata của ảnh."
+                ],
+                ans: [1],
+                hint: "Bộ lọc toán học quét qua ma trận điểm ảnh để nhấn mạnh các đặc trưng hình học như biên ngang, biên dọc, góc lượn ➔ <span class='font-bold text-amber-600'>Trích xuất các đặc trưng biên (edges), góc, hoặc họa tiết từ hình ảnh gốc.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 88. Thuật toán YOLO (You Only Look Once) nổi tiếng trong thị giác máy tính nhờ đặc điểm nào?",
+                options: [
+                    "A. Cho kết quả chính xác 100% trong mọi điều kiện.",
+                    "B. Có tốc độ phát hiện đối tượng cực nhanh trong thời gian thực (Real-time).",
+                    "C. Không cần huấn luyện trên dữ liệu ảnh.",
+                    "D. Chỉ chạy được trên CPU điện thoại."
+                ],
+                ans: [1],
+                hint: "YOLO đưa toàn bộ ảnh vào xử lý qua mạng nơ-ron một lần duy nhất, loại bỏ việc duyệt khung bao chậm chạp nên tối ưu tốc độ thời gian thực ➔ <span class='font-bold text-amber-600'>Có tốc độ phát hiện đối tượng cực nhanh trong thời gian thực (Real-time).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 89. Thư viện mã nguồn mở phổ biến nhất cho các tác vụ Thị giác máy tính truyền thống và tiền xử lý ảnh là gì?",
+                options: ["A. NLTK", "B. OpenCV", "C. Pandas", "D. Requests"],
+                ans: [1],
+                hint: "OpenCV (Open Source Computer Vision Library) là tiêu chuẩn vàng cung cấp hàng ngàn thuật toán xử lý ảnh số ➔ <span class='font-bold text-amber-600'>OpenCV</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 90. Ứng dụng OCR (Optical Character Recognition) thực hiện công việc gì?",
+                options: [
+                    "A. Chuyển giọng nói thành văn bản chữ viết.",
+                    "B. Nhận dạng và chuyển đổi chữ viết tay hoặc chữ in trong hình ảnh thành văn bản số chỉnh sửa được.",
+                    "C. Tìm kiếm hình ảnh tương đồng trên Google.",
+                    "D. Bảo mật dữ liệu hình ảnh."
+                ],
+                ans: [1],
+                hint: "OCR trích xuất thông tin văn bản từ hình ảnh chụp hóa đơn, tài liệu scan, biển số xe thành chữ viết lưu trữ máy tính ➔ <span class='font-bold text-amber-600'>Nhận dạng và chuyển đổi chữ viết tay hoặc chữ in trong hình ảnh thành văn bản số chỉnh sửa được.</span>"
+            },
+
+            // CHƯƠNG 8: HỆ CHUYÊN GIA & ỨNG DỤNG THỰC TẾ
+            {
+                type: 'single',
+                desc: "Câu 91. Hệ chuyên gia (Expert System) thuộc cách tiếp cận nào của AI?",
+                options: [
+                    "A. AI kết nối (Connectionist AI / Học máy).",
+                    "B. AI ký hiệu (Symbolic AI / Dựa trên tri thức luật).",
+                    "C. AI tiến hóa (Evolutionary AI).",
+                    "D. AI dựa trên hành vi sinh học."
+                ],
+                ans: [1],
+                hint: "Hệ chuyên gia sử dụng cách tiếp cận ký hiệu (Symbolic) và suy luận logic tường minh từ con người thay vì học tự động từ dữ liệu số ➔ <span class='font-bold text-amber-600'>AI ký hiệu (Symbolic AI / Dựa trên tri thức luật).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 92. Trong hệ chuyên gia, thành phần Inference Engine (Công cụ suy diễn) đóng vai trò gì?",
+                options: [
+                    "A. Lưu trữ dữ liệu thô từ người dùng.",
+                    "B. Áp dụng các luật logic lên cơ sở tri thức để suy ra thông tin mới hoặc đưa ra quyết định.",
+                    "C. Nhập dữ liệu từ bàn phím.",
+                    "D. Hiển thị giao diện đồ họa cho bác sĩ."
+                ],
+                ans: [1],
+                hint: "Công cụ suy diễn chứa thuật toán điều phối lập luận (như suy diễn tiến hoặc lùi) để đưa ra câu trả lời dựa trên cơ sở tri thức sẵn có ➔ <span class='font-bold text-amber-600'>Áp dụng các luật logic lên cơ sở tri thức để suy ra thông tin mới hoặc đưa ra quyết định.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 93. Hệ thống khuyến nghị (Recommendation System) lọc cộng tác (Collaborative Filtering) đưa ra gợi ý dựa trên yếu tố nào?",
+                options: [
+                    "A. Chỉ dựa trên giá tiền của sản phẩm.",
+                    "B. Dựa trên hành vi và sở thích của các người dùng tương đồng khác.",
+                    "C. Dựa trên mô tả chi tiết bằng văn bản của sản phẩm.",
+                    "D. Lựa chọn ngẫu nhiên các sản phẩm mới."
+                ],
+                ans: [1],
+                hint: "Lọc cộng tác khai thác mối quan hệ tương quan hành vi (mua, xem, đánh giá) giữa các người dùng có cùng xu hướng để gợi ý chéo sản phẩm cho nhau ➔ <span class='font-bold text-amber-600'>Dựa trên hành vi và sở thích của các người dùng tương đồng khác.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 94. Mô hình ngôn ngữ lớn (LLM) như ChatGPT hoạt động theo nguyên lý cơ bản nào khi sinh văn bản?",
+                options: [
+                    "A. Sao chép trực tiếp các bài viết trên Wikipedia.",
+                    "B. Dự đoán từ tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh các từ trước đó.",
+                    "C. Truy vấn trực tiếp cơ sở dữ liệu SQL.",
+                    "D. Do con người gõ trực tiếp từ xa."
+                ],
+                ans: [1],
+                hint: "LLM hoạt động dựa trên mô hình ngôn ngữ tự hồi quy (autoregressive language modeling), liên tục dự đoán phân phối xác suất của token/từ tiếp theo ➔ <span class='font-bold text-amber-600'>Dự đoán từ tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh các từ trước đó.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 95. Trong xe tự hành, cảm biến LiDAR được sử dụng để làm gì?",
+                options: [
+                    "A. Đo nhiệt độ của động cơ xe.",
+                    "B. Phát tia laser để quét và tạo bản đồ 3D khoảng cách của môi trường xung quanh xe.",
+                    "C. Kết nối Internet tốc độ cao.",
+                    "D. Phát nhạc giải trí trong xe."
+                ],
+                ans: [1],
+                hint: "LiDAR liên tục phóng các chùm tia laser cực nhanh để dựng hình không gian 3D đám mây điểm (point cloud) giúp đo đạc khoảng cách vật thể chuẩn xác tới từng milimet ➔ <span class='font-bold text-amber-600'>Phát tia laser để quét và tạo bản đồ 3D khoảng cách của môi trường xung quanh xe.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 96. Lợi thế lớn nhất của AI trong phân tích tài chính (như giao dịch thuật toán - Algorithmic Trading) là gì?",
+                options: [
+                    "A. Đảm bảo lợi nhuận 100% không bao giờ lỗ.",
+                    "B. Khả năng phân tích lượng lớn dữ liệu thị trường và thực hiện giao dịch ở tốc độ mili giây vượt qua giới hạn con người.",
+                    "C. Tự động in thêm tiền khi cần.",
+                    "D. Loại bỏ hoàn toàn sự tồn tại của các ngân hàng."
+                ],
+                ans: [1],
+                hint: "AI có thể theo dõi hàng ngàn mã chứng khoán theo thời gian thực và tự đặt lệnh giao dịch ở tốc độ chớp mắt để khai thác các chênh lệch giá nhỏ nhất ➔ <span class='font-bold text-amber-600'>Khả năng phân tích lượng lớn dữ liệu thị trường và thực hiện giao dịch ở tốc độ mili giây vượt qua giới hạn con người.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 97. AI tạo sinh (Generative AI) KHÔNG bao gồm mô hình nào sau đây?",
+                options: [
+                    "A. GAN (Generative Adversarial Network).",
+                    "B. Diffusion Models (Mô hình khuếch tán).",
+                    "C. K-Nearest Neighbors (KNN).",
+                    "D. Variational Autoencoders (VAE)."
+                ],
+                ans: [2],
+                hint: "KNN là mô hình học máy phân loại cơ bản dựa trên khoảng cách của K điểm lân cận, không có khả năng sinh dữ liệu mới ➔ <span class='font-bold text-amber-600'>K-Nearest Neighbors (KNN).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 98. Hệ thống AI AlphaFold của DeepMind đã giải quyết thành công bài toán sinh học nổi tiếng nào?",
+                options: [
+                    "A. Tìm ra thuốc đặc trị mọi loại virus.",
+                    "B. Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi axit amin.",
+                    "C. Nhân bản vô tính động vật có vú.",
+                    "D. Tăng tốc độ quang hợp của cây xanh."
+                ],
+                ans: [1],
+                hint: "AlphaFold giải quyết bài toán cuộn gập protein có tuổi đời 50 năm của sinh học lập trình, mở ra kỷ nguyên mới về phát triển thuốc và sinh học phân tử ➔ <span class='font-bold text-amber-600'>Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi axit amin.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 99. Khi tích hợp chatbot AI vào hệ thống chăm sóc khách hàng của doanh nghiệp, nhược điểm 'Hallucination' (Ảo tưởng) của AI có thể gây ra hậu quả gì?",
+                options: [
+                    "A. Chatbot phản hồi khách hàng quá nhanh.",
+                    "B. Chatbot tự tin đưa ra các thông tin sai sự thật hoặc không có căn cứ pháp lý.",
+                    "C. Hệ thống bị sập nguồn điện đột ngột.",
+                    "D. Chatbot chỉ nói được tiếng Anh."
+                ],
+                ans: [1],
+                hint: "Ảo tưởng (Hallucination) là hiện tượng mô hình ngôn ngữ lớn tự sinh các luận điểm sai thực tế nhưng được hành văn cực kỳ trôi chảy thuyết phục dễ gây hiểu lầm ➔ <span class='font-bold text-amber-600'>Chatbot tự tin đưa ra các thông tin sai sự thật hoặc không có căn cứ pháp lý.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 100. Kỹ thuật Fine-tuning trong huấn luyện LLM nghĩa là gì?",
+                options: [
+                    "A. Xóa toàn bộ trọng số của mô hình để học lại từ đầu.",
+                    "B. Điều chỉnh hoặc huấn luyện thêm mô hình đã được tiền huấn luyện (pre-trained) trên một bộ dữ liệu nhỏ, chuyên biệt cho tác vụ cụ thể.",
+                    "C. Thay đổi card đồ họa GPU của máy chủ.",
+                    "D. Giảm kích thước file lưu trữ mô hình."
+                ],
+                ans: [1],
+                hint: "Fine-tuning là bước huấn luyện bổ sung mô hình lớn sẵn có bằng dữ liệu miền cụ thể để chuyên môn hóa chatbot cho một nghiệp vụ hẹp với giá thành rẻ ➔ <span class='font-bold text-amber-600'>Điều chỉnh hoặc huấn luyện thêm mô hình đã được tiền huấn luyện (pre-trained) trên một bộ dữ liệu nhỏ, chuyên biệt cho tác vụ cụ thể.</span>"
+            }
+        ];
+
+        const uiTranslations = {
+            vi: {
+                title: "Luyện Thi Trắc Nghiệm AI",
+                subtitle: "Trắc nghiệm lý thuyết, Python & NumPy, Thuật toán & Ứng dụng AI",
+                progress: (curr, total) => `Câu ${curr} / ${total}`,
+                score: (score) => `Điểm: ${score}`,
+                confirmBtn: "Xác nhận",
+                nextBtn: "Tiếp theo ➡",
+                viewHintBtn: "Xem Giải Thích",
+                hintTitle: "Giải thích",
+                reportTitle: "Kết Quả Luyện Tập",
+                reportStatCorrect: "Số câu đúng",
+                reportStatPercent: "Tỷ lệ chính xác",
+                reportStatStatus: "Kết quả",
+                statusPass: "ĐẠT",
+                statusFail: "CHƯA ĐẠT",
+                reviewTitle: (curr, total) => `Xem lại bài làm: Câu ${curr} / ${total}`,
+                reviewTitleHeading: "Xem lại bài làm:",
+                reviewCorrectBadge: "✓ Đúng",
+                reviewWrongBadge: "✗ Sai",
+                btnReviewPrev: "⬅ Câu trước",
+                btnReviewNext: "Câu tiếp theo ➡",
+                restartBtn: "🔄 Làm lại bài thi",
+                startScreenTitle: "Luyện Thi Trắc Nghiệm AI",
+                startScreenSubtitle: "Hệ thống ôn tập lý thuyết Trí tuệ nhân tạo gồm 8 chương: tổng quan, Python & NumPy, đạo đức AI, thuật toán tìm kiếm, logic vị từ, học máy, xử lý ảnh & ngôn ngữ tự nhiên, hệ chuyên gia.",
+                startBtn: "Bắt đầu luyện tập 🚀",
+                selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
+                selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
+                confirmChangeLang: "",
+                alertSelectAtLeastOne: "Vui lòng chọn ít nhất 1 đáp án!",
+                evalPerfect: "Xuất sắc! Bạn đã đạt điểm tuyệt đối! 🎉",
+                evalExcellent: "Tuyệt vời! Bạn đã nắm rất vững kiến thức! 🌟",
+                evalGood: "Khá tốt! Bạn đã vượt qua bài luyện tập! 👍",
+                evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các giải thích code bên dưới. 💪"
+            }
+        };
+
+        let currentLanguage = 'vi';
+        let currentQ = 0;
+        let score = 0;
+        let selectedOptions = [];
+        let hasAnswered = false;
+        let userAnswers = [];
+        let activeQuiz = [];
+        let reviewCurrentQ = 0;
+
+        function prepareQuiz() {
+            const sourceData = quizDataVi;
+            activeQuiz = sourceData.map(q => {
+                return {
+                    type: q.type,
+                    desc: q.desc,
+                    code: q.code,
+                    options: q.options,
+                    ans: q.ans,
+                    hint: q.hint
+                };
+            });
+        }
+
+        function updateLanguageUI() {
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('appTitle').innerText = trans.title;
+            document.getElementById('appSubtitle').innerText = trans.subtitle;
+            document.getElementById('startTitle').innerText = trans.startScreenTitle;
+            document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
+            document.getElementById('btnStartPractice').innerText = trans.startBtn;
+
+            document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
+            document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
+
+            document.getElementById('btnShowHint').innerText = trans.viewHintBtn;
+            document.getElementById('hintTitle').innerText = trans.hintTitle;
+            document.getElementById('reviewHintTitle').innerText = trans.hintTitle;
+            document.getElementById('lblReviewTitle').innerText = trans.reviewTitleHeading;
+            document.getElementById('btnRestartQuiz').innerText = trans.restartBtn;
+            document.getElementById('reportTitle').innerText = trans.reportTitle;
+        }
+
+        function startPractice() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = activeQuiz[currentQ];
+            selectedOptions = [];
+            hasAnswered = false;
+            const trans = uiTranslations[currentLanguage];
+
+            document.getElementById('progressText').innerText = trans.progress(currentQ + 1, activeQuiz.length);
+            
+            // Render Description and code snippets
+            document.getElementById('questionDesc').innerText = qData.desc;
+            
+            const codeEl = document.getElementById('questionCode');
+            if (qData.code) {
+                codeEl.innerText = qData.code;
+                codeEl.classList.remove('hidden');
+            } else {
+                codeEl.classList.add('hidden');
+            }
+
+            document.getElementById('hintBox').classList.add('hidden');
+            document.getElementById('btnNext').classList.add('hidden');
+
+            const hintEl = document.getElementById('questionTypeHint');
+            const confirmBtn = document.getElementById('btnConfirm');
+            if (qData.type === 'multi') {
+                hintEl.innerText = trans.selectMultiHint(qData.ans.length);
+                confirmBtn.innerText = trans.confirmBtn;
+                confirmBtn.classList.remove('hidden');
+            } else {
+                hintEl.innerText = trans.selectSingleHint;
+                confirmBtn.classList.add('hidden');
+            }
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'option-item p-3 sm:p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 text-slate-700 text-base sm:text-lg font-medium flex items-center gap-3';
+                div.id = `option-${index}`;
+
+                const iconHTML = qData.type === 'multi'
+                    ? `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`
+                    : `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`;
+
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span class="code-font">${opt}</span>
+                `;
+
+                div.onclick = () => handleSelect(index);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function handleSelect(index) {
+            if (hasAnswered) return;
+
+            const qData = activeQuiz[currentQ];
+            const div = document.getElementById(`option-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+
+            if (qData.type === 'single') {
+                if (selectedOptions.length > 0) {
+                    const oldIndex = selectedOptions[0];
+                    document.getElementById(`option-${oldIndex}`).classList.remove('selected');
+                    document.getElementById(`icon-${oldIndex}`).innerHTML = '';
+                    document.getElementById(`icon-${oldIndex}`).classList.remove('border-blue-500');
+                }
+
+                selectedOptions = [index];
+                div.classList.add('selected');
+                icon.classList.add('border-blue-500');
+                icon.innerHTML = `<div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div>`;
+
+                checkAnswer();
+            } else {
+                const pos = selectedOptions.indexOf(index);
+                if (pos === -1) {
+                    selectedOptions.push(index);
+                    div.classList.add('selected');
+                    icon.classList.add('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = `<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
+                } else {
+                    selectedOptions.splice(pos, 1);
+                    div.classList.remove('selected');
+                    icon.classList.remove('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = '';
+                }
+            }
+        }
+
+        function checkAnswer() {
+            const qData = activeQuiz[currentQ];
+            const trans = uiTranslations[currentLanguage];
+
+            if (qData.type === 'multi' && selectedOptions.length === 0) {
+                alert(trans.alertSelectAtLeastOne);
+                return;
+            }
+
+            hasAnswered = true;
+            document.getElementById('btnConfirm').classList.add('hidden');
+
+            let isCorrect = true;
+            if (selectedOptions.length !== qData.ans.length) {
+                isCorrect = false;
+            } else {
+                for (let ans of qData.ans) {
+                    if (!selectedOptions.includes(ans)) isCorrect = false;
+                }
+            }
+
+            userAnswers.push({
+                qIndex: currentQ,
+                selected: [...selectedOptions],
+                isCorrect: isCorrect
+            });
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('scoreText').innerText = trans.score(score);
+            }
+
+            qData.options.forEach((_, index) => {
+                const div = document.getElementById(`option-${index}`);
+                const isSelected = selectedOptions.includes(index);
+                const isTrueAnswer = qData.ans.includes(index);
+
+                div.classList.remove('selected');
+
+                if (isSelected && isTrueAnswer) {
+                    div.classList.add('correct');
+                } else if (isSelected && !isTrueAnswer) {
+                    div.classList.add('wrong');
+                } else if (!isSelected && isTrueAnswer) {
+                    div.classList.add('missed');
+                }
+            });
+
+            showHint();
+            document.getElementById('btnNext').innerText = trans.nextBtn;
+            document.getElementById('btnNext').classList.remove('hidden');
+        }
+
+        function showHint() {
+            const hintBox = document.getElementById('hintBox');
+            document.getElementById('hintText').innerHTML = activeQuiz[currentQ].hint;
+            hintBox.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ >= activeQuiz.length) {
+                showReport();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function showReport() {
+            document.getElementById('quizHeader').classList.add('hidden');
+            document.getElementById('quizBody').classList.add('hidden');
+
+            const reportArea = document.getElementById('reportArea');
+            reportArea.classList.remove('hidden');
+
+            const trans = uiTranslations[currentLanguage];
+
+            const accuracyPercent = Math.round((score / activeQuiz.length) * 100);
+            document.getElementById('reportStatCorrect').innerText = `${score} / ${activeQuiz.length}`;
+            document.getElementById('reportStatPercent').innerText = `${accuracyPercent}%`;
+
+            const isPassed = accuracyPercent >= 70;
+            const statusEl = document.getElementById('reportStatStatus');
+            if (isPassed) {
+                statusEl.innerText = trans.statusPass;
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex-shrink-0";
+            } else {
+                statusEl.innerText = trans.statusFail;
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200 flex-shrink-0";
+            }
+
+            const evalEl = document.getElementById('reportEvaluation');
+            const ratio = score / activeQuiz.length;
+            if (score === activeQuiz.length) {
+                evalEl.innerText = trans.evalPerfect;
+            } else if (ratio >= 0.8) {
+                evalEl.innerText = trans.evalExcellent;
+            } else if (ratio >= 0.6) {
+                evalEl.innerText = trans.evalGood;
+            } else {
+                evalEl.innerText = trans.evalTryHarder;
+            }
+
+            reviewCurrentQ = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const ansInfo = userAnswers[reviewCurrentQ];
+            const qData = activeQuiz[ansInfo.qIndex];
+            const trans = uiTranslations[currentLanguage];
+
+            document.getElementById('reviewProgressText').innerText = trans.progress(reviewCurrentQ + 1, activeQuiz.length);
+
+            const badgeEl = document.getElementById('reviewResultBadge');
+            if (ansInfo.isCorrect) {
+                badgeEl.innerText = trans.reviewCorrectBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800";
+            } else {
+                badgeEl.innerText = trans.reviewWrongBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-800";
+            }
+
+            document.getElementById('reviewQuestionDesc').innerText = qData.desc;
+            
+            const codeEl = document.getElementById('reviewQuestionCode');
+            if (qData.code) {
+                codeEl.innerText = qData.code;
+                codeEl.classList.remove('hidden');
+            } else {
+                codeEl.classList.add('hidden');
+            }
+
+            document.getElementById('reviewHintText').innerHTML = qData.hint;
+
+            const container = document.getElementById('reviewOptionsContainer');
+            container.innerHTML = '';
+
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all';
+
+                const isSelected = ansInfo.selected.includes(index);
+                const isCorrectAnswer = qData.ans.includes(index);
+
+                let iconHTML = '';
+                if (qData.type === 'multi') {
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0"></div>`;
+                } else {
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0"></div>`;
+                }
+
+                if (isSelected && isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (isSelected && !isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-rose-500 bg-rose-50 text-rose-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (!isSelected && isCorrectAnswer) {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-amber-500 bg-amber-50 text-amber-800';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else {
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
+                }
+
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span class="code-font">${opt}</span>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('btnReviewPrev').disabled = reviewCurrentQ === 0;
+            document.getElementById('btnReviewNext').disabled = reviewCurrentQ === activeQuiz.length - 1;
+            document.getElementById('btnReviewPrev').innerHTML = trans.btnReviewPrev;
+            document.getElementById('btnReviewNext').innerHTML = trans.btnReviewNext;
+        }
+
+        function prevReviewQuestion() {
+            if (reviewCurrentQ > 0) {
+                reviewCurrentQ--;
+                loadReviewQuestion();
+            }
+        }
+
+        function nextReviewQuestion() {
+            if (reviewCurrentQ < activeQuiz.length - 1) {
+                reviewCurrentQ++;
+                loadReviewQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('scoreText').innerText = trans.score(0);
+
+            document.getElementById('reportArea').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        updateLanguageUI();
+    </script>
+</body>
+
+</html>
