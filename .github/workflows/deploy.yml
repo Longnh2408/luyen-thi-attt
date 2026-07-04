@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html _site/
-          cp QuickQuestion.html _site/
+          cp java.html _site/
           cp python.html _site/
           if [ -f .nojekyll ]; then cp .nojekyll _site/; fi
 
