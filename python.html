@@ -106,11 +106,11 @@
                         <!-- Code format rendering container -->
                         <div id="questionContainer" class="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
                             <!-- Đề bài chữ -->
-                            <div id="questionDesc" class="p-3 sm:p-4 bg-slate-50 text-slate-800 font-bold text-sm sm:text-base border-b border-slate-200">
+                            <div id="questionDesc" class="p-3 sm:p-4 bg-slate-50 text-slate-800 font-bold text-base sm:text-lg border-b border-slate-200">
                                 Đang tải câu hỏi...
                             </div>
                             <!-- Đoạn mã code snippet -->
-                            <pre id="questionCode" class="p-3 sm:p-4 text-xs sm:text-sm font-medium overflow-x-auto code-block leading-relaxed whitespace-pre"></pre>
+                            <pre id="questionCode" class="p-3 sm:p-4 text-sm sm:text-base font-medium overflow-x-auto code-block leading-relaxed whitespace-pre"></pre>
                         </div>
                     </div>
 
@@ -140,8 +140,8 @@
                             <span class="text-base sm:text-xl mr-2">💡</span>
                             <div>
                                 <h3 id="hintTitle"
-                                    class="font-bold text-amber-800 text-[10px] sm:text-xs uppercase text-left">Giải thích code</h3>
-                                <p class="text-amber-900 mt-0.5 text-xs sm:text-sm font-medium text-left" id="hintText">
+                                    class="font-bold text-amber-800 text-[11px] sm:text-xs uppercase text-left">Giải thích code</h3>
+                                <p class="text-amber-900 mt-0.5 text-xs sm:text-base font-medium text-left" id="hintText">
                                 </p>
                             </div>
                         </div>
@@ -1384,7 +1384,7 @@
 
             qData.options.forEach((opt, index) => {
                 const div = document.createElement('div');
-                div.className = 'option-item p-3 sm:p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 text-slate-700 text-sm sm:text-base font-medium flex items-center gap-3';
+                div.className = 'option-item p-3 sm:p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 text-slate-700 text-base sm:text-lg font-medium flex items-center gap-3';
                 div.id = `option-${index}`;
 
                 const iconHTML = qData.type === 'multi'
@@ -1578,7 +1578,7 @@
 
             qData.options.forEach((opt, index) => {
                 const div = document.createElement('div');
-                div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
+                div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all';
 
                 const isSelected = ansInfo.selected.includes(index);
                 const isCorrectAnswer = qData.ans.includes(index);
@@ -1591,22 +1591,22 @@
                 }
 
                 if (isSelected && isCorrectAnswer) {
-                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else if (isSelected && !isCorrectAnswer) {
-                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-rose-500 bg-rose-50 text-rose-800';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-rose-500 bg-rose-50 text-rose-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else if (!isSelected && isCorrectAnswer) {
-                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-amber-500 bg-amber-50 text-amber-800';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-amber-500 bg-amber-50 text-amber-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else {
-                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-base sm:text-lg font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
                 }
 
                 div.innerHTML = `
