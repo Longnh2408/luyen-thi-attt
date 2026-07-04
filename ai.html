@@ -115,7 +115,7 @@
                 <button onclick="selectChapterStart('ch5')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 5</span>
-                        <span class="text-xs text-slate-400">40 câu</span>
+                        <span class="text-xs text-slate-400">30 câu</span>
                     </div>
                     <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Bài toán tìm kiếm</h4>
                 </button>
@@ -125,29 +125,29 @@
                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 6</span>
                         <span class="text-xs text-slate-400">20 câu</span>
                     </div>
-                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Tìm kiếm Heuristic & Trò chơi</h4>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Tìm kiếm cục bộ</h4>
                 </button>
 
                 <button onclick="selectChapterStart('ch7')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 7</span>
-                        <span class="text-xs text-slate-400">20 câu</span>
+                        <span class="text-xs text-slate-400">19 câu</span>
                     </div>
-                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Biểu diễn tri thức & Logic</h4>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Môi trường phức hợp</h4>
                 </button>
 
                 <button onclick="selectChapterStart('ch8')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 8</span>
-                        <span class="text-xs text-slate-400">20 câu</span>
+                        <span class="text-xs text-slate-400">29 câu</span>
                     </div>
-                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Học máy, Học sâu & Ứng dụng</h4>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Thỏa mãn ràng buộc (CSP)</h4>
                 </button>
 
                 <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all sm:col-span-2 lg:col-span-3">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-700 bg-indigo-200 px-2 py-0.5 rounded-full">Tất cả</span>
-                        <span class="text-xs text-indigo-500 font-semibold">170 câu</span>
+                        <span class="text-xs text-indigo-500 font-semibold">168 câu</span>
                     </div>
                     <h4 class="font-bold text-indigo-900 group-hover:text-indigo-700 transition-colors text-sm sm:text-base">Luyện tập tổng hợp (Tất cả 8 chương)</h4>
                 </button>
@@ -1423,737 +1423,823 @@
                 hint: "Do số nút tăng lũy thừa, tầng d chứa số lượng nút lớn xấp xỉ tổng tất cả các tầng trên gộp lại. Do đó việc duyệt lại tầng trên không ảnh hưởng nhiều đến thời gian chạy tổng thể ➔ <span class='font-bold text-amber-600'>Không đáng kể vì số lượng nút ở tầng sâu nhất (d) áp đảo tổng số nút ở các tầng phía trên.</span>"
             },
 
-            // CHƯƠNG 6: TÌM KIẾM HEURISTIC & TRÒ CHƠI
+            // CHƯƠNG 6: TÌM KIẾM CỤC BỘ
             {
                 type: 'single',
-                desc: "Câu 101. Điểm khác biệt lớn nhất giữa Tìm kiếm Heuristic (Informed Search) và Tìm kiếm mù (Uninformed Search) là gì?",
+                desc: "Câu 101. Đặc điểm chính của các thuật toán tìm kiếm cục bộ (Local Search) so với tìm kiếm có hệ thống là gì?",
                 options: [
-                    "A. Tìm kiếm Heuristic có tốc độ chậm hơn.",
-                    "B. Tìm kiếm Heuristic sử dụng thêm hàm đánh giá Heuristic h(n) để ước lượng khoảng cách tới đích.",
-                    "C. Tìm kiếm mù luôn tìm được đường đi có chi phí âm.",
-                    "D. Tìm kiếm Heuristic không cần biết trạng thái xuất phát."
+                    "A. Quan tâm sâu sắc đến đường đi từ trạng thái bắt đầu đến mục tiêu.",
+                    "B. Chỉ tập trung vào trạng thái hiện tại và thường không lưu trữ các đường đi.",
+                    "C. Tập trung vào cả trạng thái hiện tại và lưu trữ các đường đi.",
+                    "D. Luôn đảm bảo tìm thấy giải pháp tối ưu toàn cục."
                 ],
                 ans: [1],
-                hint: "Hàm Heuristic h(n) cung cấp thông tin định lượng giúp ước lượng chi phí còn lại từ nút hiện tại đến đích ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Tìm kiếm cục bộ tối ưu hóa không gian bộ nhớ bằng cách chỉ lưu trữ và xử lý nút hiện tại cùng các láng giềng sát sườn, không lưu vết chuỗi đường đi từ gốc ➔ <span class='font-bold text-amber-600'>Chỉ tập trung vào trạng thái hiện tại và thường không lưu trữ các đường đi.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 102. Hàm đánh giá của thuật toán A* được xác định bởi công thức nào?",
+                desc: "Câu 102. Thuật toán tìm kiếm cục bộ thường được sử dụng cho loại bài toán nào?",
                 options: [
-                    "A. f(n) = g(n) + h(n).",
-                    "B. f(n) = g(n) - h(n).",
-                    "C. f(n) = g(n) * h(n).",
-                    "D. f(n) = max(g(n), h(n))."
+                    "A. Các bài toán mà đường đi đến mục tiêu là quan trọng nhất.",
+                    "B. Các bài toán mà chỉ cần tìm thấy trạng thái mục tiêu.",
+                    "C. Các bài toán có không gian trạng thái rất nhỏ và đơn giản.",
+                    "D. Các bài toán tìm kiếm mù trên đồ thị ít nút."
+                ],
+                ans: [1],
+                hint: "Nếu quá trình/đường dẫn đi tới đích không có giá trị thực tiễn (như xếp 8 quân hậu, giải ô Sudoku), ta chỉ cần tìm thấy cấu hình đích, đó là lúc dùng tìm kiếm cục bộ ➔ <span class='font-bold text-amber-600'>Các bài toán mà chỉ cần tìm thấy trạng thái mục tiêu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 103. Trong không gian trạng thái của tìm kiếm cục bộ, thuật ngữ Local Maximum dùng để chỉ điều gì?",
+                options: [
+                    "A. Trạng thái có giá trị hàm mục tiêu cao nhất trong toàn bộ không gian.",
+                    "B. Trạng thái tốt hơn tất cả các trạng thái láng giềng nhưng vẫn thấp hơn tối ưu toàn cục.",
+                    "C. Trạng thái tốt hơn tất cả các trạng thái láng giềng và tốt hơn trạng thái tối ưu toàn cục.",
+                    "D. Một vùng phẳng mà tất cả các trạng thái láng giềng có giá trị bằng nhau."
+                ],
+                ans: [1],
+                hint: "Cực đại địa phương (Local Maximum) là đỉnh của một đồi nhỏ, cao hơn các nút lân cận trực tiếp xung quanh khiến thuật toán leo núi bị kẹt dù chưa đạt cực trị toàn cục ➔ <span class='font-bold text-amber-600'>Trạng thái tốt hơn tất cả các trạng thái láng giềng nhưng vẫn thấp hơn tối ưu toàn cục.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 104. Thuật toán Hill Climbing (Leo núi) hoạt động theo nguyên tắc cơ bản nào?",
+                options: [
+                    "A. Di chuyển liên tục về hướng có giá trị hàm mục tiêu tăng dần.",
+                    "B. Di chuyển ngẫu nhiên đến bất kỳ trạng thái nào trong không gian.",
+                    "C. Luôn chọn trạng thái có giá trị thấp hơn trạng thái hiện tại.",
+                    "D. Dừng lại ngay khi gặp trạng thái đầu tiên."
                 ],
                 ans: [0],
-                hint: "A* kết hợp chi phí thực tế từ đầu tới n là g(n) và chi phí ước lượng từ n tới đích là h(n) ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Leo núi là thuật toán tham lam tìm kiếm cục bộ, ở mỗi bước sẽ khảo sát láng giềng và di chuyển lên nút có giá trị hàm đánh giá cao hơn ➔ <span class='font-bold text-amber-600'>Di chuyển liên tục về hướng có giá trị hàm mục tiêu tăng dần.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 103. Thuật toán Tìm kiếm Tham lam (Greedy Best-First Search) chọn nút tiếp theo dựa trên tiêu chí nào?",
+                desc: "Câu 105. Vấn đề nào xảy ra khi thuật toán leo núi rơi vào một vùng Plateau?",
                 options: [
-                    "A. Chỉ chọn nút có g(n) nhỏ nhất.",
-                    "B. Chỉ chọn nút có h(n) nhỏ nhất (giá trị Heuristic gần đích nhất).",
-                    "C. Chọn nút có f(n) = g(n) + h(n) nhỏ nhất.",
-                    "D. Chọn ngẫu nhiên."
+                    "A. Thuật toán sẽ dừng lại vì không tìm thấy được đỉnh cao hơn nó.",
+                    "B. Thuật toán bị lạc hướng vì giá trị tại các trạng thái láng giềng bằng nhau.",
+                    "C. Thuật toán chắc chắn sẽ tìm thấy đỉnh cao nhất toàn cục.",
+                    "D. Thuật toán sẽ tự động khởi động lại từ đầu."
                 ],
                 ans: [1],
-                hint: "Tìm kiếm tham lam luôn ưu tiên nút có giá trị ước lượng h(n) nhỏ nhất, tức là có vẻ gần đích nhất ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Plateau là thềm phẳng trong không gian trạng thái, nơi các nút lân cận có giá trị hàm đánh giá bằng nhau, làm cho thuật toán không xác định được hướng đi lên ➔ <span class='font-bold text-amber-600'>Thuật toán bị lạc hướng vì giá trị tại các trạng thái láng giềng bằng nhau.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 104. Tính chất 'chấp nhận được' (admissible) của một hàm Heuristic h(n) trong thuật toán A* yêu cầu điều gì?",
+                desc: "Câu 106. Thuật toán Simulated Annealing (Tôi thép luyện kim) giải quyết nhược điểm của leo núi thuần túy bằng cách nào?",
                 options: [
-                    "A. h(n) phải lớn hơn chi phí thực tế.",
-                    "B. h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n tới đích.",
-                    "C. h(n) phải bằng 1 với mọi nút.",
-                    "D. h(n) phải nhỏ hơn 0."
+                    "A. Chỉ chấp nhận các bước đi tốt hơn.",
+                    "B. Cho phép các bước đi tệ hơn với một xác suất nhất định.",
+                    "C. Sử dụng bộ nhớ cực lớn để lưu lại mọi trạng thái đã qua.",
+                    "D. Cho phép tối đa một bước đi tệ hơn để thoát khỏi cực trị cục bộ."
                 ],
                 ans: [1],
-                hint: "Heuristic admissible yêu cầu h(n) <= h*(n), tức không bao giờ đánh giá quá cao khoảng cách thực tế ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Tôi thép luyện kim chấp nhận các nước đi lùi (tệ hơn) với một xác suất ngẫu nhiên giảm dần theo Nhiệt độ T, giúp giải phóng Agent khỏi các bẫy cực trị địa phương ➔ <span class='font-bold text-amber-600'>Cho phép các bước đi tệ hơn với một xác suất nhất định.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 105. Trong thuật toán Minimax cho các trò chơi đối kháng, Agent MAX sẽ chọn nước đi nào?",
+                desc: "Câu 107. Trong Simulated Annealing, khi nhiệt độ T giảm dần về 0, thuật toán sẽ có xu hướng hành xử giống thuật toán nào?",
                 options: [
-                    "A. Nước đi có giá trị nhỏ nhất của đối thủ.",
-                    "B. Nước đi tối đa hóa điểm số của mình (Max).",
-                    "C. Nước đi ngẫu nhiên.",
-                    "D. Nước đi có chi phí lớn nhất."
+                    "A. Tìm kiếm ngẫu nhiên (Random Walk).",
+                    "B. Leo núi thuần túy (Hill Climbing).",
+                    "C. Tìm kiếm theo chiều rộng (BFS).",
+                    "D. Thuật toán di truyền (Genetic Algorithm)."
                 ],
                 ans: [1],
-                hint: "MAX đại diện cho đấu thủ muốn tối đa hóa điểm số mang lại thắng lợi cho mình ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Khi T tiến về 0, xác suất chấp nhận các nước đi lùi tiến về 0. Thuật toán khi đó chỉ chấp nhận các nước đi lên, tương tự như leo núi thuần túy ➔ <span class='font-bold text-amber-600'>Leo núi thuần túy (Hill Climbing).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 106. Tham số Alpha trong kỹ thuật cắt tỉa Alpha-Beta đại diện cho điều gì?",
+                desc: "Câu 108. Thuật toán di truyền (Genetic Algorithm) bắt đầu với một tập hợp các trạng thái được gọi là gì?",
+                options: ["A. Frontier.", "B. Population.", "C. Successor list.", "D. Individual."],
+                ans: [1],
+                hint: "GA khởi chạy bằng cách lưu giữ một quần thể (Population) chứa nhiều cá thể (mỗi cá thể đại diện cho một trạng thái cụ thể) ➔ <span class='font-bold text-amber-600'>Population.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 109. Trong thuật toán di truyền, hàm nào được dùng để đánh giá mức độ tốt của một cá thể trong quần thể?",
                 options: [
-                    "A. Giá trị lớn nhất mà người chơi MIN có thể đạt được.",
-                    "B. Giá trị nhỏ nhất mà người chơi MAX chắc chắn đạt được cho đến nay.",
-                    "C. Chi phí của bước đi ban đầu.",
-                    "D. Độ sâu của cây trò chơi."
+                    "A. Successor function.",
+                    "B. Fitness function.",
+                    "C. Transition function.",
+                    "D. Heuristic function."
                 ],
                 ans: [1],
-                hint: "Alpha là giá trị tốt nhất (lớn nhất) cho MAX tìm được từ trước đến nay dọc theo bất kỳ đường dẫn nào ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Hàm thích nghi (Fitness function) đo lường độ sinh tồn/chất lượng của cá thể; cá thể có điểm thích nghi cao sẽ có xác suất được chọn để lai ghép lớn hơn ➔ <span class='font-bold text-amber-600'>Fitness function.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 107. Tham số Beta trong kỹ thuật cắt tỉa Alpha-Beta đại diện cho điều gì?",
+                desc: "Câu 110. Thao tác Crossover (Lai ghép) trong thuật toán di truyền có ý nghĩa gì?",
                 options: [
-                    "A. Giá trị lớn nhất mà người chơi MIN chắc chắn đạt được cho đến nay.",
-                    "B. Giá trị nhỏ nhất mà người chơi MAX có thể đạt được.",
-                    "C. Hệ số nhánh của cây trò chơi.",
-                    "D. Số lượng quân cờ còn lại."
+                    "A. Thay đổi ngẫu nhiên một gene trong cá thể.",
+                    "B. Kết hợp các phần tử từ hai cá thể cha mẹ để tạo ra cá thể con mới.",
+                    "C. Loại bỏ các cá thể yếu nhất khỏi quần thể.",
+                    "D. Nhân bản một cá thể thành nhiều bản sao giống nhau."
+                ],
+                ans: [1],
+                hint: "Crossover chọn lọc và tổ hợp chéo các đoạn nhiễm sắc thể của hai cá thể cha mẹ tốt để kỳ vọng tạo ra thế hệ con ưu tú hơn ➔ <span class='font-bold text-amber-600'>Kết hợp các phần tử từ hai cá thể cha mẹ để tạo ra cá thể con mới.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 111. Thao tác Mutation (Đột biến) trong thuật toán di truyền nhằm mục đích gì?",
+                options: [
+                    "A. Đảm bảo quần thể luôn giữ nguyên các đặc tính cũ.",
+                    "B. Duy trì sự đa dạng di truyền và tránh rơi vào cực trị cục bộ.",
+                    "C. Làm cho thuật toán chạy nhanh hơn.",
+                    "D. Loại bỏ hoàn toàn các bước đi sai lầm của cha mẹ."
+                ],
+                ans: [1],
+                hint: "Đột biến làm biến đổi ngẫu nhiên một số gene nhỏ của cá thể con để khám phá các cấu trúc trạng thái hoàn toàn mới trong không gian tìm kiếm ➔ <span class='font-bold text-amber-600'>Duy trì sự đa dạng di truyền và tránh rơi vào cực trị cục bộ.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 112. Một biến thể của leo núi trong đó chọn ngẫu nhiên các bước đi lên cho đến khi tìm thấy hướng đi lên được gọi là gì?",
+                options: [
+                    "A. First-choice hill climbing.",
+                    "B. Random-restart hill climbing.",
+                    "C. Stochastic hill climbing.",
+                    "D. Steepest-ascent hill climbing."
                 ],
                 ans: [0],
-                hint: "Beta là giá trị tốt nhất (nhỏ nhất) cho MIN tìm được từ trước đến nay dọc theo đường đi ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "First-choice hill climbing sinh ngẫu nhiên các láng giềng kế cận cho đến khi gặp được một nút tốt hơn hiện tại thì thực hiện di chuyển ngay lập tức ➔ <span class='font-bold text-amber-600'>First-choice hill climbing.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 108. Một nhánh tìm kiếm trên cây trò chơi sẽ bị cắt tỉa (pruned) khi điều kiện nào sau đây xảy ra?",
+                desc: "Câu 113. Tại sao tìm kiếm cục bộ lại cực kỳ tiết kiệm bộ nhớ?",
                 options: [
-                    "A. Alpha < Beta.",
-                    "B. Alpha >= Beta.",
-                    "C. Alpha == 0.",
-                    "D. Beta == 0."
+                    "A. Vì nó không cần dùng hàm mục tiêu mà chỉ quan tâm đến phương án tối ưu.",
+                    "B. Vì nó chỉ lưu trữ trạng thái hiện tại hoặc một số rất ít trạng thái.",
+                    "C. Vì nó chỉ hoạt động trên các mảng 1 chiều.",
+                    "D. Vì nó tự động xóa dữ liệu sau một khoảng thời gian nhất định."
                 ],
                 ans: [1],
-                hint: "Khi Alpha >= Beta, người chơi ở tầng trên sẽ không chọn nhánh này nữa vì có lựa chọn khác tốt hơn, do đó ta cắt tỉa nhánh này ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Do không cần lưu vết đường đi đã qua hay danh sách Frontier khổng lồ ở các biên, tìm kiếm cục bộ chỉ tốn dung lượng bộ nhớ cho nút hiện thời ➔ <span class='font-bold text-amber-600'>Vì nó chỉ lưu trữ trạng thái hiện tại hoặc một số rất ít trạng thái.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 109. Thuật toán A* trên đồ thị (Graph Search) yêu cầu hàm Heuristic thỏa mãn tính chất nào để đảm bảo tính tối ưu mà không cần mở rộng lại các nút trong tập đóng?",
+                desc: "Câu 114. Trong bài toán N-Queens, hàm mục tiêu thường được định nghĩa như thế nào để áp dụng tìm kiếm cục bộ?",
                 options: [
-                    "A. Tính chấp nhận được (Admissible).",
-                    "B. Tính nhất quán (Consistent / Monotonic).",
-                    "C. Tính tuyến tính.",
-                    "D. Tính ngẫu nhiên."
+                    "A. Số lượng quân hậu đã đặt lên bàn cờ.",
+                    "B. Số cặp quân hậu đang tấn công lẫn nhau cần tối thiểu hóa.",
+                    "C. Tổng số ô trống còn lại trên bàn cờ.",
+                    "D. Kích thước của bàn cờ."
                 ],
                 ans: [1],
-                hint: "Consistent heuristic đảm bảo chi phí ước lượng luôn không giảm dọc theo đường đi, giữ tính tối ưu trên cấu trúc Graph Search ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Với N-Queens, ta cố định gán đủ N quân hậu và dùng hàm mục tiêu tính số cặp hậu xung đột đụng độ để thực hiện tối thiểu hóa về 0 ➔ <span class='font-bold text-amber-600'>Số cặp quân hậu đang tấn công lẫn nhau cần tối thiểu hóa.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 110. Trong trò chơi cờ vua, tại sao không thể dùng thuật toán Minimax thuần túy để duyệt hết cây trò chơi về trạng thái kết thúc?",
+                desc: "Câu 115. Khái niệm Shoulder trong biểu đồ hàm mục tiêu là loại địa hình như thế nào?",
                 options: [
-                    "A. Do luật chơi quá khó lập trình.",
-                    "B. Do không gian trạng thái quá khổng lồ (Branching factor ~35, độ sâu trung bình ~80).",
-                    "C. Do cờ vua có yếu tố ngẫu nhiên (may rủi).",
-                    "D. Do Minimax không hoạt động trên trò chơi đối kháng."
+                    "A. Một đỉnh cao nhất của toàn bộ không gian.",
+                    "B. Một vùng phẳng mà từ đó có thể tiếp tục đi lên được.",
+                    "C. Một hố sâu không thể thoát ra.",
+                    "D. Một đỉnh nhọn không có trạng thái láng giềng."
                 ],
                 ans: [1],
-                hint: "Độ rộng nhánh lớn và độ sâu cao của cờ vua tạo ra khoảng 10^120 nút, bất khả thi để duyệt cạn kiệt ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Shoulder (Bờ vai) là thềm ngang bằng phẳng nằm lửng lơ trên sườn dốc, nếu đi tiếp vượt qua thềm này vẫn có khả năng leo lên các đỉnh cao hơn ➔ <span class='font-bold text-amber-600'>Một vùng phẳng mà từ đó có thể tiếp tục đi lên được.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 111. Thuật toán Monte Carlo Tree Search (MCTS) thường được sử dụng trong các hệ thống AI chơi cờ (như AlphaGo) gồm mấy bước chính?",
+                desc: "Câu 116. Trong thuật toán di truyền, việc lựa chọn cá thể để lai ghép thường dựa trên nguyên tắc nào?",
                 options: [
-                    "A. 2 bước: Chọn và Thực thi.",
-                    "B. 4 bước: Lựa chọn (Selection), Mở rộng (Expansion), Mô phỏng (Simulation), Lan truyền ngược (Backpropagation).",
-                    "C. 3 bước: Tìm kiếm, Phân tích, Lưu trữ.",
-                    "D. 5 bước."
+                    "A. Chọn ngẫu nhiên hoàn toàn.",
+                    "B. Ưu tiên các cá thể có giá trị hàm thích nghi cao hơn.",
+                    "C. Chỉ chọn những cá thể xuất hiện sớm nhất.",
+                    "D. Chỉ chọn những cá thể bị đột biến."
                 ],
                 ans: [1],
-                hint: "MCTS chạy lặp đi lặp lại 4 pha Selection, Expansion, Simulation, Backpropagation để tìm kiếm giải pháp tối ưu cho không gian siêu rộng ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Mô phỏng chọn lọc tự nhiên: cá thể có fitness càng cao thì xác suất được chọn để truyền lại mã gene cho thế hệ sau càng lớn ➔ <span class='font-bold text-amber-600'>Ưu tiên các cá thể có giá trị hàm thích nghi cao hơn.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 112. Hàm Heuristic h(n) = 0 với mọi nút n làm cho thuật toán A* trở thành thuật toán nào?",
+                desc: "Câu 117. Điều gì xảy ra trong Random-restart hill climbing?",
                 options: [
-                    "A. Depth-First Search.",
-                    "B. Uniform-Cost Search (UCS).",
-                    "C. Greedy Best-First Search.",
-                    "D. Hill Climbing."
+                    "A. Thực hiện nhiều thuật toán leo núi khác nhau và chọn giá trị tối ưu.",
+                    "B. Thực hiện leo núi nhiều lần từ các trạng thái bắt đầu ngẫu nhiên khác nhau.",
+                    "C. Thuật toán chỉ thực hiện một lần duy nhất với bộ nhớ lớn hơn.",
+                    "D. Thuật toán sẽ chuyển sang sử dụng BFS nếu thất bại."
                 ],
                 ans: [1],
-                hint: "Khi h(n) = 0, f(n) = g(n) + 0 = g(n) khiến A* hoạt động giống hệt thuật toán UCS ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Khởi động lại ngẫu nhiên giúp giải quyết triệt để tính chưa đầy đủ của leo núi bằng cách liên tục thử leo núi từ nhiều điểm xuất phát ngẫu nhiên khác nhau ➔ <span class='font-bold text-amber-600'>Thực hiện leo núi nhiều lần từ các trạng thái bắt đầu ngẫu nhiên khác nhau.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 113. Độ lệch Heuristic h(n) so với chi phí thực tế h*(n) càng nhỏ thì điều gì xảy ra?",
+                desc: "Câu 118. Một trạng thái trong thuật toán di truyền thường được mã hóa dưới dạng nào để dễ dàng thực hiện lai ghép và đột biến?",
                 options: [
-                    "A. Thuật toán A* chạy càng chậm.",
-                    "B. Số lượng nút cần mở rộng của A* càng ít (tiến gần đến đường đi tối ưu trực tiếp).",
-                    "C. Bộ nhớ tiêu tốn càng nhiều.",
-                    "D. Kết quả tìm được sẽ không tối ưu."
+                    "A. Một số nguyên duy nhất.",
+                    "B. Một chuỗi các ký tự hoặc số.",
+                    "C. Một hàm toán học phức tạp.",
+                    "D. Một file văn bản chứa mô tả bài toán."
                 ],
                 ans: [1],
-                hint: "Heuristic càng tiệm cận chi phí thực h*(n) thì thuật toán A* càng duyệt tập trung và mở rộng cực ít nút ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Trạng thái được mã hóa thành các chuỗi nhị phân (0101...) hoặc chuỗi chữ cái để thuận tiện cho việc cắt ghép nối chuỗi nhiễm sắc thể ➔ <span class='font-bold text-amber-600'>Một chuỗi các ký tự hoặc số.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 114. Thuật toán tìm kiếm cục bộ nào bắt đầu bằng cách sinh ngẫu nhiên một tập hợp các trạng thái, sau đó lai ghép (crossover) và đột biến (mutation) để chọn ra trạng thái tốt nhất?",
+                desc: "Câu 119. Trong Simulated Annealing, xác suất chấp nhận một bước đi tệ hơn phụ thuộc vào hai yếu tố nào?",
                 options: [
-                    "A. Hill Climbing.",
-                    "B. Simulated Annealing.",
-                    "C. Genetic Algorithm (Giải thuật di truyền).",
-                    "D. Local Beam Search."
-                ],
-                ans: [2],
-                hint: "Genetic Algorithm mô phỏng lý thuyết tiến hóa sinh học bằng việc lưu trữ quần thể và lai ghép đột biến các trạng thái ➔ <span class='font-bold text-amber-600'>C.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 115. Trong thuật toán Simulated Annealing (Mô phỏng luyện kim), tham số Nhiệt độ (Temperature - T) có vai trò gì?",
-                options: [
-                    "A. Đo lượng nhiệt tỏa ra của chip xử lý.",
-                    "B. Kiểm soát xác suất chấp nhận các nước đi tệ hơn để tránh bị kẹt ở cực trị địa phương (T giảm dần theo thời gian).",
-                    "C. Tăng độ sâu của cây tìm kiếm.",
-                    "D. Đóng vai trò là hàm Heuristic."
-                ],
-                ans: [1],
-                hint: " Simulated Annealing dùng nhiệt độ giảm dần để chấp nhận bước đi tệ ở đầu trận, giúp thoát khỏi cực trị địa phương ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 116. Thuật toán Local Beam Search khác thuật toán Hill Climbing ở điểm nào?",
-                options: [
-                    "A. Local Beam Search lưu trữ và theo dõi k trạng thái cùng lúc thay vì chỉ 1 trạng thái.",
-                    "B. Local Beam Search không cần hàm đánh giá.",
-                    "C. Local Beam Search hoạt động chậm hơn DFS.",
-                    "D. Không có sự khác biệt."
+                    "A. Độ chênh lệch giá trị hàm mục tiêu và nhiệt độ hiện tại T.",
+                    "B. Thời gian chạy máy tính và bộ nhớ RAM.",
+                    "C. Số lượng Agent và kích thước môi trường.",
+                    "D. Số lần lặp lại và tên của thuật toán."
                 ],
                 ans: [0],
-                hint: "Beam Search song song hóa tìm kiếm cục bộ bằng cách giữ lại và cập nhật k nút tốt nhất ở mỗi lượt ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Xác suất chấp nhận bước đi lùi tính bằng công thức e^(delta_E / T), phụ thuộc trực tiếp vào độ sụt giảm chất lượng delta_E và nhiệt độ T hiện thời ➔ <span class='font-bold text-amber-600'>Độ chênh lệch giá trị hàm mục tiêu và nhiệt độ hiện tại T.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 117. Heuristic Manhattan Distance (Khoảng cách Manhattan) thích hợp sử dụng cho bài toán tìm đường nào?",
+                desc: "Câu 120. Thuật toán Local Beam Search khác với leo núi thuần túy ở điểm nào?",
                 options: [
-                    "A. Di chuyển tự do theo mọi góc độ (360 độ).",
-                    "B. Di chuyển trên lưới chỉ theo 4 hướng (lên, xuống, trái, phải).",
-                    "C. Di chuyển trên lưới theo 8 hướng (kể cả đường chéo).",
-                    "D. Bài toán tìm kiếm sâu lặp."
-                ],
-                ans: [1],
-                hint: "Manhattan Distance phù hợp cho lưới đi vuông góc 4 hướng do nó tính theo quãng đường dọc + ngang |x1-x2| + |y1-y2| ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 118. Heuristic Euclidean Distance (Khoảng cách Euclid) là gì?",
-                options: [
-                    "A. Đường thẳng nối trực tiếp (chim bay) giữa hai điểm.",
-                    "B. Chi phí đi dọc theo các cạnh lưới vuông.",
-                    "C. Khoảng cách lớn nhất giữa tọa độ x và y.",
-                    "D. Tổng các nước đi của cờ vua."
+                    "A. Nó sử dụng K trạng thái song song thay vì chỉ một trạng thái duy nhất.",
+                    "B. Nó không bao giờ dừng lại.",
+                    "C. Nó chỉ dùng cho các bài toán liên tục.",
+                    "D. Nó không sử dụng cảm biến."
                 ],
                 ans: [0],
-                hint: "Euclidean Distance là khoảng cách theo đường thẳng nối 2 điểm trong không gian Euclid ➔ <span class='font-bold text-amber-600'>A.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 119. Thuật toán A* có tính đầy đủ (Complete) trong trường hợp nào?",
-                options: [
-                    "A. Chỉ khi không gian trạng thái là vô hạn.",
-                    "B. Khi hệ số nhánh hữu hạn và chi phí của mỗi bước đi lớn hơn hoặc bằng một số dương epsilon.",
-                    "C. Chỉ khi không sử dụng hàm Heuristic.",
-                    "D. Chắc chắn không bao giờ đầy đủ."
-                ],
-                ans: [1],
-                hint: "Điều kiện bước đi tối thiểu dương >= epsilon đảm bảo A* không bị kẹt lặp chu kỳ vô hạn có chi phí tiến về 0 ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 120. Khi thực hiện thuật toán Minimax có giới hạn độ sâu (Depth-limited Minimax), ta cần thành phần nào để ước lượng điểm số khi chưa chạm trạng thái kết thúc?",
-                options: [
-                    "A. Hàm đánh giá tĩnh (Evaluation Function).",
-                    "B. Cảm biến của xe tự lái.",
-                    "C. Trình tạo bài toán (Problem Generator).",
-                    "D. Các hàm logic mệnh đề."
-                ],
-                ans: [0],
-                hint: "Hàm đánh giá tĩnh giúp ước lượng nhanh điểm số lợi thế của trạng thái hiện thời khi ta không thể duyệt sâu tới cuối trận ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Thay vì chỉ bám đuổi duy nhất 1 nút, Local Beam Search lưu vết k nút tốt nhất ở mỗi chặng để mở rộng không gian tìm kiếm song song ➔ <span class='font-bold text-amber-600'>Nó sử dụng K trạng thái song song thay vì chỉ một trạng thái duy nhất.</span>"
             },
 
-            // CHƯƠNG 7: BIỂU DIỄN TRI THỨC & LOGIC
+            // CHƯƠNG 7: MÔI TRƯỜNG PHỨC HỢP
             {
                 type: 'single',
-                desc: "Câu 121. Hệ chuyên gia (Expert System) thuộc cách tiếp cận nào của Trí tuệ nhân tạo?",
+                desc: "Câu 121. Trong môi trường ngẫu nhiên (Stochastic environments), đặc điểm nào sau đây là đúng?",
                 options: [
-                    "A. AI kết nối (Connectionist AI).",
-                    "B. AI ký hiệu (Symbolic AI).",
-                    "C. Học máy thống kê.",
-                    "D. AI hành vi."
+                    "A. Trạng thái tiếp theo hoàn toàn có thể dự đoán được dựa trên hành động của Agent.",
+                    "B. Một hành động đơn lẻ có thể dẫn đến nhiều kết quả khác nhau do yếu tố ngẫu nhiên.",
+                    "C. Agent không cần cảm biến để nhận biết môi trường.",
+                    "D. Chi phí đường đi luôn luôn là một hằng số cố định."
                 ],
                 ans: [1],
-                hint: "Hệ chuyên gia dựa trên lập luận logic và các biểu diễn ký hiệu tường minh do con người xây dựng ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Môi trường ngẫu nhiên không có tính xác định tuyệt đối; một hành động có xác suất dẫn đến nhiều kết cục đầu ra khác nhau ➔ <span class='font-bold text-amber-600'>Một hành động đơn lẻ có thể dẫn đến nhiều kết quả khác nhau do yếu tố ngẫu nhiên.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 122. Logic mệnh đề (Propositional Logic) không thể biểu diễn tốt điều nào sau đây?",
+                desc: "Câu 122. Cấu trúc nào thường được dùng để biểu diễn bài toán tìm kiếm trong môi trường ngẫu nhiên?",
                 options: [
-                    "A. Phép toán hội (AND), tuyển (OR).",
-                    "B. Các khái niệm đối tượng cụ thể và mối quan hệ định lượng (ví dụ: 'Mọi sinh viên đều đi học').",
-                    "C. Các mệnh đề đúng sai cơ bản.",
-                    "D. Phép kéo theo (Implication)."
+                    "A. Cây tìm kiếm thông thường.",
+                    "B. Đồ thị AND-OR (AND-OR graph).",
+                    "C. Danh sách liên kết đơn.",
+                    "D. Bảng băm (Hash table)."
                 ],
                 ans: [1],
-                hint: "Logic mệnh đề chỉ coi mệnh đề là các biến đúng/sai, không có lượng từ (\u2200, \u2203) để liên kết thuộc tính đối tượng ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Đồ thị AND-OR mô tả các nút quyết định của Agent (OR) đan xen với các nút ngẫu nhiên kết quả của môi trường (AND) ➔ <span class='font-bold text-amber-600'>Đồ thị AND-OR (AND-OR graph).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 123. Ký hiệu \u2200 trong Logic vị từ bậc một đại diện cho lượng từ nào?",
+                desc: "Câu 123. Trong đồ thị AND-OR, các nút OR đại diện cho điều gì?",
                 options: [
-                    "A. Lượng từ Tồn Tại.",
-                    "B. Lượng từ Với Mọi (Universal Quantifier).",
-                    "C. Phép hội.",
-                    "D. Phép kéo theo."
+                    "A. Các kết quả ngẫu nhiên của môi trường.",
+                    "B. Các lựa chọn hành động khác nhau của Agent.",
+                    "C. Các mục tiêu cần đạt được đồng thời.",
+                    "D. Các trạng thái thất bại của hệ thống."
                 ],
                 ans: [1],
-                hint: "\u2200 đại diện cho lượng từ 'với mọi' (for all) ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Nút OR mô tả điểm quyết định rẽ nhánh mà ở đó Agent được quyền tự do chọn lựa nước đi ➔ <span class='font-bold text-amber-600'>Các lựa chọn hành động khác nhau của Agent.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 124. Ký hiệu \u2203 trong Logic vị từ bậc một đại diện cho lượng từ nào?",
+                desc: "Câu 124. Trong đồ thị AND-OR, các nút AND đại diện cho điều gì?",
                 options: [
-                    "A. Lượng từ Với Mọi.",
-                    "B. Lượng từ Tồn Tại (Existential Quantifier).",
-                    "C. Phép phủ định.",
-                    "D. Phép tương đương."
+                    "A. Các lựa chọn hành động của Agent.",
+                    "B. Các kết quả khác nhau có thể xảy ra của một hành động do môi trường ngẫu nhiên.",
+                    "C. Trạng thái bắt đầu của bài toán.",
+                    "D. Chi phí thấp nhất của đường đi."
                 ],
                 ans: [1],
-                hint: "\u2203 đại diện cho lượng từ 'tồn tại ít nhất một' ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Nút AND mô tả điểm phân nhánh ngẫu nhiên do môi trường phản hồi lại hành động của Agent, đòi hỏi kế hoạch phải xử lý được tất cả các nhánh con ➔ <span class='font-bold text-amber-600'>Các kết quả khác nhau có thể xảy ra của một hành động do môi trường ngẫu nhiên.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 125. Trong logic mệnh đề, biểu thức P \u2192 Q có giá trị chân lý là Sai (False) khi nào?",
+                desc: "Câu 125. Giải pháp cho một bài toán tìm kiếm AND-OR không phải là một chuỗi hành động đơn lẻ mà là một:",
                 options: [
-                    "A. P đúng và Q đúng.",
-                    "B. P đúng và Q sai.",
-                    "C. P sai và Q đúng.",
-                    "D. P sai và Q sai."
-                ],
-                ans: [1],
-                hint: "Phép kéo theo chỉ nhận chân trị Sai khi giả thiết P đúng mà kết luận Q sai ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 126. Biểu thức logic P \u2192 Q tương đương với biểu thức nào sau đây?",
-                options: [
-                    "A. \u00ACP \u2228 Q.",
-                    "B. P \u2227 \u00ACQ.",
-                    "C. \u00ACP \u2227 Q.",
-                    "D. P \u2228 Q."
+                    "A. Kế hoạch có điều kiện.",
+                    "B. Trạng thái mục tiêu duy nhất.",
+                    "C. Thuật toán leo núi.",
+                    "D. Quần thể các cá thể di truyền."
                 ],
                 ans: [0],
-                hint: "Quy tắc biến đổi kéo theo tương đương: P \u2192 Q \u2261 \u00ACP \u2228 Q ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Do môi trường phản hồi ngẫu nhiên, giải pháp phải là một cây kế hoạch chứa các rẽ nhánh điều kiện dạng: 'Nếu kết quả là X thì làm Y, nếu là Z thì làm T' ➔ <span class='font-bold text-amber-600'>Kế hoạch có điều kiện.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 127. Trong cơ sở tri thức (KB), khái niệm 'Entailment' (Kéo theo logic, ký hiệu KB \u22a8 \u03b1) nghĩa là gì?",
+                desc: "Câu 126. Một môi trường được gọi là không thể quan sát khi nào?",
                 options: [
-                    "A. Mệnh đề \u03b1 luôn luôn đúng trong mọi mô hình mà KB đúng.",
-                    "B. KB và \u03b1 không liên quan đến nhau.",
-                    "C. Mệnh đề \u03b1 luôn luôn sai.",
-                    "D. KB và \u03b1 đều sai."
+                    "A. Khi Agent không có cảm biến.",
+                    "B. Khi môi trường quá rộng lớn.",
+                    "C. Khi Agent chỉ thấy được trạng thái môi trường lúc đầu.",
+                    "D. Khi trạng thái môi trường thay đổi quá nhanh."
                 ],
                 ans: [0],
-                hint: "KB \u22a8 \u03b1 nghĩa là hễ KB đúng thì chắc chắn \u03b1 cũng phải đúng ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Nếu thiết bị cảm nhận sensors của Agent bị hỏng hoặc hoàn toàn không được trang bị cảm biến, Agent rơi vào trạng thái mù thông tin môi trường ➔ <span class='font-bold text-amber-600'>Khi Agent không có cảm biến.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 128. Phương pháp chứng minh bằng Phép giải (Resolution) yêu cầu các mệnh đề phải đưa về dạng chuẩn nào?",
+                desc: "Câu 127. Đối với bài toán không có cảm biến (Sensorless problems), Agent phải tìm kiếm trong không gian nào?",
                 options: [
-                    "A. Dạng chuẩn hội (CNF - Conjunctive Normal Form).",
-                    "B. Dạng chuẩn tuyển (DNF).",
-                    "C. Chuẩn tắc Horn.",
-                    "D. Chuẩn tắc mệnh đề tự do."
+                    "A. Không gian trạng thái vật lý ban đầu.",
+                    "B. Không gian trạng thái niềm tin.",
+                    "C. Không gian các biến số ngẫu nhiên.",
+                    "D. Không gian bộ nhớ đệm của máy tính."
+                ],
+                ans: [1],
+                hint: "Do không biết trạng thái vật lý thực tại, Agent phải quản lý một tập hợp các trạng thái vật lý khả thi có thể xảy ra, gọi là trạng thái niềm tin (Belief state) ➔ <span class='font-bold text-amber-600'>Không gian trạng thái niềm tin.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 128. Trạng thái niềm tin (Belief state) được định nghĩa là gì?",
+                options: [
+                    "A. Tập hợp tất cả các trạng thái vật lý mà Agent tin mình có thể đang ở đó.",
+                    "B. Trạng thái mục tiêu mà Agent mong muốn đạt được.",
+                    "C. Một chuỗi các hành động đã thực hiện trong quá khứ.",
+                    "D. Sự tin tưởng của Agent vào độ chính xác của cảm biến."
                 ],
                 ans: [0],
-                hint: "Phép giải chỉ làm việc trên các mệnh đề dạng tuyển nối với nhau bởi phép hội (CNF) ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Belief state đại diện cho tập hợp toàn bộ các trạng thái thế giới vật lý khả thi mà Agent suy luận mình có khả năng đang nằm trong đó ➔ <span class='font-bold text-amber-600'>Tập hợp tất cả các trạng thái vật lý mà Agent tin mình có thể đang ở đó.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 129. Mệnh đề Horn (Horn Clause) là một mệnh đề tuyển có đặc điểm gì nổi bật?",
+                desc: "Câu 129. Trong môi trường quan sát một phần (Partially observable), Agent sử dụng thành phần nào để cập nhật trạng thái niềm tin sau khi thực hiện hành động?",
                 options: [
-                    "A. Không chứa phép phủ định nào.",
-                    "B. Có tối đa một vị từ dương (positive literal).",
-                    "C. Có vô số vị từ dương.",
-                    "D. Chỉ chứa phép hội."
+                    "A. Chỉ dùng mô hình chuyển trạng thái.",
+                    "B. Sự kết hợp giữa hành động và các quan sát mới nhận được.",
+                    "C. Chỉ dùng các giá trị ngẫu nhiên.",
+                    "D. Không cần cập nhật trạng thái niềm tin."
                 ],
                 ans: [1],
-                hint: "Horn Clause chứa tối đa 1 phần tử không phủ định, cho phép suy dẫn nhanh trong thời gian tuyến tính ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Agent dùng mô hình chuyển trạng thái kết hợp với dữ liệu thu thập qua cảm biến mới (Percept/Observation) để lọc bớt các trạng thái niềm tin phi lý ➔ <span class='font-bold text-amber-600'>Sự kết hợp giữa hành động và các quan sát mới nhận được.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 130. Cơ chế suy diễn tiến (Forward Chaining) bắt đầu từ đâu?",
+                desc: "Câu 130. Tìm kiếm trực tuyến (Online search) khác với tìm kiếm ngoại tuyến (Offline search) ở điểm nào?",
                 options: [
-                    "A. Bắt đầu từ giả thuyết mục tiêu.",
-                    "B. Bắt đầu từ các sự kiện đã biết (Facts) và áp dụng các luật để suy ra sự kiện mới.",
-                    "C. Bắt đầu từ các luật phức tạp nhất.",
-                    "D. Bắt đầu từ cơ sở dữ liệu ngẫu nhiên."
+                    "A. Agent thực hiện hành động và tính toán song song.",
+                    "B. Agent chỉ cần Internet để hoạt động.",
+                    "C. Agent không bao giờ tìm thấy mục tiêu.",
+                    "D. Agent sử dụng nhiều bộ nhớ hơn tìm kiếm ngoại tuyến."
                 ],
-                ans: [1],
-                hint: "Forward Chaining suy luận hướng dữ liệu (data-driven), tiến dần từ sự kiện ban đầu đến mục tiêu ➔ <span class='font-bold text-amber-600'>B.</span>"
+                ans: [0],
+                hint: "Tìm kiếm ngoại tuyến tính toán xong toàn bộ đường đi rồi mới chạy. Tìm kiếm trực tuyến đan xen luân phiên giữa tính toán bước đi tiếp theo và thực thi hành động ngay lập tức ➔ <span class='font-bold text-amber-600'>Agent thực hiện hành động và tính toán song song.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 131. Cơ chế suy diễn lùi (Backward Chaining) bắt đầu từ đâu?",
+                desc: "Câu 131. Vấn đề lớn nhất mà Agent gặp phải trong tìm kiếm trực tuyến là gì?",
                 options: [
-                    "A. Bắt đầu từ các sự kiện đã biết.",
-                    "B. Bắt đầu từ mục tiêu (Goal) cần chứng minh, đi ngược lại tìm kiếm các sự kiện hỗ trợ nó.",
-                    "C. Bắt đầu từ các mệnh đề Horn.",
-                    "D. Bắt đầu ngẫu nhiên."
+                    "A. Các trạng thái lặp lại.",
+                    "B. Các hành động không thể đảo ngược.",
+                    "C. Chi phí tính toán quá thấp.",
+                    "D. Không gian trạng thái quá nhỏ."
                 ],
                 ans: [1],
-                hint: "Backward Chaining suy luận hướng mục tiêu (goal-driven), đi ngược từ đích về kiểm chứng dữ kiện ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Các ngõ cụt (Dead ends) hoặc hành động không thể hoàn tác trong thực tế (ví dụ rơi xuống vực) là hiểm họa lớn nhất đối với tìm kiếm trực tuyến ➔ <span class='font-bold text-amber-600'>Các hành động không thể đảo ngược.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 132. Cấu trúc mạng ngữ nghĩa (Semantic Network) biểu diễn tri thức bằng cách nào?",
+                desc: "Câu 132. Thuật toán tìm kiếm trực tuyến nào có thể được sử dụng nếu các hành động là có thể đảo ngược?",
                 options: [
-                    "A. Sử dụng các câu lệnh SQL.",
-                    "B. Sử dụng một đồ thị có nhãn với các nút là đối tượng và các cung là mối quan hệ.",
-                    "C. Sử dụng mảng số thực.",
-                    "D. Sử dụng thuật toán học sâu."
+                    "A. Tìm kiếm theo chiều sâu trực tuyến.",
+                    "B. Chỉ duy nhất leo núi ngẫu nhiên.",
+                    "C. Thuật toán di truyền quần thể lớn.",
+                    "D. Không có thuật toán nào khả thi."
                 ],
-                ans: [1],
-                hint: "Mạng ngữ nghĩa sử dụng cấu trúc đồ thị trực quan liên kết các nút khái niệm thông qua các quan hệ ngữ nghĩa ➔ <span class='font-bold text-amber-600'>B.</span>"
+                ans: [0],
+                hint: "Nếu hành động có thể đảo ngược (hoàn tác), Agent có thể triển khai DFS trực tuyến để quay lui và khám phá các nhánh khác an toàn ➔ <span class='font-bold text-amber-600'>Tìm kiếm theo chiều sâu trực tuyến.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 133. Khái niệm Frame (Khung) trong biểu diễn tri thức dùng để làm gì?",
+                desc: "Câu 133. Khái niệm Competitive ratio trong tìm kiếm trực tuyến dùng để so sánh điều gì?",
                 options: [
-                    "A. Vẽ khung giao diện người dùng.",
-                    "B. Lưu trữ thông tin dưới dạng một tập hợp các thuộc tính (slots) và giá trị của chúng (values) cho một đối tượng.",
-                    "C. Đo lường tốc độ khung hình của camera.",
-                    "D. Đóng gói mã nguồn Python."
+                    "A. Chi phí thực tế Agent bỏ ra so với chi phí tối ưu nếu biết trước bản đồ.",
+                    "B. Tốc độ của hai Agent khác nhau.",
+                    "C. Số lượng nút trong Frontier và Explorerset.",
+                    "D. Độ chính xác của các cảm biến khác nhau."
                 ],
-                ans: [1],
-                hint: "Frame biểu diễn tri thức dựa trên thuộc tính slots và giá trị values giúp lưu trữ tri thức phân cấp đối tượng ➔ <span class='font-bold text-amber-600'>B.</span>"
+                ans: [0],
+                hint: "Competitive ratio đánh giá chất lượng thuật toán trực tuyến bằng tỉ số giữa quãng đường thực tế đi (do dò đường mò) chia cho quãng đường ngắn nhất tối ưu (nếu đã biết bản đồ) ➔ <span class='font-bold text-amber-600'>Chi phí thực tế Agent bỏ ra so với chi phí tối ưu nếu biết trước bản đồ.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 134. Ontology trong AI là gì?",
+                desc: "Câu 134. Trong bài toán máy hút bụi ngẫu nhiên, nếu hút bụi ở một ô bẩn nhưng đôi khi làm bẩn thêm ô bên cạnh, đây là ví dụ của:",
                 options: [
-                    "A. Một thư viện lập trình của C++.",
-                    "B. Sự mô tả tường minh và đặc tả các khái niệm, thực thể cùng mối quan hệ của một lĩnh vực chuyên môn.",
-                    "C. Thuật toán tìm kiếm heuristic.",
-                    "D. Thiết bị phần cứng của robot."
+                    "A. Môi trường xác định.",
+                    "B. Môi trường ngẫu nhiên.",
+                    "C. Môi trường tĩnh.",
+                    "D. Môi trường đơn tác tử."
                 ],
                 ans: [1],
-                hint: "Ontology chuẩn hóa vốn tri thức chuyên ngành thành sơ đồ khái niệm máy tính có thể phân tích ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Hành động hút bụi sinh ra kết quả ngẫu nhiên phụ thuộc xác suất (sạch ô này hoặc bẩn ô kia) ➔ <span class='font-bold text-amber-600'>Môi trường ngẫu nhiên.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 135. Ngôn ngữ nào sau đây được W3C chuẩn hóa chuyên dùng để biểu diễn tri thức trên Semantic Web?",
+                desc: "Câu 135. Một nút lá trong giải pháp của cây tìm kiếm AND-OR phải là:",
                 options: [
-                    "A. HTML5.",
-                    "B. OWL (Web Ontology Language).",
-                    "C. Javascript.",
-                    "D. SQL."
+                    "A. Một nút bắt đầu.",
+                    "B. Một nút mục tiêu.",
+                    "C. Một nút ngẫu nhiên.",
+                    "D. Một nút hành động."
                 ],
                 ans: [1],
-                hint: "OWL là ngôn ngữ chuẩn hóa chuyên dùng để xây dựng các mô hình Ontology ngữ nghĩa mạng toàn cầu ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Kế hoạch kết thúc thành công khi tất cả các nhánh con lá của cây AND-OR đều kết thúc tại nút đích/nút mục tiêu ➔ <span class='font-bold text-amber-600'>Một nút mục tiêu.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 136. Phép chứng minh bằng phản chứng (Proof by Refutation) hoạt động ra sao?",
+                desc: "Câu 136. Tại sao trong môi trường không quan sát được, một chuỗi hành động có thể đưa Agent đến mục tiêu dù Agent không biết vị trí bắt đầu?",
                 options: [
-                    "A. Chứng minh trực tiếp từ nguyên lý đầu.",
-                    "B. Thêm phủ định của mục tiêu vào KB và tìm kiếm sự mâu thuẫn (mệnh đề rỗng).",
-                    "C. Bắt chước các bước của con người.",
-                    "D. Đột biến ngẫu nhiên các luật."
+                    "A. Vì chuỗi hành động đó có tính chất ép buộc đưa mọi trạng thái niềm tin về trạng thái mục tiêu.",
+                    "B. Vì Agent gặp may mắn.",
+                    "C. Vì môi trường tự động dịch chuyển Agent.",
+                    "D. Vì không gian trạng thái vật lý chỉ có một trạng thái duy nhất."
                 ],
-                ans: [1],
-                hint: "Thêm phủ định giả thiết vào hệ luật và tìm ra mâu thuẫn chính là phương pháp phản chứng của phép giải ➔ <span class='font-bold text-amber-600'>B.</span>"
+                ans: [0],
+                hint: "Chuỗi hành động ép buộc (Coercive sequence) thu hẹp dần tập hợp trạng thái niềm tin cho đến khi toàn bộ chúng hội tụ đồng nhất về duy nhất trạng thái mục tiêu ➔ <span class='font-bold text-amber-600'>Vì chuỗi hành động đó có tính chất ép buộc đưa mọi trạng thái niềm tin về trạng thái mục tiêu.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 137. Trong hệ chuyên gia, thành phần nào đóng vai trò là 'bộ não' thực hiện suy luận logic?",
+                desc: "Câu 137. Khi Agent di chuyển trong môi trường chưa biết (Unknown environment), việc khám phá (Exploration) nhằm mục đích gì?",
                 options: [
-                    "A. Knowledge Base (Cơ sở tri thức).",
-                    "B. Inference Engine (Công cụ suy diễn).",
-                    "C. User Interface (Giao diện người dùng).",
-                    "D. Explanation Facility."
+                    "A. Để làm Agent tiêu tốn nhiều năng lượng hơn.",
+                    "B. Để xây dựng bản đồ hoặc học về mô hình chuyển trạng thái của môi trường.",
+                    "C. Để kết thúc trò chơi nhanh nhất.",
+                    "D. Để tránh việc phải thực hiện các hành động phức tạp."
                 ],
                 ans: [1],
-                hint: "Inference Engine là nhân xử lý suy luận điều phối logic của hệ chuyên gia ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Exploration là quá trình Agent chấp nhận thử nghiệm để cập nhật tri thức địa lý hoặc xác suất chuyển trạng thái của môi trường chưa rõ ➔ <span class='font-bold text-amber-600'>Để xây dựng bản đồ hoặc học về mô hình chuyển trạng thái của môi trường.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 138. Điểm hạn chế lớn nhất của các hệ chuyên gia cổ điển (Expert Systems) là gì?",
+                desc: "Câu 138. Thuật toán Random Walk (Bước đi ngẫu nhiên) sẽ chắc chắn tìm thấy mục tiêu trong không gian trạng thái hữu hạn khi nào?",
                 options: [
-                    "A. Không thể chạy trên máy tính cấu hình yếu.",
-                    "B. Chi phí thu thập và duy trì tri thức từ chuyên gia con người rất lớn (knowledge acquisition bottleneck).",
-                    "C. Tốc độ tính toán chậm hơn học sâu.",
-                    "D. Chỉ chạy được trên hệ điều hành Linux."
+                    "A. Khi Agent có bộ nhớ cực lớn.",
+                    "B. Khi mục tiêu có thể đạt được từ mọi trạng thái và không gian là hữu hạn.",
+                    "C. Khi Agent chạy nhanh hơn tốc độ môi trường.",
+                    "D. Khi Agent sử dụng hàm Heuristic mạnh."
                 ],
                 ans: [1],
-                hint: "Việc phỏng vấn chuyên gia thu thập tri thức thủ công tốn kém và khó bảo trì khi luật thay đổi ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Trong không gian hữu hạn liên thông đến đích, bước đi ngẫu nhiên vô hướng chắc chắn sẽ chạm tới đích với xác suất bằng 1 nếu thời gian chạy đủ lâu ➔ <span class='font-bold text-amber-600'>Khi mục tiêu có thể đạt được từ mọi trạng thái và không gian là hữu hạn.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 139. Trong logic vị từ, câu 'Mọi con mèo đều thích cá' được biểu diễn như thế nào?",
+                desc: "Câu 139. Một môi trường được coi là an toàn để khám phá (Safely explorable) nếu:",
                 options: [
-                    "A. \u2200x (Cat(x) \u2227 LikeFish(x))",
-                    "B. \u2200x (Cat(x) \u2192 LikeFish(x))",
-                    "C. \u2203x (Cat(x) \u2192 LikeFish(x))",
-                    "D. \u2203x (Cat(x) \u2227 LikeFish(x))"
+                    "A. Luôn có đường đi từ mọi trạng thái để quay về hoặc đi đến mục tiêu.",
+                    "B. Luôn có đường đi từ mọi trạng thái có thể tới mọi trạng thái khác chưa được khám phá.",
+                    "C. Không có chướng ngại vật nào, Agent có thể di chuyển tuỳ ý.",
+                    "D. Môi trường không bao giờ thay đổi, Agent có thể nhìn thấy toàn bộ môi trường."
                 ],
-                ans: [1],
-                hint: "Logic vị từ dùng \u2200 kết hợp phép kéo theo \u2192 để biểu thị tính chất 'mọi đối tượng x nếu là Cat thì LikeFish' ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 140. Trong logic vị từ, câu 'Có ít nhất một sinh viên học giỏi AI' được biểu diễn như thế nào?",
-                options: [
-                    "A. \u2200x (Student(x) \u2192 GoodAtAI(x))",
-                    "B. \u2203x (Student(x) \u2227 GoodAtAI(x))",
-                    "C. \u2203x (Student(x) \u2192 GoodAtAI(x))",
-                    "D. \u2200x (Student(x) \u2227 GoodAtAI(x))"
-                ],
-                ans: [1],
-                hint: "Lượng từ tồn tại \u2203 đi kèm phép hội \u2227 để chỉ 'tồn tại thực thể x vừa là Student vừa GoodAtAI' ➔ <span class='font-bold text-amber-600'>B.</span>"
+                ans: [0],
+                hint: "An toàn để khám phá nghĩa là không tồn tại ngõ cụt vĩnh viễn (Dead ends); Agent ở bất kỳ nút nào cũng luôn tìm được đường để quay về hoặc đi tiếp tới đích ➔ <span class='font-bold text-amber-600'>Luôn có đường đi từ mọi trạng thái để quay về hoặc đi đến mục tiêu.</span>"
             },
 
-            // CHƯƠNG 8: HỌC MÁY, HỌC SÂU & ỨNG DỤNG
+            // CHƯƠNG 8: BÀI TOÁN THỎA MÃN RÀNG BUỘC
             {
                 type: 'single',
-                desc: "Câu 141. Khái niệm Học máy (Machine Learning) được định nghĩa cơ bản là gì?",
+                desc: "Câu 140. Một bài toán thỏa mãn ràng buộc (CSP) được định nghĩa bởi ba thành phần chính nào?",
                 options: [
-                    "A. Việc lập trình sẵn tất cả các tình huống cho máy tính chạy.",
-                    "B. Lĩnh vực nghiên cứu cung cấp cho máy tính khả năng tự học hỏi từ dữ liệu mà không cần được lập trình chi tiết các quy tắc.",
-                    "C. Việc sản xuất các linh kiện phần cứng máy tính.",
-                    "D. Các thuật toán nén file."
-                ],
-                ans: [1],
-                hint: "Học máy cho phép hệ thống tự động nhận dạng khuôn mẫu và quy tắc ứng xử trực tiếp từ dữ liệu thực tế ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 142. Thuật toán nào sau đây thuộc nhóm Học có giám sát (Supervised Learning)?",
-                options: [
-                    "A. K-Means.",
-                    "B. Linear Regression (Hồi quy tuyến tính).",
-                    "C. PCA (Principal Component Analysis).",
-                    "D. Apriori."
-                ],
-                ans: [1],
-                hint: "Linear Regression học cách ánh xạ từ đầu vào đến nhãn đầu ra liên tục nên thuộc học có giám sát ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 143. Thuật toán nào sau đây thuộc nhóm Học không giám sát (Unsupervised Learning)?",
-                options: [
-                    "A. Decision Tree (Cây quyết định).",
-                    "B. K-Means Phân cụm.",
-                    "C. Logistic Regression.",
-                    "D. Random Forest."
-                ],
-                ans: [1],
-                hint: "Phân cụm K-Means tìm cấu trúc phân cụm ngầm định trong tập dữ liệu không gán nhãn ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 144. Hiện tượng Quá khớp (Overfitting) xảy ra khi nào?",
-                options: [
-                    "A. Mô hình chạy quá nhanh trên máy tính.",
-                    "B. Mô hình học quá kỹ các chi tiết và nhiễu của dữ liệu huấn luyện, khiến dự báo trên dữ liệu kiểm thử mới bị sai lệch nhiều.",
-                    "C. Dữ liệu huấn luyện có quá ít thuộc tính.",
-                    "D. Mô hình hoạt động kém trên cả tập huấn luyện."
-                ],
-                ans: [1],
-                hint: "Mô hình overfit có độ chính xác huấn luyện cực cao nhưng mất khả năng suy rộng khi test dữ liệu mới ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 145. Hiện tượng Dưới khớp (Underfitting) xảy ra khi nào?",
-                options: [
-                    "A. Mô hình quá phức tạp so với dữ liệu.",
-                    "B. Mô hình quá đơn giản nên không học được cấu trúc của dữ liệu huấn luyện (lỗi cao trên cả tập train và test).",
-                    "C. Bộ nhớ RAM bị tràn.",
-                    "D. Mô hình đạt độ chính xác 100%."
-                ],
-                ans: [1],
-                hint: "Underfitting xảy ra khi mô hình quá thô sơ chưa nắm bắt được các đặc trưng căn bản của tập dữ liệu ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 146. Trong mạng nơ-ron nhân tạo, hàm kích hoạt (Activation Function) có vai trò chính là gì?",
-                options: [
-                    "A. Tăng tốc độ đọc dữ liệu đầu vào.",
-                    "B. Đưa tính phi tuyến (non-linear) vào mạng để học được các mẫu phức tạp.",
-                    "C. Giảm số chiều của dữ liệu.",
-                    "D. Khởi tạo trọng số ngẫu nhiên."
-                ],
-                ans: [1],
-                hint: "Hàm kích hoạt giúp phi tuyến hóa cấu trúc mạng nơ-ron để biểu diễn các hàm số phi tuyến phức tạp ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 147. Thuật toán Lan truyền ngược (Backpropagation) hoạt động dựa trên nguyên lý toán học nào?",
-                options: [
-                    "A. Quy tắc chuỗi đạo hàm (Chain Rule) để tính gradient sai số.",
-                    "B. Phép nhân ma trận nghịch đảo trực tiếp.",
-                    "C. Logic vị từ bậc một.",
-                    "D. Phép cộng vector đơn giản."
+                    "A. Các biến, các miền giá trị và các ràng buộc.",
+                    "B. Trạng thái bắt đầu, hành động và chi phí đường đi.",
+                    "C. Cảm biến, bộ phận thực thi và môi trường.",
+                    "D. Quần thể, lai ghép và đột biến."
                 ],
                 ans: [0],
-                hint: "Quy tắc đạo hàm hàm hợp (Chain Rule) được dùng để lan truyền sai số và tính đạo hàm riêng cho từng tham số mạng ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "CSP được định nghĩa chính thức bởi bộ ba: X (Variables - các biến), D (Domains - miền giá trị) và C (Constraints - các ràng buộc giữa các biến) ➔ <span class='font-bold text-amber-600'>Các biến, các miền giá trị và các ràng buộc.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 148. Mạng nơ-ron tích chập (CNN) trích xuất đặc trưng hình ảnh thông qua các phép toán nào?",
+                desc: "Câu 141. Trong CSP, thành phần nào xác định các giá trị có thể có cho một biến?",
                 options: [
-                    "A. Phép giải logic.",
-                    "B. Phép nhân tích chập giữa bộ lọc (Filter/Kernel) và ma trận ảnh.",
-                    "C. Phép tìm kiếm leo đồi.",
-                    "D. Phép gán tham chiếu."
+                    "A. Constraints (Ràng buộc).",
+                    "B. Domains (Miền giá trị).",
+                    "C. Variables (Biến).",
+                    "D. Assignments (Phép gán)."
                 ],
                 ans: [1],
-                hint: "CNN quét các bộ lọc chập nhỏ qua ảnh để phát hiện các đặc trưng cục bộ (góc, biên) ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Domain D_i xác định tập hợp tất cả các giá trị hợp lệ mà biến X_i có cơ hội được gán nhận ➔ <span class='font-bold text-amber-600'>Domains (Miền giá trị).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 149. Kiến trúc mạng nơ-ron nào chuyên biệt xử lý dữ liệu dạng chuỗi tuần tự (Sequential Data) như văn bản, âm thanh?",
+                desc: "Câu 142. Một phép gán được gọi là hoàn chỉnh (Complete assignment) khi nào?",
                 options: [
-                    "A. CNN.",
-                    "B. RNN (Recurrent Neural Network).",
-                    "C. SVM.",
-                    "D. Linear Regression."
+                    "A. Khi chỉ một vài biến quan trọng được gán giá trị.",
+                    "B. Khi mọi biến đều đã được gán một giá trị.",
+                    "C. Khi các giá trị được gán không vi phạm bất kỳ ràng buộc nào.",
+                    "D. Khi miền giá trị của các biến đều là số nguyên."
                 ],
                 ans: [1],
-                hint: "RNN có các nút phản hồi thời gian giúp lưu lại vết thông tin của chuỗi tuần tự đầu vào ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Phép gán hoàn chỉnh yêu cầu toàn bộ các biến trong tập X đều đã được liên kết với một giá trị cụ thể từ miền của nó ➔ <span class='font-bold text-amber-600'>Khi mọi biến đều đã được gán một giá trị.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 150. Cơ chế chú ý (Self-Attention) trong mạng Transformer khắc phục nhược điểm nào của RNN?",
+                desc: "Câu 143. Một phép gán được gọi là nhất quán (Consistent assignment) nếu nó thỏa mãn điều kiện gì?",
                 options: [
-                    "A. Khắc phục việc tính toán tuần tự chậm chạp, cho phép xử lý song song toàn bộ chuỗi từ cùng lúc trên GPU.",
-                    "B. Tăng độ phân giải của ảnh.",
-                    "C. Giúp lưu trữ mật khẩu an toàn hơn.",
-                    "D. Loại bỏ hoàn toàn nhu cầu về nhãn."
+                    "A. Không vi phạm bất kỳ ràng buộc nào.",
+                    "B. Tất cả các biến đều có cùng một giá trị.",
+                    "C. Chỉ áp dụng cho các bài toán tìm đường.",
+                    "D. Được thực hiện bởi thuật toán DFS."
                 ],
                 ans: [0],
-                hint: "Self-Attention cho phép liên kết trực tiếp các từ xa nhau và song song hóa toàn bộ tính toán trên GPU ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Nhất quán nghĩa là mối quan hệ gán trị giữa các biến hiện thời hoàn toàn tuân thủ và không phá vỡ bất kỳ luật ràng buộc nào trong tập C ➔ <span class='font-bold text-amber-600'>Không vi phạm bất kỳ ràng buộc nào.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 151. Kỹ thuật Tokenization trong xử lý ngôn ngữ tự nhiên (NLP) thực hiện tác vụ nào?",
+                desc: "Câu 144. Giải pháp của một bài toán CSP là một phép gán thỏa mãn hai đặc điểm nào?",
                 options: [
-                    "A. Mã hóa văn bản thành mã băm bảo mật.",
-                    "B. Chia một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).",
-                    "C. Dịch tự động ngôn ngữ.",
-                    "D. Nhận diện giọng nói."
+                    "A. Ngẫu nhiên và nhanh chóng.",
+                    "B. Hoàn chỉnh và nhất quán.",
+                    "C. Một phần và không vi phạm ràng buộc.",
+                    "D. Có chi phí đường đi thấp nhất."
                 ],
                 ans: [1],
-                hint: "Tách văn bản thô thành danh sách các tokens độc lập để làm sạch dữ liệu đầu vào ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Lời giải hợp lệ của CSP bắt buộc phải là một phép gán đầy đủ cho mọi biến (hoàn chỉnh) và không vi phạm bất kỳ luật nào (nhất quán) ➔ <span class='font-bold text-amber-600'>Hoàn chỉnh và nhất quán.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 152. Word Embedding (như Word2Vec) biểu diễn từ vựng dưới dạng nào?",
+                desc: "Câu 145. Ràng buộc giữa hai biến (ví dụ: X \u2260 Y) được phân loại là loại ràng buộc nào?",
                 options: [
-                    "A. Các ký tự văn bản thô.",
-                    "B. Các vector số thực nhiều chiều mà các từ có ngữ nghĩa gần nhau sẽ có khoảng cách vector gần nhau.",
-                    "C. Các số thứ tự từ 1 đến N.",
-                    "D. Các hình ảnh minh họa."
+                    "A. Unary constraint (Ràng buộc đơn nhất).",
+                    "B. Binary constraint (Ràng buộc nhị phân).",
+                    "C. Global constraint (Ràng buộc toàn cục).",
+                    "D. Preference constraint (Ràng buộc mềm)."
                 ],
                 ans: [1],
-                hint: "Word Embedding chuyển từ ngữ thô thành vector liên tục mang thuộc tính ngữ nghĩa không gian ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Ràng buộc nhị phân (Binary Constraint) liên kết và áp đặt quan hệ giữa đúng hai biến số với nhau ➔ <span class='font-bold text-amber-600'>Binary constraint (Ràng buộc nhị phân).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 153. Kỹ thuật trích xuất thông tin văn bản từ hình ảnh chụp hoặc tài liệu scan được gọi là gì?",
+                desc: "Câu 146. Đồ thị ràng buộc (Constraint Graph) là công cụ dùng để biểu diễn điều gì?",
                 options: [
-                    "A. NLP.",
-                    "B. OCR (Optical Character Recognition).",
-                    "C. GAN.",
-                    "D. Word Embedding."
+                    "A. Các biến dưới dạng nút và các ràng buộc nhị phân dưới dạng cạnh.",
+                    "B. Các bước di chuyển của Agent.",
+                    "C. Thứ tự các trạng thái trong cây tìm kiếm.",
+                    "D. Phân phối xác suất của các giá trị."
                 ],
                 ans: [1],
-                hint: "OCR chuyên nhận dạng ký tự quang học để chuyển ảnh scan tài liệu sang text chỉnh sửa được ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Đồ thị ràng buộc ánh xạ các biến số thành nút đỉnh và vẽ các cạnh nối giữa các nút có ràng buộc nhị phân trực tiếp với nhau ➔ <span class='font-bold text-amber-600'>Các biến dưới dạng nút và các ràng buộc nhị phân dưới dạng cạnh.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 154. Thuật toán YOLO nổi tiếng trong thị giác máy tính giải quyết tác vụ nào?",
+                desc: "Câu 147. Thuật toán tìm kiếm cơ bản thường được áp dụng cho CSP là gì?",
                 options: [
-                    "A. Tạo sinh ảnh nghệ thuật.",
-                    "B. Phát hiện đối tượng trong thời gian thực (Real-time Object Detection).",
-                    "C. Dịch thuật ngôn ngữ.",
-                    "D. Phân tích tâm trạng văn bản."
+                    "A. Breadth-First Search.",
+                    "B. Backtracking Search.",
+                    "C. Uniform-Cost Search.",
+                    "D. Bidirectional Search."
                 ],
                 ans: [1],
-                hint: "YOLO (You Only Look Once) quét ảnh 1 lần cho phép khoanh vùng và định danh vật thể siêu nhanh thời gian thực ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "Backtracking Search (Tìm kiếm quay lui) là giải thuật nền tảng dùng để gán thử giá trị cho từng biến và quay lui khi phát hiện xung đột ràng buộc ➔ <span class='font-bold text-amber-600'>Backtracking Search.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 155. Ứng dụng lọc cộng tác (Collaborative Filtering) trong hệ thống khuyến nghị hoạt động dựa trên điều gì?",
+                desc: "Câu 148. Backtracking Search thực chất là một dạng của thuật toán tìm kiếm nào?",
                 options: [
-                    "A. Đặc tính văn bản mô tả của sản phẩm.",
-                    "B. Hành vi, tương tác và sở thích của các nhóm người dùng tương đồng.",
-                    "C. Giá tiền và khuyến mãi của sản phẩm.",
-                    "D. Thời gian cập nhật sản phẩm."
-                ],
-                ans: [1],
-                hint: "Lọc cộng tác tìm kiếm các người dùng có hành vi tương tự để gợi ý chéo sản phẩm cho nhau ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 156. Hiện tượng ảo tưởng (Hallucination) của LLM gây ra lo ngại lớn nhất nào khi ứng dụng thực tế?",
-                options: [
-                    "A. Làm cho máy chủ bị quá tải và sập nguồn.",
-                    "B. AI tự tin đưa ra các thông tin sai sự thật hoặc bịa đặt nhưng hành văn rất thuyết phục.",
-                    "C. Chatbot phản hồi quá chậm.",
-                    "D. Chatbot chỉ giao tiếp bằng tiếng Anh."
-                ],
-                ans: [1],
-                hint: "LLM sinh ra các câu từ logic nhưng sai lệch dữ kiện lịch sử/thực tế là nhược điểm Hallucination ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 157. LiDAR trên xe tự hành có vai trò chính là gì?",
-                options: [
-                    "A. Nhận diện biển báo giao thông.",
-                    "B. Quét tia laser phát hiện chướng ngại vật và dựng bản đồ khoảng cách 3D xung quanh xe.",
-                    "C. Kết nối Internet với vệ tinh.",
-                    "D. Điều khiển hệ thống phanh xe."
-                ],
-                ans: [1],
-                hint: "Cảm biến LiDAR bắn các xung laser quét không gian để dựng bản đồ khoảng cách 3D đám mây điểm cực kỳ chuẩn xác ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 158. Hệ thống AlphaFold của DeepMind giải quyết thành công bài toán sinh học nào?",
-                options: [
-                    "A. Tìm vaccine phòng chống ung thư.",
-                    "B. Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi Axit Amin.",
-                    "C. Bản đồ gen người.",
-                    "D. Nuôi cấy mô nhân tạo."
-                ],
-                ans: [1],
-                hint: "AlphaFold giải cấu trúc 3D cuộn gập protein từ chuỗi gen giúp tăng tốc độ thiết kế thuốc sinh học ➔ <span class='font-bold text-amber-600'>B.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 159. Kỹ thuật Fine-tuning trong huấn luyện LLM là gì?",
-                options: [
-                    "A. Huấn luyện thêm một mô hình lớn đã được huấn luyện sẵn (pre-trained) trên một tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.",
-                    "B. Xóa bỏ hoàn toàn trọng số để học lại.",
-                    "C. Viết lại mã nguồn Python.",
-                    "D. Nén mô hình để chạy trên điện thoại."
+                    "A. Depth-First Search với việc gán giá trị cho từng biến một.",
+                    "B. Breadth-First Search với việc kiểm tra mục tiêu.",
+                    "C. Local Search với việc khởi động lại ngẫu nhiên.",
+                    "D. A* với hàm Heuristic tối ưu."
                 ],
                 ans: [0],
-                hint: "Fine-tuning huấn luyện tinh chỉnh mô hình nền tảng bằng tập dữ liệu hẹp để chuyên môn hóa chatbot ➔ <span class='font-bold text-amber-600'>A.</span>"
+                hint: "Quay lui thực chất là thuật toán DFS đi sâu dọc theo nhánh gán trị các biến, quay ngược lên khi phát hiện nhánh đó bị xung đột ➔ <span class='font-bold text-amber-600'>Depth-First Search với việc gán giá trị cho từng biến một.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 160. Khái niệm Generative AI (AI tạo sinh) mô tả loại AI nào?",
+                desc: "Câu 149. Chiến lược Minimum Remaining Values (MRV) giúp chọn biến tiếp theo dựa trên tiêu chí nào?",
                 options: [
-                    "A. AI chỉ dùng để phân loại email spam.",
-                    "B. AI có khả năng tạo ra nội dung mới (như văn bản, hình ảnh, âm thanh, mã nguồn) từ dữ liệu đã học.",
-                    "C. AI dùng để tối ưu hóa thuật toán tìm kiếm mê cung.",
-                    "D. Hệ thống robot lắp ráp tự động."
+                    "A. Biến có nhiều giá trị hợp lệ nhất trong miền giá trị.",
+                    "B. Biến có ít giá trị hợp lệ nhất.",
+                    "C. Biến xuất hiện đầu tiên trong danh sách Alphabet.",
+                    "D. Biến có chi phí gán thấp nhất."
                 ],
                 ans: [1],
-                hint: "AI tạo sinh tự học phân phối xác suất dữ liệu cũ để tổng hợp sinh ra các kết quả nội dung hoàn toàn mới ➔ <span class='font-bold text-amber-600'>B.</span>"
+                hint: "MRV chọn biến có số lượng giá trị khả thi còn lại trong miền ít nhất để gán trước, giảm thiểu sớm độ rộng nhánh cây tìm kiếm ➔ <span class='font-bold text-amber-600'>Biến có ít giá trị hợp lệ nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 150. Chiến lược Degree Heuristic được sử dụng để giải quyết vấn đề gì?",
+                options: [
+                    "A. Chọn giá trị tốt nhất cho một biến.",
+                    "B. Phá vỡ sự bế tắc khi có nhiều biến cùng thỏa mãn tiêu chí MRV bằng cách chọn biến tham gia vào nhiều ràng buộc nhất.",
+                    "C. Loại bỏ các biến không quan trọng khỏi đồ thị.",
+                    "D. Tăng kích thước miền giá trị của các biến."
+                ],
+                ans: [1],
+                hint: "Khi nhiều biến có cùng số lượng miền giá trị (đụng độ MRV), Degree Heuristic ưu tiên chọn biến có nhiều cạnh kết nối ràng buộc nhất để nhanh chóng lan truyền ràng buộc ➔ <span class='font-bold text-amber-600'>Phá vỡ sự bế tắc khi có nhiều biến cùng thỏa mãn tiêu chí MRV bằng cách chọn biến tham gia vào nhiều ràng buộc nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 151. Sau khi chọn một biến, chiến lược Least Constraining Value (LCV) ưu tiên chọn giá trị nào?",
+                options: [
+                    "A. Giá trị loại bỏ ít lựa chọn nhất cho các biến láng giềng.",
+                    "B. Giá trị lớn nhất trong miền giá trị.",
+                    "C. Giá trị gây ra nhiều xung đột nhất để thử thách thuật toán.",
+                    "D. Giá trị ngẫu nhiên."
+                ],
+                ans: [0],
+                hint: "LCV chọn giá trị thân thiện nhất, giữ lại nhiều không gian lựa chọn nhất cho các biến chưa gán kề nó ➔ <span class='font-bold text-amber-600'>Giá trị loại bỏ ít lựa chọn nhất cho các biến láng giềng.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 152. Kỹ thuật Forward Checking giúp cải thiện hiệu suất tìm kiếm như thế nào?",
+                options: [
+                    "A. Lưu lại toàn bộ lịch sử các phép gán sai.",
+                    "B. Theo dõi và thu hẹp miền giá trị của các biến chưa gán có liên quan trực tiếp đến biến vừa gán.",
+                    "C. Tự động gán giá trị cho tất cả các biến cùng một lúc.",
+                    "D. Chuyển bài toán CSP thành bài toán tìm kiếm mù."
+                ],
+                ans: [1],
+                hint: "Mỗi khi gán giá trị cho biến X, Forward Checking quét các biến chưa gán kề X và loại bỏ các giá trị xung đột khỏi miền của chúng, giúp phát hiện sớm nhánh cụt ➔ <span class='font-bold text-amber-600'>Theo dõi và thu hẹp miền giá trị của các biến chưa gán có liên quan trực tiếp đến biến vừa gán.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 153. Một cung X → Y được gọi là nhất quán cung (Arc Consistent) khi nào?",
+                options: [
+                    "A. Với mọi giá trị của X, tồn tại giá trị của Y thỏa mãn ràng buộc giữa chúng.",
+                    "B. Với mọi giá trị của X, mọi giá trị của Y thỏa mãn ràng buộc giữa chúng.",
+                    "C. Khi X và Y có cùng miền giá trị.",
+                    "D. Khi X không có ràng buộc nào với Y ."
+                ],
+                ans: [0],
+                hint: "Nhất quán cung của cung X -> Y đảm bảo rằng với bất kỳ lựa chọn giá trị nào trong miền của X, ta luôn tìm được ít nhất 1 giá trị tương thích trong miền của Y ➔ <span class='font-bold text-amber-600'>Với mọi giá trị của X, tồn tại giá trị của Y thỏa mãn ràng buộc giữa chúng.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 154. Thuật toán AC-3 được sử dụng phổ biến để thực hiện việc gì trong CSP?",
+                options: [
+                    "A. Tìm kiếm giải pháp cuối cùng.",
+                    "B. Lan truyền ràng buộc để đảm bảo tính nhất quán cung trên toàn đồ thị.",
+                    "C. Khởi tạo ngẫu nhiên các cá thể cho quần thể.",
+                    "D. Tính toán chi phí Heuristic."
+                ],
+                ans: [1],
+                hint: "AC-3 là thuật toán kinh điển thực hiện lọc và lan truyền nhất quán cung để rút gọn tối đa miền giá trị các biến trước hoặc trong khi tìm kiếm ➔ <span class='font-bold text-amber-600'>Lan truyền ràng buộc để đảm bảo tính nhất quán cung trên toàn đồ thị.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 155. Trong CSP, việc lan truyền ràng buộc (Constraint Propagation) giúp ích gì cho quá trình tìm kiếm?",
+                options: [
+                    "A. Làm cho không gian trạng thái rộng hơn.",
+                    "B. Phát hiện sớm các thất bại và thu hẹp không gian tìm kiếm bằng cách loại bỏ các giá trị không khả thi.",
+                    "C. Tăng số lượng biến cần gán.",
+                    "D. Thay thế hoàn toàn thuật toán Backtracking."
+                ],
+                ans: [1],
+                hint: "Lan truyền ràng buộc giúp biến đổi bài toán về dạng chặt chẽ hơn, tỉa bỏ các giá trị không tương thích trước khi phải quay lui phức tạp ➔ <span class='font-bold text-amber-600'>Phát hiện sớm các thất bại và thu hẹp không gian tìm kiếm bằng cách loại bỏ các giá trị không khả thi.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 156. Loại bài toán CSP nào có thể được giải trong thời gian tuyến tính O(n)?",
+                options: [
+                    "A. CSP có đồ thị ràng buộc dạng cây.",
+                    "B. CSP có đồ thị ràng buộc là một vòng khép kín.",
+                    "C. CSP có số lượng ràng buộc gấp đôi số lượng biến.",
+                    "D. Mọi bài toán CSP đều có thể giải trong thời gian tuyến tính."
+                ],
+                ans: [0],
+                hint: "Nếu đồ thị ràng buộc không chứa chu trình (dạng cây), ta có thể dùng thuật toán sắp xếp topo kết hợp nhất quán cung để giải bài toán trong thời gian tuyến tính O(n) mà không cần quay lui ➔ <span class='font-bold text-amber-600'>CSP có đồ thị ràng buộc dạng cây.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 157. Thuật toán tìm kiếm cục bộ thường dùng cho CSP là gì?",
+                options: ["A. Min-conflicts.", "B. BFS.", "C. AC-3.", "D. IDS."],
+                ans: [0],
+                hint: "Min-conflicts là thuật toán tìm kiếm cục bộ tối ưu hóa CSP bằng cách chọn biến vi phạm ràng buộc và gán giá trị mới làm giảm thiểu số xung đột ➔ <span class='font-bold text-amber-600'>Min-conflicts.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 158. Thuật toán Min-conflicts chọn giá trị mới cho một biến dựa trên tiêu chí nào?",
+                options: [
+                    "A. Giá trị gây ra số lượng vi phạm ràng buộc ít nhất.",
+                    "B. Giá trị chưa từng được sử dụng trước đó.",
+                    "C. Giá trị lớn nhất có thể gán.",
+                    "D. Giá trị do người dùng nhập vào."
+                ],
+                ans: [0],
+                hint: "Đúng như tên gọi Min-conflicts, thuật toán gán giá trị mới tối thiểu hóa tối đa số lượng xung đột ràng buộc phát sinh ➔ <span class='font-bold text-amber-600'>Giá trị gây ra số lượng vi phạm ràng buộc ít nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 159. Với bài toán tô màu bản đồ Úc (Map Coloring), ràng buộc hai vùng kề nhau không được cùng màu là loại ràng buộc gì?",
+                options: [
+                    "A. Ràng buộc nhị phân.",
+                    "B. Ràng buộc đơn nhất.",
+                    "C. Ràng buộc toàn cục.",
+                    "D. Không phải là ràng buộc."
+                ],
+                ans: [0],
+                hint: "Ràng buộc kiểm tra hai vùng kề nhau (2 thực thể biến số) có cùng màu hay không là ràng buộc nhị phân ➔ <span class='font-bold text-amber-600'>Ràng buộc nhị phân.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 160. Trong bài toán 8-Queens dưới dạng CSP, mỗi biến thường đại diện cho điều gì?",
+                options: [
+                    "A. Từng hàng của bàn cờ.",
+                    "B. Vị trí cột của quân hậu trong từng hàng cụ thể.",
+                    "C. Tổng số ô trên bàn cờ.",
+                    "D. Số lượng quân hậu còn lại."
+                ],
+                ans: [1],
+                hint: "Để mô hình hóa 8-Queens thành CSP hiệu quả, ta đặt 8 biến đại diện cho 8 hàng, giá trị miền của mỗi biến là chỉ số cột từ 1 đến 8 ➔ <span class='font-bold text-amber-600'>Vị trí cột của quân hậu trong từng hàng cụ thể.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 161. Một bài toán CSP được gọi là Overconstrained nếu:",
+                options: [
+                    "A. Có quá nhiều giải pháp hợp lệ.",
+                    "B. Không tồn tại phép gán nào thỏa mãn tất cả các ràng buộc.",
+                    "C. Có ít hơn 2 biến.",
+                    "D. Miền giá trị của các biến là vô hạn."
+                ],
+                ans: [1],
+                hint: "Bài toán bị ràng buộc quá mức (Overconstrained) nghĩa là hệ ràng buộc quá chặt chẽ đến mức không thể tồn tại bất kỳ lời giải nào thỏa mãn ➔ <span class='font-bold text-amber-600'>Không tồn tại phép gán nào thỏa mãn tất cả các ràng buộc.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 162. Tại sao MRV thường được gọi là Fail-first heuristic?",
+                options: [
+                    "A. Vì nó cố tình làm thuật toán thất bại.",
+                    "B. Vì nó ưu tiên thử các biến khó gán nhất để sớm phát hiện nhánh tìm kiếm không có lời giải.",
+                    "C. Vì nó chỉ được dùng khi thuật toán đã thất bại 10 lần.",
+                    "D. Vì nó làm tăng số lần quay lui."
+                ],
+                ans: [1],
+                hint: "MRV chọn biến có miền giá trị hẹp nhất. Nếu biến này không thể gán trị hợp lệ, thuật toán lập tức phát hiện thất bại và quay lui sớm, tránh mất thời gian đi sâu vào nhánh hỏng ➔ <span class='font-bold text-amber-600'>Vì nó ưu tiên thử các biến khó gán nhất để sớm phát hiện nhánh tìm kiếm không có lời giải.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 163. Thuật toán Min-conflicts có ưu điểm gì nổi bật trong thực tế (ví dụ với bài toán N-Queens)?",
+                options: [
+                    "A. Có thể giải bài toán hàng triệu quân hậu trong thời gian gần như không đổi.",
+                    "B. Luôn tìm thấy giải pháp trong bước đầu tiên.",
+                    "C. Không cần sử dụng hàm mục tiêu.",
+                    "D. Tiết kiệm bộ nhớ hơn Backtracking gấp 100 lần."
+                ],
+                ans: [0],
+                hint: "Min-conflicts chạy cực nhanh trên các bài toán CSP có kích thước lớn khi bắt đầu từ một phép gán hoàn chỉnh ngẫu nhiên ➔ <span class='font-bold text-amber-600'>Có thể giải bài toán hàng triệu quân hậu trong thời gian gần như không đổi.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 164. Sự khác biệt giữa gán một phần (Partial assignment) và gán hoàn chỉnh (Complete assignment) là gì?",
+                options: [
+                    "A. Số lượng biến đã được nhận giá trị.",
+                    "B. Độ chính xác của các giá trị.",
+                    "C. Thời gian thực hiện phép gán.",
+                    "D. Loại miền giá trị được sử dụng."
+                ],
+                ans: [0],
+                hint: "Gán một phần chỉ gán giá trị cho một số biến nhất định, còn gán hoàn chỉnh gán giá trị cho tất cả mọi biến của bài toán ➔ <span class='font-bold text-amber-600'>Số lượng biến đã được nhận giá trị.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 165. Trong đồ thị ràng buộc, nếu một nút không có cạnh nối với các nút khác, biến đó có đặc điểm gì?",
+                options: [
+                    "A. Biến đó không tham gia vào bất kỳ ràng buộc nhị phân nào.",
+                    "B. Biến đó không thể gán giá trị.",
+                    "C. Biến đó là biến quan trọng nhất.",
+                    "D. Biến đó luôn có miền giá trị rỗng."
+                ],
+                ans: [0],
+                hint: "Không có cạnh nối nghĩa là biến này độc lập và không bị ràng buộc nhị phân ràng buộc bởi bất kỳ biến lân cận nào khác ➔ <span class='font-bold text-amber-600'>Biến đó không tham gia vào bất kỳ ràng buộc nhị phân nào.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 166. Thuật toán nào sau đây KHÔNG phải là kỹ thuật lan truyền ràng buộc?",
+                options: [
+                    "A. Node consistency.",
+                    "B. Arc consistency.",
+                    "C. Path consistency.",
+                    "D. Simulated Annealing."
+                ],
+                ans: [3],
+                hint: "Tôi thép luyện kim (Simulated Annealing) là giải thuật tìm kiếm cục bộ tối ưu hóa, không phải kỹ thuật lan truyền ràng buộc trong đồ thị CSP ➔ <span class='font-bold text-amber-600'>Simulated Annealing.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 167. Nếu sau khi chạy AC-3, miền giá trị của một biến trở nên rỗng, ta có thể kết luận gì?",
+                options: [
+                    "A. Bài toán có vô số lời giải.",
+                    "B. Bài toán không có lời giải.",
+                    "C. Cần thêm nhiều biến hơn.",
+                    "D. Thuật toán AC-3 bị lỗi."
+                ],
+                ans: [1],
+                hint: "Miền rỗng nghĩa là không tồn tại bất cứ giá trị nào cho biến này thỏa mãn được ràng buộc cung hiện thời, chứng minh bài toán vô nghiệm ➔ <span class='font-bold text-amber-600'>Bài toán không có lời giải.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 168. Tỉ lệ R = số lượng ràng buộc / số lượng biến có ý nghĩa gì đối với độ khó của bài toán CSP?",
+                options: [
+                    "A. Càng cao thì bài toán càng dễ.",
+                    "B. Giúp xác định vùng chuyển pha nơi bài toán trở nên khó giải nhất.",
+                    "C. Không có ý nghĩa gì trong tính toán.",
+                    "D. Luôn bằng 1 đối với mọi bài toán."
+                ],
+                ans: [1],
+                hint: "Tỷ số mật độ ràng buộc giúp dự đoán điểm chuyển pha (phase transition) - điểm ranh giới nơi bài toán chuyển từ dễ giải sang cực khó giải và ngược lại ➔ <span class='font-bold text-amber-600'>Giúp xác định vùng chuyển pha nơi bài toán trở nên khó giải nhất.</span>"
             }
         ];
 
         const uiTranslations = {
             vi: {
                 title: "Luyện Thi Trắc Nghiệm AI",
-                subtitle: "Trắc nghiệm lý thuyết, Python & NumPy, Đạo đức AI, Bài toán tìm kiếm & Học máy",
+                subtitle: "Trắc nghiệm lý thuyết, Python & NumPy, Đạo đức AI, Hệ thống thông minh, Bài toán tìm kiếm & CSP",
                 progress: (curr, total) => `Câu ${curr} / ${total}`,
                 score: (score) => `Điểm: ${score}`,
                 confirmBtn: "Xác nhận",
@@ -2208,13 +2294,13 @@
             } else if (selectedChapter === 'ch4') {
                 sourceData = quizDataVi.slice(50, 70);
             } else if (selectedChapter === 'ch5') {
-                sourceData = quizDataVi.slice(70, 110);
+                sourceData = quizDataVi.slice(70, 100);
             } else if (selectedChapter === 'ch6') {
-                sourceData = quizDataVi.slice(110, 130);
+                sourceData = quizDataVi.slice(100, 120);
             } else if (selectedChapter === 'ch7') {
-                sourceData = quizDataVi.slice(130, 150);
+                sourceData = quizDataVi.slice(120, 139);
             } else if (selectedChapter === 'ch8') {
-                sourceData = quizDataVi.slice(150, 170);
+                sourceData = quizDataVi.slice(139, 168);
             }
 
             activeQuiz = sourceData.map(q => {
