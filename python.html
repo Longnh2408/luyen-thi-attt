@@ -87,7 +87,7 @@
         <!-- Progress & Score -->
         <div id="quizHeader"
             class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
-            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 50</span>
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 100</span>
             <span
                 class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
                 id="scoreText">Điểm: 0</span>
@@ -97,7 +97,7 @@
         <div id="quizBody" class="hidden p-3 sm:p-6 flex flex-col justify-start">
             <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start md:flex-1 w-full max-w-7xl mx-auto">
-                <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
+                <!-- Cột trái: Đề bài, nút bấm và giải thích code -->
                 <div class="space-y-3 sm:space-y-4 text-left w-full">
                     <!-- Question and Type Hint -->
                     <div class="space-y-2">
@@ -188,7 +188,7 @@
                     class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
                     <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
                         <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
-                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 50</span>
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 100</span>
                     </h4>
                     <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
                         Đúng</span>
@@ -247,7 +247,7 @@
 
     <script>
         const quizDataVi = [
-            // CÂU 1 - 30 (BỘ ĐỀ ÔN TẬP ĐƯỢC CUNG CẤP)
+            // CÂU 1 - 30 (BỘ ĐỀ ÔN TẬP PHẦN 1)
             {
                 type: 'single',
                 desc: "Câu 1. Output của đoạn code sau là gì?",
@@ -506,7 +506,7 @@
                     "D. Không có trong số các phương án trên"
                 ],
                 ans: [2],
-                hint: "Phương thức `.drop()` dùng để xóa hàng/cột (trả về bản sao mới), trong khi `del` là từ khóa xóa tại chỗ ➔ <span class='font-bold text-amber-600'>drop( )</span>"
+                hint: "Phương thức `.drop()` của DataFrame được sử dụng để loại bỏ hàng/cột ➔ <span class='font-bold text-amber-600'>drop( )</span>"
             },
             {
                 type: 'single',
@@ -617,194 +617,625 @@
                 hint: "Biểu đồ đường (Line plot) là công cụ tối ưu nhất biểu diễn xu hướng thay đổi dữ liệu theo chuỗi thời gian ➔ <span class='font-bold text-amber-600'>Line (Biểu đồ đường)</span>"
             },
 
-            // CÂU 31 - 50 (CÁC DẠNG ĐỀ TRACING, GIẢI THUẬT & TOÁN TỬ KHÁC)
+            // CÂU 31 - 60 (BỘ ĐỀ ÔN TẬP PHẦN 2)
             {
                 type: 'single',
-                desc: "Câu 31. Cho biết giá trị của biểu thức x == y với:",
-                code: "x = 3\ny = 2.9999999999999999\nprint(x == y)",
-                options: ["A. True", "B. False", "C. Error", "D. None"],
+                desc: "Câu 31. Trong Python, kiểu dữ liệu nào sau đây được định nghĩa bằng cặp dấu ngoặc tròn ( ) và không thể thay đổi giá trị (immutable)?",
+                options: ["A. List", "B. Tuple", "C. Set", "D. Dictionary"],
+                ans: [1],
+                hint: "Tuple được định nghĩa bằng cặp ngoặc tròn `(...)` và có tính chất bất biến (immutable) sau khi khởi tạo ➔ <span class='font-bold text-amber-600'>Tuple</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 32. Lệnh nào sau đây dùng để thêm một phần tử vào cuối danh sách (List)?",
+                options: ["A. list.insert()", "B. list.add()", "C. list.append()", "D. list.extend()"],
+                ans: [2],
+                hint: "Phương thức `.append(item)` được dùng để chèn thêm một phần tử vào cuối danh sách ➔ <span class='font-bold text-amber-600'>list.append()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 33. Để khởi tạo một Set rỗng trong Python, ta sử dụng cú pháp nào?",
+                options: ["A. s = {}", "B. s = []", "C. s = set()", "D. s = ( )"],
+                ans: [2],
+                hint: "Sử dụng `set()` để tạo set rỗng. Viết `{}` sẽ tạo ra một Dictionary rỗng ➔ <span class='font-bold text-amber-600'>s = set()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 34. Trong Python, để khai báo Tuple A có duy nhất 1 phần tử là 1024, cú pháp nào sau đây là đúng?",
+                options: ["A. A={1024}", "B. A=(1024)", "C. A=(1024,]", "D. A=(1024,)"],
+                ans: [3],
+                hint: "Để khai báo tuple có 1 phần tử, bắt buộc phải có dấu phẩy đi sau phần tử đó `(1024,)`, nếu không Python sẽ coi đó là số nguyên nằm trong ngoặc đơn ➔ <span class='font-bold text-amber-600'>A=(1024,)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 35. Từ khóa nào được sử dụng để định nghĩa một hàm trong Python?",
+                options: ["A. func", "B. define", "C. def", "D. function"],
+                ans: [2],
+                hint: "Python định nghĩa hàm bằng từ khóa `def` theo sau là tên hàm và cặp ngoặc đơn ➔ <span class='font-bold text-amber-600'>def</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 36. Hàm trong Python cũng như những ngôn ngữ lập trình khác, khi gọi thực thi lồng nhau thì hệ thống quản lý luồng chạy theo quy tắc nào?",
+                options: ["A. LOFI", "B. LIFO", "C. FIFO", "D. Tất cả đều sai"],
+                ans: [1],
+                hint: "Hệ thống quản lý luồng chạy của hàm theo cơ chế Call Stack hoạt động theo nguyên lý vào sau ra trước ➔ <span class='font-bold text-amber-600'>LIFO</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 37. Vòng lặp nào sẽ được thực hiện ít nhất một lần ngay cả khi điều kiện sai ngay từ đầu?",
+                options: [
+                    "A. while",
+                    "B. for",
+                    "C. do...while (Python không hỗ trợ trực tiếp)",
+                    "D. Không có vòng lặp nào trong Python đảm bảo điều này nếu điều kiện while sai từ đầu hoặc range rỗng."
+                ],
+                ans: [3],
+                hint: "Python chỉ hỗ trợ vòng lặp `for` và `while`. Cả hai vòng lặp này đều kiểm tra điều kiện trước, nên nếu điều kiện sai ngay từ đầu, vòng lặp sẽ không chạy lần nào ➔ <span class='font-bold text-amber-600'>Không có vòng lặp nào trong Python đảm bảo điều này</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 38. Trong cấu trúc Dictionary, các phần tử được lưu trữ dưới dạng nào?",
+                options: ["A. Chỉ số (Index)", "B. Cặp Khóa : Giá trị (Key : Value)", "C. Node liên kết", "D. Mảng nhiều chiều"],
+                ans: [1],
+                hint: "Dictionary lưu trữ các cặp phần tử kết hợp khóa duy nhất và giá trị tương ứng `Key: Value` ➔ <span class='font-bold text-amber-600'>Cập Khóa : Giá trị (Key : Value)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 39. Cho đoạn mã sau: lst = [10, 20, 30, 40, 50]. Giá trị của biểu thức lst[1:4] là gì?",
+                options: ["A. [10, 20, 30]", "B. [20, 30, 40]", "C. [20, 30, 40, 50]", "D. [30, 40, 50]"],
+                ans: [1],
+                hint: "Slice `[1:4]` lấy các phần tử từ chỉ mục 1 đến sát chỉ mục 4 (tức là 1, 2, 3) ➔ <span class='font-bold text-amber-600'>[20, 30, 40]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 40. Kết quả của đoạn mã sau là gì?",
+                code: "x = {1, 2, 3}\ny = {3, 4, 5}\nprint(x & y)",
+                options: ["A. {1, 2, 3, 4, 5}", "B. {3}", "C. {1, 2}", "D. {4, 5}"],
+                ans: [1],
+                hint: "Toán tử `&` đại diện cho phép toán giao (intersection) của set, trả về tập hợp các phần tử chung xuất hiện ở cả hai set ➔ <span class='font-bold text-amber-600'>{3}</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 41. Hàm range(1, 10, 2) sẽ tạo ra dãy số nào?",
+                options: ["A. 1, 2, 3, 4, 5, 6, 7, 8, 9", "B. 1, 3, 5, 7, 9", "C. 2, 4, 6, 8, 10", "D. 1, 3, 5, 7, 9, 11"],
+                ans: [1],
+                hint: "range(start, stop, step) chạy từ 1, bước nhảy 2, dừng lại trước 10 -> 1, 3, 5, 7, 9 ➔ <span class='font-bold text-amber-600'>1, 3, 5, 7, 9</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 42. Cho lst = [5, 7, 2, 9, 6, 3, 10, 17, 16]. Khi thực hiện câu lệnh: lst[-4:-1], kết quả thu được là?",
+                options: ["A. [7, 2, 9]", "B. [9, 6, 3, 10]", "C. [3, 10, 17]", "D. [10, 17, 16]"],
+                ans: [2],
+                hint: "Đọc chỉ mục âm từ cuối lên: `-4` ứng với số 3, `-1` ứng với số 16 (không bao gồm phần tử cuối `-1`), kết quả là [3, 10, 17] ➔ <span class='font-bold text-amber-600'>[3, 10, 17]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 43. Kết quả thu được khi chạy đoạn mã nguồn sau là gì?",
+                code: "A=[1,2,3,\"HCMUTE\",\"LTT\"]\nB=A\nB.append(\"123\")\nC=B\ndel C[1]\nprint(A)",
+                options: [
+                    "A. [1, 3, 'HCMUTE', 'LTT', '123']",
+                    "B. [1, 2, 3, 'HCMUTE', 'LTT', '123']",
+                    "C. Báo lỗi khai báo",
+                    "D. Báo lỗi cú pháp"
+                ],
                 ans: [0],
-                hint: "Do giới hạn độ chính xác lưu trữ dấu phẩy động của chuẩn IEEE 754, giá trị `2.9999999999999999` tự động làm tròn lên thành `3.0` ➔ <span class='font-bold text-amber-600'>True</span>"
+                hint: "Phép gán `B=A` và `C=B` sao chép tham chiếu, tất cả các biến cùng trỏ vào một vùng nhớ danh sách gốc. Thao tác append và del trực tiếp thay đổi danh sách đó ➔ <span class='font-bold text-amber-600'>[1, 3, 'HCMUTE', 'LTT', '123']</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 32. Cho biết giá trị của biến x trong phép toán sau:",
-                code: "x = 2 - 3e2\nprint(x)",
-                options: ["A. -298.0", "B. -1.0", "C. -298", "D. 298.0"],
+                desc: "Câu 44. Điều gì xảy ra khi bạn cố gắng thay đổi giá trị của một phần tử trong Tuple? (Ví dụ: tup[1] = 5)",
+                options: [
+                    "A. Giá trị được cập nhật bình thường.",
+                    "B. Python tự động chuyển Tuple thành List.",
+                    "C. Chương trình báo lỗi (TypeError) vì Tuple là bất biến.",
+                    "D. Phần tử đó bị xóa."
+                ],
+                ans: [2],
+                hint: "Do Tuple là kiểu dữ liệu bất biến (immutable), nên việc gán đè phần tử sẽ ném ra lỗi TypeError ➔ <span class='font-bold text-amber-600'>Chương trình báo lỗi (TypeError)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 45. Cho đoạn mã sau, kết quả in ra màn hình là gì?",
+                code: "my_dict = {\"name\": \"An\", \"age\": 20}\nval = my_dict.get(\"score\", 0)\nprint(val)",
+                options: ["A. None", "B. Báo lỗi KeyError", "C. 0", "D. score"],
+                ans: [2],
+                hint: "Phương thức `.get(key, default)` lấy giá trị theo key, nếu key không tồn tại sẽ trả về giá trị mặc định được thiết lập (ở đây là 0) ➔ <span class='font-bold text-amber-600'>0</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 46. Kết quả của đoạn chương trình sau là gì?",
+                code: "arr = [1, 2, 3]\narr2 = [x * 2 for x in arr]\nprint(arr2)",
+                options: ["A. [1, 2, 3, 1, 2, 3]", "B. [2, 4, 6]", "C. [1, 2, 3, 2, 4, 6]", "D. [1, 4, 9]"],
+                ans: [1],
+                hint: "Cú pháp List Comprehension lặp qua từng phần tử của `arr` nhân 2 và sinh ra danh sách mới ➔ <span class='font-bold text-amber-600'>[2, 4, 6]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 47. Cho đoạn mã sử dụng hàm Lambda, kết quả in ra là gì?",
+                code: "x = lambda a, b : a + b + 10\nprint(x(5, 6))",
+                options: ["A. 11", "B. 15", "C. 16", "D. 21"],
+                ans: [3],
+                hint: "Hàm ẩn danh lambda thực thi biểu thức `5 + 6 + 10 = 21` ➔ <span class='font-bold text-amber-600'>21</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 48. Cho một list: arr = [1, 2, 3, 7, 5, 7, 8, 6]. Kết quả của a=set(arr) là gì?",
+                options: [
+                    "A. {1, 2, 3, 7, 5, 8, 6}",
+                    "B. {1, 2, 3, 5, 6, 7, 8}",
+                    "C. Báo lỗi vì không thể chuyển từ list qua set.",
+                    "D. {1, 2, 3, 7, 5, 7, 8, 6}"
+                ],
+                ans: [1],
+                hint: "Set tự động lọc bỏ các phần tử trùng lặp và lưu trữ các phần tử duy nhất ➔ <span class='font-bold text-amber-600'>{1, 2, 3, 5, 6, 7, 8}</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 49. Hãy xác định kết quả của đoạn mã sau:",
+                code: "a = [10, 20, 30]\nb = a\nb[1] = 99\nprint(a)",
+                options: ["A. [10, 20, 30]", "B. [10, 99, 30]", "C. [99, 20, 30]", "D. Báo lỗi"],
+                ans: [1],
+                hint: "Phép gán `b = a` không sao chép giá trị mà trỏ chung vào cùng một đối tượng List, sự thay đổi qua biến `b` phản ánh trực tiếp lên `a` ➔ <span class='font-bold text-amber-600'>[10, 99, 30]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 50. Kết quả của đoạn mã sau là gì?",
+                code: "x = 50\ndef my_func():\n    global x\n    x = 20\n    print(x, end=\" \")\n\nmy_func()\nprint(x)",
+                options: ["A. 20 50", "B. 20 20", "C. 50 50", "D. 50 20"],
+                ans: [1],
+                hint: "Khai báo `global x` trong hàm báo cho Python sử dụng biến `x` ở phạm vi toàn cục. Khi gán `x = 20`, biến toàn cục thay đổi sang 20 ➔ <span class='font-bold text-amber-600'>20 20</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 51. Cho đoạn mã sau, kết quả in ra màn hình là gì?",
+                code: "x = [1, 2, 3]\ny = []\nif x and y:\n    print(\"A\")\nelif x or y:\n    if len(y):\n        print(\"B\")\n    else:\n        print(\"C\")\nelse:\n    print(\"D\")",
+                options: ["A. A", "B. B", "C. C", "D. D"],
+                ans: [2],
+                hint: "`x` là True (không rỗng), `y` là False (rỗng). Điều kiện `x and y` là False. Điều kiện `x or y` là True. Bên trong `elif`, `len(y)` là 0 (False) nên nhánh `else` được chạy ➔ <span class='font-bold text-amber-600'>C</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 52. Kết quả của đoạn chương trình sau là gì?",
+                code: "x = 5\nif x == 5:\n    x += 1\nif x == 6:\n    x += 2\nelif x == 8:\n    x += 3\nprint(x)",
+                options: ["A. 6", "B. 8", "C. 11", "D. Báo lỗi"],
+                ans: [1],
+                hint: "Hai câu lệnh `if` độc lập liên tiếp đều được chạy. Khi `x = 5`, điều kiện thứ nhất làm `x` tăng lên 6. Điều kiện thứ hai `if x == 6` thỏa mãn làm `x` tăng thêm 2 thành 8. `elif` đi liền sau không chạy ➔ <span class='font-bold text-amber-600'>8</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 53. Lệnh for i in range(3): sẽ duyệt qua các giá trị nào của i?",
+                options: ["A. 1, 2, 3", "B. 0, 1, 2", "C. 0, 1, 2, 3", "D. 1, 2"],
+                ans: [1],
+                hint: "Mặc định `range(N)` sẽ bắt đầu từ 0 và kết thúc sát N (không bao gồm N) -> 0, 1, 2 ➔ <span class='font-bold text-amber-600'>0, 1, 2</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 54. Vòng lặp sau sẽ in ra bao nhiêu dòng trên màn hình?",
+                code: "for char in \"PTITHCM\":\n    print(char)",
+                options: ["A. 1 dòng", "B. 6 dòng", "C. 7 dòng", "D. Báo lỗi cú pháp"],
+                ans: [2],
+                hint: "Chuỗi `"PTITHCM"` gồm 7 ký tự. Vòng lặp duyệt qua từng ký tự và hàm `print` mặc định xuống dòng mỗi lần lặp ➔ <span class='font-bold text-amber-600'>7 dòng</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 55. Từ khóa nào sau đây được sử dụng để thoát khỏi vòng lặp for ngay lập tức mà không chạy các vòng lặp còn lại?",
+                options: ["A. continue", "B. stop", "C. exit", "D. break"],
+                ans: [3],
+                hint: "Từ khóa `break` dùng để ngắt vòng lặp chứa nó ngay lập tức ➔ <span class='font-bold text-amber-600'>break</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 56. Kết quả của phép toán cộng hai List sau là gì?",
+                code: "list1 = [1, 2]\nlist2 = [3, 4]\nprint(list1 + list2)",
+                options: ["A. [4, 6]", "B. [1, 2, 3, 4]", "C. [[1, 2], [3, 4]]", "D. Báo lỗi TypeError"],
+                ans: [1],
+                hint: "Toán tử `+` trên hai List thực hiện phép nối danh sách (concatenation) ghép các phần tử lại với nhau ➔ <span class='font-bold text-amber-600'>[1, 2, 3, 4]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 57. Hàm len() sẽ trả về giá trị bao nhiêu cho đoạn mã sau?",
+                code: "s = {1, 2, 2, 3, 4, 4, 5}\nprint(len(s))",
+                options: ["A. 7", "B. 5", "C. 4", "D. 6"],
+                ans: [1],
+                hint: "Biểu diễn `{...}` chứa các phần tử không có key là một Set. Set tự động loại bỏ trùng lặp, nên `s` thực chất chỉ chứa `{1, 2, 3, 4, 5}` ➔ <span class='font-bold text-amber-600'>5</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 58. Cho đoạn mã sau, kết quả in ra là gì?",
+                code: "lst = [10, 20, 30, 10]\ns = set(lst)\ns.add(40)\nprint(sum(s))",
+                options: ["A. 110", "B. 100", "C. 70", "D. Báo lỗi vì Set không có hàm sum()"],
+                ans: [1],
+                hint: "`set(lst)` tạo tập hợp `{10, 20, 30}` (lọc trùng). Thêm 40 tạo thành `{10, 20, 30, 40}`. Tổng giá trị là `10 + 20 + 30 + 40 = 100` ➔ <span class='font-bold text-amber-600'>100</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 59. Kết quả của đoạn mã sau là gì? (Lưu ý về tham số mặc định là kiểu dữ liệu có thể thay đổi - mutable)",
+                code: "def add_item(item, my_list=[]):\n    my_list.append(item)\n    return my_list\n\nprint(add_item(1))\nprint(add_item(2))",
+                options: ["A. [1] và [2]", "B. [1] và [1, 2]", "C. [1, 2] và [1, 2]", "D. Báo lỗi cú pháp"],
+                ans: [1],
+                hint: "Tham số mặc định mutable (`my_list=[]`) chỉ được khởi tạo một lần khi định nghĩa hàm. Các lần gọi tiếp theo đều dùng chung danh sách này ➔ <span class='font-bold text-amber-600'>[1] và [1, 2]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 60. Cho đoạn mã sau, giá trị của x và y sau khi gọi hàm là gì?",
+                code: "def modify(a, b):\n    a = 10\n    b.append(4)\nx = 5\ny = [1, 2, 3]\nmodify(x, y)\nprint(x, y)",
+                options: ["A. 10 [1, 2, 3, 4]", "B. 5 [1, 2, 3]", "C. 5 [1, 2, 3, 4]", "D. 10 [1, 2, 3]"],
+                ans: [2],
+                hint: "Đối số kiểu nguyên thủy (int) được truyền theo trị nên `x` vẫn giữ nguyên là 5. Đối số kiểu list được truyền theo tham chiếu nên phương thức `.append(4)` làm thay đổi trực tiếp `y` ➔ <span class='font-bold text-amber-600'>5 [1, 2, 3, 4]</span>"
+            },
+
+            // CÂU 61 - 100 (GIẢI THUẬT & TOÀN BỘ CÚ PHÁP PHÁT TRIỂN RỘNG)
+            {
+                type: 'single',
+                desc: "Câu 61. Đoạn code đệ quy tính số Fibonacci sau đây đang thiếu điều kiện dừng cơ sở nào?",
+                code: "def fib(n):\n    # Thể hiện điều kiện dừng cơ sở ở đây\n    return fib(n-1) + fib(n-2)",
+                options: [
+                    "A. if n == 0: return 0\nelif n == 1: return 1",
+                    "B. if n < 0: return 0",
+                    "C. if n <= 2: return 1",
+                    "D. if n < 2: return n"
+                ],
+                ans: [3],
+                hint: "Điều kiện dừng cơ sở đúng nhất cho hàm Fibonacci chuẩn là: `if n < 2: return n` (trả về 0 nếu n=0, và 1 nếu n=1) ➔ <span class='font-bold text-amber-600'>if n < 2: return n</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 62. Kỹ thuật lưu trữ (Memoization) giúp giảm độ phức tạp thời gian tính Fibonacci đệ quy từ O(2^N) xuống còn bao nhiêu?",
+                options: ["A. O(N^2)", "B. O(N)", "C. O(log N)", "D. O(1)"],
+                ans: [1],
+                hint: "Nhờ lưu trữ các kết quả đã tính toán, mỗi trạng thái từ 0 đến N chỉ được tính 1 lần, giúp độ phức tạp thời gian rút gọn từ lũy thừa `O(2^N)` về tuyến tính `O(N)` ➔ <span class='font-bold text-amber-600'>O(N)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 63. Kết quả in ra của chương trình tính Fibonacci tối ưu không gian sau đây là gì?",
+                code: "def fib_opt(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\nprint(fib_opt(6))",
+                options: ["A. 5", "B. 8", "C. 13", "D. 21"],
+                ans: [1],
+                hint: "Quy hoạch động tối ưu không gian: vòng lặp tính chuỗi số Fib là 0, 1, 1, 2, 3, 5, 8. Tại n=6 kết quả trả về `a` là 8 ➔ <span class='font-bold text-amber-600'>8</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 64. Trong trường hợp xấu nhất (mảng sắp xếp ngược chiều mong muốn), độ phức tạp thuật toán Sắp xếp nổi bọt (Bubble Sort) là bao nhiêu?",
+                options: ["A. O(N)", "B. O(N log N)", "C. O(N^2)", "D. O(2^N)"],
+                ans: [2],
+                hint: "Trường hợp xấu nhất Bubble sort phải so sánh và hoán đổi lặp lồng `N*(N-1)/2` lần ➔ <span class='font-bold text-amber-600'>O(N^2)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 65. Giải thuật Sắp xếp nhanh (Quick Sort) hoạt động dựa trên nguyên lý thiết kế thuật toán nào?",
+                options: ["A. Quy hoạch động (Dynamic Programming)", "B. Tham lam (Greedy)", "C. Chia để trị (Divide and Conquer)", "D. Duyệt cạn (Brute Force)"],
+                ans: [2],
+                hint: "Quick Sort chọn một phần tử chốt (pivot), phân chia mảng thành 2 phần (nhỏ hơn và lớn hơn pivot) rồi đệ quy sắp xếp từng phần ➔ <span class='font-bold text-amber-600'>Chia để trị (Divide and Conquer)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 66. Độ phức tạp thời gian trong mọi trường hợp (tốt nhất, trung bình, xấu nhất) của thuật toán Sắp xếp trộn (Merge Sort) là:",
+                options: ["A. O(N log N)", "B. O(N)", "C. O(N^2)", "D. O(log N)"],
                 ans: [0],
-                hint: "Số e biểu diễn khoa học: `3e2` = `300.0`. Do đó `2 - 300.0` = `-298.0` ➔ <span class='font-bold text-amber-600'>-298.0</span>"
+                hint: "Merge sort luôn chia đôi mảng đều đặn (`log N` tầng phân rã) và gộp lại mất `O(N)` tại mỗi tầng ➔ <span class='font-bold text-amber-600'>O(N log N)</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 33. Cho biết giá trị của y sau khi thực hiện đoạn lệnh:",
-                code: "x = 3\ny = 2 + xj",
-                options: ["A. 2+3j", "B. 5j", "C. NameError", "D. SyntaxError"],
-                ans: [2],
-                hint: "Không thể ghép tên biến và ký tự phần ảo `j` trực tiếp thành `xj` được vì Python sẽ coi đó là tên của một biến mới chưa khai báo ➔ <span class='font-bold text-amber-600'>NameError</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 34. Output của đoạn code dưới đây là?",
-                code: "x = [1, 2, 3]\ny = x\ny[0] = 100\nprint(x[0])",
-                options: ["A. 1", "B. 100", "C. IndexError", "D. None"],
-                ans: [1],
-                hint: "Phép gán `y = x` copy tham chiếu vùng nhớ, cả hai trỏ chung một List ➔ <span class='font-bold text-amber-600'>Kết quả là 100</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 35. Quy tắc đặt tên nào sau đây là đúng cho biến Python?",
+                desc: "Câu 67. Giải thuật Dijkstra được sử dụng để giải quyết bài toán nào trên đồ thị?",
                 options: [
-                    "A. 2_my_var = 10",
-                    "B. my-var = 10",
-                    "C. _my_var = 10",
-                    "D. my var = 10"
-                ],
-                ans: [2],
-                hint: "Biến hợp lệ không được bắt đầu bằng số, không chứa dấu gạch ngang `-` hay khoảng trắng. Biến có thể bắt đầu bằng dấu gạch dưới `_` ➔ <span class='font-bold text-amber-600'>_my_var = 10</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 36. Độ phức tạp thời gian (Time Complexity) trung bình của việc tìm kiếm một phần tử trong Dictionary là bao nhiêu?",
-                options: [
-                    "A. O(N)",
-                    "B. O(log N)",
-                    "C. O(1)",
-                    "D. O(N log N)"
-                ],
-                ans: [2],
-                hint: "Dictionary được triển khai dựa trên cơ chế bảng băm (hash table), hỗ trợ tra cứu khóa trung bình với độ phức tạp ➔ <span class='font-bold text-amber-600'>O(1)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 37. Để triển khai cấu trúc dữ liệu Hàng đợi (Queue - FIFO) hiệu quả với thao tác chèn/xóa ở 2 đầu đều đạt O(1), ta nên dùng đối tượng nào trong Python?",
-                options: [
-                    "A. list",
-                    "B. queue.Queue",
-                    "C. collections.deque",
-                    "D. array"
-                ],
-                ans: [2],
-                hint: "Double-ended queue tối ưu hóa thêm/xóa cả hai đầu ➔ <span class='font-bold text-amber-600'>collections.deque</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 38. Thuật toán Tìm kiếm Nhị phân (Binary Search) yêu cầu mảng đầu vào phải có điều kiện gì?",
-                options: [
-                    "A. Phải chứa toàn số nguyên.",
-                    "B. Phải được sắp xếp theo thứ tự (tăng/giảm dần).",
-                    "C. Phải có độ dài là lũy thừa của 2.",
-                    "D. Không cần điều kiện gì."
+                    "A. Tìm chu trình Euler.",
+                    "B. Tìm đường đi ngắn nhất từ một đỉnh nguồn đến mọi đỉnh khác trên đồ thị có trọng số không âm.",
+                    "C. Tìm cây khung nhỏ nhất (Minimum Spanning Tree).",
+                    "D. Kiểm tra tính liên thông mạnh của đồ thị."
                 ],
                 ans: [1],
-                hint: "Binary Search hoạt động trên cơ chế chia đôi vùng tìm kiếm dựa trên tính tuần tự lớn bé ➔ <span class='font-bold text-amber-600'>Đã được sắp xếp</span>"
+                hint: "Dijkstra là giải thuật dùng để tìm đường đi ngắn nhất từ một đỉnh nguồn đến mọi đỉnh khác trên đồ thị có trọng số không âm ➔ <span class='font-bold text-amber-600'>Tìm đường đi ngắn nhất từ một đỉnh nguồn...</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 39. Trong Python, decorator tích hợp nào dùng để tự động áp dụng Memoization vào hàm đệ quy?",
+                desc: "Câu 68. Giải thuật Prim và Kruskal được sử dụng cho mục đích nào sau đây?",
                 options: [
-                    "A. @functools.cache (hoặc @lru_cache)",
-                    "B. @functools.memoize",
-                    "C. @functools.wrap",
-                    "D. @property"
+                    "A. Tìm kiếm theo chiều sâu (DFS) trên đồ thị.",
+                    "B. Tìm cây khung nhỏ nhất (Minimum Spanning Tree) của đồ thị vô hướng có trọng số.",
+                    "C. Giải bài toán luồng cực đại trên mạng.",
+                    "D. Tìm đường đi ngắn nhất giữa mọi cặp đỉnh."
+                ],
+                ans: [1],
+                hint: "Cả hai thuật toán Prim và Kruskal đều được dùng để tìm cây khung nhỏ nhất của đồ thị vô hướng có trọng số ➔ <span class='font-bold text-amber-600'>Tìm cây khung nhỏ nhất...</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 69. Thứ tự duyệt cây nhị phân theo thứ tự giữa (Inorder traversal) là gì?",
+                options: [
+                    "A. Gốc ➔ Trái ➔ Phải",
+                    "B. Trái ➔ Gốc ➔ Phải",
+                    "C. Trái ➔ Phải ➔ Gốc",
+                    "D. Gốc ➔ Phải ➔ Trái"
+                ],
+                ans: [1],
+                hint: "Duyệt cây thứ tự giữa thực hiện duyệt đệ quy cây con bên Trái, sau đó thăm nút Gốc, rồi duyệt cây con bên Phải ➔ <span class='font-bold text-amber-600'>Trái ➔ Gốc ➔ Phải</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 70. Để định giá một biểu thức dạng hậu tố (Postfix - Reverse Polish Notation) như `3 4 + 2 *`, cấu trúc dữ liệu nào là phù hợp nhất?",
+                options: ["A. Queue", "B. Graph", "C. Stack", "D. Heap"],
+                ans: [2],
+                hint: "Toán hạng được đưa vào Stack; khi gặp toán tử, ta lấy 2 toán hạng trên cùng ra tính toán rồi đẩy lại vào Stack ➔ <span class='font-bold text-amber-600'>Stack</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 71. Kết quả in ra màn hình của đoạn code List Comprehension lồng dưới đây là gì?",
+                code: "matrix = [[1, 2], [3, 4]]\nflat = [num for row in matrix for num in row]\nprint(flat)",
+                options: ["A. [[1, 2], [3, 4]]", "B. [1, 2, 3, 4]", "C. [1, 3, 2, 4]", "D. [2, 4]"],
+                ans: [1],
+                hint: "List Comprehension lồng hoạt động từ trái sang phải: duyệt qua từng `row` rồi duyệt qua từng `num` trong `row` đó để trải phẳng mảng ➔ <span class='font-bold text-amber-600'>[1, 2, 3, 4]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 72. Sử dụng từ khóa yield thay cho return trong hàm Python tạo ra đối tượng thuộc kiểu nào?",
+                options: ["A. List", "B. Iterator", "C. Generator", "D. Coroutine"],
+                ans: [2],
+                hint: "Từ khóa `yield` tạm dừng hàm và trả về một phần tử mỗi lần gọi, biến hàm đó thành một Generator (tiết kiệm bộ nhớ) ➔ <span class='font-bold text-amber-600'>Generator</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 73. Kết quả in ra của câu lệnh cắt chuỗi sau là gì?",
+                code: "text = \"Hello World\"\nprint(text[1:8:2])",
+                options: ["A. el o", "B. elW", "C. elWr", "D. eowr"],
+                ans: [0],
+                hint: "Cắt chuỗi `[start:stop:step]` bắt đầu từ index 1 (`'e'`), nhảy bước 2 ký tự đến index 7 (`'o'`), trả về `e`, `l`, ` `, `o` ➔ <span class='font-bold text-amber-600'>el o</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 74. Từ khóa pass trong Python có vai trò gì?",
+                options: [
+                    "A. Kết thúc ngay lập tức chương trình đang chạy.",
+                    "B. Là một câu lệnh rỗng (null statement) dùng làm trình giữ chỗ khi chưa viết code triển khai.",
+                    "C. Nhảy đến vòng lặp kế tiếp.",
+                    "D. Chuyển kiểu dữ liệu của biến."
+                ],
+                ans: [1],
+                hint: "Từ khóa `pass` là lệnh rỗng giữ đúng cú pháp cấu trúc Python (như trong định nghĩa hàm, lớp hoặc khối điều kiện trống) ➔ <span class='font-bold text-amber-600'>Là một câu lệnh rỗng (null statement)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 75. Kết quả in ra của câu lệnh lọc sau đây là gì?",
+                code: "nums = [1, 2, 3, 4]\nres = list(filter(lambda x: x % 2 == 0, nums))\nprint(res)",
+                options: ["A. [1, 3]", "B. [2, 4]", "C. [2]", "D. [1, 2, 3, 4]"],
+                ans: [1],
+                hint: "Hàm `filter()` giữ lại những phần tử thỏa mãn điều kiện trả về True trong hàm kiểm tra (ở đây là số chẵn) ➔ <span class='font-bold text-amber-600'>[2, 4]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 76. Trong khối xử lý ngoại lệ try-except-finally, khối finally sẽ được thực hiện khi nào?",
+                options: [
+                    "A. Chỉ khi có lỗi (exception) xảy ra.",
+                    "B. Chỉ khi không có lỗi (exception) xảy ra.",
+                    "C. Luôn luôn được thực hiện bất kể có xảy ra lỗi hay không.",
+                    "D. Chỉ thực thi khi có câu lệnh return."
+                ],
+                ans: [2],
+                hint: "Khối `finally` được đảm bảo luôn luôn chạy để giải phóng tài nguyên bất kể khối `try` có xảy ra lỗi hay không ➔ <span class='font-bold text-amber-600'>Luôn luôn được thực hiện...</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 77. Mục đích chính của câu lệnh assert trong Python là gì?",
+                options: [
+                    "A. Để ép kiểu dữ liệu.",
+                    "B. Để kiểm tra tính đúng đắn của một điều kiện (gỡ lỗi) và ném ra AssertionError nếu điều kiện sai.",
+                    "C. Để dừng vòng lặp.",
+                    "D. Định nghĩa biến hằng số."
+                ],
+                ans: [1],
+                hint: "Lệnh `assert` dùng để kiểm thử giả định lập trình. Nếu điều kiện False, hệ thống ném ngoại lệ AssertionError ➔ <span class='font-bold text-amber-600'>Để kiểm tra tính đúng đắn của một điều kiện</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 78. Điểm khác biệt lớn nhất giữa isinstance(obj, Class) và type(obj) == Class là gì?",
+                options: [
+                    "A. isinstance() chậm hơn.",
+                    "B. isinstance() hỗ trợ kiểm tra kế thừa (trả về True nếu obj thuộc lớp con của Class), còn type() thì không.",
+                    "C. type() kiểm tra được cả các kiểu dữ liệu tự định nghĩa.",
+                    "D. Không có sự khác biệt."
+                ],
+                ans: [1],
+                hint: "Hàm `isinstance` kiểm tra cả tính kế thừa (lớp cha/con), trong khi `type` so sánh kiểu trực tiếp không tính kế thừa ➔ <span class='font-bold text-amber-600'>isinstance() hỗ trợ kiểm tra kế thừa</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 79. Ưu điểm lớn nhất của việc sử dụng cấu trúc `with open('file.txt') as f:` để đọc ghi file là gì?",
+                options: [
+                    "A. File được đọc ghi nhanh hơn.",
+                    "B. Tự động đóng file an toàn sau khi thoát khỏi khối lệnh của `with` kể cả khi có ngoại lệ xảy ra.",
+                    "C. File được mã hóa bảo mật.",
+                    "D. Tránh được việc dùng bộ nhớ RAM."
+                ],
+                ans: [1],
+                hint: "Cấu trúc `with` đóng vai trò Context Manager, tự động giải phóng luồng tệp tin an toàn khi hoàn tất ➔ <span class='font-bold text-amber-600'>Tự động đóng file an toàn</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 80. Khi sao chép một danh sách lồng ghép (như x = [[1, 2]]), sự khác biệt giữa copy.copy(x) (Shallow) và copy.deepcopy(x) (Deep) là gì?",
+                options: [
+                    "A. Shallow copy tạo ra đối tượng nhanh hơn.",
+                    "B. Shallow copy chỉ sao chép danh sách ngoài cùng, các danh sách con bên trong vẫn dùng chung tham chiếu; còn Deep copy sao chép đệ quy toàn bộ cấu trúc độc lập.",
+                    "C. Deep copy không hoạt động trên kiểu dữ liệu tự định nghĩa.",
+                    "D. Cả hai đều tạo ra hai danh sách hoàn toàn độc lập."
+                ],
+                ans: [1],
+                hint: "Sao chép nông (shallow copy) không nhân bản các đối tượng lồng bên trong. Sao chép sâu (deep copy) sao chép đệ quy tạo thực thể độc lập hoàn toàn ➔ <span class='font-bold text-amber-600'>Shallow copy chỉ sao chép danh sách ngoài cùng...</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 81. Phương thức đặc biệt __init__ trong Class Python có chức năng gì?",
+                options: [
+                    "A. Giải phóng bộ nhớ của đối tượng.",
+                    "B. Là phương thức khởi tạo (constructor) được tự động gọi khi tạo mới một đối tượng từ Class.",
+                    "C. Dùng để in thông tin đối tượng ra màn hình.",
+                    "D. Dùng để nạp chồng các toán tử."
+                ],
+                ans: [1],
+                hint: "Phương thức `__init__` đóng vai trò hàm khởi dựng thiết lập các giá trị ban đầu cho đối tượng thuộc lớp ➔ <span class='font-bold text-amber-600'>Là phương thức khởi tạo (constructor)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 82. Output của đoạn mã hướng đối tượng dưới đây là gì?",
+                code: "class Dog:\n    kind = 'Canine' # class variable\n    def __init__(self, name):\n        self.name = name # instance variable\n\na = Dog('Fido')\nb = Dog('Buddy')\nDog.kind = 'Feline'\nprint(a.kind, b.kind)",
+                options: ["A. Canine Canine", "B. Canine Feline", "C. Feline Feline", "D. Fido Buddy"],
+                ans: [2],
+                hint: "Biến lớp (class variable) `kind` được chia sẻ chung. Khi cập nhật `Dog.kind = 'Feline'`, cả `a.kind` và `b.kind` đều nhận giá trị này ➔ <span class='font-bold text-amber-600'>Feline Feline</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 83. Trong kế thừa, hàm super() được dùng để làm gì?",
+                options: [
+                    "A. Gọi các thuộc tính ở lớp con.",
+                    "B. Ủy quyền gọi phương thức hoặc hàm khởi tạo của lớp cha (superclass).",
+                    "C. Tạo ra một thực thể mới của lớp cha.",
+                    "D. Xóa phương thức ở lớp con."
+                ],
+                ans: [1],
+                hint: "Hàm `super()` lấy tham chiếu của lớp cha kế thừa trực tiếp, hỗ trợ ủy quyền gọi phương thức của lớp cha ➔ <span class='font-bold text-amber-600'>Ủy quyền gọi phương thức... của lớp cha</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 84. Python tìm kiếm phương thức để gọi theo thứ tự kế thừa của đa kế thừa dựa vào thuộc tính đặc biệt nào?",
+                options: ["A. __dict__", "B. __mro__", "C. __bases__", "D. __class__"],
+                ans: [1],
+                hint: "MRO (Method Resolution Order) lưu giữ thứ tự ưu tiên phân giải các lớp cha kế thừa trong thuộc tính đặc biệt `__mro__` ➔ <span class='font-bold text-amber-600'>__mro__</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 85. Quy tắc Name Mangling trong Python biến thuộc tính tự định nghĩa dạng `__value` bên trong Class `MyClass` thành tên nào ở bên ngoài?",
+                options: ["A. __value", "B. _value", "C. _MyClass__value", "D. MyClass__value"],
+                ans: [2],
+                hint: "Để tránh đè tên trong kế thừa, các thuộc tính có tiền tố hai dấu gạch dưới tự động đổi dạng thành `_TênLớp__tênThuộcTính` ➔ <span class='font-bold text-amber-600'>_MyClass__value</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 86. Điểm khác biệt chính giữa @classmethod và @staticmethod là gì?",
+                options: [
+                    "A. @classmethod nhận đối số đầu tiên là chính Class (cls), còn @staticmethod không nhận đối số mặc định chỉ ra Class hay đối tượng.",
+                    "B. @staticmethod nhận đối số là đối tượng (self).",
+                    "C. @classmethod chỉ có thể gọi được từ Class.",
+                    "D. Không có sự khác biệt."
                 ],
                 ans: [0],
-                hint: "Lưu trữ kết quả gọi hàm trước đó tránh tính toán lại ➔ <span class='font-bold text-amber-600'>@functools.cache (hoặc @lru_cache)</span>"
+                hint: "Classmethod liên kết với lớp nhận tham số `cls`, staticmethod chạy độc lập như hàm thông thường nằm trong namespace của lớp ➔ <span class='font-bold text-amber-600'>@classmethod nhận đối số đầu tiên là chính Class (cls)</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 40. Kỹ thuật Cửa sổ trượt (Sliding Window) thường dùng để xử lý bài toán:",
+                desc: "Câu 87. Để đếm số lần xuất hiện của các giá trị duy nhất trong một cột (Series) của Pandas, ta dùng hàm nào?",
+                options: ["A. unique()", "B. nunique()", "C. value_counts()", "D. count()"],
+                ans: [2],
+                hint: "Phương thức `.value_counts()` đếm tần suất xuất hiện của từng giá trị duy nhất trong cột dữ liệu ➔ <span class='font-bold text-amber-600'>value_counts()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 88. Lệnh trộn DataFrame `pd.merge(df1, df2, on='key', how='left')` sẽ giữ lại các hàng nào?",
                 options: [
-                    "A. Tìm kiếm phần tử trên cây.",
-                    "B. Tìm chuỗi con hoặc mảng con liên tiếp thỏa mãn điều kiện tối ưu.",
-                    "C. Sắp xếp danh sách liên kết.",
-                    "D. Tính lũy thừa nhanh."
+                    "A. Chỉ các hàng có 'key' khớp nhau ở cả hai DataFrame.",
+                    "B. Giữ lại tất cả các hàng của bảng bên trái (df1), các cột tương ứng của bảng bên phải (df2) không khớp sẽ nhận giá trị NaN.",
+                    "C. Giữ lại tất cả các hàng của bảng bên phải (df2).",
+                    "D. Giữ lại toàn bộ hàng của cả hai bảng."
                 ],
                 ans: [1],
-                hint: "Sliding Window duy trì một phân đoạn liên tiếp thay đổi kích cỡ hoặc trượt đều qua mảng ➔ <span class='font-bold text-amber-600'>Tìm mảng con liên tiếp tối ưu</span>"
+                hint: "how='left' thực hiện phép Left Outer Join, bảo toàn toàn bộ bản ghi của DataFrame nguồn bên trái (df1) ➔ <span class='font-bold text-amber-600'>Giữ lại tất cả các hàng của bảng bên trái (df1)...</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 41. Để xây dựng cấu trúc dữ liệu Min-Heap (Hàng đợi ưu tiên) trong Python, ta dùng module nào?",
+                desc: "Câu 89. Kết quả in ra của câu lệnh tính trung bình theo nhóm dưới đây là gì?",
+                code: "import pandas as pd\ndf = pd.DataFrame({\"Group\": [\"A\", \"A\", \"B\"], \"Val\": [10, 20, 30]})\nres = df.groupby(\"Group\")[\"Val\"].mean()\nprint(res[\"A\"])",
+                options: ["A. 10", "B. 15.0", "C. 20.0", "D. 30"],
+                ans: [1],
+                hint: "Nhóm 'A' chứa 2 phần tử 10 và 20. Phép trung bình tính ra: `(10 + 20) / 2 = 15.0` ➔ <span class='font-bold text-amber-600'>15.0</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 90. Hàm nào được dùng để lọc dòng chứa một chuỗi con cụ thể trong cột Series của Pandas?",
+                options: ["A. df['Col'].contains()", "B. df['Col'].str.contains()", "C. df['Col'].find()", "D. df['Col'].str.find()"],
+                ans: [1],
+                hint: "Sử dụng `.str.contains('chuỗi_con')` để kiểm tra chuỗi con trả về mảng Boolean phục vụ cho việc lọc dữ liệu ➔ <span class='font-bold text-amber-600'>df['Col'].str.contains()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 91. Ghép nối hai DataFrame bằng pd.concat([df1, df2], axis=1) thực hiện công việc gì?",
                 options: [
-                    "A. heap",
-                    "B. priorityqueue",
-                    "C. heapq",
-                    "D. bisect"
+                    "A. Xếp chồng các dòng của df2 dưới df1.",
+                    "B. Ghép ngang hai DataFrame sát cánh nhau theo cột.",
+                    "C. Chỉ giữ lại các cột giống nhau.",
+                    "D. Trả về lỗi do không chỉ định key."
                 ],
+                ans: [1],
+                hint: "Tham số `axis=1` chỉ định ghép nối dữ liệu theo trục ngang, xếp các DataFrame cạnh nhau theo cột chung chỉ mục dòng ➔ <span class='font-bold text-amber-600'>Ghép ngang hai DataFrame sát cánh nhau theo cột.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 92. Thuộc tính nào hiển thị kiểu dữ liệu của từng cột trong Pandas DataFrame?",
+                options: ["A. types", "B. type", "C. dtypes", "D. info"],
                 ans: [2],
-                hint: "Cung cấp các hàm tạo cấu trúc đống nhị phân heap trực tiếp trên kiểu dữ liệu List ➔ <span class='font-bold text-amber-600'>heapq</span>"
+                hint: "Thuộc tính `df.dtypes` liệt kê chi tiết các kiểu dữ liệu của tất cả các cột trong bảng ➔ <span class='font-bold text-amber-600'>dtypes</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 42. Lọc chỉ số nhãn dòng và nhãn cột trong DataFrame: df.loc[0, 'B'] trả về giá trị nào?",
-                code: "# Cho df:\n#    A   B\n# 0  5  10\n# 1  6  20\nresult = df.loc[0, 'B']\nprint(result)",
-                options: ["A. 5", "B. 6", "C. 10", "D. 20"],
-                ans: [2],
-                hint: "Định vị theo nhãn loc lấy hàng có nhãn 0, cột nhãn 'B' ➔ <span class='font-bold text-amber-600'>10</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 43. Lọc các dòng có cột Age > 20: df[df['Age'] > 20] trả về dòng chứa chỉ mục nào?",
-                code: "# Cho df:\n#    Age\n# 0   15\n# 1   25\nresult = df[df['Age'] > 20]\nprint(result)",
-                options: ["A. Dòng index 0", "B. Dòng index 1", "C. Cả 2 dòng", "D. Không dòng nào"],
+                desc: "Câu 93. Cách nào sau đây lấy nhanh số lượng hàng (dòng) của DataFrame 'df'?",
+                options: ["A. df.count()", "B. len(df)", "C. df.length()", "D. df.rows"],
                 ans: [1],
-                hint: "Chỉ dòng index 1 có giá trị Age=25 lớn hơn 20 thỏa mãn điều kiện lọc ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
+                hint: "Hàm tích hợp `len(df)` trả về độ dài chiều dọc của DataFrame, tương đương với số hàng hiện có ➔ <span class='font-bold text-amber-600'>len(df)</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 44. Tính tổng toàn bộ các phần tử thuộc cột X: df['X'].sum() trả về giá trị nào?",
-                code: "import pandas as pd\ndf = pd.DataFrame({\"X\": [1, 2, 3]})\nprint(df[\"X\"].sum())",
-                options: ["A. 3", "B. 6", "C. 1", "D. Error"],
-                ans: [1],
-                hint: "Tổng giá trị cột X: 1 + 2 + 3 = 6 ➔ <span class='font-bold text-amber-600'>6</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 45. Câu lệnh điền NaN dưới đây thay đổi ô NaN thành giá trị nào?",
-                code: "# Cho df:\n#    Score\n# 0   80.0\n# 1    NaN\n# 2   90.0\nresult = df.fillna(0)\nprint(result)",
-                options: ["A. 90.0", "B. 0", "C. None", "D. Không thay đổi"],
-                ans: [1],
-                hint: "Hàm fillna(value) sẽ thay thế toàn bộ giá trị khuyết NaN trong bảng thành giá trị chỉ định ➔ <span class='font-bold text-amber-600'>0</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 46. Khi thực thi dropna(), hàng chứa nhãn index nào bị loại bỏ?",
-                code: "# Cho df:\n#    Score\n# 0   80.0\n# 1    NaN\n# 2   90.0\nresult = df.dropna()\nprint(result)",
-                options: ["A. Dòng index 0", "B. Dòng index 1", "C. Dòng index 2", "D. Cả 3 dòng"],
-                ans: [1],
-                hint: "dropna() xóa bỏ tất cả các dòng chứa ít nhất một phần tử khuyết NaN (dòng index 1) ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 47. Chỉ mục index mặc định của DataFrame khi in ra tolist() là gì?",
-                code: "import pandas as pd\ndf = pd.DataFrame({\"X\": [10, 20]})\nprint(df.index.tolist())",
-                options: ["A. [10, 20]", "B. [0, 1]", "C. ['X']", "D. []"],
-                ans: [1],
-                hint: "Chỉ số index mặc định khi tạo mới DataFrame bắt đầu từ 0 ➔ <span class='font-bold text-amber-600'>[0, 1]</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 48. Danh sách tên các cột khi in ra tolist() là gì?",
-                code: "# Cho df:\n#    A\n# 0  1\n# 1  2\nresult = df.columns.tolist()\nprint(result)",
-                options: ["A. ['A']", "B. [0, 1]", "C. [1, 2]", "D. Error"],
+                desc: "Câu 94. Cú pháp đổi tên cột 'old' thành 'new' hợp lệ trong Pandas là:",
+                options: [
+                    "A. df.rename(columns={'old': 'new'})",
+                    "B. df.rename(cols={'old' -> 'new'})",
+                    "C. df.rename('old' = 'new')",
+                    "D. df.columns.rename('old', 'new')"
+                ],
                 ans: [0],
-                hint: "columns.tolist() trả về danh sách các nhãn tiêu đề của cột ➔ <span class='font-bold text-amber-600'>['A']</span>"
+                hint: "Đổi tên cột/chỉ mục bằng cách truyền một dictionary tương ứng nhãn cũ và nhãn mới vào `.rename(columns=...)` ➔ <span class='font-bold text-amber-600'>df.rename(columns={'old': 'new'})</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 49. Kết quả tính trung bình cộng Series dưới đây là gì?",
-                code: "import pandas as pd\ns = pd.Series([1, 2, 3])\nprint(s.mean())",
-                options: ["A. 6", "B. 2.0", "C. 3", "D. Error"],
-                ans: [1],
-                hint: "Tính trung bình cộng của dãy số: (1 + 2 + 3) / 3 = 2.0 ➔ <span class='font-bold text-amber-600'>2.0</span>"
+                desc: "Câu 95. Hàm nào trả về một DataFrame chứa các giá trị Boolean True tại những vị trí bị thiếu dữ liệu (NaN)?",
+                options: ["A. isna()", "B. isempty()", "C. ismissing()", "D. isnull_or_empty()"],
+                ans: [0],
+                hint: "Hàm `.isna()` hoặc `.isnull()` trả về ma trận boolean đánh dấu True tại các ô khuyết dữ liệu NaN ➔ <span class='font-bold text-amber-600'>isna()</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 50. Tổng số dòng (len) sau khi ghép nối concat dọc hai DataFrame là?",
-                code: "import pandas as pd\ndf1 = pd.DataFrame({\"A\": [1]})\ndf2 = pd.DataFrame({\"A\": [2]})\nres = pd.concat([df1, df2], axis=0)\nprint(len(res))",
-                options: ["A. 1", "B. 2", "C. 3", "D. Error"],
+                desc: "Câu 96. Phương thức xuất dữ liệu từ DataFrame ra tệp CSV là gì?",
+                options: ["A. write_csv()", "B. to_csv()", "C. export_csv()", "D. save_csv()"],
                 ans: [1],
-                hint: "concat dọc (axis=0) xếp chồng các dòng lên nhau, 1 dòng + 1 dòng = 2 dòng ➔ <span class='font-bold text-amber-600'>2</span>"
+                hint: "Sử dụng phương thức `.to_csv('tên_file.csv')` để xuất dữ liệu ra định dạng tệp tin CSV ➔ <span class='font-bold text-amber-600'>to_csv()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 97. Câu lệnh nào tìm giá trị lớn nhất trong cột 'Score' của DataFrame 'df'?",
+                options: ["A. df['Score'].max_value()", "B. df['Score'].maximum()", "C. df['Score'].max()", "D. max(df['Score'])"],
+                ans: [2],
+                hint: "Gọi hàm `.max()` trên Series để lấy ra giá trị lớn nhất có trong cột đó ➔ <span class='font-bold text-amber-600'>df['Score'].max()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 98. Để thiết lập một cột có sẵn trong DataFrame làm chỉ mục (Index), ta dùng phương thức nào?",
+                options: ["A. set_index()", "B. make_index()", "C. change_index()", "D. reset_index()"],
+                ans: [0],
+                hint: "Sử dụng `.set_index('tên_cột')` để đặt cột đó làm chỉ số nhãn dòng của DataFrame ➔ <span class='font-bold text-amber-600'>set_index()</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 99. Biểu thức logic nào sau đây trả về kết quả là False do sai số dấu phẩy động?",
+                options: [
+                    "A. 0.1 + 0.2 == 0.3",
+                    "B. 0.5 + 0.2 == 0.7",
+                    "C. 0.1 + 0.1 == 0.2",
+                    "D. Tất cả đều ra True"
+                ],
+                ans: [0],
+                hint: "Số thực `0.1` và `0.2` khi chuyển sang hệ nhị phân bị vô hạn tuần hoàn dẫn đến sai số làm tròn, `0.1 + 0.2` = `0.30000000000000004` ➔ <span class='font-bold text-amber-600'>0.1 + 0.2 == 0.3</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 100. Độ phức tạp thời gian trong trường hợp xấu nhất (Worst-case) của thuật toán Timsort (thuật toán sắp xếp mặc định của Python) là gì?",
+                options: ["A. O(N)", "B. O(N log N)", "C. O(N^2)", "D. O(log N)"],
+                ans: [1],
+                hint: "Timsort là sự kết hợp tối ưu giữa Merge Sort và Insertion Sort, độ phức tạp xấu nhất vẫn đảm bảo mức tối đa là ➔ <span class='font-bold text-amber-600'>O(N log N)</span>"
             }
         ];
 
