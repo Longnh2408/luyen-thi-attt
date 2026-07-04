@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Thi Trắc Nghiệm Python - Basic to Advanced</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .option-item {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .selected {
+            border-color: #3b82f6 !important;
+            background-color: #eff6ff !important;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+        }
+
+        .correct {
+            border-color: #10b981 !important;
+            background-color: #ecfdf5 !important;
+            color: #065f46 !important;
+        }
+
+        .wrong {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+            color: #991b1b !important;
+        }
+
+        .missed {
+            border-color: #f59e0b !important;
+            background-color: #fffbeb !important;
+            color: #92400e !important;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 min-h-screen w-full flex flex-col justify-start items-center text-slate-100 p-0 sm:p-4">
+
+    <div id="cardWrapper"
+        class="w-full min-h-screen sm:min-h-[90vh] max-w-4xl bg-slate-800 sm:rounded-3xl flex flex-col transition-all duration-300 shadow-2xl overflow-hidden border border-slate-700/50">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 py-4 px-6 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 relative overflow-hidden">
+            <!-- Decorative python-like gradient background overlay -->
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"></div>
+            <div class="absolute -left-10 -top-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
+
+            <div class="text-center sm:text-left z-10">
+                <h1 id="appTitle" class="text-xl sm:text-3xl font-extrabold tracking-tight flex items-center justify-center sm:justify-start gap-2">
+                    <span class="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">Python</span> Mastery Quiz
+                </h1>
+                <p id="appSubtitle" class="text-blue-100/80 mt-1 text-xs sm:text-sm font-medium tracking-wide">
+                    🐍 Trắc nghiệm ôn tập từ Cơ bản đến Nâng cao
+                </p>
+            </div>
+            
+            <div class="text-center self-center sm:self-auto z-10">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-900/40 hover:bg-slate-900/60 text-[11px] sm:text-xs font-semibold rounded-full border border-blue-400/20 transition-all text-blue-200">
+                    ☕ Luyện thi Java Web
+                </a>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="p-8 flex flex-col justify-center items-center text-center flex-1 space-y-8 my-auto">
+            <div class="space-y-4">
+                <div class="relative flex items-center justify-center">
+                    <div class="absolute w-24 h-24 bg-blue-500/20 rounded-full animate-ping"></div>
+                    <div class="relative p-5 bg-slate-700 text-yellow-400 rounded-2xl text-5xl shadow-lg border border-slate-600">
+                        🐍
+                    </div>
+                </div>
+                
+                <h2 id="startTitle" class="text-2xl sm:text-3xl font-extrabold text-white">Chinh Phục Python 100%</h2>
+                <p id="startSubtitle" class="text-slate-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+                    Hệ thống gồm 50 câu hỏi trắc nghiệm chất lượng cao. Ôn tập sâu sắc về cú pháp cơ bản, OOP, Decorators, Generator, Asyncio, GIL và cơ chế quản lý bộ nhớ trong Python.
+                </p>
+            </div>
+
+            <button id="btnStartPractice" onclick="startPractice()"
+                class="w-full sm:w-auto min-w-[200px] px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold text-base rounded-2xl transition-all shadow-lg hover:shadow-blue-500/20 transform active:scale-95">
+                Bắt đầu luyện tập 🚀
+            </button>
+        </div>
+
+        <!-- Progress Bar & Score -->
+        <div id="quizHeader"
+            class="hidden justify-between items-center px-6 py-3 bg-slate-800/80 border-b border-slate-700/50 flex-shrink-0">
+            <div class="flex flex-col gap-1 w-full max-w-[250px]">
+                <span class="font-bold text-xs text-slate-400 uppercase tracking-wider" id="progressText">Câu 1 / 50</span>
+                <div class="w-full bg-slate-700 rounded-full h-1.5 overflow-hidden">
+                    <div id="progressBar" class="bg-blue-500 h-full rounded-full transition-all duration-300" style="width: 2%"></div>
+                </div>
+            </div>
+            <span
+                class="font-bold text-sm text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/20 shadow-sm"
+                id="scoreText">Điểm: 0</span>
+        </div>
+
+        <!-- Question Area -->
+        <div id="quizBody" class="hidden p-4 sm:p-8 flex flex-col justify-start flex-1">
+            <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start w-full max-w-7xl mx-auto flex-1">
+                <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
+                <div class="space-y-4 text-left w-full">
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-blue-400 font-bold tracking-widest uppercase" id="questionTypeHint">
+                            * Chọn 1 đáp án đúng nhất.
+                        </p>
+                        <h2 class="text-lg sm:text-xl font-bold text-white whitespace-pre-line leading-relaxed code-font bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50"
+                            id="questionText">Đang tải câu hỏi...</h2>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-row gap-3 justify-between items-center bg-slate-700/30 p-2.5 rounded-xl border border-slate-700/40">
+                        <button id="btnShowHint" onclick="showHint()"
+                            class="px-4 py-2 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 text-xs sm:text-sm font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-amber-500/20">
+                            Xem Mẹo Nhớ 💡
+                        </button>
+
+                        <div class="flex gap-2">
+                            <button id="btnConfirm" onclick="checkAnswer()"
+                                class="hidden px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-lg transition-colors shadow-md">
+                                Xác nhận
+                            </button>
+                            <button id="btnNext" onclick="nextQuestion()"
+                                class="hidden px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-lg transition-colors shadow-md">
+                                Tiếp theo ➡
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hint Box -->
+                    <div id="hintBox" class="hidden p-4 bg-amber-500/5 border-l-4 border-amber-500 rounded-r-2xl border border-slate-700/40">
+                        <div class="flex items-start">
+                            <span class="text-xl mr-3">💡</span>
+                            <div>
+                                <h3 id="hintTitle"
+                                    class="font-bold text-amber-400 text-xs uppercase tracking-wide">Mẹo nhớ (Keyword)</h3>
+                                <p class="text-slate-300 mt-1 text-sm font-medium leading-relaxed" id="hintText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột phải: Danh sách các đáp án lựa chọn -->
+                <div class="space-y-3 text-left w-full" id="optionsContainer">
+                    <!-- Các đáp án sẽ được render bằng JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Area -->
+        <div id="reportArea"
+            class="hidden p-4 sm:p-6 bg-slate-850 flex-1 flex flex-col justify-start overflow-y-auto">
+            <!-- Compact Single-Line Stats Row -->
+            <div
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-800 px-5 py-3 rounded-2xl border border-slate-700/50 shadow-lg mb-4">
+                <div class="flex items-center gap-3">
+                    <span id="reportTitle" class="font-extrabold text-white text-base">Kết Quả Luyện Tập:</span>
+                    <span id="reportStatStatus" class="font-bold text-xs px-3 py-1 rounded-full">ĐẠT</span>
+                </div>
+                <div
+                    class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 w-full sm:w-auto">
+                    <div>
+                        <span id="lblReportStatCorrect" class="font-medium text-slate-400">Số câu đúng:</span>
+                        <span id="reportStatCorrect" class="font-bold text-emerald-400 ml-1">0</span>
+                    </div>
+                    <div>
+                        <span id="lblReportStatPercent" class="font-medium text-slate-400">Tỷ lệ chính xác:</span>
+                        <span id="reportStatPercent" class="font-bold text-blue-400 ml-1">0%</span>
+                    </div>
+                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã đạt yêu cầu.</div>
+                </div>
+            </div>
+
+            <!-- Detailed Review Section -->
+            <div
+                class="bg-slate-800 p-5 sm:p-6 rounded-3xl border border-slate-700/50 shadow-lg flex flex-col justify-between mb-2">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-700 pb-3 mb-4 gap-2">
+                    <h4 class="text-base font-bold text-white flex items-center gap-2">
+                        <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
+                            id="reviewProgressText" class="text-blue-400 font-bold">Câu 1 / 50</span>
+                    </h4>
+                    <span id="reviewResultBadge" class="px-3 py-1 text-xs font-bold rounded-full">✓ Đúng</span>
+                </div>
+
+                <!-- Review Content Grid (Side-by-side) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4">
+                    <!-- Left: Question & Hint -->
+                    <div class="space-y-4 text-left">
+                        <p class="text-base text-white font-bold whitespace-pre-line leading-relaxed code-font bg-slate-900/60 p-4 rounded-xl border border-slate-700/50"
+                            id="reviewQuestionText"></p>
+
+                        <div id="reviewHintBox" class="p-4 bg-amber-500/5 border-l-4 border-amber-500 rounded-r-xl border border-slate-700/30">
+                            <div class="flex items-start">
+                                <span class="text-xl mr-3">💡</span>
+                                <div>
+                                    <h3 id="reviewHintTitle"
+                                        class="font-bold text-amber-400 text-xs uppercase tracking-wide">Mẹo nhớ (Keyword)</h3>
+                                    <p class="text-slate-300 mt-1 text-sm font-medium leading-relaxed"
+                                        id="reviewHintText"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Options -->
+                    <div class="space-y-2.5 text-left" id="reviewOptionsContainer">
+                        <!-- Options will be rendered statically here -->
+                    </div>
+                </div>
+
+                <!-- Review Navigation and Actions -->
+                <div
+                    class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-700 pt-4">
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button id="btnReviewPrev" onclick="prevReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex items-center justify-center gap-1">
+                            ⬅ Câu trước
+                        </button>
+                        <button id="btnReviewNext" onclick="nextReviewQuestion()"
+                            class="w-1/2 sm:w-auto px-4 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex items-center justify-center gap-1">
+                            Câu tiếp theo ➡
+                        </button>
+                    </div>
+
+                    <button id="btnRestartQuiz" onclick="restartQuiz()"
+                        class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                        🔄 Làm lại bài thi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizDataVi = [
+            {
+                type: 'single',
+                q: "Câu 1. Đâu là kết quả của biểu thức: `3 * 'Abc'`?",
+                options: [
+                    "A. Error",
+                    "B. AbcAbcAbc",
+                    "C. Abc 3",
+                    "D. ['Abc', 'Abc', 'Abc']"
+                ],
+                ans: [1],
+                hint: "Nhân chuỗi trong Python ➔ <span class='font-bold text-amber-600'>Sao chép chuỗi N lần</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 2. Kiểu dữ liệu nào sau đây là IMMUTABLE (không thể thay đổi sau khi tạo)?",
+                options: [
+                    "A. list",
+                    "B. dict",
+                    "C. set",
+                    "D. tuple"
+                ],
+                ans: [3],
+                hint: "Tuple và String là ➔ <span class='font-bold text-amber-600'>Immutable</span> (List, Dict, Set là Mutable)"
+            },
+            {
+                type: 'single',
+                q: "Câu 3. Phương thức nào dùng để thêm phần tử vào cuối một List?",
+                options: [
+                    "A. add()",
+                    "B. insert()",
+                    "C. append()",
+                    "D. push()"
+                ],
+                ans: [2],
+                hint: "Thêm phần tử vào cuối danh sách ➔ <span class='font-bold text-amber-600'>append()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 4. Kết quả của `[x**2 for x in range(5) if x % 2 == 0]` là gì?",
+                options: [
+                    "A. [0, 4, 16]",
+                    "B. [0, 1, 4, 9, 16]",
+                    "C. [4, 16]",
+                    "D. [0, 4, 8]"
+                ],
+                ans: [0],
+                hint: "List comprehension cho x chẵn (0, 2, 4) bình phương ➔ <span class='font-bold text-amber-600'>[0, 4, 16]</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 5. Sự khác biệt chính giữa List và Tuple trong Python là?",
+                options: [
+                    "A. List chứa được nhiều kiểu dữ liệu khác nhau, Tuple thì không.",
+                    "B. List là Mutable (có thể sửa đổi), Tuple là Immutable (không thể sửa đổi).",
+                    "C. Tuple có tốc độ truy xuất chậm hơn List.",
+                    "D. List sử dụng ngoặc đơn `()`, Tuple sử dụng ngoặc vuông `[]`."
+                ],
+                ans: [1],
+                hint: "Khác biệt cốt lõi ➔ <span class='font-bold text-amber-600'>List: Mutable | Tuple: Immutable</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 6. Cách nào để xóa tất cả phần tử trong một Dictionary?",
+                options: [
+                    "A. dict.remove()",
+                    "B. dict.delete()",
+                    "C. dict.clear()",
+                    "D. dict.pop()"
+                ],
+                ans: [2],
+                hint: "Xóa sạch dictionary ➔ <span class='font-bold text-amber-600'>clear()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 7. Biểu thức `set([1, 2, 2, 3, 3, 3])` sẽ trả về kết quả gì?",
+                options: [
+                    "A. {1, 2, 2, 3, 3, 3}",
+                    "B. {1, 2, 3}",
+                    "C. [1, 2, 3]",
+                    "D. (1, 2, 3)"
+                ],
+                ans: [1],
+                hint: "Tập hợp (Set) trong Python ➔ <span class='font-bold text-amber-600'>Chỉ chứa phần tử duy nhất (no duplicates)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 8. Để lấy tất cả các cặp key-value trong một Dictionary, ta dùng phương thức nào?",
+                options: [
+                    "A. keys()",
+                    "B. values()",
+                    "C. items()",
+                    "D. get()"
+                ],
+                ans: [2],
+                hint: "Trả về cặp (key, value) ➔ <span class='font-bold text-amber-600'>items()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 9. Trong khai báo hàm, `*args` được dùng để nhận:",
+                options: [
+                    "A. Danh sách các đối số truyền theo dạng keyword (dict)",
+                    "B. Số lượng đối số vị trí tùy ý (positional arguments dưới dạng tuple)",
+                    "C. Một đối số mặc định",
+                    "D. Lỗi cú pháp"
+                ],
+                ans: [1],
+                hint: "`*args` ➔ <span class='font-bold text-amber-600'>Tuple các đối số vị trí tùy ý</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 10. Còn `**kwargs` được dùng để nhận:",
+                options: [
+                    "A. Số lượng đối số vị trí tùy ý dưới dạng tuple",
+                    "B. Danh sách các đối số truyền theo dạng key-value (keyword arguments dưới dạng dict)",
+                    "C. Địa chỉ bộ nhớ của hàm",
+                    "D. Biến toàn cục"
+                ],
+                ans: [1],
+                hint: "`**kwargs` ➔ <span class='font-bold text-amber-600'>Dict các đối số dạng keyword</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 11. Đâu là kết quả của phép toán logic: `True and not False or False`?",
+                options: [
+                    "A. True",
+                    "B. False",
+                    "C. None",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Độ ưu tiên: `not` -> `and` -> `or` ➔ <span class='font-bold text-amber-600'>True</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 12. Hàm `isinstance(obj, class)` dùng để làm gì?",
+                options: [
+                    "A. Tạo một instance mới của class",
+                    "B. Kiểm tra xem một đối tượng có phải là một thực thể của một class cụ thể hay không",
+                    "C. Xóa đối tượng khỏi bộ nhớ",
+                    "D. Sao chép đối tượng"
+                ],
+                ans: [1],
+                hint: "Kiểm tra lớp của đối tượng ➔ <span class='font-bold text-amber-600'>isinstance()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 13. Hàm nào dùng để lấy độ dài của một chuỗi, list hoặc tuple?",
+                options: [
+                    "A. length()",
+                    "B. size()",
+                    "C. len()",
+                    "D. count()"
+                ],
+                ans: [2],
+                hint: "Trả về độ dài đối tượng ➔ <span class='font-bold text-amber-600'>len()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 14. Toán tử `is` trong Python dùng để kiểm tra:",
+                options: [
+                    "A. Sự bằng nhau về giá trị (value equality)",
+                    "B. Hai biến có cùng trỏ tới một địa chỉ bộ nhớ hay không (identity equality)",
+                    "C. Sự tồn tại của phần tử trong tập hợp",
+                    "D. Kiểu dữ liệu của biến"
+                ],
+                ans: [1],
+                hint: "`is` so sánh địa chỉ bộ nhớ (id), còn `==` so sánh giá trị ➔ <span class='font-bold text-amber-600'>Địa chỉ bộ nhớ</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 15. Câu lệnh `pass` trong Python có chức năng gì?",
+                options: [
+                    "A. Bỏ qua và kết thúc vòng lặp ngay lập tức",
+                    "B. Là một lệnh rỗng (placeholder) dùng để giữ cú pháp hợp lệ mà không thực hiện hành động nào",
+                    "C. Trả về giá trị của hàm",
+                    "D. Nhảy đến khối lệnh tiếp theo"
+                ],
+                ans: [1],
+                hint: "Lệnh rỗng giữ chỗ ➔ <span class='font-bold text-amber-600'>pass</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 16. Để định nghĩa phương thức khởi tạo của một class trong Python, ta dùng phương thức dunder nào?",
+                options: [
+                    "A. __new__",
+                    "B. __init__",
+                    "C. __construct__",
+                    "D. __start__"
+                ],
+                ans: [1],
+                hint: "Constructor khởi tạo thuộc tính thực thể ➔ <span class='font-bold text-amber-600'>__init__</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 17. Tham số `self` trong phương thức của Class đại diện cho:",
+                options: [
+                    "A. Bản thân Class đó",
+                    "B. Đối tượng thực thể hiện tại của Class đó (instance)",
+                    "C. Hàm cha của phương thức đó",
+                    "D. Biến toàn cục của module"
+                ],
+                ans: [1],
+                hint: "Đại diện cho instance hiện tại ➔ <span class='font-bold text-amber-600'>self</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 18. Sự khác biệt giữa `__str__` và `__repr__` là gì?",
+                options: [
+                    "A. __str__ hướng tới lập trình viên (debugging), __repr__ hướng tới người dùng cuối.",
+                    "B. __str__ hướng tới người dùng cuối (dễ đọc), __repr__ hướng tới lập trình viên (rõ ràng, đại diện chính xác để debug).",
+                    "C. Cả hai hoàn toàn giống nhau.",
+                    "D. __repr__ dùng để chuyển đối tượng thành số."
+                ],
+                ans: [1],
+                hint: "__str__ readable (người dùng) | __repr__ unambiguous (developer/debug) ➔ <span class='font-bold text-amber-600'>str: user, repr: developer</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 19. Từ khóa `yield` trong Python được dùng để tạo ra:",
+                options: [
+                    "A. Một hàm đệ quy",
+                    "B. Một Class trừu tượng",
+                    "C. Một Generator (cho phép sinh dữ liệu tuần tự từng phần tử để tiết kiệm bộ nhớ)",
+                    "D. Một Decorator"
+                ],
+                ans: [2],
+                hint: "Sinh chuỗi tuần tự tiết kiệm RAM ➔ <span class='font-bold text-amber-600'>Generator / yield</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 20. Decorator trong Python là gì?",
+                options: [
+                    "A. Một mẫu thiết kế để trang trí giao diện",
+                    "B. Một hàm nhận một hàm khác làm tham số và thay đổi hành vi của nó mà không cần sửa đổi trực tiếp code của hàm đó",
+                    "C. Lớp kế thừa từ mọi lớp khác",
+                    "D. Cơ chế mã hóa code"
+                ],
+                ans: [1],
+                hint: "Hàm wrapper thay đổi hành vi hàm khác ➔ <span class='font-bold text-amber-600'>Decorator</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 21. Annotation `@property` trong Python dùng để:",
+                options: [
+                    "A. Biến một phương thức của Class thành một Getter (truy cập như một thuộc tính thường không cần dấu ngoặc `()`)",
+                    "B. Định nghĩa một thuộc tính chỉ đọc của lớp",
+                    "C. Định nghĩa một phương thức tĩnh",
+                    "D. Tăng tốc độ thực thi hàm"
+                ],
+                ans: [0],
+                hint: "Biến phương thức thành thuộc tính truy cập trực tiếp ➔ <span class='font-bold text-amber-600'>@property</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 22. Sự khác biệt giữa `@staticmethod` và `@classmethod` là gì?",
+                options: [
+                    "A. @staticmethod nhận lớp làm tham số đầu tiên, @classmethod thì không.",
+                    "B. @staticmethod không nhận tham số ngầm định nào, @classmethod nhận bản thân lớp (`cls`) làm tham số đầu tiên.",
+                    "C. Cả hai đều bắt buộc nhận tham số `self`.",
+                    "D. Không có sự khác biệt nào."
+                ],
+                ans: [1],
+                hint: "staticmethod độc lập | classmethod nhận `cls` làm tham số đầu ➔ <span class='font-bold text-amber-600'>cls parameter</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 23. Câu lệnh `with` trong Python (ví dụ: `with open('file.txt') as f:`) được dùng để triển khai cơ chế nào?",
+                options: [
+                    "A. Vòng lặp tối ưu",
+                    "B. Quản lý bối cảnh (Context Manager, tự động đóng file/giải phóng tài nguyên khi kết thúc khối lệnh)",
+                    "C. Bắt lỗi ngoại lệ",
+                    "D. Đa luồng"
+                ],
+                ans: [1],
+                hint: "Tự động đóng tệp/giải phóng tài nguyên ➔ <span class='font-bold text-amber-600'>Context Manager / with</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 24. Để bắt lỗi ngoại lệ cụ thể trong Python, ta dùng cú pháp:",
+                options: [
+                    "A. try ... catch",
+                    "B. try ... except",
+                    "C. try ... error",
+                    "D. try ... rescue"
+                ],
+                ans: [1],
+                hint: "Bắt lỗi trong Python ➔ <span class='font-bold text-amber-600'>try - except</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 25. Khối lệnh `finally` trong cấu trúc `try-except-finally` sẽ chạy khi nào?",
+                options: [
+                    "A. Chỉ chạy khi có lỗi xảy ra",
+                    "B. Chỉ chạy khi không có lỗi xảy ra",
+                    "C. Luôn luôn chạy, bất kể có lỗi xảy ra hay không (thường dùng dọn dẹp tài nguyên)",
+                    "D. Không bao giờ chạy nếu có lệnh return ở try"
+                ],
+                ans: [2],
+                hint: "Luôn luôn được thực thi ➔ <span class='font-bold text-amber-600'>finally</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 26. Để kích hoạt/ném ra một Exception trong Python, ta dùng từ khóa nào?",
+                options: [
+                    "A. throw",
+                    "B. raise",
+                    "C. trigger",
+                    "D. fire"
+                ],
+                ans: [1],
+                hint: "Ném lỗi chủ động ➔ <span class='font-bold text-amber-600'>raise</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 27. Phương thức dunder nào dùng để làm cho một thực thể của Class có thể gọi được như một hàm (ví dụ: `obj()`)?",
+                options: [
+                    "A. __init__",
+                    "B. __call__",
+                    "C. __invoke__",
+                    "D. __run__"
+                ],
+                ans: [1],
+                hint: "Làm đối tượng callable ➔ <span class='font-bold text-amber-600'>__call__</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 28. Lớp nào là lớp cơ sở tối cao của tất cả các lớp trong Python 3?",
+                options: [
+                    "A. Base",
+                    "B. Main",
+                    "C. object",
+                    "D. Root"
+                ],
+                ans: [2],
+                hint: "Lớp cha tối cao của mọi kiểu dữ liệu ➔ <span class='font-bold text-amber-600'>object</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 29. Đa kế thừa trong Python giải quyết tranh chấp phương thức trùng tên bằng thuật toán nào?",
+                options: [
+                    "A. DFS (Depth First Search)",
+                    "B. MRO (Method Resolution Order, sử dụng thuật toán C3 Serialization)",
+                    "C. BFS (Breadth First Search)",
+                    "D. LIFO (Last In First Out)"
+                ],
+                ans: [1],
+                hint: "Thứ tự phân giải phương thức đa kế thừa ➔ <span class='font-bold text-amber-600'>MRO / C3 Serialization</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 30. Hàm ẩn danh (Anonymous function) trong Python được định nghĩa bằng từ khóa:",
+                options: [
+                    "A. def",
+                    "B. func",
+                    "C. lambda",
+                    "D. anonymous"
+                ],
+                ans: [2],
+                hint: "Hàm ẩn danh ngắn gọn trên 1 dòng ➔ <span class='font-bold text-amber-600'>lambda</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 31. Đâu là kết quả của biểu thức: `list(map(lambda x: x * 2, [1, 2, 3]))`?",
+                options: [
+                    "A. [2, 4, 6]",
+                    "B. [1, 2, 3]",
+                    "C. [1, 2, 3, 1, 2, 3]",
+                    "D. [2, 2, 2]"
+                ],
+                ans: [0],
+                hint: "Ánh xạ nhân đôi phần tử list ➔ <span class='font-bold text-amber-600'>[2, 4, 6]</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 32. Sự khác biệt giữa `shallow copy` và `deep copy` trong module `copy` là gì?",
+                options: [
+                    "A. Shallow copy tạo bản sao của các đối tượng lồng nhau, deep copy thì không.",
+                    "B. Shallow copy chỉ sao chép tham chiếu của các đối tượng con; deep copy sao chép đệ quy toàn bộ nội dung đối tượng gốc độc lập.",
+                    "C. Shallow copy chạy chậm hơn deep copy.",
+                    "D. Deep copy chỉ dùng được cho kiểu số."
+                ],
+                ans: [1],
+                hint: "shallow: copy tham chiếu con | deep: nhân bản đệ quy độc lập ➔ <span class='font-bold text-amber-600'>copy.deepcopy</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 33. Để nối các chuỗi trong một list thành một chuỗi duy nhất với ký tự phân tách, ta dùng:",
+                options: [
+                    "A. Phương thức `join()` của chuỗi phân tách (ví dụ: `'-'.join(['A', 'B'])`)",
+                    "B. Phương thức `concat()` của list",
+                    "C. Toán tử cộng trực tiếp `+`",
+                    "D. Hàm `join()` toàn cục"
+                ],
+                ans: [0],
+                hint: "Nối chuỗi trong danh sách ➔ <span class='font-bold text-amber-600'>'separator'.join(list)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 34. Namespace trong Python hoạt động theo thứ tự ưu tiên tìm kiếm biến nào?",
+                options: [
+                    "A. LEGB (Local ➔ Enclosing ➔ Global ➔ Built-in)",
+                    "B. GEBL (Global ➔ Enclosing ➔ Built-in ➔ Local)",
+                    "C. LIFO (Last In First Out)",
+                    "D. FIFO (First In First Out)"
+                ],
+                ans: [0],
+                hint: "Quy tắc phạm vi biến trong Python ➔ <span class='font-bold text-amber-600'>LEGB</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 35. Để truy cập và sửa đổi biến toàn cục bên trong một hàm, ta dùng từ khóa nào?",
+                options: [
+                    "A. nonlocal",
+                    "B. global",
+                    "C. outer",
+                    "D. public"
+                ],
+                ans: [1],
+                hint: "Khai báo biến thuộc phạm vi toàn cục ➔ <span class='font-bold text-amber-600'>global</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 36. GIL (Global Interpreter Lock) trong CPython có tác dụng gì?",
+                options: [
+                    "A. Giúp mã nguồn chạy nhanh hơn gấp nhiều lần",
+                    "B. Khóa trình thông dịch để chỉ có duy nhất 1 luồng (thread) thực thi mã máy Python tại một thời điểm (đảm bảo thread-safe cho bộ nhớ)",
+                    "C. Tự động mã hóa tệp tin Python thành file exe",
+                    "D. Ngăn không cho RAM bị tràn"
+                ],
+                ans: [1],
+                hint: "Khóa độc quyền bảo vệ bộ nhớ, giới hạn đa luồng CPU ➔ <span class='font-bold text-amber-600'>GIL</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 37. Vì có GIL, cách tốt nhất để chạy các tác vụ tính toán nặng ngốn nhiều CPU (CPU-bound) song song thực sự là:",
+                options: [
+                    "A. Sử dụng module `threading`",
+                    "B. Sử dụng module `multiprocessing` (chạy trên nhiều process riêng biệt với các interpreter riêng)",
+                    "C. Sử dụng thư viện `asyncio`",
+                    "D. Sử dụng đệ quy"
+                ],
+                ans: [1],
+                hint: "CPU-bound ➔ <span class='font-bold text-amber-600'>multiprocessing</span> (để bypass GIL)"
+            },
+            {
+                type: 'single',
+                q: "Câu 38. Thư viện `asyncio` của Python dựa trên cơ chế nào dưới đây để quản lý bất đồng bộ?",
+                options: [
+                    "A. Multi-threading",
+                    "B. Multi-processing",
+                    "C. Single-threaded Event Loop (vòng lặp sự kiện đơn luồng sử dụng coroutines)",
+                    "D. Tạo tiến trình hệ thống mới"
+                ],
+                ans: [2],
+                hint: "Quản lý tác vụ bất đồng bộ đơn luồng ➔ <span class='font-bold text-amber-600'>Event Loop</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 39. Từ khóa nào dùng để định nghĩa một coroutine trong Python?",
+                options: [
+                    "A. async def",
+                    "B. await def",
+                    "C. defer",
+                    "D. promise"
+                ],
+                ans: [0],
+                hint: "Định nghĩa hàm bất đồng bộ ➔ <span class='font-bold text-amber-600'>async def</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 40. Từ khóa `await` chỉ được phép xuất hiện ở đâu?",
+                options: [
+                    "A. Ở bất kỳ vị trí nào trong mã nguồn Python",
+                    "B. Chỉ bên trong các hàm được định nghĩa với `async def`",
+                    "C. Chỉ trong hàm khởi tạo `__init__`",
+                    "D. Chỉ bên ngoài các class"
+                ],
+                ans: [1],
+                hint: "Chỉ sử dụng trong coroutine ➔ <span class='font-bold text-amber-600'>Hàm async def</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 41. Metaclass trong Python là gì?",
+                options: [
+                    "A. Một class chứa các thuật toán tối ưu hóa",
+                    "B. Một lớp của các lớp (class tạo ra class, chịu trách nhiệm định nghĩa cách các class khác được sinh ra)",
+                    "C. Lớp cha của kiểu dữ liệu `object`",
+                    "D. Công cụ kiểm thử mã nguồn"
+                ],
+                ans: [1],
+                hint: "Bản thiết kế của Class (Class factory) ➔ <span class='font-bold text-amber-600'>Metaclass</span> (mặc định là `type`)"
+            },
+            {
+                type: 'single',
+                q: "Câu 42. Sự khác biệt cốt lõi giữa `__new__` và `__init__` là gì?",
+                options: [
+                    "A. __init__ tạo ra thực thể đối tượng, __new__ khởi tạo giá trị cho thực thể đó.",
+                    "B. __new__ chịu trách nhiệm tạo ra thực thể (instance) mới và trả về nó; __init__ chịu trách nhiệm khởi tạo các giá trị của thực thể sau khi nó đã được tạo.",
+                    "C. Cả hai chạy song song độc lập.",
+                    "D. Python chỉ chạy 1 trong 2 phương thức tùy thuộc vào tham số truyền vào."
+                ],
+                ans: [1],
+                hint: "`__new__` là static method tạo instance | `__init__` là instance method gán thuộc tính ➔ <span class='font-bold text-amber-600'>new: tạo, init: khởi tạo</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 43. Làm thế nào để tạo một class tùy biến kế thừa từ metaclass?",
+                options: [
+                    "A. Kế thừa từ class `type` (ví dụ: `class MyMeta(type):`)",
+                    "B. Kế thừa từ class `object`",
+                    "C. Khai báo thuộc tính `@metaclass`",
+                    "D. Khai báo hàm `__meta__`"
+                ],
+                ans: [0],
+                hint: "Định nghĩa metaclass tùy chỉnh ➔ <span class='font-bold text-amber-600'>Kế thừa type</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 44. Để giới hạn thuộc tính của một instance và tối ưu hóa bộ nhớ (không tạo thuộc tính động thông qua `__dict__`), ta dùng biến đặc biệt nào?",
+                options: [
+                    "A. __slots__",
+                    "B. __props__",
+                    "C. __limits__",
+                    "D. __dict__"
+                ],
+                ans: [0],
+                hint: "Tiết kiệm RAM bằng cách cố định thuộc tính instance ➔ <span class='font-bold text-amber-600'>__slots__</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 45. Cơ chế quản lý bộ nhớ của Python hoạt động chính bằng cách nào?",
+                options: [
+                    "A. Dựa hoàn toàn vào Garbage Collection kiểu Mark-and-Sweep",
+                    "B. Đếm tham chiếu (Reference Counting) kết hợp giải quyết tham chiếu vòng bằng Cycle-detecting Garbage Collector",
+                    "C. Giải phóng thủ công bởi lập trình viên",
+                    "D. Xóa ngẫu nhiên các biến sau thời gian timeout"
+                ],
+                ans: [1],
+                hint: "Cơ chế dọn dẹp RAM cốt lõi ➔ <span class='font-bold text-amber-600'>Reference Counting</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 46. Module nào cung cấp các kiểu dữ liệu nâng cao như `Counter`, `defaultdict`, `namedtuple` và `deque`?",
+                options: [
+                    "A. collections",
+                    "B. itertools",
+                    "C. functools",
+                    "D. math"
+                ],
+                ans: [0],
+                hint: "Các cấu trúc dữ liệu tối ưu nâng cao ➔ <span class='font-bold text-amber-600'>collections</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 47. Hàm `filter(function, iterable)` trả về kết quả gì?",
+                options: [
+                    "A. Một list đã được lọc phần tử",
+                    "B. Một generator/iterator chứa các phần tử của iterable thỏa mãn điều kiện hàm function trả về True",
+                    "C. Một dictionary",
+                    "D. Tổng các phần tử thỏa mãn điều kiện"
+                ],
+                ans: [1],
+                hint: "Bộ lọc dữ liệu dạng lặp ➔ <span class='font-bold text-amber-600'>Iterator/Generator</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 48. Hàm `reduce()` trong Python 3 được đặt ở module nào?",
+                options: [
+                    "A. builtins",
+                    "B. collections",
+                    "C. functools",
+                    "D. itertools"
+                ],
+                ans: [2],
+                hint: "Gom nhóm/tích lũy mảng ➔ <span class='font-bold text-amber-600'>functools.reduce</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 49. Lệnh `pip` dùng để:",
+                options: [
+                    "A. Biên dịch mã Python sang mã máy C",
+                    "B. Quản lý và cài đặt các thư viện gói bên ngoài (packages) cho Python từ PyPI",
+                    "C. Tạo môi trường ảo",
+                    "D. Định dạng mã nguồn Python"
+                ],
+                ans: [1],
+                hint: "Trình quản lý thư viện của Python ➔ <span class='font-bold text-amber-600'>pip</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 50. Tại sao nên dùng môi trường ảo (Virtual Environment - `venv`) trong dự án Python?",
+                options: [
+                    "A. Để tăng tốc độ thực thi của code",
+                    "B. Để tạo một không gian cô lập cài đặt các thư viện cụ thể của dự án mà không ảnh hưởng tới thư viện chung của hệ thống",
+                    "C. Để mã hóa bảo mật mã nguồn dự án",
+                    "D. Để kết nối cơ sở dữ liệu nhanh hơn"
+                ],
+                ans: [1],
+                hint: "Cô lập thư viện dự án ➔ <span class='font-bold text-amber-600'>venv (Virtual Environment)</span>"
+            }
+        ];
+
+        const uiTranslations = {
+            vi: {
+                title: "Python Mastery Quiz",
+                subtitle: "🐍 Trắc nghiệm ôn tập từ Cơ bản đến Nâng cao",
+                progress: (curr, total) => `Câu ${curr} / ${total}`,
+                score: (score) => `Điểm: ${score}`,
+                confirmBtn: "Xác nhận",
+                nextBtn: "Tiếp theo ➡",
+                viewHintBtn: "Xem Mẹo Nhớ 💡",
+                hintTitle: "Mẹo nhớ (Keyword)",
+                reportTitle: "Kết Quả Luyện Tập",
+                reportStatCorrect: "Số câu đúng",
+                reportStatPercent: "Tỷ lệ chính xác",
+                reportStatStatus: "Kết quả",
+                statusPass: "ĐẠT",
+                statusFail: "CHƯA ĐẠT",
+                reviewTitle: (curr, total) => `Xem lại bài làm: Câu ${curr} / ${total}`,
+                reviewTitleHeading: "Xem lại bài làm:",
+                reviewCorrectBadge: "✓ Đúng",
+                reviewWrongBadge: "✗ Sai",
+                btnReviewPrev: "⬅ Câu trước",
+                btnReviewNext: "Câu tiếp theo ➡",
+                restartBtn: "🔄 Làm lại bài thi",
+                startScreenTitle: "Chinh Phục Python 100%",
+                startScreenSubtitle: "Hệ thống gồm 50 câu hỏi trắc nghiệm chất lượng cao. Ôn tập sâu sắc về cú pháp cơ bản, OOP, Decorators, Generator, Asyncio, GIL và cơ chế quản lý bộ nhớ trong Python.",
+                startBtn: "Bắt đầu luyện tập 🚀",
+                selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
+                selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
+                confirmChangeLang: "",
+                alertSelectAtLeastOne: "Vui lòng chọn ít nhất 1 đáp án!",
+                evalPerfect: "Xuất sắc! Bạn đã đạt điểm tuyệt đối! 🎉",
+                evalExcellent: "Tuyệt vời! Bạn đã nắm rất vững các từ khóa! 🌟",
+                evalGood: "Khá tốt! Bạn đã vượt qua bài luyện tập! 👍",
+                evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các mẹo nhớ bên dưới. 💪"
+            }
+        };
+
+        let currentLanguage = 'vi';
+        let currentQ = 0;
+        let score = 0;
+        let selectedOptions = [];
+        let hasAnswered = false;
+        let userAnswers = [];
+        let activeQuiz = [];
+        let reviewCurrentQ = 0;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function prepareQuiz() {
+            const sourceData = quizDataVi;
+            activeQuiz = sourceData.map(q => {
+                const optionsWithIndex = q.options.map((opt, idx) => ({
+                    text: opt.replace(/^[A-F]\.\s*/, ''),
+                    originalIndex: idx
+                }));
+
+                shuffle(optionsWithIndex);
+
+                const newOptions = optionsWithIndex.map((item, idx) => {
+                    const prefix = String.fromCharCode(65 + idx) + ". ";
+                    return prefix + item.text;
+                });
+
+                const newAns = [];
+                optionsWithIndex.forEach((item, idx) => {
+                    if (q.ans.includes(item.originalIndex)) {
+                        newAns.push(idx);
+                    }
+                });
+
+                return {
+                    type: q.type,
+                    q: q.q,
+                    options: newOptions,
+                    ans: newAns,
+                    hint: q.hint
+                };
+            });
+
+            shuffle(activeQuiz);
+        }
+
+        function updateLanguageUI() {
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('appTitle').innerHTML = `Luyện Thi Trắc Nghiệm <span class="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">Python</span>`;
+            document.getElementById('appSubtitle').innerText = trans.subtitle;
+            document.getElementById('startTitle').innerText = trans.startScreenTitle;
+            document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
+            document.getElementById('btnStartPractice').innerText = trans.startBtn;
+
+            document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
+            document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
+
+            document.getElementById('btnShowHint').innerText = trans.viewHintBtn;
+            document.getElementById('hintTitle').innerText = trans.hintTitle;
+            document.getElementById('reviewHintTitle').innerText = trans.hintTitle;
+            document.getElementById('lblReviewTitle').innerText = trans.reviewTitleHeading;
+            document.getElementById('btnRestartQuiz').innerText = trans.restartBtn;
+            document.getElementById('reportTitle').innerText = trans.reportTitle;
+        }
+
+        function startPractice() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = activeQuiz[currentQ];
+            selectedOptions = [];
+            hasAnswered = false;
+            const trans = uiTranslations[currentLanguage];
+
+            // Progress bar update
+            document.getElementById('progressText').innerText = trans.progress(currentQ + 1, activeQuiz.length);
+            const percent = ((currentQ + 1) / activeQuiz.length) * 100;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+
+            // Question content code font format (escapes code tags)
+            let qText = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-yellow-400 font-normal code-font'>$1</code>");
+            document.getElementById('questionText').innerHTML = qText;
+            document.getElementById('hintBox').classList.add('hidden');
+            document.getElementById('btnNext').classList.add('hidden');
+
+            const hintEl = document.getElementById('questionTypeHint');
+            const confirmBtn = document.getElementById('btnConfirm');
+            if (qData.type === 'multi') {
+                hintEl.innerText = trans.selectMultiHint(qData.ans.length);
+                confirmBtn.innerText = trans.confirmBtn;
+                confirmBtn.classList.remove('hidden');
+            } else {
+                hintEl.innerText = trans.selectSingleHint;
+                confirmBtn.classList.add('hidden');
+            }
+
+            // Options List
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'option-item p-3.5 sm:p-4 border border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl cursor-pointer text-slate-200 text-sm sm:text-base font-medium flex items-center gap-3 border border-slate-700';
+                div.id = `option-${index}`;
+
+                // Code formatting within options
+                let optText = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1 py-0.5 rounded text-blue-300 font-normal code-font'>$1</code>");
+
+                const iconHTML = qData.type === 'multi'
+                    ? `<div class="w-5 h-5 border border-slate-600 rounded flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`
+                    : `<div class="w-5 h-5 border border-slate-600 rounded-full flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`;
+
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span>${optText}</span>
+                `;
+
+                div.onclick = () => handleSelect(index);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function handleSelect(index) {
+            if (hasAnswered) return;
+
+            const qData = activeQuiz[currentQ];
+            const div = document.getElementById(`option-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+
+            if (qData.type === 'single') {
+                if (selectedOptions.length > 0) {
+                    const oldIndex = selectedOptions[0];
+                    document.getElementById(`option-${oldIndex}`).classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+                    document.getElementById(`icon-${oldIndex}`).innerHTML = '';
+                    document.getElementById(`icon-${oldIndex}`).classList.remove('border-blue-500', 'bg-blue-500');
+                }
+
+                selectedOptions = [index];
+                div.classList.add('selected', 'border-blue-500', 'bg-blue-950/20');
+                icon.classList.add('border-blue-500', 'bg-blue-500');
+                icon.innerHTML = `<div class="w-2.5 h-2.5 bg-white rounded-full"></div>`;
+
+                checkAnswer();
+            } else {
+                const pos = selectedOptions.indexOf(index);
+                if (pos === -1) {
+                    selectedOptions.push(index);
+                    div.classList.add('selected', 'border-blue-500', 'bg-blue-950/20');
+                    icon.classList.add('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = `<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
+                } else {
+                    selectedOptions.splice(pos, 1);
+                    div.classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+                    icon.classList.remove('border-blue-500', 'bg-blue-500');
+                    icon.innerHTML = '';
+                }
+            }
+        }
+
+        function checkAnswer() {
+            const qData = activeQuiz[currentQ];
+            const trans = uiTranslations[currentLanguage];
+
+            if (qData.type === 'multi' && selectedOptions.length === 0) {
+                alert(trans.alertSelectAtLeastOne);
+                return;
+            }
+
+            hasAnswered = true;
+            document.getElementById('btnConfirm').classList.add('hidden');
+
+            let isCorrect = true;
+            if (selectedOptions.length !== qData.ans.length) {
+                isCorrect = false;
+            } else {
+                for (let ans of qData.ans) {
+                    if (!selectedOptions.includes(ans)) isCorrect = false;
+                }
+            }
+
+            userAnswers.push({
+                qIndex: currentQ,
+                selected: [...selectedOptions],
+                isCorrect: isCorrect
+            });
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('scoreText').innerText = trans.score(score);
+            }
+
+            qData.options.forEach((_, index) => {
+                const div = document.getElementById(`option-${index}`);
+                const isSelected = selectedOptions.includes(index);
+                const isTrueAnswer = qData.ans.includes(index);
+
+                div.classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+
+                if (isSelected && isTrueAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-emerald-100 text-sm sm:text-base font-medium flex items-center gap-3 correct';
+                } else if (isSelected && !isTrueAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-rose-100 text-sm sm:text-base font-medium flex items-center gap-3 wrong';
+                } else if (!isSelected && isTrueAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-amber-100 text-sm sm:text-base font-medium flex items-center gap-3 missed';
+                } else {
+                    div.className = 'p-3.5 sm:p-4 border border-slate-700 opacity-40 rounded-xl text-slate-400 text-sm sm:text-base font-medium flex items-center gap-3 bg-slate-800/10';
+                }
+            });
+
+            showHint();
+            document.getElementById('btnNext').innerText = trans.nextBtn;
+            document.getElementById('btnNext').classList.remove('hidden');
+        }
+
+        function showHint() {
+            const hintBox = document.getElementById('hintBox');
+            document.getElementById('hintText').innerHTML = activeQuiz[currentQ].hint;
+            hintBox.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ >= activeQuiz.length) {
+                showReport();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function showReport() {
+            document.getElementById('quizHeader').classList.add('hidden');
+            document.getElementById('quizBody').classList.add('hidden');
+
+            const reportArea = document.getElementById('reportArea');
+            reportArea.classList.remove('hidden');
+
+            const trans = uiTranslations[currentLanguage];
+
+            const accuracyPercent = Math.round((score / activeQuiz.length) * 100);
+            document.getElementById('reportStatCorrect').innerText = `${score} / ${activeQuiz.length}`;
+            document.getElementById('reportStatPercent').innerText = `${accuracyPercent}%`;
+
+            const isPassed = accuracyPercent >= 70;
+            const statusEl = document.getElementById('reportStatStatus');
+            if (isPassed) {
+                statusEl.innerText = trans.statusPass;
+                statusEl.className = "font-bold text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+            } else {
+                statusEl.innerText = trans.statusFail;
+                statusEl.className = "font-bold text-xs px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30";
+            }
+
+            const evalEl = document.getElementById('reportEvaluation');
+            const ratio = score / activeQuiz.length;
+            if (score === activeQuiz.length) {
+                evalEl.innerText = trans.evalPerfect;
+            } else if (ratio >= 0.8) {
+                evalEl.innerText = trans.evalExcellent;
+            } else if (ratio >= 0.6) {
+                evalEl.innerText = trans.evalGood;
+            } else {
+                evalEl.innerText = trans.evalTryHarder;
+            }
+
+            reviewCurrentQ = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const ansInfo = userAnswers[reviewCurrentQ];
+            const qData = activeQuiz[ansInfo.qIndex];
+            const trans = uiTranslations[currentLanguage];
+
+            document.getElementById('reviewProgressText').innerText = trans.progress(reviewCurrentQ + 1, activeQuiz.length);
+
+            const badgeEl = document.getElementById('reviewResultBadge');
+            if (ansInfo.isCorrect) {
+                badgeEl.innerText = trans.reviewCorrectBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/20";
+            } else {
+                badgeEl.innerText = trans.reviewWrongBadge;
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/20";
+            }
+
+            let qText = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-yellow-400 font-normal code-font'>$1</code>");
+            document.getElementById('reviewQuestionText').innerHTML = qText;
+            document.getElementById('reviewHintText').innerHTML = qData.hint;
+
+            const container = document.getElementById('reviewOptionsContainer');
+            container.innerHTML = '';
+
+            qData.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3.5 sm:p-4 border rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
+
+                const isSelected = ansInfo.selected.includes(index);
+                const isCorrectAnswer = qData.ans.includes(index);
+
+                let optText = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1 py-0.5 rounded text-blue-300 font-normal code-font'>$1</code>");
+
+                let iconHTML = '';
+                if (qData.type === 'multi') {
+                    iconHTML = `<div class="w-5 h-5 border border-slate-600 rounded flex-shrink-0"></div>`;
+                } else {
+                    iconHTML = `<div class="w-5 h-5 border border-slate-600 rounded-full flex-shrink-0"></div>`;
+                }
+
+                if (isSelected && isCorrectAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-emerald-200 flex items-center gap-3 correct';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (isSelected && !isCorrectAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-rose-200 flex items-center gap-3 wrong';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else if (!isSelected && isCorrectAnswer) {
+                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-amber-200 flex items-center gap-3 missed';
+                    iconHTML = qData.type === 'multi'
+                        ? `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
+                        : `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
+                } else {
+                    div.className = 'p-3.5 sm:p-4 border border-slate-700 bg-slate-800/10 text-slate-500 opacity-40 rounded-xl flex items-center gap-3';
+                }
+
+                div.innerHTML = `
+                    ${iconHTML}
+                    <span>${optText}</span>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('btnReviewPrev').disabled = reviewCurrentQ === 0;
+            document.getElementById('btnReviewNext').disabled = reviewCurrentQ === activeQuiz.length - 1;
+            document.getElementById('btnReviewPrev').innerHTML = trans.btnReviewPrev;
+            document.getElementById('btnReviewNext').innerHTML = trans.btnReviewNext;
+        }
+
+        function prevReviewQuestion() {
+            if (reviewCurrentQ > 0) {
+                reviewCurrentQ--;
+                loadReviewQuestion();
+            }
+        }
+
+        function nextReviewQuestion() {
+            if (reviewCurrentQ < activeQuiz.length - 1) {
+                reviewCurrentQ++;
+                loadReviewQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            userAnswers = [];
+
+            const trans = uiTranslations[currentLanguage];
+            document.getElementById('scoreText').innerText = trans.score(0);
+
+            document.getElementById('reportArea').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('hidden');
+            document.getElementById('quizHeader').classList.add('flex');
+            document.getElementById('quizBody').classList.remove('hidden');
+
+            prepareQuiz();
+            loadQuestion();
+        }
+
+        updateLanguageUI();
+    </script>
+</body>
+
+</html>
