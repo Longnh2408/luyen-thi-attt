@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện Thi Trắc Nghiệm An Toàn Thông Tin</title>
+    <title>Luyện Thi Trắc Nghiệm Java Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -49,8 +49,8 @@
         <div
             class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
-                <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi An Toàn Thông Tin</h1>
-                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Học qua từ khóa (Keywords)</p>
+                <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm Java Web</h1>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Servlet, Spring Boot, Hibernate & JPA</p>
             </div>
 
             <!-- Language Switcher in Header -->
@@ -69,12 +69,10 @@
             <div class="space-y-3">
                 <div
                     class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
-                    🛡️
+                    ☕
                 </div>
-                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi An Toàn Thông
-                    Tin</h2>
-                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Chọn ngôn ngữ để bắt
-                    đầu luyện tập:</p>
+                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm Java Web</h2>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Chọn ngôn ngữ để bắt đầu luyện tập:</p>
             </div>
 
             <!-- Language Selector Option Cards -->
@@ -100,7 +98,7 @@
         <!-- Progress & Score -->
         <div id="quizHeader"
             class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
-            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 25</span>
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 50</span>
             <span
                 class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
                 id="scoreText">Điểm: 0</span>
@@ -177,11 +175,11 @@
                     class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
                     <div>
                         <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span>
-                        <span id="reportStatCorrect" class="font-bold text-emerald-600">20</span>
+                        <span id="reportStatCorrect" class="font-bold text-emerald-600">0</span>
                     </div>
                     <div>
                         <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span>
-                        <span id="reportStatPercent" class="font-bold text-indigo-600">80%</span>
+                        <span id="reportStatPercent" class="font-bold text-indigo-600">0%</span>
                     </div>
                     <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã
                         đạt yêu cầu.</div>
@@ -195,7 +193,7 @@
                     class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
                     <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
                         <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
-                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 25</span>
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 50</span>
                     </h4>
                     <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
                         Đúng</span>
@@ -255,625 +253,1213 @@
         const quizDataEn = [
             {
                 type: 'single',
-                q: "Q1: A <span class='text-red-600 font-bold'>bank</span> requires tellers to get manager approval when a customer wants to <span class='text-red-600 font-bold'>open a new account</span>. A recent audit shows that there have been four cases in the previous year where tellers opened accounts without management approval. The bank president thought separation of duties would prevent this from happening.\nIn order to implement a true separation of duties approach the bank could:",
+                q: "Question 1. Which method is called only once when the Servlet is initialized?",
                 options: [
-                    "A. Require the use of two different passwords held by two different individuals to open an account",
-                    "B. Administer account creation on a role based access control approach",
-                    "C. Require all new accounts to be handled by someone else other than a teller since they have different duties",
-                    "D. Administer account creation on a rule based access control approach"
+                    "A. service()",
+                    "B. doGet()",
+                    "C. init()",
+                    "D. destroy()"
+                ],
+                ans: [2],
+                hint: "Servlet Initialization (called only once) ➔ <span class='font-bold text-amber-600'>init()</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 2. Which method is called for every incoming request?",
+                options: [
+                    "A. init()",
+                    "B. service()",
+                    "C. destroy()",
+                    "D. finalize()"
+                ],
+                ans: [1],
+                hint: "Handles each request ➔ <span class='font-bold text-amber-600'>service()</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 3. When is the destroy() method called?",
+                options: [
+                    "A. Every request",
+                    "B. When the Servlet is created",
+                    "C. Before the Servlet is destroyed",
+                    "D. After service()"
+                ],
+                ans: [2],
+                hint: "Before Servlet destruction to release resources ➔ <span class='font-bold text-amber-600'>destroy()</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 4. How many instances of a Servlet does a container typically create?",
+                options: [
+                    "A. 1",
+                    "B. 2",
+                    "C. Based on the number of requests",
+                    "D. Based on the number of users"
                 ],
                 ans: [0],
-                hint: "A bank / open an account ➔ <span class='font-bold text-amber-600'>Require the use of two different passwords</span> (separation of duties / dual control)"
+                hint: "Servlet is a Singleton by default inside the container ➔ <span class='font-bold text-amber-600'>1 single instance</span>"
             },
             {
                 type: 'single',
-                q: "Q2: The IT department needs to prevent users from <span class='text-red-600 font-bold'>installing untested applications</span>.\nWhich of the following would provide the BEST solution?",
+                q: "Question 5. HttpServlet inherits from which class?",
                 options: [
-                    "A. Job rotation",
-                    "B. Least privilege",
-                    "C. Account lockout",
-                    "D. Antivirus"
+                    "A. Servlet",
+                    "B. GenericServlet",
+                    "C. Object",
+                    "D. HttpRequest"
                 ],
                 ans: [1],
-                hint: "installing untested applications ➔ <span class='font-bold text-amber-600'>Least privilege</span>"
+                hint: "Directly inherits from ➔ <span class='font-bold text-amber-600'>GenericServlet</span>"
             },
             {
                 type: 'single',
-                q: "Q3: A security administrator has been assigned to review the security posture of the standard corporate system image for virtual machines. The security administrator conducts a thorough review of the system logs, installation procedures, and network configuration of the VM image.\nUpon reviewing the access logs and user accounts, the security administrator determines that several accounts <span class='text-red-600 font-bold'>will not be used in production</span>.\nWhich of the following would correct the deficiencies?",
+                q: "Question 6. HttpServletRequest is used to",
                 options: [
-                    "A. Mandatory access controls",
-                    "B. Disable remote login",
-                    "C. Host hardening",
-                    "D. Disabling services"
-                ],
-                ans: [2],
-                hint: "not be used in production ➔ <span class='font-bold text-amber-600'>Host hardening</span> (includes removing unused accounts/services)"
-            },
-            {
-                type: 'single',
-                q: "Q4: An attacker discovers a <span class='text-red-600 font-bold'>new vulnerability</span> in an enterprise application. The attacker takes advantage of the vulnerability by <span class='text-red-600 font-bold'>developing new malware</span>. After installing the malware, the attacker is provided with access to the infected machine.\nWhich of the following is being described?",
-                options: [
-                    "A. Zero-day exploit",
-                    "B. Remote code execution",
-                    "C. Session hijacking",
-                    "D. Command injection"
-                ],
-                ans: [0],
-                hint: "new vulnerability / developing new malware ➔ <span class='font-bold text-amber-600'>Zero-day exploit</span>"
-            },
-            {
-                type: 'single',
-                q: "Q5: A web application is configured to <span class='text-red-600 font-bold'>target browsers</span> and allow access to bank accounts to <span class='text-red-600 font-bold'>siphon money</span> to a foreign account.\nThis is an example of which of the following attacks?",
-                options: [
-                    "A. SQL injection",
-                    "B. Header manipulation",
-                    "C. Cross-site scripting",
-                    "D. Flash cookie exploitation"
-                ],
-                ans: [2],
-                hint: "target browsers / siphon money ➔ <span class='font-bold text-amber-600'>Cross-site scripting (XSS)</span>"
-            },
-            {
-                type: 'single',
-                q: "Q6: Which of the following describes the key <span class='text-red-600 font-bold'>difference between vishing and phishing</span> attacks?",
-                options: [
-                    "A. Phishing is used by attackers to steal a person's identity.",
-                    "B. Vishing attacks require some knowledge of the target of attack.",
-                    "C. Vishing attacks are accomplished using telephony services.",
-                    "D. Phishing is a category of social engineering attack."
-                ],
-                ans: [2],
-                hint: "difference vishing and phishing ➔ <span class='font-bold text-amber-600'>telephony services</span>"
-            },
-            {
-                type: 'single',
-                q: "Q7: During a third-party audit, it is determined that a member of the firewall team can <span class='text-red-600 font-bold'>request, approve, and implement</span> a new rule-set on the firewall.\nWhich of the following will the audit team most likely recommend during the audit out brief?",
-                options: [
-                    "A. Discretionary access control for the firewall team",
-                    "B. Separation of duties policy for the firewall team",
-                    "C. Least privilege for the firewall team",
-                    "D. Mandatory access control for the firewall team"
+                    "A. Send data to the client",
+                    "B. Receive data from the client",
+                    "C. Connect to the Database",
+                    "D. Manage Beans"
                 ],
                 ans: [1],
-                hint: "request, approve, and implement ➔ <span class='font-bold text-amber-600'>Separation of duties policy for the firewall team</span>"
+                hint: "Request ➔ <span class='font-bold text-amber-600'>Receive data from client</span>"
             },
             {
                 type: 'single',
-                q: "Q8: Company policy requires the use of <span class='text-red-600 font-bold'>passphrases instead of passwords</span>.\nWhich of the following technical controls MUST be in place in order to promote the use of passphrases?",
+                q: "Question 7. HttpServletResponse is used to",
                 options: [
-                    "A. Reuse",
-                    "B. Length",
-                    "C. History",
-                    "D. Complexity"
+                    "A. Receive requests",
+                    "B. Manage Sessions",
+                    "C. Send data back to the client",
+                    "D. Read Cookies"
+                ],
+                ans: [2],
+                hint: "Response ➔ <span class='font-bold text-amber-600'>Send data back to client</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 8. Session data is stored on",
+                options: [
+                    "A. Browser",
+                    "B. Client",
+                    "C. Server",
+                    "D. Cookie"
+                ],
+                ans: [2],
+                hint: "Session data ➔ <span class='font-bold text-amber-600'>Stored on Server</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 9. Cookie data is stored on",
+                options: [
+                    "A. JVM",
+                    "B. Server",
+                    "C. Client",
+                    "D. Database"
+                ],
+                ans: [2],
+                hint: "Cookie data ➔ <span class='font-bold text-amber-600'>Stored on Client (Browser)</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 10. Which mechanism is more secure?",
+                options: [
+                    "A. Cookie",
+                    "B. Session",
+                    "C. LocalStorage",
+                    "D. Cache"
                 ],
                 ans: [1],
-                hint: "passphrases instead of passwords ➔ <span class='font-bold text-amber-600'>Length</span> (setting a high minimum length forces passphrases)"
+                hint: "Stored on Server side, harder to spoof ➔ <span class='font-bold text-amber-600'>Session</span>"
             },
             {
                 type: 'single',
-                q: "Q9: The help desk is receiving numerous <span class='text-red-600 font-bold'>password change alerts</span> from users in the accounting department. These alerts occur <span class='text-red-600 font-bold'>multiple times on the same day</span> for each of the affected users' accounts.\nWhich of the following controls should be implemented to curtail this activity?",
+                q: "Question 11. What is a key characteristic of forward()?",
                 options: [
-                    "A. Password Reuse",
-                    "B. Password complexity",
-                    "C. Password History",
-                    "D. Password Minimum age"
+                    "A. Changes the URL",
+                    "B. Does not change the URL",
+                    "C. Creates a new request",
+                    "D. Closes the Session"
+                ],
+                ans: [1],
+                hint: "Internal server redirection ➔ <span class='font-bold text-amber-600'>Does not change URL</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 12. What does sendRedirect() do?",
+                options: [
+                    "A. Does not change the URL",
+                    "B. Changes the URL",
+                    "C. Does not send a response",
+                    "D. Does not send a request"
+                ],
+                ans: [1],
+                hint: "Sends status 302 to client to request a new URL ➔ <span class='font-bold text-amber-600'>Changes URL</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 13. RequestDispatcher supports",
+                options: [
+                    "A. include()",
+                    "B. forward()",
+                    "C. Both A and B",
+                    "D. redirect()"
+                ],
+                ans: [2],
+                hint: "RequestDispatcher provides two main actions ➔ <span class='font-bold text-amber-600'>include() and forward()</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 14. A Filter is used to",
+                options: [
+                    "A. Map URL",
+                    "B. Intercept and process requests",
+                    "C. Create Sessions",
+                    "D. Connect to Database"
+                ],
+                ans: [1],
+                hint: "Intercepts request/response before/after reaching the Servlet ➔ <span class='font-bold text-amber-600'>Intercept and process requests</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 15. The annotation to declare a Servlet is",
+                options: [
+                    "A. @Servlet",
+                    "B. @WebServlet",
+                    "C. @Controller",
+                    "D. @RequestMapping"
+                ],
+                ans: [1],
+                hint: "Servlet configuration annotation ➔ <span class='font-bold text-amber-600'>@WebServlet</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 16. The traditional configuration file for a Servlet is",
+                options: [
+                    "A. pom.xml",
+                    "B. web.xml",
+                    "C. application.yml",
+                    "D. build.gradle"
+                ],
+                ans: [1],
+                hint: "Deployment Descriptor file ➔ <span class='font-bold text-amber-600'>web.xml</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 17. Which object helps prevent SQL Injection?",
+                options: [
+                    "A. Statement",
+                    "B. ResultSet",
+                    "C. PreparedStatement",
+                    "D. DriverManager"
+                ],
+                ans: [2],
+                hint: "Uses precompiled parameterized queries ➔ <span class='font-bold text-amber-600'>PreparedStatement</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 18. JDBC API does NOT include",
+                options: [
+                    "A. Connection",
+                    "B. PreparedStatement",
+                    "C. ResultSet",
+                    "D. EntityManager"
                 ],
                 ans: [3],
-                hint: "password change alerts / multiple times same day ➔ <span class='font-bold text-amber-600'>Password Minimum age</span>"
+                hint: "EntityManager belongs to JPA/Hibernate ➔ <span class='font-bold text-amber-600'>EntityManager</span>"
             },
             {
                 type: 'single',
-                q: "Q10: Although a web enabled application appears to only allow letters in the comment field of a web form, malicious user was able to carry a <span class='text-red-600 font-bold'>SQL injection</span> attack by sending <span class='text-red-600 font-bold'>special characters</span> through the web comment field.\nWhich of the following has the application programmer failed to implement?",
+                q: "Question 19. The main annotation of a Spring Boot application is",
                 options: [
-                    "A. Revision control system",
-                    "B. Client side exception handling",
-                    "C. Server side validation",
-                    "D. Server hardening"
+                    "A. @EnableMVC",
+                    "B. @SpringBootApplication",
+                    "C. @Application",
+                    "D. @SpringApplication"
                 ],
-                ans: [2],
-                hint: "SQL injection / special characters ➔ <span class='font-bold text-amber-600'>Server side validation</span>"
+                ans: [1],
+                hint: "Main configuration entry point of Spring Boot ➔ <span class='font-bold text-amber-600'>@SpringBootApplication</span>"
             },
             {
                 type: 'single',
-                q: "Q11: An administrator discovers the following log entry on a server:\nNov 12 2013 00:23:45 httpd[2342]: GET /app2/prod/proc/process.php?input=change;<span class='text-red-600 font-bold'>cd%20../../../etc;cat%20shadow</span>\nWhich of the following attacks is being attempted?",
+                q: "Question 20. @SpringBootApplication does NOT include",
                 options: [
-                    "A. Command injection",
-                    "B. Password attack",
-                    "C. Buffer overflow",
-                    "D. Cross-site scripting"
-                ],
-                ans: [0],
-                hint: "cd%20.../etc; cat%20shadow ➔ <span class='font-bold text-amber-600'>Command injection</span>"
-            },
-            {
-                type: 'single',
-                q: "Q12: An attacker uses a network sniffer to <span class='text-red-600 font-bold'>capture the packets</span> of a transaction that adds $20 to a gift card. The attacker then user a function of the sniffer to <span class='text-red-600 font-bold'>push those packets back</span> onto the network again, adding another $20 to the gift card. This can be done many times.\nWhich of the following describes this type of attack?",
-                options: [
-                    "A. Integer overflow attack",
-                    "B. Smurf attack",
-                    "C. Replay attack",
-                    "D. Buffer overflow attack",
-                    "E. Cross-site scripting attack"
-                ],
-                ans: [2],
-                hint: "capture the packets / push back ➔ <span class='font-bold text-amber-600'>Replay attack</span>"
-            },
-            {
-                type: 'single',
-                q: "Q13: A security administrator is tasked with conducting an assessment made to establish the baseline security posture of the corporate IT infrastructure. The assessment must report actual flaws and weaknesses in the infrastructure. Due to the expense of hiring outside consultants, the testing must be performed using in-house or cheaply available resource. <span class='text-red-600 font-bold'>There cannot be a possibility of any requirement being damaged</span> in the test.\nWhich of the following has the administrator been tasked to perform?",
-                options: [
-                    "A. Risk transference",
-                    "B. Penetration test",
-                    "C. Threat assessment",
-                    "D. Vulnerability assessment"
+                    "A. @Configuration",
+                    "B. @ComponentScan",
+                    "C. @EnableAutoConfiguration",
+                    "D. @Transactional"
                 ],
                 ans: [3],
-                hint: "cannot be damaged ➔ <span class='font-bold text-amber-600'>Vulnerability assessment</span>"
+                hint: "Includes ComponentScan, Configuration, and EnableAutoConfiguration. Does not include ➔ <span class='font-bold text-amber-600'>@Transactional</span>"
             },
             {
                 type: 'single',
-                q: "Q14: A security program manager wants to actively test the security posture of a system. The system is not yet in production and has no uptime requirement or active user base.\nWhich of the following methods will produce a report which shows vulnerabilities that were <span class='text-red-600 font-bold'>actually exploited</span>?",
+                q: "Question 21. DispatcherServlet is a",
                 options: [
-                    "A. Peer review",
-                    "B. Component testing",
-                    "C. Penetration testing",
-                    "D. Vulnerability testing"
+                    "A. Front Controller",
+                    "B. DAO",
+                    "C. Entity",
+                    "D. Bean Factory"
+                ],
+                ans: [0],
+                hint: "Central controller that intercepts all web requests ➔ <span class='font-bold text-amber-600'>Front Controller</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 22. The component that determines the appropriate Controller is",
+                options: [
+                    "A. ViewResolver",
+                    "B. HandlerMapping",
+                    "C. BeanFactory",
+                    "D. Repository"
+                ],
+                ans: [1],
+                hint: "Maps incoming request URLs to target handlers ➔ <span class='font-bold text-amber-600'>HandlerMapping</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 23. Controllers are executed via",
+                options: [
+                    "A. Dispatcher",
+                    "B. HandlerAdapter",
+                    "C. ServletContext",
+                    "D. ViewResolver"
+                ],
+                ans: [1],
+                hint: "Executes the selected Controller handler ➔ <span class='font-bold text-amber-600'>HandlerAdapter</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 24. Where does @PathVariable retrieve data from?",
+                options: [
+                    "A. Form",
+                    "B. URL Path",
+                    "C. Header",
+                    "D. Cookie"
+                ],
+                ans: [1],
+                hint: "Retrieves variables from the URI template path /path/{id} ➔ <span class='font-bold text-amber-600'>URL Path</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 25. Where does @RequestParam retrieve data from?",
+                options: [
+                    "A. Query String",
+                    "B. Session",
+                    "C. Cookie",
+                    "D. Path"
+                ],
+                ans: [0],
+                hint: "Gets value from the query params ?id=10 or form-data ➔ <span class='font-bold text-amber-600'>Query String</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 26. Which URL is suitable for @RequestParam?",
+                options: [
+                    "A. /student/10",
+                    "B. /student?id=10",
+                    "C. /10/student",
+                    "D. /student"
+                ],
+                ans: [1],
+                hint: "Uses a question mark and key-value pair ➔ <span class='font-bold text-amber-600'>/student?id=10</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 27. What does IoC stand for?",
+                options: [
+                    "A. Input of Controller",
+                    "B. Inversion of Control",
+                    "C. Injection of Component",
+                    "D. Internal Object Configuration"
+                ],
+                ans: [1],
+                hint: "Control inversion pattern ➔ <span class='font-bold text-amber-600'>Inversion of Control</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 28. What is DI?",
+                options: [
+                    "A. Database Integration",
+                    "B. Dependency Injection",
+                    "C. Dynamic Injection",
+                    "D. Data Initialization"
+                ],
+                ans: [1],
+                hint: "Injecting dependencies into a class ➔ <span class='font-bold text-amber-600'>Dependency Injection</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 29. What is a Bean?",
+                options: [
+                    "A. A Database table",
+                    "B. An object managed by Spring",
+                    "C. A Servlet",
+                    "D. A Session"
+                ],
+                ans: [1],
+                hint: "An object instantiated and managed by the Spring IoC container ➔ <span class='font-bold text-amber-600'>An object managed by Spring</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 30. Which annotation marks the business logic layer?",
+                options: [
+                    "A. @Repository",
+                    "B. @Component",
+                    "C. @Service",
+                    "D. @Bean"
                 ],
                 ans: [2],
-                hint: "actually exploited ➔ <span class='font-bold text-amber-600'>Penetration testing</span>"
+                hint: "Service layer annotation ➔ <span class='font-bold text-amber-600'>@Service</span>"
             },
             {
                 type: 'single',
-                q: "Q15: During a recent audit, it was discovered that many services and desktops were <span class='text-red-600 font-bold'>missing security patches</span>.\nWhich of the following BEST describes the assessment that was performed to discover this issue?",
+                q: "Question 31. Which annotation marks the data access layer?",
                 options: [
-                    "A. Network mapping",
-                    "B. Vulnerability scan",
-                    "C. Port Scan",
-                    "D. Protocol analysis"
+                    "A. @Repository",
+                    "B. @Controller",
+                    "C. @Configuration",
+                    "D. @Entity"
+                ],
+                ans: [0],
+                hint: "Data Access Object (DAO) annotation ➔ <span class='font-bold text-amber-600'>@Repository</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 32. Which annotation marks the controller layer?",
+                options: [
+                    "A. @Component",
+                    "B. @Controller",
+                    "C. @Service",
+                    "D. @Repository"
                 ],
                 ans: [1],
-                hint: "missing security patches ➔ <span class='font-bold text-amber-600'>Vulnerability scan</span>"
+                hint: "Web controller annotation ➔ <span class='font-bold text-amber-600'>@Controller</span>"
             },
             {
                 type: 'single',
-                q: "Q16: Which of the following best describes routine in which <span class='text-red-600 font-bold'>semicolons, dashes, quotes</span>, and commas are removed from a string?",
+                q: "Question 33. Which is the most generic stereotype annotation?",
                 options: [
-                    "A. Error handling to protect against program exploitation",
-                    "B. Exception handling to protect against XSRF attacks.",
-                    "C. Input validation to protect against SQL injection.",
-                    "D. Padding to protect against string buffer overflows."
+                    "A. @Component",
+                    "B. @Repository",
+                    "C. @Service",
+                    "D. @Controller"
+                ],
+                ans: [0],
+                hint: "The parent stereotype annotation ➔ <span class='font-bold text-amber-600'>@Component</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 34. GenericFilterBean is a(n)",
+                options: [
+                    "A. Interface",
+                    "B. Filter helper class",
+                    "C. Annotation",
+                    "D. Bean"
+                ],
+                ans: [1],
+                hint: "Abstract class that implements javax.servlet.Filter ➔ <span class='font-bold text-amber-600'>Filter helper class</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 35. OncePerRequestFilter",
+                options: [
+                    "A. Runs once per Session",
+                    "B. Runs once per request",
+                    "C. Runs multiple times",
+                    "D. Is not a Filter"
+                ],
+                ans: [1],
+                hint: "Guarantees a single execution per request dispatch ➔ <span class='font-bold text-amber-600'>Runs once per request</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 36. What is the role of spring-boot-starter-parent?",
+                options: [
+                    "A. Manages Dependencies and Versions",
+                    "B. Creates Database",
+                    "C. Runs Servlet",
+                    "D. Maps URL"
+                ],
+                ans: [0],
+                hint: "Provides default dependency management and version control ➔ <span class='font-bold text-amber-600'>Manages Dependencies and Versions</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 37. What is ORM?",
+                options: [
+                    "A. Object Relational Mapping",
+                    "B. Object Request Mapping",
+                    "C. Online Resource Manager",
+                    "D. Object Runtime Management"
+                ],
+                ans: [0],
+                hint: "Maps object-oriented classes to database tables ➔ <span class='font-bold text-amber-600'>Object Relational Mapping</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 38. What is JPA?",
+                options: [
+                    "A. Framework",
+                    "B. Specification",
+                    "C. Database",
+                    "D. IDE"
+                ],
+                ans: [1],
+                hint: "Java Persistence API standard/specification ➔ <span class='font-bold text-amber-600'>Specification</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 39. What is Hibernate?",
+                options: [
+                    "A. Specification",
+                    "B. ORM Implementation",
+                    "C. Database",
+                    "D. Servlet"
+                ],
+                ans: [1],
+                hint: "A concrete provider of the JPA specification ➔ <span class='font-bold text-amber-600'>ORM Implementation</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 40. JPQL queries are executed against:",
+                options: [
+                    "A. Tables",
+                    "B. Entities",
+                    "C. Databases",
+                    "D. Columns"
+                ],
+                ans: [1],
+                hint: "Queries are written on Java class objects ➔ <span class='font-bold text-amber-600'>Entity</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 41. What is HQL?",
+                options: [
+                    "A. Hibernate Query Language",
+                    "B. HTML Query Language",
+                    "C. Hyper Query Language",
+                    "D. Hibernate Quick Language"
+                ],
+                ans: [0],
+                hint: "Hibernate Query Language ➔ <span class='font-bold text-amber-600'>Hibernate Query Language</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 42. What is the default FetchType for @ManyToOne?",
+                options: [
+                    "A. LAZY",
+                    "B. EAGER",
+                    "C. NONE",
+                    "D. FETCH"
+                ],
+                ans: [1],
+                hint: "Relationships ending in ToOne default to ➔ <span class='font-bold text-amber-600'>EAGER</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 43. What does LAZY fetch mean?",
+                options: [
+                    "A. Load immediately",
+                    "B. Load on-demand",
+                    "C. Do not load",
+                    "D. Load using Timer"
+                ],
+                ans: [1],
+                hint: "Postpones query execution until requested ➔ <span class='font-bold text-amber-600'>Load on-demand</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 44. LAZY is recommended for",
+                options: [
+                    "A. OneToMany",
+                    "B. ManyToMany",
+                    "C. Both A and B",
+                    "D. OneToOne"
                 ],
                 ans: [2],
-                hint: "semicolons, dashes, quotes ➔ <span class='font-bold text-amber-600'>Input validation</span>"
+                hint: "Recommended for collections (ToMany) ➔ <span class='font-bold text-amber-600'>Both A and B</span>"
             },
             {
                 type: 'single',
-                q: "Q17: A security analyst accesses corporate web pages and inputs random data in the forms. The response received includes the <span class='text-red-600 font-bold'>type of database</span> used and <span class='text-red-600 font-bold'>SQL commands</span> that the database accepts. Which of the following should the security analyst use to prevent this vulnerability?",
+                q: "Question 45. A newly instantiated Entity is in which state?",
                 options: [
-                    "A. Application fuzzing",
-                    "B. Error handling",
-                    "C. Input validation",
-                    "D. Pointer dereference"
+                    "A. Managed",
+                    "B. Detached",
+                    "C. Transient",
+                    "D. Removed"
+                ],
+                ans: [2],
+                hint: "Not associated with a database record or Session ➔ <span class='font-bold text-amber-600'>Transient</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 46. An Entity currently tracked by the Persistence Context is in which state?",
+                options: [
+                    "A. Detached",
+                    "B. Managed",
+                    "C. Removed",
+                    "D. New"
                 ],
                 ans: [1],
-                hint: "type of database / SQL commands ➔ <span class='font-bold text-amber-600'>Error handling</span>"
+                hint: "Tracked and synchronized by the Session ➔ <span class='font-bold text-amber-600'>Managed</span>"
             },
             {
                 type: 'single',
-                q: "Q18: An application was recently compromised after some <span class='text-red-600 font-bold'>malformed data</span> came in via web form.\nWhich of the following would MOST likely have prevented this?",
+                q: "Question 47. What is @Transactional used for?",
                 options: [
-                    "A. Input validation",
-                    "B. Proxy server",
-                    "C. Stress testing",
-                    "D. Encoding"
-                ],
-                ans: [0],
-                hint: "malformed data ➔ <span class='font-bold text-amber-600'>Input validation</span>"
-            },
-            {
-                type: 'single',
-                q: "Q19: An organization has hired a penetration tester to test the security of its ten web servers. The penetration tester is able to gain root/administrative access in several servers by exploiting vulnerabilities associated with the implementation of <span class='text-red-600 font-bold'>SMTP, POP, DNS, FTP</span>, Telnet, and IMAP.\nWhich of the following recommendations should the penetration tester provide to the organization to better protect their web servers in the future?",
-                options: [
-                    "A. Use a honeypot",
-                    "B. Disable unnecessary services",
-                    "C. Implement transport layer security",
-                    "D. Increase application event logging"
+                    "A. Mapping URL",
+                    "B. Managing Transactions",
+                    "C. Creating Bean",
+                    "D. Creating Entity"
                 ],
                 ans: [1],
-                hint: "SMTP, POP, DNS, FTP ➔ <span class='font-bold text-amber-600'>Disable unnecessary services</span>"
+                hint: "Ensures atomic unit of work (commit/rollback) ➔ <span class='font-bold text-amber-600'>Managing Transactions</span>"
             },
             {
                 type: 'single',
-                q: "Q20: A <span class='text-red-600 font-bold'>buffer overflow</span> can result in:",
+                q: "Question 48. A transaction will roll back when:",
                 options: [
-                    "A. loss of data caused by unauthorized command execution.",
-                    "B. privilege escalation caused by TPM override.",
-                    "C. reduced key strength due to salt manipulation.",
-                    "D. repeated use of one-time keys."
-                ],
-                ans: [0],
-                hint: "buffer overflow ➔ <span class='font-bold text-amber-600'>loss of data / unauthorized command execution</span>"
-            },
-            {
-                type: 'single',
-                q: "Q21: A user has attempted to access data at a <span class='text-red-600 font-bold'>higher classification level</span> than the user's account is currently authorized to access.\nWhich of the following access control models has been applied to this user's account?",
-                options: [
-                    "A. MAC",
-                    "B. DAC",
-                    "C. RBAC",
-                    "D. ABAC"
-                ],
-                ans: [0],
-                hint: "higher classification level ➔ <span class='font-bold text-amber-600'>MAC</span>"
-            },
-            {
-                type: 'multi',
-                q: "Q22: A company's user lockout policy is enabled after five unsuccessful login attempts. The help desk notices a user is repeatedly locked out over the course of a workweek. Upon contacting the user, the help desk discovers the <span class='text-red-600 font-bold'>user is on vacation</span> and does not have network access.\nWhich of the following types of attacks are MOST likely occurring? (Select two.)",
-                options: [
-                    "A. Replay",
-                    "B. Rainbow tables",
-                    "C. Brute force",
-                    "D. Pass the hash",
-                    "E. Dictionary"
-                ],
-                ans: [2, 4],
-                hint: "user is on vacation (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Brute force & Dictionary</span>"
-            },
-            {
-                type: 'multi',
-                q: "Q23: A security analyst is investigating a security breach. Upon inspection of the audit and access logs, the analyst notices the host was accessed and the /etc/passwd file was modified with a new entry for username \"gotcha\" and <span class='text-red-600 font-bold'>user ID of 0</span>.\nWhich of the following are the MOST likely attack vector and tool the analyst should use to determine if the attack is still ongoing? (Select two.)",
-                options: [
-                    "A. Logic bomb",
-                    "B. Backdoor",
-                    "C. Keylogger",
-                    "D. Netstat",
-                    "E. Tracert",
-                    "F. Ping"
-                ],
-                ans: [1, 3],
-                hint: "user ID of 0 (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Backdoor & Netstat</span>"
-            },
-            {
-                type: 'multi',
-                q: "Q24: Which of the following would enhance the security of accessing data <span class='text-red-600 font-bold'>stored in the cloud</span>? (Select two.)",
-                options: [
-                    "A. Block level encryption",
-                    "B. SAML authentication",
-                    "C. Transport encryption",
-                    "D. Multifactor authentication",
-                    "E. Predefined challenge questions",
-                    "F. Hashing"
-                ],
-                ans: [1, 3],
-                hint: "stored in the cloud (Chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>SAML & Multifactor authentication</span>"
-            },
-            {
-                type: 'single',
-                q: "Q25: A security analyst is inspecting the results of a recent internal vulnerability scan that was performed against intranet services. The scan reports include the following critical-rated vulnerability:\nTitle: Remote Command Execution vulnerability in web server\nRating: Critical (<span class='text-red-600 font-bold'>CVSS 10.0</span>)\nThreat actor: any remote user of the web server\nConfidence: <span class='text-red-600 font-bold'>certain</span>\nRecommendation: apply vendor patches\nWhich of the following actions should the security analyst perform FIRST?",
-                options: [
-                    "A. Escalate the issue to senior management.",
-                    "B. Apply organizational context to the risk rating.",
-                    "C. Organize for urgent out-of-cycle patching.",
-                    "D. Exploit the server to check whether it is a false positive."
+                    "A. Successful",
+                    "B. Runtime Exception occurs",
+                    "C. Query runs",
+                    "D. Session opens"
                 ],
                 ans: [1],
-                hint: "CVSS 10.0 / certain ➔ <span class='font-bold text-amber-600'>Apply organizational context to the risk rating</span>"
+                hint: "Spring rolls back transactions on unchecked exceptions ➔ <span class='font-bold text-amber-600'>Runtime Exception occurs</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 49. The N+1 Problem is typically caused by:",
+                options: [
+                    "A. EAGER",
+                    "B. LAZY access of multiple associated entities",
+                    "C. Session",
+                    "D. Cookie"
+                ],
+                ans: [1],
+                hint: "Iterating parent list and triggering query on each child's LAZY relationship ➔ <span class='font-bold text-amber-600'>LAZY access of multiple associated entities</span>"
+            },
+            {
+                type: 'single',
+                q: "Question 50. How can we resolve the N+1 Problem?",
+                options: [
+                    "A. JOIN FETCH",
+                    "B. EntityGraph",
+                    "C. Both A and B",
+                    "D. JDBC"
+                ],
+                ans: [2],
+                hint: "Fetch associated data in a single SQL query ➔ <span class='font-bold text-amber-600'>Both A and B</span>"
             }
         ];
 
         const quizDataVi = [
             {
                 type: 'single',
-                q: "Câu 1: Một <span class='text-red-600 font-bold'>ngân hàng</span> yêu cầu nhân viên giao dịch phải được sự phê duyệt của quản lý khi khách hàng muốn <span class='text-red-600 font-bold'>mở tài khoản mới</span>. Một cuộc kiểm toán gần đây cho thấy trong năm trước đã có bốn trường hợp nhân viên giao dịch tự mở tài khoản mà không có sự phê duyệt của quản lý. Giám đốc ngân hàng cho rằng nguyên tắc phân tách nhiệm vụ sẽ ngăn chặn điều này xảy ra.\nĐể thực hiện đúng nguyên tắc phân tách nhiệm vụ, ngân hàng có thể:",
+                q: "Câu 1. Phương thức nào chỉ được gọi một lần khi Servlet được khởi tạo?",
                 options: [
-                    "A. Yêu cầu sử dụng hai mật khẩu khác nhau do hai cá nhân khác nhau nắm giữ để mở tài khoản",
-                    "B. Quản lý việc tạo tài khoản theo phương pháp kiểm soát truy cập dựa trên vai trò (RBAC)",
-                    "C. Yêu cầu tất cả tài khoản mới phải được xử lý bởi người khác, không phải nhân viên giao dịch vì họ có nhiệm vụ khác nhau",
-                    "D. Quản lý việc tạo tài khoản theo phương pháp kiểm soát truy cập dựa trên quy tắc (Rule-based)"
+                    "A. service()",
+                    "B. doGet()",
+                    "C. init()",
+                    "D. destroy()"
+                ],
+                ans: [2],
+                hint: "Khởi tạo Servlet (chỉ gọi 1 lần) ➔ <span class='font-bold text-amber-600'>init()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 2. Phương thức nào được gọi cho mỗi request?",
+                options: [
+                    "A. init()",
+                    "B. service()",
+                    "C. destroy()",
+                    "D. finalize()"
+                ],
+                ans: [1],
+                hint: "Xử lý cho mỗi Request ➔ <span class='font-bold text-amber-600'>service()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 3. destroy() được gọi khi nào?",
+                options: [
+                    "A. Mỗi request",
+                    "B. Khi Servlet được tạo",
+                    "C. Trước khi Servlet bị hủy",
+                    "D. Sau service()"
+                ],
+                ans: [2],
+                hint: "Trước khi Servlet bị hủy / giải phóng tài nguyên ➔ <span class='font-bold text-amber-600'>destroy()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 4. Thông thường container tạo bao nhiêu đối tượng của một Servlet?",
+                options: [
+                    "A. 1",
+                    "B. 2",
+                    "C. Theo số request",
+                    "D. Theo số user"
                 ],
                 ans: [0],
-                hint: "Ngân hàng / Mở tài khoản mới ➔ <span class='font-bold text-amber-600'>Yêu cầu sử dụng hai mật khẩu khác nhau</span> (Phân tách nhiệm vụ / Kiểm soát kép)"
+                hint: "Servlet là Singleton mặc định trong container ➔ <span class='font-bold text-amber-600'>1 đối tượng duy nhất</span>"
             },
             {
                 type: 'single',
-                q: "Câu 2: Bộ phận IT cần ngăn người dùng <span class='text-red-600 font-bold'>cài đặt các ứng dụng chưa được kiểm thử</span>.\nGiải pháp nào sau đây sẽ cho kết quả TỐT NHẤT?",
+                q: "Câu 5. HttpServlet kế thừa lớp nào?",
                 options: [
-                    "A. Luân chuyển công việc (Job rotation)",
-                    "B. Đặc quyền tối thiểu (Least privilege)",
-                    "C. Khóa tài khoản (Account lockout)",
-                    "D. Phần mềm diệt virus (Antivirus)"
+                    "A. Servlet",
+                    "B. GenericServlet",
+                    "C. Object",
+                    "D. HttpRequest"
                 ],
                 ans: [1],
-                hint: "Ngăn cài đặt ứng dụng chưa kiểm thử ➔ <span class='font-bold text-amber-600'>Đặc quyền tối thiểu (Least privilege)</span>"
+                hint: "Kế thừa trực tiếp ➔ <span class='font-bold text-amber-600'>GenericServlet</span>"
             },
             {
                 type: 'single',
-                q: "Câu 3: Một quản trị viên bảo mật được giao nhiệm vụ xem xét tình trạng bảo mật của hình ảnh hệ thống doanh nghiệp chuẩn dành cho máy ảo. Quản trị viên tiến hành xem xét kỹ lưỡng nhật ký hệ thống, quy trình cài đặt và cấu hình mạng của VM. Sau khi xem xét nhật ký truy cập và tài khoản người dùng, quản trị viên xác định rằng một số tài khoản <span class='text-red-600 font-bold'>sẽ không được sử dụng trong môi trường thực tế</span>.\nĐiều nào sau đây sẽ khắc phục các thiếu sót đó?",
+                q: "Câu 6. HttpServletRequest dùng để",
                 options: [
-                    "A. Kiểm soát truy cập bắt buộc (Mandatory access controls)",
-                    "B. Vô hiệu hóa đăng nhập từ xa",
-                    "C. Tăng cường bảo mật máy chủ (Host hardening)",
-                    "D. Vô hiệu hóa các dịch vụ không cần thiết"
-                ],
-                ans: [2],
-                hint: "Không sử dụng trong thực tế ➔ <span class='font-bold text-amber-600'>Tăng cường bảo mật máy chủ (Host hardening)</span> (bao gồm vô hiệu hóa/xóa tài khoản dư thừa)"
-            },
-            {
-                type: 'single',
-                q: "Câu 4: Một kẻ tấn công phát hiện ra một <span class='text-red-600 font-bold'>lỗ hổng mới</span> trong một ứng dụng doanh nghiệp. Kẻ tấn công khai thác lỗ hổng đó bằng cách <span class='text-red-600 font-bold'>phát triển phần mềm độc hại mới</span>. Sau khi cài đặt phần mềm độc hại, kẻ tấn công được cấp quyền truy cập vào máy bị nhiễm.\nĐiều nào sau đây mô tả đúng tình huống trên?",
-                options: [
-                    "A. Khai thác lỗ hổng zero-day (Zero-day exploit)",
-                    "B. Thực thi mã từ xa (Remote code execution)",
-                    "C. Chiếm quyền phiên làm việc (Session hijacking)",
-                    "D. Chèn lệnh (Command injection)"
-                ],
-                ans: [0],
-                hint: "Lỗ hổng mới / Phát triển malware mới ➔ <span class='font-bold text-amber-600'>Khai thác lỗ hổng zero-day (Zero-day exploit)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 5: Một ứng dụng web được cấu hình để <span class='text-red-600 font-bold'>nhắm mục tiêu vào trình duyệt</span> và cho phép truy cập vào tài khoản ngân hàng nhằm <span class='text-red-600 font-bold'>chuyển tiền</span> sang tài khoản nước ngoài.\nĐây là ví dụ của loại tấn công nào?",
-                options: [
-                    "A. SQL injection",
-                    "B. Thao túng tiêu đề (Header manipulation)",
-                    "C. Tấn công cross-site scripting (XSS)",
-                    "D. Khai thác Flash cookie"
-                ],
-                ans: [2],
-                hint: "Nhắm mục tiêu trình duyệt / Chuyển tiền ➔ <span class='font-bold text-amber-600'>Tấn công cross-site scripting (XSS)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 6: Điều nào sau đây mô tả sự <span class='text-red-600 font-bold'>khác biệt chính giữa tấn công vishing và phishing</span>?",
-                options: [
-                    "A. Phishing được kẻ tấn công sử dụng để đánh cắp danh tính của một người",
-                    "B. Tấn công vishing đòi hỏi phải có một số hiểu biết về mục tiêu tấn công",
-                    "C. Tấn công vishing được thực hiện thông qua dịch vụ điện thoại",
-                    "D. Phishing là một dạng tấn công kỹ nghệ xã hội (social engineering)"
-                ],
-                ans: [2],
-                hint: "Khác biệt giữa vishing và phishing ➔ <span class='font-bold text-amber-600'>Dịch vụ điện thoại (Telephony services)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 7: Trong một cuộc kiểm toán bên thứ ba, người ta xác định rằng một thành viên của nhóm tường lửa có thể <span class='text-red-600 font-bold'>yêu cầu, phê duyệt và triển khai</span> một bộ quy tắc mới trên tường lửa.\nĐiều nào sau đây mà nhóm kiểm toán có khả năng cao nhất sẽ khuyến nghị?",
-                options: [
-                    "A. Kiểm soát truy cập tùy quyền (DAC) cho nhóm tường lửa",
-                    "B. Chính sách phân tách nhiệm vụ cho nhóm tường lửa",
-                    "C. Đặc quyền tối thiểu (Least privilege) cho nhóm tường lửa",
-                    "D. Kiểm soát truy cập bắt buộc (MAC) cho nhóm tường lửa"
+                    "A. Gửi dữ liệu về client",
+                    "B. Nhận dữ liệu từ client",
+                    "C. Kết nối Database",
+                    "D. Quản lý Bean"
                 ],
                 ans: [1],
-                hint: "Yêu cầu, phê duyệt và triển khai ➔ <span class='font-bold text-amber-600'>Chính sách phân tách nhiệm vụ (Separation of duties policy)</span>"
+                hint: "Request ➔ <span class='font-bold text-amber-600'>Nhận dữ liệu từ client</span>"
             },
             {
                 type: 'single',
-                q: "Câu 8: Chính sách công ty yêu cầu sử dụng <span class='text-red-600 font-bold'>cụm mật khẩu (passphrase) thay vì mật khẩu thông thường</span>.\nKiểm soát kỹ thuật nào sau đây BẮT BUỘC phải có để thúc đẩy việc sử dụng passphrase?",
+                q: "Câu 7. HttpServletResponse dùng để",
                 options: [
-                    "A. Tái sử dụng (Reuse)",
-                    "B. Độ dài (Length)",
-                    "C. Lịch sử (History)",
-                    "D. Độ phức tạp (Complexity)"
+                    "A. Nhận request",
+                    "B. Quản lý Session",
+                    "C. Trả dữ liệu về client",
+                    "D. Đọc Cookie"
+                ],
+                ans: [2],
+                hint: "Response ➔ <span class='font-bold text-amber-600'>Trả dữ liệu về client</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 8. Session được lưu ở",
+                options: [
+                    "A. Browser",
+                    "B. Client",
+                    "C. Server",
+                    "D. Cookie"
+                ],
+                ans: [2],
+                hint: "Session data ➔ <span class='font-bold text-amber-600'>Lưu trữ trên Server</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 9. Cookie được lưu ở",
+                options: [
+                    "A. JVM",
+                    "B. Server",
+                    "C. Client",
+                    "D. Database"
+                ],
+                ans: [2],
+                hint: "Cookie data ➔ <span class='font-bold text-amber-600'>Lưu trữ trên Client (Browser)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 10. Cơ chế nào an toàn hơn?",
+                options: [
+                    "A. Cookie",
+                    "B. Session",
+                    "C. LocalStorage",
+                    "D. Cache"
                 ],
                 ans: [1],
-                hint: "Sử dụng cụm mật khẩu (passphrase) thay vì mật khẩu ➔ <span class='font-bold text-amber-600'>Độ dài (Length)</span> (yêu cầu độ dài tối thiểu lớn sẽ bắt buộc người dùng chọn cụm mật khẩu)"
+                hint: "Lưu ở Server nên khó bị giả mạo hơn ➔ <span class='font-bold text-amber-600'>Session</span>"
             },
             {
                 type: 'single',
-                q: "Câu 9: Bộ phận hỗ trợ nhận được nhiều <span class='text-red-600 font-bold'>cảnh báo thay đổi mật khẩu</span> từ người dùng trong phòng kế toán. Các cảnh báo này xảy ra <span class='text-red-600 font-bold'>nhiều lần trong cùng một ngày</span> đối với từng tài khoản bị ảnh hưởng.\nKiểm soát nào sau đây nên được triển khai để ngăn chặn hoạt động này?",
+                q: "Câu 11. forward() có đặc điểm",
                 options: [
-                    "A. Tái sử dụng mật khẩu (Password Reuse)",
-                    "B. Độ phức tạp mật khẩu (Password Complexity)",
-                    "C. Lịch sử mật khẩu (Password History)",
-                    "D. Tuổi tối thiểu của mật khẩu (Password Minimum Age)"
+                    "A. Đổi URL",
+                    "B. Không đổi URL",
+                    "C. Tạo request mới",
+                    "D. Đóng Session"
+                ],
+                ans: [1],
+                hint: "Chuyển hướng nội bộ trên Server ➔ <span class='font-bold text-amber-600'>Không đổi URL</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 12. sendRedirect() sẽ",
+                options: [
+                    "A. Không đổi URL",
+                    "B. Đổi URL",
+                    "C. Không gửi response",
+                    "D. Không gửi request"
+                ],
+                ans: [1],
+                hint: "Client nhận mã 302 và gửi request mới ➔ <span class='font-bold text-amber-600'>Đổi URL</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 13. RequestDispatcher hỗ trợ",
+                options: [
+                    "A. include()",
+                    "B. forward()",
+                    "C. Cả A và B",
+                    "D. redirect()"
+                ],
+                ans: [2],
+                hint: "RequestDispatcher cung cấp 2 phương thức chính ➔ <span class='font-bold text-amber-600'>include() và forward()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 14. Filter được dùng để",
+                options: [
+                    "A. Mapping URL",
+                    "B. Chặn và xử lý request",
+                    "C. Tạo Session",
+                    "D. Kết nối Database"
+                ],
+                ans: [1],
+                hint: "Can thiệp trước/sau khi request tới Servlet ➔ <span class='font-bold text-amber-600'>Chặn và xử lý request/response</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 15. Annotation khai báo Servlet là",
+                options: [
+                    "A. @Servlet",
+                    "B. @WebServlet",
+                    "C. @Controller",
+                    "D. @RequestMapping"
+                ],
+                ans: [1],
+                hint: "Khai báo Servlet lớp cấu hình ➔ <span class='font-bold text-amber-600'>@WebServlet</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 16. File cấu hình truyền thống của Servlet là",
+                options: [
+                    "A. pom.xml",
+                    "B. web.xml",
+                    "C. application.yml",
+                    "D. build.gradle"
+                ],
+                ans: [1],
+                hint: "Deployment Descriptor file ➔ <span class='font-bold text-amber-600'>web.xml</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 17. Đối tượng nào chống SQL Injection?",
+                options: [
+                    "A. Statement",
+                    "B. ResultSet",
+                    "C. PreparedStatement",
+                    "D. DriverManager"
+                ],
+                ans: [2],
+                hint: "Truy vấn tham số hóa (parameterized query) ➔ <span class='font-bold text-amber-600'>PreparedStatement</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 18. JDBC API KHÔNG bao gồm",
+                options: [
+                    "A. Connection",
+                    "B. PreparedStatement",
+                    "C. ResultSet",
+                    "D. EntityManager"
                 ],
                 ans: [3],
-                hint: "Cảnh báo thay đổi mật khẩu / Nhiều lần trong cùng một ngày ➔ <span class='font-bold text-amber-600'>Tuổi tối thiểu của mật khẩu (Password Minimum Age)</span>"
+                hint: "EntityManager thuộc về JPA/Hibernate ➔ <span class='font-bold text-amber-600'>EntityManager</span>"
             },
             {
                 type: 'single',
-                q: "Câu 10: Mặc dù một ứng dụng web có vẻ chỉ cho phép nhập chữ cái vào trường bình luận của biểu mẫu, một người dùng độc hại vẫn có thể thực hiện tấn công <span class='text-red-600 font-bold'>SQL injection</span> bằng cách gửi <span class='text-red-600 font-bold'>các ký tự đặc biệt</span> qua trường bình luận đó.\nLập trình viên ứng dụng đã không triển khai điều nào sau đây?",
+                q: "Câu 19. Annotation chính của Spring Boot là",
                 options: [
-                    "A. Hệ thống kiểm soát phiên bản (Revision control system)",
-                    "B. Xử lý ngoại lệ phía client (Client-side exception handling)",
-                    "C. Kiểm tra dữ liệu đầu vào phía server (Server-side validation)",
-                    "D. Tăng cường bảo mật server (Server hardening)"
+                    "A. @EnableMVC",
+                    "B. @SpringBootApplication",
+                    "C. @Application",
+                    "D. @SpringApplication"
                 ],
-                ans: [2],
-                hint: "SQL injection / Gửi ký tự đặc biệt ➔ <span class='font-bold text-amber-600'>Kiểm tra dữ liệu đầu vào phía server (Server-side validation)</span>"
+                ans: [1],
+                hint: "Annotation cấu hình chính của Spring Boot ➔ <span class='font-bold text-amber-600'>@SpringBootApplication</span>"
             },
             {
                 type: 'single',
-                q: "Câu 11: Một quản trị viên phát hiện mục nhật ký sau trên máy chủ:\nNov 12 2013 00:23:45 httpd[2342]: GET /app2/prod/proc/process.php?input=change;<span class='text-red-600 font-bold'>cd%20../../../etc;cat%20shadow</span>\nLoại tấn công nào đang được thực hiện?",
+                q: "Câu 20. @SpringBootApplication KHÔNG bao gồm",
                 options: [
-                    "A. Chèn lệnh (Command injection)",
-                    "B. Tấn công mật khẩu (Password attack)",
-                    "C. Tràn bộ đệm (Buffer overflow)",
-                    "D. Tấn công cross-site scripting (XSS)"
-                ],
-                ans: [0],
-                hint: "cd%20.../etc; cat%20shadow ➔ <span class='font-bold text-amber-600'>Chèn lệnh (Command injection)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 12: Kẻ tấn công dùng công cụ nghe lén mạng để <span class='text-red-600 font-bold'>bắt các gói tin</span> của một giao dịch nạp 20 USD vào thẻ quà tặng. Sau đó, kẻ tấn công sử dụng chức năng của công cụ để <span class='text-red-600 font-bold'>đẩy lại các gói tin đó</span> lên mạng, nạp thêm 20 USD vào thẻ. Thao tác này có thể lặp lại nhiều lần.\nĐiều nào sau đây mô tả đúng loại tấn công này?",
-                options: [
-                    "A. Tấn công tràn số nguyên (Integer overflow)",
-                    "B. Tấn công Smurf",
-                    "C. Tấn công phát lại (Replay attack)",
-                    "D. Tấn công tràn bộ đệm (Buffer overflow)",
-                    "E. Tấn công cross-site scripting (XSS)"
-                ],
-                ans: [2],
-                hint: "Bắt các gói tin / Đẩy lại các gói tin đó ➔ <span class='font-bold text-amber-600'>Tấn công phát lại (Replay attack)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 13: Một quản trị viên bảo mật được giao nhiệm vụ thực hiện đánh giá nhằm xác lập tình trạng bảo mật cơ sở của hạ tầng IT doanh nghiệp. Đánh giá phải báo cáo các lỗ hổng và điểm yếu thực sự trong hạ tầng. Do chi phí thuê chuyên gia bên ngoài cao, việc kiểm thử phải được thực hiện bằng nguồn lực nội bộ hoặc tài nguyên giá rẻ. <span class='text-red-600 font-bold'>Không được có khả năng làm hỏng bất kỳ thành phần nào</span> trong quá trình kiểm thử.\nQuản trị viên được giao thực hiện loại đánh giá nào?",
-                options: [
-                    "A. Chuyển giao rủi ro (Risk transference)",
-                    "B. Kiểm thử xâm nhập (Penetration test)",
-                    "C. Đánh giá mối đe dọa (Threat assessment)",
-                    "D. Đánh giá lỗ hổng (Vulnerability assessment)"
+                    "A. @Configuration",
+                    "B. @ComponentScan",
+                    "C. @EnableAutoConfiguration",
+                    "D. @Transactional"
                 ],
                 ans: [3],
-                hint: "Không được có khả năng làm hỏng thành phần nào ➔ <span class='font-bold text-amber-600'>Đánh giá lỗ hổng (Vulnerability assessment)</span>"
+                hint: "Bao gồm ComponentScan, Configuration, EnableAutoConfiguration. Không bao gồm ➔ <span class='font-bold text-amber-600'>@Transactional</span>"
             },
             {
                 type: 'single',
-                q: "Câu 14: Một quản lý chương trình bảo mật muốn kiểm thử chủ động tình trạng bảo mật của một hệ thống. Hệ thống chưa đưa vào sản xuất và không có yêu cầu về thời gian hoạt động hay người dùng thực tế.\nPhương pháp nào sau đây sẽ tạo ra báo cáo cho thấy các lỗ hổng đã <span class='text-red-600 font-bold'>thực sự bị khai thác</span>?",
+                q: "Câu 21. DispatcherServlet là",
                 options: [
-                    "A. Đánh giá ngang hàng (Peer review)",
-                    "B. Kiểm thử thành phần (Component testing)",
-                    "C. Kiểm thử xâm nhập (Penetration testing)",
-                    "D. Kiểm thử lỗ hổng (Vulnerability testing)"
+                    "A. Front Controller",
+                    "B. DAO",
+                    "C. Entity",
+                    "D. Bean Factory"
+                ],
+                ans: [0],
+                hint: "Bộ điều phối trung tâm tiếp nhận mọi request ➔ <span class='font-bold text-amber-600'>Front Controller</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 22. Thành phần xác định Controller phù hợp là",
+                options: [
+                    "A. ViewResolver",
+                    "B. HandlerMapping",
+                    "C. BeanFactory",
+                    "D. Repository"
+                ],
+                ans: [1],
+                hint: "Tìm và ánh xạ URL đến Controller ➔ <span class='font-bold text-amber-600'>HandlerMapping</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 23. Controller được thực thi thông qua",
+                options: [
+                    "A. Dispatcher",
+                    "B. HandlerAdapter",
+                    "C. ServletContext",
+                    "D. ViewResolver"
+                ],
+                ans: [1],
+                hint: "Thực thi controller sau khi được ánh xạ ➔ <span class='font-bold text-amber-600'>HandlerAdapter</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 24. @PathVariable lấy dữ liệu từ",
+                options: [
+                    "A. Form",
+                    "B. URL Path",
+                    "C. Header",
+                    "D. Cookie"
+                ],
+                ans: [1],
+                hint: "Lấy biến trực tiếp từ đường dẫn /path/{id} ➔ <span class='font-bold text-amber-600'>URL Path</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 25. @RequestParam lấy dữ liệu từ",
+                options: [
+                    "A. Query String",
+                    "B. Session",
+                    "C. Cookie",
+                    "D. Path"
+                ],
+                ans: [0],
+                hint: "Lấy tham số từ truy vấn ?id=10 hoặc form-data ➔ <span class='font-bold text-amber-600'>Query String</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 26. URL nào phù hợp với @RequestParam?",
+                options: [
+                    "A. /student/10",
+                    "B. /student?id=10",
+                    "C. /10/student",
+                    "D. /student"
+                ],
+                ans: [1],
+                hint: "Sử dụng dấu chấm hỏi và key=value ➔ <span class='font-bold text-amber-600'>/student?id=10</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 27. IoC là viết tắt của",
+                options: [
+                    "A. Input of Controller",
+                    "B. Inversion of Control",
+                    "C. Injection of Component",
+                    "D. Internal Object Configuration"
+                ],
+                ans: [1],
+                hint: "Đảo ngược điều khiển ➔ <span class='font-bold text-amber-600'>Inversion of Control</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 28. DI là",
+                options: [
+                    "A. Database Integration",
+                    "B. Dependency Injection",
+                    "C. Dynamic Injection",
+                    "D. Data Initialization"
+                ],
+                ans: [1],
+                hint: "Tiêm phụ thuộc ➔ <span class='font-bold text-amber-600'>Dependency Injection</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 29. Bean là",
+                options: [
+                    "A. Một bảng Database",
+                    "B. Đối tượng do Spring quản lý",
+                    "C. Một Servlet",
+                    "D. Một Session"
+                ],
+                ans: [1],
+                hint: "Được quản lý trong Spring IoC Container ➔ <span class='font-bold text-amber-600'>Đối tượng do Spring quản lý</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 30. Annotation tầng nghiệp vụ",
+                options: [
+                    "A. @Repository",
+                    "B. @Component",
+                    "C. @Service",
+                    "D. @Bean"
                 ],
                 ans: [2],
-                hint: "Lỗ hổng đã thực sự bị khai thác ➔ <span class='font-bold text-amber-600'>Kiểm thử xâm nhập (Penetration testing)</span>"
+                hint: "Tầng Service logic ➔ <span class='font-bold text-amber-600'>@Service</span>"
             },
             {
                 type: 'single',
-                q: "Câu 15: Trong một cuộc kiểm toán gần đây, người ta phát hiện rằng nhiều dịch vụ và máy tính để bàn bị <span class='text-red-600 font-bold'>thiếu các bản vá bảo mật</span>.\nĐiều nào sau đây MÔ TẢ TỐT NHẤT loại đánh giá đã được thực hiện để phát hiện vấn đề này?",
+                q: "Câu 31. Annotation tầng truy cập dữ liệu",
                 options: [
-                    "A. Lập bản đồ mạng (Network mapping)",
-                    "B. Quét lỗ hổng (Vulnerability scan)",
-                    "C. Quét cổng (Port scan)",
-                    "D. Phân tích giao thức (Protocol analysis)"
+                    "A. @Repository",
+                    "B. @Controller",
+                    "C. @Configuration",
+                    "D. @Entity"
+                ],
+                ans: [0],
+                hint: "Tầng Repository (DAO) ➔ <span class='font-bold text-amber-600'>@Repository</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 32. Annotation tầng Controller",
+                options: [
+                    "A. @Component",
+                    "B. @Controller",
+                    "C. @Service",
+                    "D. @Repository"
                 ],
                 ans: [1],
-                hint: "Thiếu các bản vá bảo mật ➔ <span class='font-bold text-amber-600'>Quét lỗ hổng (Vulnerability scan)</span>"
+                hint: "Tầng điều khiển web ➔ <span class='font-bold text-amber-600'>@Controller</span>"
             },
             {
                 type: 'single',
-                q: "Câu 16: Điều nào sau đây mô tả đúng nhất quy trình trong đó <span class='text-red-600 font-bold'>các ký tự dấu chấm phẩy, dấu gạch ngang, dấu nháy</span> và dấu phẩy bị loại bỏ khỏi một chuỗi?",
+                q: "Câu 33. Annotation tổng quát nhất",
                 options: [
-                    "A. Xử lý lỗi để bảo vệ chống lại việc khai thác chương trình",
-                    "B. Xử lý ngoại lệ để bảo vệ chống lại tấn công XSRF",
-                    "C. Kiểm tra đầu vào để bảo vệ chống lại SQL injection",
-                    "D. Đệm dữ liệu (Padding) để bảo vệ chống lại tràn bộ đệm chuỗi"
+                    "A. @Component",
+                    "B. @Repository",
+                    "C. @Service",
+                    "D. @Controller"
+                ],
+                ans: [0],
+                hint: "Annotation cha của các Annotation phân tầng khác ➔ <span class='font-bold text-amber-600'>@Component</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 34. GenericFilterBean",
+                options: [
+                    "A. Interface",
+                    "B. Lớp hỗ trợ Filter",
+                    "C. Annotation",
+                    "D. Bean"
+                ],
+                ans: [1],
+                hint: "Lớp trừu tượng (Abstract class) kế thừa Filter của Servlet ➔ <span class='font-bold text-amber-600'>Lớp hỗ trợ Filter</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 35. OncePerRequestFilter",
+                options: [
+                    "A. Chạy mỗi Session",
+                    "B. Chạy 1 lần/request",
+                    "C. Chạy nhiều lần",
+                    "D. Không phải Filter"
+                ],
+                ans: [1],
+                hint: "Filter chỉ chạy đúng 1 lần cho mỗi Request ➔ <span class='font-bold text-amber-600'>Chạy 1 lần/request</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 36. spring-boot-starter-parent có chức năng",
+                options: [
+                    "A. Quản lý Dependency và Version",
+                    "B. Tạo Database",
+                    "C. Chạy Servlet",
+                    "D. Mapping URL"
+                ],
+                ans: [0],
+                hint: "Cung cấp quản lý thư viện và phiên bản mặc định ➔ <span class='font-bold text-amber-600'>Quản lý Dependency và Version</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 37. ORM là",
+                options: [
+                    "A. Object Relational Mapping",
+                    "B. Object Request Mapping",
+                    "C. Online Resource Manager",
+                    "D. Object Runtime Management"
+                ],
+                ans: [0],
+                hint: "Ánh xạ đối tượng quan hệ ➔ <span class='font-bold text-amber-600'>Object Relational Mapping</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 38. JPA là",
+                options: [
+                    "A. Framework",
+                    "B. Specification",
+                    "C. Database",
+                    "D. IDE"
+                ],
+                ans: [1],
+                hint: "Là tập hợp các chuẩn, đặc tả Java Persistence API ➔ <span class='font-bold text-amber-600'>Specification</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 39. Hibernate là",
+                options: [
+                    "A. Specification",
+                    "B. ORM Implementation",
+                    "C. Database",
+                    "D. Servlet"
+                ],
+                ans: [1],
+                hint: "Hiện thực hóa chuẩn JPA cụ thể ➔ <span class='font-bold text-amber-600'>ORM Implementation</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 40. JPQL truy vấn trên",
+                options: [
+                    "A. Table",
+                    "B. Entity",
+                    "C. Database",
+                    "D. Column"
+                ],
+                ans: [1],
+                hint: "Truy vấn trên các lớp đối tượng Java ➔ <span class='font-bold text-amber-600'>Entity</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 41. HQL là",
+                options: [
+                    "A. Hibernate Query Language",
+                    "B. HTML Query Language",
+                    "C. Hyper Query Language",
+                    "D. Hibernate Quick Language"
+                ],
+                ans: [0],
+                hint: "Ngôn ngữ truy vấn của Hibernate ➔ <span class='font-bold text-amber-600'>Hibernate Query Language</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 42. FetchType mặc định của @ManyToOne",
+                options: [
+                    "A. LAZY",
+                    "B. EAGER",
+                    "C. NONE",
+                    "D. FETCH"
+                ],
+                ans: [1],
+                hint: "Các quan hệ kết thúc bằng ToOne mặc định nạp ➔ <span class='font-bold text-amber-600'>EAGER</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 43. LAZY nghĩa là",
+                options: [
+                    "A. Load ngay",
+                    "B. Load khi cần",
+                    "C. Không load",
+                    "D. Load theo Timer"
+                ],
+                ans: [1],
+                hint: "Tải trì hoãn khi thực sự được gọi ➔ <span class='font-bold text-amber-600'>Load khi cần</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 44. LAZY được khuyến nghị cho",
+                options: [
+                    "A. OneToMany",
+                    "B. ManyToMany",
+                    "C. Cả A và B",
+                    "D. OneToOne"
                 ],
                 ans: [2],
-                hint: "Ký tự dấu chấm phẩy, dấu gạch ngang, dấu nháy ➔ <span class='font-bold text-amber-600'>Kiểm tra đầu vào (Input validation)</span>"
+                hint: "Được dùng cho các quan hệ danh sách (ToMany) ➔ <span class='font-bold text-amber-600'>Cả A và B</span>"
             },
             {
                 type: 'single',
-                q: "Câu 17: Một nhà phân tích bảo mật truy cập các trang web của công ty và nhập dữ liệu ngẫu nhiên vào các biểu mẫu. Phản hồi nhận được bao gồm <span class='text-red-600 font-bold'>loại cơ sở dữ liệu</span> đang sử dụng và <span class='text-red-600 font-bold'>các lệnh SQL</span> mà cơ sở dữ liệu chấp nhận.\nNhà phân tích nên sử dụng biện pháp nào để ngăn chặn lỗ hổng này?",
+                q: "Câu 45. Entity vừa new được gọi là",
                 options: [
-                    "A. Fuzzing ứng dụng (Application fuzzing)",
-                    "B. Xử lý lỗi (Error handling)",
-                    "C. Kiểm tra đầu vào (Input validation)",
-                    "D. Hủy tham chiếu con trỏ (Pointer dereference)"
+                    "A. Managed",
+                    "B. Detached",
+                    "C. Transient",
+                    "D. Removed"
+                ],
+                ans: [2],
+                hint: "Trạng thái mới tạo, chưa lưu vào DB, chưa quản lý bởi Session ➔ <span class='font-bold text-amber-600'>Transient</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 46. Entity đang được Persistence Context quản lý là",
+                options: [
+                    "A. Detached",
+                    "B. Managed",
+                    "C. Removed",
+                    "D. New"
                 ],
                 ans: [1],
-                hint: "Loại cơ sở dữ liệu / Các lệnh SQL được hiển thị ➔ <span class='font-bold text-amber-600'>Xử lý lỗi (Error handling)</span>"
+                hint: "Được theo dõi và đồng bộ bởi Session ➔ <span class='font-bold text-amber-600'>Managed</span>"
             },
             {
                 type: 'single',
-                q: "Câu 18: Một ứng dụng gần đây bị xâm phạm sau khi nhận <span class='text-red-600 font-bold'>dữ liệu không hợp lệ</span> qua biểu mẫu web.\nĐiều nào sau đây CÓ KHẢ NĂNG CAO NHẤT đã ngăn chặn được điều này?",
+                q: "Câu 47. @Transactional dùng để",
                 options: [
-                    "A. Kiểm tra đầu vào (Input validation)",
-                    "B. Máy chủ proxy (Proxy server)",
-                    "C. Kiểm thử tải (Stress testing)",
-                    "D. Mã hóa (Encoding)"
-                ],
-                ans: [0],
-                hint: "Dữ liệu không hợp lệ qua biểu mẫu web ➔ <span class='font-bold text-amber-600'>Kiểm tra đầu vào (Input validation)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 19: Một tổ chức thuê chuyên gia kiểm thử xâm nhập để kiểm tra bảo mật mười máy chủ web. Chuyên gia có thể giành được quyền truy cập root/quản trị viên trên nhiều máy chủ bằng cách khai thác các lỗ hổng liên quan đến việc triển khai <span class='text-red-600 font-bold'>SMTP, POP, DNS, FTP</span>, Telnet và IMAP.\nChuyên gia nên đưa ra khuyến nghị nào để bảo vệ máy chủ web tốt hơn trong tương lai?",
-                options: [
-                    "A. Sử dụng honeypot",
-                    "B. Vô hiệu hóa các dịch vụ không cần thiết",
-                    "C. Triển khai bảo mật tầng truyền tải (TLS)",
-                    "D. Tăng cường ghi nhật ký sự kiện ứng dụng"
+                    "A. Mapping URL",
+                    "B. Quản lý Transaction",
+                    "C. Tạo Bean",
+                    "D. Tạo Entity"
                 ],
                 ans: [1],
-                hint: "Khai thác lỗ hổng SMTP, POP, DNS, FTP... ➔ <span class='font-bold text-amber-600'>Vô hiệu hóa các dịch vụ không cần thiết</span>"
+                hint: "Đảm bảo tính toàn vẹn dữ liệu (commit/rollback) ➔ <span class='font-bold text-amber-600'>Quản lý Transaction</span>"
             },
             {
                 type: 'single',
-                q: "Câu 20: <span class='text-red-600 font-bold'>Tràn bộ đệm (Buffer overflow)</span> có thể dẫn đến:",
+                q: "Câu 48. Transaction sẽ rollback khi",
                 options: [
-                    "A. Mất dữ liệu do thực thi lệnh trái phép",
-                    "B. Leo thang đặc quyền do ghi đè TPM",
-                    "C. Giảm độ mạnh của khóa do thao túng salt",
-                    "D. Sử dụng lặp lại các khóa một lần (one-time keys)"
-                ],
-                ans: [0],
-                hint: "Tràn bộ đệm (Buffer overflow) ➔ <span class='font-bold text-amber-600'>Mất dữ liệu do thực thi lệnh trái phép</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 21: Một người dùng đã cố gắng truy cập dữ liệu ở <span class='text-red-600 font-bold'>cấp độ phân loại cao hơn</span> mức tài khoản của họ được phép.\nMô hình kiểm soát truy cập nào sau đây đã được áp dụng cho tài khoản này?",
-                options: [
-                    "A. MAC (Kiểm soát truy cập bắt buộc)",
-                    "B. DAC (Kiểm soát truy cập tùy quyền)",
-                    "C. RBAC (Kiểm soát truy cập dựa trên vai trò)",
-                    "D. ABAC (Kiểm soát truy cập dựa trên thuộc tính)"
-                ],
-                ans: [0],
-                hint: "Cấp độ phân loại cao hơn ➔ <span class='font-bold text-amber-600'>MAC (Kiểm soát truy cập bắt buộc)</span>"
-            },
-            {
-                type: 'multi',
-                q: "Câu 22: Chính sách khóa tài khoản của công ty được kích hoạt sau năm lần đăng nhập thất bại. Bộ phận hỗ trợ nhận thấy một người dùng liên tục bị khóa tài khoản trong suốt một tuần làm việc. Khi liên hệ với người dùng, bộ phận hỗ trợ phát hiện ra <span class='text-red-600 font-bold'>người dùng đang đi nghỉ</span> và không có quyền truy cập mạng.\nLoại tấn công nào sau đây CÓ KHẢ NĂNG CAO NHẤT đang xảy ra? (Chọn hai)",
-                options: [
-                    "A. Tấn công phát lại (Replay)",
-                    "B. Bảng cầu vồng (Rainbow tables)",
-                    "C. Tấn công vét cạn (Brute force)",
-                    "D. Truyền hash (Pass the hash)",
-                    "E. Tấn công từ điển (Dictionary)"
-                ],
-                ans: [2, 4],
-                hint: "Người dùng đi nghỉ (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Tấn công vét cạn (Brute force) & Tấn công từ điển (Dictionary)</span>"
-            },
-            {
-                type: 'multi',
-                q: "Câu 23: Một nhà phân tích bảo mật đang điều tra một vụ vi phạm bảo mật. Khi kiểm tra nhật ký kiểm toán và truy cập, nhà phân tích nhận thấy máy chủ đã bị truy cập và file /etc/passwd đã bị chỉnh sửa với một mục mới cho tên người dùng \"gotcha\" và <span class='text-red-600 font-bold'>ID người dùng là 0</span>.\nĐiều nào sau đây là vector tấn công có khả năng nhất và công cụ nhà phân tích nên sử dụng để xác định xem cuộc tấn công có đang tiếp diễn không? (Chọn hai)",
-                options: [
-                    "A. Logic bomb",
-                    "B. Backdoor (Cửa hậu)",
-                    "C. Keylogger",
-                    "D. Netstat",
-                    "E. Tracert",
-                    "F. Ping"
-                ],
-                ans: [1, 3],
-                hint: "ID người dùng là 0 (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Backdoor (Cửa hậu) & Netstat</span>"
-            },
-            {
-                type: 'multi',
-                q: "Câu 24: Điều nào sau đây sẽ tăng cường bảo mật khi truy cập dữ liệu <span class='text-red-600 font-bold'>lưu trữ trên đám mây</span>? (Chọn hai)",
-                options: [
-                    "A. Mã hóa cấp khối (Block level encryption)",
-                    "B. Xác thực SAML",
-                    "C. Mã hóa truyền tải (Transport encryption)",
-                    "D. Xác thực đa yếu tố (Multifactor authentication)",
-                    "E. Câu hỏi bảo mật được xác định trước",
-                    "F. Băm (Hashing)"
-                ],
-                ans: [1, 3],
-                hint: "Lưu trữ trên đám mây (chọn 2 đáp án) ➔ <span class='font-bold text-amber-600'>Xác thực SAML & Xác thực đa yếu tố (Multifactor authentication)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 25: Một nhà phân tích bảo mật đang kiểm tra kết quả quét lỗ hổng nội bộ gần đây thực hiện đối với các dịch vụ mạng nội bộ. Báo cáo quét bao gồm lỗ hổng được đánh giá nghiêm trọng sau:\nTiêu đề: Lỗ hổng thực thi lệnh từ xa trong máy chủ web\nMức độ: Nghiêm trọng (<span class='text-red-600 font-bold'>CVSS 10.0</span>)\nTác nhân đe dọa: Bất kỳ người dùng từ xa nào của máy chủ web\nĐộ tin cậy: <span class='text-red-600 font-bold'>chắc chắn</span>\nKhuyến nghị: Áp dụng bản vá từ nhà cung cấp\nHành động nào nhà phân tích nên thực hiện TRƯỚC TIÊN?",
-                options: [
-                    "A. Báo cáo vấn đề lên ban quản lý cấp cao",
-                    "B. Áp dụng bối cảnh tổ chức vào mức độ rủi ro",
-                    "C. Tổ chức vá lỗi khẩn cấp ngoài chu kỳ",
-                    "D. Khai thác máy chủ để kiểm tra xem đây có phải là kết quả dương tính giả không"
+                    "A. Thành công",
+                    "B. Runtime Exception",
+                    "C. Có Query",
+                    "D. Có Session"
                 ],
                 ans: [1],
-                hint: "CVSS 10.0 / chắc chắn ➔ <span class='font-bold text-amber-600'>Áp dụng bối cảnh tổ chức vào mức độ rủi ro (Apply organizational context)</span>"
+                hint: "Spring tự động rollback khi gặp ngoại lệ unchecked ➔ <span class='font-bold text-amber-600'>Runtime Exception</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 49. N+1 Problem thường xảy ra do",
+                options: [
+                    "A. EAGER",
+                    "B. LAZY truy cập nhiều Entity liên kết",
+                    "C. Session",
+                    "D. Cookie"
+                ],
+                ans: [1],
+                hint: "Lặp danh sách đối tượng cha và gọi thuộc tính liên kết LAZY ➔ <span class='font-bold text-amber-600'>LAZY truy cập nhiều Entity liên kết</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 50. Cách khắc phục N+1 Problem là",
+                options: [
+                    "A. JOIN FETCH",
+                    "B. EntityGraph",
+                    "C. Cả A và B",
+                    "D. JDBC"
+                ],
+                ans: [2],
+                hint: "Nạp sẵn tất cả dữ liệu liên kết trong 1 truy vấn duy nhất ➔ <span class='font-bold text-amber-600'>Cả A và B</span>"
             }
         ];
 
         const uiTranslations = {
             vi: {
-                title: "Luyện Thi An Toàn Thông Tin",
-                subtitle: "Học qua từ khóa (Keywords)",
+                title: "Luyện Thi Trắc Nghiệm Java Web",
+                subtitle: "Servlet, Spring Boot, Hibernate & JPA",
                 progress: (curr, total) => `Câu ${curr} / ${total}`,
                 score: (score) => `Điểm: ${score}`,
                 confirmBtn: "Xác nhận",
@@ -893,7 +1479,7 @@
                 btnReviewPrev: "⬅ Câu trước",
                 btnReviewNext: "Câu tiếp theo ➡",
                 restartBtn: "🔄 Làm lại bài thi",
-                startScreenTitle: "Luyện Thi An Toàn Thông Tin",
+                startScreenTitle: "Luyện Thi Trắc Nghiệm Java Web",
                 startScreenSubtitle: "Chọn ngôn ngữ để bắt đầu luyện tập:",
                 startBtn: "Bắt đầu luyện tập 🚀",
                 selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
@@ -906,8 +1492,8 @@
                 evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các mẹo nhớ bên dưới. 💪"
             },
             en: {
-                title: "Information Security Exam Practice",
-                subtitle: "Learn via Keywords",
+                title: "Java Web Programming Practice",
+                subtitle: "Servlet, Spring Boot, Hibernate & JPA",
                 progress: (curr, total) => `Question ${curr} / ${total}`,
                 score: (score) => `Score: ${score}`,
                 confirmBtn: "Confirm",
@@ -927,7 +1513,7 @@
                 btnReviewPrev: "⬅ Previous",
                 btnReviewNext: "Next ➡",
                 restartBtn: "🔄 Restart Quiz",
-                startScreenTitle: "Information Security Exam Practice",
+                startScreenTitle: "Java Web Programming Practice",
                 startScreenSubtitle: "Select a language to start practicing:",
                 startBtn: "Start Practicing 🚀",
                 selectSingleHint: "* Select the best answer.",
@@ -1171,7 +1757,7 @@
             const qData = activeQuiz[currentQ];
             const trans = uiTranslations[currentLanguage];
 
-            // Validate: Nếu là câu đa chọn mà chưa chọn đủ
+            // Validate: Nếu là câu đa chọn mà chưa chọn đủ.
             if (qData.type === 'multi' && selectedOptions.length === 0) {
                 alert(trans.alertSelectAtLeastOne);
                 return;
@@ -1269,9 +1855,9 @@
             const evalEl = document.getElementById('reportEvaluation');
             if (score === activeQuiz.length) {
                 evalEl.innerText = trans.evalPerfect;
-            } else if (score >= 20) {
+            } else if (score >= 40) {
                 evalEl.innerText = trans.evalExcellent;
-            } else if (score >= 15) {
+            } else if (score >= 30) {
                 evalEl.innerText = trans.evalGood;
             } else {
                 evalEl.innerText = trans.evalTryHarder;
