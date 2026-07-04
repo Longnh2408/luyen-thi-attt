@@ -147,9 +147,9 @@
                 <button onclick="selectChapterStart('custom_mix')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Thi thử</span>
-                        <span class="text-xs text-slate-400">10 câu</span>
+                        <span class="text-xs text-slate-400">113 câu</span>
                     </div>
-                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Đề tổng hợp tiêu chuẩn</h4>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Đề tổng hợp từ khóa</h4>
                 </button>
 
                 <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all sm:col-span-2 lg:col-span-3">
@@ -2322,18 +2322,23 @@
             } else if (selectedChapter === 'ch8') {
                 sourceData = quizDataVi.slice(140, 169);
             } else if (selectedChapter === 'custom_mix') {
-                sourceData = [
-                    quizDataVi[1],    // Ch1
-                    quizDataVi[53],   // Ch4
-                    quizDataVi[66],   // Ch4
-                    quizDataVi[73],   // Ch5
-                    quizDataVi[100],  // Ch5 A-star
-                    quizDataVi[104],  // Ch6
-                    quizDataVi[127],  // Ch7
-                    quizDataVi[140],  // Ch8
-                    quizDataVi[142],  // Ch8
-                    quizDataVi[144]   // Ch8
-                ];
+                const targetIndices = [];
+                // 1. Ch1: indices 0 to 19 (20 Qs)
+                for (let i = 0; i < 20; i++) targetIndices.push(i);
+                // 2. Ch4 (Agent): indices 50 to 69 (20 Qs)
+                for (let i = 50; i < 70; i++) targetIndices.push(i);
+                // 3. Ch5 (BFS/DFS/A*): indices 73, 74, 75, 76, 77, 78, 79, 82, 83, 88, 92, 93, 94, 95, 96, 97, 98, 99, 100
+                const ch5Indices = [73, 74, 75, 76, 77, 78, 79, 82, 83, 88, 92, 93, 94, 95, 96, 97, 98, 99, 100];
+                ch5Indices.forEach(idx => targetIndices.push(idx));
+                // 4. Ch6 (Local Search): indices 101 to 120 (20 Qs)
+                for (let i = 101; i < 121; i++) targetIndices.push(i);
+                // 5. Ch7 (Unobservable / Sensorless / Belief state): indices 125, 126, 127, 128, 135
+                const ch7Indices = [125, 126, 127, 128, 135];
+                ch7Indices.forEach(idx => targetIndices.push(idx));
+                // 6. Ch8 (CSP): indices 140 to 168 (29 Qs)
+                for (let i = 140; i < 169; i++) targetIndices.push(i);
+                
+                sourceData = targetIndices.map(idx => quizDataVi[idx]);
             }
 
             activeQuiz = sourceData.map(q => {
