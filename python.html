@@ -83,7 +83,7 @@
                 <button onclick="selectChapterStart('part1')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Phần 1</span>
-                        <span class="text-xs text-slate-400">30 câu</span>
+                        <span class="text-xs text-slate-400">31 câu</span>
                     </div>
                     <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Cơ bản & Vòng lặp</h4>
                 </button>
@@ -123,7 +123,7 @@
                 <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-700 bg-indigo-200 px-2 py-0.5 rounded-full">Tất cả</span>
-                        <span class="text-xs text-indigo-500 font-semibold">100 câu</span>
+                        <span class="text-xs text-indigo-500 font-semibold">101 câu</span>
                     </div>
                     <h4 class="font-bold text-indigo-900 group-hover:text-indigo-700 transition-colors text-sm sm:text-base">Luyện tập tổng hợp</h4>
                 </button>
@@ -1275,6 +1275,19 @@
                 options: ["A. True True", "B. True False", "C. False True", "D. False False"],
                 ans: [1],
                 hint: "Toán tử `==` so sánh giá trị bên trong (cùng là `[1, 2]`), toán tử `is` so sánh xem hai biến có trỏ chung cùng một địa chỉ ô nhớ hay không (ở đây là hai List riêng biệt) ➔ <span class='font-bold text-amber-600'>True False</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 101. Kiểu dữ liệu của biến c là gì sau khi thực hiện phép tính?",
+                code: "a = 10\nb = 2.5\nc = a + b\nprint(type(c))",
+                options: [
+                    "A. Boolean",
+                    "B. String",
+                    "C. Integer",
+                    "D. Float"
+                ],
+                ans: [3],
+                hint: "Khi thực hiện phép cộng giữa một số nguyên (`int`) và một số thực (`float`), Python tự động thực hiện ép kiểu ngầm định chuyển đổi kết quả thành số thực (`float`) để bảo toàn giá trị chính xác ➔ <span class='font-bold text-amber-600'>Float</span>"
             }
         ];
 
@@ -1333,6 +1346,7 @@
                 for (let i = 29; i <= 37; i++) indices.push(i);
                 indices.push(38);
                 for (let i = 40; i <= 45; i++) indices.push(i);
+                indices.push(100);
                 sourceData = indices.map(idx => quizDataVi[idx]);
             } else if (selectedChapter === 'part2') {
                 const indices = [];
