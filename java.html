@@ -1491,42 +1491,15 @@
 
         function prepareQuiz() {
             const sourceData = quizDataVi;
-            // Sao chép từ quizData gốc và trộn các câu trả lời
             activeQuiz = sourceData.map(q => {
-                // Tách phần chữ và lưu lại chỉ mục ban đầu để kiểm tra đáp án đúng
-                const optionsWithIndex = q.options.map((opt, idx) => ({
-                    text: opt.replace(/^[A-F]\.\s*/, ''), // Xóa ký tự prefix cũ
-                    originalIndex: idx
-                }));
-
-                // Trộn ngẫu nhiên câu trả lời
-                shuffle(optionsWithIndex);
-
-                // Tạo mảng đáp án mới với nhãn A. B. C. D. cập nhật theo thứ tự mới
-                const newOptions = optionsWithIndex.map((item, idx) => {
-                    const prefix = String.fromCharCode(65 + idx) + ". ";
-                    return prefix + item.text;
-                });
-
-                // Tìm lại vị trí mới của các đáp án đúng
-                const newAns = [];
-                optionsWithIndex.forEach((item, idx) => {
-                    if (q.ans.includes(item.originalIndex)) {
-                        newAns.push(idx);
-                    }
-                });
-
                 return {
                     type: q.type,
                     q: q.q,
-                    options: newOptions,
-                    ans: newAns,
+                    options: q.options,
+                    ans: q.ans,
                     hint: q.hint
                 };
             });
-
-            // Xáo trộn ngẫu nhiên thứ tự các câu hỏi
-            shuffle(activeQuiz);
         }
 
         function updateLanguageUI() {
