@@ -75,7 +75,7 @@
         <!-- Progress & Score -->
         <div id="quizHeader"
             class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
-            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 50</span>
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 100</span>
             <span
                 class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
                 id="scoreText">Điểm: 0</span>
@@ -170,7 +170,7 @@
                     class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
                     <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
                         <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
-                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 50</span>
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 100</span>
                     </h4>
                     <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
                         Đúng</span>
@@ -228,6 +228,7 @@
 
     <script>
         const quizDataVi = [
+            // CÂU 1 - 50 (Bộ đề 1)
             {
                 type: 'single',
                 q: "Câu 1. Phương thức nào chỉ được gọi một lần khi Servlet được khởi tạo?",
@@ -827,6 +828,608 @@
                 ],
                 ans: [2],
                 hint: "Nạp sẵn tất cả dữ liệu liên kết trong 1 truy vấn duy nhất ➔ <span class='font-bold text-amber-600'>Cả A và B</span>"
+            },
+
+            // CÂU 51 - 100 (Bộ đề 2)
+            {
+                type: 'single',
+                q: "Câu 51. Thứ tự đúng của vòng đời Servlet là",
+                options: [
+                    "A. service() → init() → destroy()",
+                    "B. init() → service() → destroy()",
+                    "C. init() → destroy() → service()",
+                    "D. service() → destroy() → init()"
+                ],
+                ans: [1],
+                hint: "Vòng đời Servlet ➔ <span class='font-bold text-amber-600'>init() → service() → destroy()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 52. Phương thức nào của HttpServlet được gọi khi client gửi HTTP GET?",
+                options: [
+                    "A. service()",
+                    "B. doPost()",
+                    "C. doGet()",
+                    "D. destroy()"
+                ],
+                ans: [2],
+                hint: "HTTP GET request ➔ <span class='font-bold text-amber-600'>doGet()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 53. Nếu gửi POST thì phương thức nào được gọi?",
+                options: [
+                    "A. doPut()",
+                    "B. doPost()",
+                    "C. doDelete()",
+                    "D. init()"
+                ],
+                ans: [1],
+                hint: "HTTP POST request ➔ <span class='font-bold text-amber-600'>doPost()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 54. Đối tượng nào lấy tham số từ form?",
+                options: [
+                    "A. HttpServletResponse",
+                    "B. HttpServletRequest",
+                    "C. Cookie",
+                    "D. Session"
+                ],
+                ans: [1],
+                hint: "Lấy tham số (getParameter) từ client gửi lên ➔ <span class='font-bold text-amber-600'>HttpServletRequest</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 55. Phương thức lấy Session là",
+                options: [
+                    "A. getCookie()",
+                    "B. getSession()",
+                    "C. getAttribute()",
+                    "D. setSession()"
+                ],
+                ans: [1],
+                hint: "Lấy hoặc tạo Session ➔ <span class='font-bold text-amber-600'>getSession()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 56. Cookie có thể lưu",
+                options: [
+                    "A. String",
+                    "B. Object bất kỳ",
+                    "C. Entity",
+                    "D. Bean"
+                ],
+                ans: [0],
+                hint: "Cookie chỉ chấp nhận giá trị kiểu ➔ <span class='font-bold text-amber-600'>String</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 57. Session mặc định lưu ở",
+                options: [
+                    "A. Browser",
+                    "B. Client",
+                    "C. Server",
+                    "D. URL"
+                ],
+                ans: [2],
+                hint: "Session data ➔ <span class='font-bold text-amber-600'>Server</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 58. forward() sử dụng",
+                options: [
+                    "A. RequestDispatcher",
+                    "B. Response",
+                    "C. Filter",
+                    "D. Cookie"
+                ],
+                ans: [0],
+                hint: "forward() cần lấy đối tượng từ ➔ <span class='font-bold text-amber-600'>RequestDispatcher</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 59. sendRedirect()",
+                options: [
+                    "A. Không tạo request mới",
+                    "B. Tạo request mới",
+                    "C. Không response",
+                    "D. Không đổi URL"
+                ],
+                ans: [1],
+                hint: "sendRedirect ➔ <span class='font-bold text-amber-600'>Tạo request mới</span> và đổi URL trình duyệt"
+            },
+            {
+                type: 'single',
+                q: "Câu 60. Thành phần xử lý trước khi request đến Servlet",
+                options: [
+                    "A. JSP",
+                    "B. Filter",
+                    "C. Cookie",
+                    "D. Session"
+                ],
+                ans: [1],
+                hint: "Chặn, tiền xử lý và hậu xử lý request ➔ <span class='font-bold text-amber-600'>Filter</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 61. Annotation khai báo Filter",
+                options: [
+                    "A. @Filter",
+                    "B. @WebFilter",
+                    "C. @ServletFilter",
+                    "D. @FilterBean"
+                ],
+                ans: [1],
+                hint: "Đánh dấu bộ lọc trong Servlet API ➔ <span class='font-bold text-amber-600'>@WebFilter</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 62. Annotation khai báo Listener",
+                options: [
+                    "A. @Listener",
+                    "B. @WebListener",
+                    "C. @ServletListener",
+                    "D. @Component"
+                ],
+                ans: [1],
+                hint: "Đánh dấu bộ lắng nghe sự kiện ➔ <span class='font-bold text-amber-600'>@WebListener</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 63. GenericServlet",
+                options: [
+                    "A. Chỉ HTTP",
+                    "B. Mọi giao thức",
+                    "C. Chỉ HTTPS",
+                    "D. Không hỗ trợ request"
+                ],
+                ans: [1],
+                hint: "Lớp cha của HttpServlet, hỗ trợ ➔ <span class='font-bold text-amber-600'>Mọi giao thức</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 64. HttpServlet là",
+                options: [
+                    "A. Interface",
+                    "B. Abstract class",
+                    "C. Enum",
+                    "D. Annotation"
+                ],
+                ans: [1],
+                hint: "HttpServlet là một ➔ <span class='font-bold text-amber-600'>Abstract class (lớp trừu tượng)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 65. JDBC dùng để",
+                options: [
+                    "A. ORM",
+                    "B. Truy cập Database",
+                    "C. Quản lý Bean",
+                    "D. Mapping URL"
+                ],
+                ans: [1],
+                hint: "Java Database Connectivity ➔ <span class='font-bold text-amber-600'>Truy cập Database</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 66. Đối tượng thực thi câu SQL",
+                options: [
+                    "A. ResultSet",
+                    "B. Statement",
+                    "C. Driver",
+                    "D. ConnectionPool"
+                ],
+                ans: [1],
+                hint: "Thực thi câu lệnh SQL ➔ <span class='font-bold text-amber-600'>Statement</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 67. Đối tượng chứa kết quả truy vấn",
+                options: [
+                    "A. ResultSet",
+                    "B. Connection",
+                    "C. Statement",
+                    "D. DriverManager"
+                ],
+                ans: [0],
+                hint: "Chứa bảng kết quả trả về từ database ➔ <span class='font-bold text-amber-600'>ResultSet</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 68. Connection dùng để",
+                options: [
+                    "A. Lưu dữ liệu",
+                    "B. Kết nối Database",
+                    "C. Mapping Entity",
+                    "D. Quản lý Bean"
+                ],
+                ans: [1],
+                hint: "Đại diện cho một phiên liên kết ➔ <span class='font-bold text-amber-600'>Kết nối Database</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 69. Front Controller của Spring MVC là",
+                options: [
+                    "A. Controller",
+                    "B. DispatcherServlet",
+                    "C. ViewResolver",
+                    "D. Repository"
+                ],
+                ans: [1],
+                hint: "Bộ điều phối trung tâm Front Controller ➔ <span class='font-bold text-amber-600'>DispatcherServlet</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 70. DispatcherServlet nhận request rồi chuyển đến",
+                options: [
+                    "A. HandlerMapping",
+                    "B. View",
+                    "C. JSP",
+                    "D. Bean"
+                ],
+                ans: [0],
+                hint: "Chuyển đến để tìm Handler ➔ <span class='font-bold text-amber-600'>HandlerMapping</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 71. HandlerMapping có nhiệm vụ",
+                options: [
+                    "A. Mapping URL đến Controller",
+                    "B. Kết nối Database",
+                    "C. Tạo Bean",
+                    "D. Transaction"
+                ],
+                ans: [0],
+                hint: "Ánh xạ URL request ➔ <span class='font-bold text-amber-600'>Mapping URL đến Controller</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 72. Bean được Spring quản lý trong",
+                options: [
+                    "A. ServletContext",
+                    "B. IoC Container",
+                    "C. Session",
+                    "D. Database"
+                ],
+                ans: [1],
+                hint: "Nơi chứa và quản lý vòng đời của Bean ➔ <span class='font-bold text-amber-600'>IoC Container</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 73. DI giúp",
+                options: [
+                    "A. Giảm phụ thuộc",
+                    "B. Tăng số Bean",
+                    "C. Tăng Session",
+                    "D. Tăng Memory"
+                ],
+                ans: [0],
+                hint: "Dependency Injection giúp ➔ <span class='font-bold text-amber-600'>Giảm phụ thuộc (Loose Coupling)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 74. Annotation nào tạo Bean bằng Java Config?",
+                options: [
+                    "A. @Autowired",
+                    "B. @Bean",
+                    "C. @Value",
+                    "D. @Import"
+                ],
+                ans: [1],
+                hint: "Khai báo ở mức phương thức trong lớp Configuration ➔ <span class='font-bold text-amber-600'>@Bean</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 75. @ComponentScan dùng để",
+                options: [
+                    "A. Quét Bean",
+                    "B. Quét SQL",
+                    "C. Quét Request",
+                    "D. Quét Cookie"
+                ],
+                ans: [0],
+                hint: "Chỉ định các package cần quét để phát hiện Bean ➔ <span class='font-bold text-amber-600'>Quét Bean</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 76. Annotation nào kế thừa @Component?",
+                options: [
+                    "A. @Service",
+                    "B. @Repository",
+                    "C. @Controller",
+                    "D. Cả A, B, C"
+                ],
+                ans: [3],
+                hint: "Các annotation chuyên biệt ➔ <span class='font-bold text-amber-600'>Cả A, B, C</span> đều chứa @Component"
+            },
+            {
+                type: 'single',
+                q: "Câu 77. @Repository chủ yếu làm việc với",
+                options: [
+                    "A. View",
+                    "B. Database",
+                    "C. JSP",
+                    "D. Cookie"
+                ],
+                ans: [1],
+                hint: "Tầng tương tác lưu trữ ➔ <span class='font-bold text-amber-600'>Database</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 78. @Service nằm ở tầng",
+                options: [
+                    "A. Business",
+                    "B. Database",
+                    "C. Client",
+                    "D. Servlet"
+                ],
+                ans: [0],
+                hint: "Tầng xử lý logic nghiệp vụ ➔ <span class='font-bold text-amber-600'>Business</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 79. URL /book/15 phù hợp",
+                options: [
+                    "A. @RequestParam",
+                    "B. @PathVariable",
+                    "C. @CookieValue",
+                    "D. @ModelAttribute"
+                ],
+                ans: [1],
+                hint: "Giá trị nằm trực tiếp trên URL path ➔ <span class='font-bold text-amber-600'>@PathVariable</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 80. URL /book?id=15",
+                options: [
+                    "A. @RequestBody",
+                    "B. @PathVariable",
+                    "C. @RequestParam",
+                    "D. @Value"
+                ],
+                ans: [2],
+                hint: "Giá trị dạng tham số truy vấn sau dấu ? ➔ <span class='font-bold text-amber-600'>@RequestParam</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 81. OncePerRequestFilter",
+                options: [
+                    "A. Chạy đúng 1 lần/request",
+                    "B. Chạy mỗi Session",
+                    "C. Chạy mỗi Bean",
+                    "D. Chạy mỗi Controller"
+                ],
+                ans: [0],
+                hint: "Đảm bảo thực thi duy nhất ➔ <span class='font-bold text-amber-600'>Chạy đúng 1 lần/request</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 82. GenericFilterBean",
+                options: [
+                    "A. Giảm boilerplate code",
+                    "B. ORM",
+                    "C. DAO",
+                    "D. JDBC"
+                ],
+                ans: [0],
+                hint: "Giúp đơn giản hóa cấu hình, ➔ <span class='font-bold text-amber-600'>Giảm boilerplate code</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 83. Spring Boot Starter Parent",
+                options: [
+                    "A. Quản lý version dependency",
+                    "B. Database",
+                    "C. Entity",
+                    "D. Controller"
+                ],
+                ans: [0],
+                hint: "Cung cấp version management mặc định ➔ <span class='font-bold text-amber-600'>Quản lý version dependency</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 84. Auto Configuration",
+                options: [
+                    "A. Tự cấu hình",
+                    "B. Tự tạo Database",
+                    "C. Tự viết Controller",
+                    "D. Tự viết SQL"
+                ],
+                ans: [0],
+                hint: "Tự động cấu hình các bean hợp lý ➔ <span class='font-bold text-amber-600'>Tự cấu hình</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 85. Muốn tắt một Auto Configuration dùng",
+                options: [
+                    "A. exclude",
+                    "B. ignore",
+                    "C. remove",
+                    "D. disable()"
+                ],
+                ans: [0],
+                hint: "Thuộc tính loại trừ cấu hình tự động ➔ <span class='font-bold text-amber-600'>exclude</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 86. @SpringBootApplication gồm",
+                options: [
+                    "A. 2 annotation",
+                    "B. 3 annotation",
+                    "C. 4 annotation",
+                    "D. 5 annotation"
+                ],
+                ans: [1],
+                hint: "Tổ hợp gồm ➔ <span class='font-bold text-amber-600'>3 annotation</span> chính"
+            },
+            {
+                type: 'single',
+                q: "Câu 87. Persistence Context quản lý Entity ở trạng thái",
+                options: [
+                    "A. Managed",
+                    "B. Detached",
+                    "C. Removed",
+                    "D. New"
+                ],
+                ans: [0],
+                hint: "Trạng thái được quản lý bởi EntityManager ➔ <span class='font-bold text-amber-600'>Managed</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 88. Entity vừa new",
+                options: [
+                    "A. Detached",
+                    "B. Managed",
+                    "C. Transient",
+                    "D. Removed"
+                ],
+                ans: [2],
+                hint: "Chưa liên kết với session, chưa lưu DB ➔ <span class='font-bold text-amber-600'>Transient</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 89. Entity bị remove()",
+                options: [
+                    "A. Managed",
+                    "B. Removed",
+                    "C. Detached",
+                    "D. New"
+                ],
+                ans: [1],
+                hint: "Trạng thái chuẩn bị xóa khỏi DB ➔ <span class='font-bold text-amber-600'>Removed</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 90. Entity sau khi đóng Persistence Context",
+                options: [
+                    "A. Managed",
+                    "B. Detached",
+                    "C. Removed",
+                    "D. New"
+                ],
+                ans: [1],
+                hint: "Đã từng lưu DB nhưng Session đã đóng ➔ <span class='font-bold text-amber-600'>Detached</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 91. LAZY",
+                options: [
+                    "A. Load khi cần",
+                    "B. Load ngay",
+                    "C. Không load",
+                    "D. Load ngẫu nhiên"
+                ],
+                ans: [0],
+                hint: "Nạp dữ liệu trì hoãn (khi truy cập) ➔ <span class='font-bold text-amber-600'>Load khi cần</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 92. EAGER",
+                options: [
+                    "A. Load khi gọi getter",
+                    "B. Load ngay",
+                    "C. Load sau commit",
+                    "D. Load sau rollback"
+                ],
+                ans: [1],
+                hint: "Nạp ngay lập tức cùng câu truy vấn chính ➔ <span class='font-bold text-amber-600'>Load ngay</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 93. Vì sao OneToMany nên dùng LAZY?",
+                options: [
+                    "A. Giảm tải dữ liệu",
+                    "B. Tránh N+1",
+                    "C. Tăng hiệu năng",
+                    "D. Tất cả đúng"
+                ],
+                ans: [3],
+                hint: "Tối ưu bộ nhớ, hiệu năng, giảm tải ➔ <span class='font-bold text-amber-600'>Tất cả đúng</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 94. @Transactional",
+                options: [
+                    "A. Quản lý Transaction",
+                    "B. Quản lý Bean",
+                    "C. Mapping URL",
+                    "D. Quản lý Cookie"
+                ],
+                ans: [0],
+                hint: "Đánh dấu quản lý giao dịch ➔ <span class='font-bold text-amber-600'>@Transactional</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 95. Commit xảy ra khi",
+                options: [
+                    "A. Không lỗi",
+                    "B. Runtime Exception",
+                    "C. SQLException",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Mọi tác vụ thành công, ➔ <span class='font-bold text-amber-600'>Không lỗi</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 96. Rollback thường xảy ra khi",
+                options: [
+                    "A. Thành công",
+                    "B. Runtime Exception",
+                    "C. Không có query",
+                    "D. Không có Entity"
+                ],
+                ans: [1],
+                hint: "Xảy ra lỗi Unchecked Exception ➔ <span class='font-bold text-amber-600'>Runtime Exception</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 97. N+1 Problem là",
+                options: [
+                    "A. Lỗi kết nối",
+                    "B. Quá nhiều câu query phát sinh",
+                    "C. Thiếu Transaction",
+                    "D. Thiếu Bean"
+                ],
+                ans: [1],
+                hint: "1 câu query lấy cha + N câu query lấy con của từng cha ➔ <span class='font-bold text-amber-600'>Quá nhiều câu query phát sinh</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 98. JOIN FETCH dùng để",
+                options: [
+                    "A. Tránh N+1",
+                    "B. Tạo Entity",
+                    "C. Mapping Bean",
+                    "D. Tạo Session"
+                ],
+                ans: [0],
+                hint: "Kỹ thuật JPQL để gộp nạp dữ liệu con, ➔ <span class='font-bold text-amber-600'>Tránh N+1</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 99. EntityGraph dùng để",
+                options: [
+                    "A. Giảm N+1",
+                    "B. Tạo Database",
+                    "C. Tạo Transaction",
+                    "D. Mapping URL"
+                ],
+                ans: [0],
+                hint: "Chỉ định đồ thị nạp dữ liệu, ➔ <span class='font-bold text-amber-600'>Giảm N+1</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 100. JPQL khác SQL ở chỗ",
+                options: [
+                    "A. Query theo bảng",
+                    "B. Query theo Entity",
+                    "C. Query theo Database",
+                    "D. Query theo JDBC"
+                ],
+                ans: [1],
+                hint: "Ngôn ngữ truy vấn JPA hướng đối tượng ➔ <span class='font-bold text-amber-600'>Query theo Entity</span>"
             }
         ];
 
@@ -1145,11 +1748,12 @@
 
             // Đánh giá chung
             const evalEl = document.getElementById('reportEvaluation');
+            const ratio = score / activeQuiz.length;
             if (score === activeQuiz.length) {
                 evalEl.innerText = trans.evalPerfect;
-            } else if (score >= 40) {
+            } else if (ratio >= 0.8) {
                 evalEl.innerText = trans.evalExcellent;
-            } else if (score >= 30) {
+            } else if (ratio >= 0.6) {
                 evalEl.innerText = trans.evalGood;
             } else {
                 evalEl.innerText = trans.evalTryHarder;
@@ -1227,6 +1831,7 @@
             document.getElementById('btnReviewNext').innerHTML = trans.btnReviewNext;
         }
 
+        // Khởi động trước/sau review
         function prevReviewQuestion() {
             if (reviewCurrentQ > 0) {
                 reviewCurrentQ--;
