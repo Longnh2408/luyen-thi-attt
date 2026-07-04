@@ -830,7 +830,7 @@
                 hint: "Nạp sẵn tất cả dữ liệu liên kết trong 1 truy vấn duy nhất ➔ <span class='font-bold text-amber-600'>Cả A và B</span>"
             },
 
-            // CÂU 51 - 100 (Bộ đề 2)
+            // CÂU 51 - 100 (Bộ đề 2, đã loại bỏ trùng lặp và thay thế bằng kiến thức bổ trợ toàn diện)
             {
                 type: 'single',
                 q: "Câu 51. Thứ tự đúng của vòng đời Servlet là",
@@ -905,15 +905,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 57. Session mặc định lưu ở",
+                q: "Câu 57. Trong Spring Security, Authentication là gì và Authorization là gì?",
                 options: [
-                    "A. Browser",
-                    "B. Client",
-                    "C. Server",
-                    "D. URL"
+                    "A. Authentication là phân quyền, Authorization là xác thực danh tính",
+                    "B. Authentication là xác thực danh tính, Authorization là phân quyền truy cập",
+                    "C. Cả hai đều dùng để mã hóa mật khẩu",
+                    "D. Cả hai đều dùng để quản lý Session"
                 ],
-                ans: [2],
-                hint: "Session data ➔ <span class='font-bold text-amber-600'>Server</span>"
+                ans: [1],
+                hint: "Auth<b>entication</b> = Xác thực danh tính | Auth<b>orization</b> = Phân quyền truy cập"
             },
             {
                 type: 'single',
@@ -1049,15 +1049,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 69. Front Controller của Spring MVC là",
+                q: "Câu 69. @RestController trong Spring Boot là sự kết hợp của những annotation nào?",
                 options: [
-                    "A. Controller",
-                    "B. DispatcherServlet",
-                    "C. ViewResolver",
-                    "D. Repository"
+                    "A. @Controller và @ResponseBody",
+                    "B. @Controller và @RequestBody",
+                    "C. @Component và @Service",
+                    "D. @Controller và @Configuration"
                 ],
-                ans: [1],
-                hint: "Bộ điều phối trung tâm Front Controller ➔ <span class='font-bold text-amber-600'>DispatcherServlet</span>"
+                ans: [0],
+                hint: "@RestController = @Controller + @ResponseBody (tự động chuyển đổi response sang JSON)"
             },
             {
                 type: 'single',
@@ -1073,15 +1073,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 71. HandlerMapping có nhiệm vụ",
+                q: "Câu 71. Lớp nào trong Spring MVC dùng để tùy biến HTTP Status Code, Header và Body trả về cho Client?",
                 options: [
-                    "A. Mapping URL đến Controller",
-                    "B. Kết nối Database",
-                    "C. Tạo Bean",
-                    "D. Transaction"
+                    "A. HttpServletRequest",
+                    "B. ResponseEntity",
+                    "C. ModelAndView",
+                    "D. RedirectView"
                 ],
-                ans: [0],
-                hint: "Ánh xạ URL request ➔ <span class='font-bold text-amber-600'>Mapping URL đến Controller</span>"
+                ans: [1],
+                hint: "Đóng gói kết quả API REST đầy đủ thông tin HTTP ➔ <span class='font-bold text-amber-600'>ResponseEntity</span>"
             },
             {
                 type: 'single',
@@ -1145,27 +1145,27 @@
             },
             {
                 type: 'single',
-                q: "Câu 77. @Repository chủ yếu làm việc với",
+                q: "Câu 77. Annotation nào dùng để ánh xạ JSON trong HTTP Request Body thành đối tượng Java trong Controller?",
                 options: [
-                    "A. View",
-                    "B. Database",
-                    "C. JSP",
-                    "D. Cookie"
+                    "A. @RequestParam",
+                    "B. @PathVariable",
+                    "C. @RequestBody",
+                    "D. @ModelAttribute"
                 ],
-                ans: [1],
-                hint: "Tầng tương tác lưu trữ ➔ <span class='font-bold text-amber-600'>Database</span>"
+                ans: [2],
+                hint: "Đọc dữ liệu JSON từ body request ➔ <span class='font-bold text-amber-600'>@RequestBody</span>"
             },
             {
                 type: 'single',
-                q: "Câu 78. @Service nằm ở tầng",
+                q: "Câu 78. CORS (Cross-Origin Resource Sharing) trong lập trình Web là cơ chế để",
                 options: [
-                    "A. Business",
-                    "B. Database",
-                    "C. Client",
-                    "D. Servlet"
+                    "A. Cho phép hoặc chặn trình duyệt truy cập tài nguyên từ một domain khác",
+                    "B. Kết nối database an toàn",
+                    "C. Tự động mã hóa mật khẩu người dùng",
+                    "D. Lưu trữ session trên Server"
                 ],
                 ans: [0],
-                hint: "Tầng xử lý logic nghiệp vụ ➔ <span class='font-bold text-amber-600'>Business</span>"
+                hint: "Cơ chế bảo mật trình duyệt chặn request xuyên domain ➔ <span class='font-bold text-amber-600'>CORS</span>"
             },
             {
                 type: 'single',
@@ -1193,15 +1193,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 81. OncePerRequestFilter",
+                q: "Câu 81. Template Engine hiện đại được Spring Boot khuyến khích sử dụng thay thế cho JSP truyền thống là",
                 options: [
-                    "A. Chạy đúng 1 lần/request",
-                    "B. Chạy mỗi Session",
-                    "C. Chạy mỗi Bean",
-                    "D. Chạy mỗi Controller"
+                    "A. Angular",
+                    "B. React",
+                    "C. Thymeleaf",
+                    "D. Vue"
                 ],
-                ans: [0],
-                hint: "Đảm bảo thực thi duy nhất ➔ <span class='font-bold text-amber-600'>Chạy đúng 1 lần/request</span>"
+                ans: [2],
+                hint: "Template engine chuẩn cho Spring Boot MVC ➔ <span class='font-bold text-amber-600'>Thymeleaf</span>"
             },
             {
                 type: 'single',
@@ -1265,27 +1265,27 @@
             },
             {
                 type: 'single',
-                q: "Câu 87. Persistence Context quản lý Entity ở trạng thái",
+                q: "Câu 87. Trong Jakarta Validation, annotation @NotBlank kiểm tra thuộc tính kiểu String như thế nào?",
                 options: [
-                    "A. Managed",
-                    "B. Detached",
-                    "C. Removed",
-                    "D. New"
+                    "A. Chỉ kiểm tra thuộc tính đó có khác null hay không",
+                    "B. Kiểm tra thuộc tính khác null, không rỗng và không chỉ chứa khoảng trắng",
+                    "C. Chỉ kiểm tra độ dài chuỗi lớn hơn 0",
+                    "D. Kiểm tra chuỗi chứa chữ số"
                 ],
-                ans: [0],
-                hint: "Trạng thái được quản lý bởi EntityManager ➔ <span class='font-bold text-amber-600'>Managed</span>"
+                ans: [1],
+                hint: "@NotBlank = Khác null + Không rỗng + Không chứa toàn dấu cách"
             },
             {
                 type: 'single',
-                q: "Câu 88. Entity vừa new",
+                q: "Câu 88. Trong Spring Boot, để thực hiện Constructor Injection một cách ngắn gọn, ta kết hợp Lombok annotation nào?",
                 options: [
-                    "A. Detached",
-                    "B. Managed",
-                    "C. Transient",
-                    "D. Removed"
+                    "A. @NoArgsConstructor",
+                    "B. @AllArgsConstructor",
+                    "C. @RequiredArgsConstructor và khai báo dependency là final",
+                    "D. @Data"
                 ],
                 ans: [2],
-                hint: "Chưa liên kết với session, chưa lưu DB ➔ <span class='font-bold text-amber-600'>Transient</span>"
+                hint: "Sinh constructor cho các thuộc tính final để tự động inject ➔ <span class='font-bold text-amber-600'>@RequiredArgsConstructor</span>"
             },
             {
                 type: 'single',
@@ -1313,15 +1313,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 91. LAZY",
+                q: "Câu 91. Chiến lược sinh khóa chính GenerationType.IDENTITY hoạt động như thế nào?",
                 options: [
-                    "A. Load khi cần",
-                    "B. Load ngay",
-                    "C. Không load",
-                    "D. Load ngẫu nhiên"
+                    "A. Sử dụng một cột tự tăng (auto_increment) do Database quản lý",
+                    "B. Sử dụng một bảng riêng để lưu giá trị khóa chính tiếp theo",
+                    "C. Sử dụng Sequence của database (như Oracle, PostgreSQL)",
+                    "D. Tự động sinh chuỗi UUID ngẫu nhiên"
                 ],
                 ans: [0],
-                hint: "Nạp dữ liệu trì hoãn (khi truy cập) ➔ <span class='font-bold text-amber-600'>Load khi cần</span>"
+                hint: "Cột tự tăng (auto_increment) do hệ quản trị CSDL quản lý ➔ <span class='font-bold text-amber-600'>GenerationType.IDENTITY</span>"
             },
             {
                 type: 'single',
@@ -1349,15 +1349,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 94. @Transactional",
+                q: "Câu 94. Annotation nào dùng để xác định cột khóa ngoại trong mối quan hệ giữa các Entity?",
                 options: [
-                    "A. Quản lý Transaction",
-                    "B. Quản lý Bean",
-                    "C. Mapping URL",
-                    "D. Quản lý Cookie"
+                    "A. @Column",
+                    "B. @JoinColumn",
+                    "C. @ForeignKey",
+                    "D. @PrimaryKey"
                 ],
-                ans: [0],
-                hint: "Đánh dấu quản lý giao dịch ➔ <span class='font-bold text-amber-600'>@Transactional</span>"
+                ans: [1],
+                hint: "Chỉ định cột làm cột liên kết khóa ngoại ➔ <span class='font-bold text-amber-600'>@JoinColumn</span>"
             },
             {
                 type: 'single',
@@ -1373,15 +1373,15 @@
             },
             {
                 type: 'single',
-                q: "Câu 96. Rollback thường xảy ra khi",
+                q: "Câu 96. Lan truyền giao dịch (Propagation) mặc định của @Transactional là gì?",
                 options: [
-                    "A. Thành công",
-                    "B. Runtime Exception",
-                    "C. Không có query",
-                    "D. Không có Entity"
+                    "A. REQUIRES_NEW",
+                    "B. REQUIRED",
+                    "C. NESTED",
+                    "D. SUPPORTS"
                 ],
                 ans: [1],
-                hint: "Xảy ra lỗi Unchecked Exception ➔ <span class='font-bold text-amber-600'>Runtime Exception</span>"
+                hint: "Tham gia transaction hiện có hoặc tạo mới nếu chưa có ➔ <span class='font-bold text-amber-600'>Propagation.REQUIRED</span>"
             },
             {
                 type: 'single',
@@ -1397,39 +1397,39 @@
             },
             {
                 type: 'single',
-                q: "Câu 98. JOIN FETCH dùng để",
+                q: "Câu 98. Đối tượng nào trong Spring Security được khuyên dùng để băm mật khẩu người dùng trước khi lưu vào Database?",
                 options: [
-                    "A. Tránh N+1",
-                    "B. Tạo Entity",
-                    "C. Mapping Bean",
-                    "D. Tạo Session"
-                ],
-                ans: [0],
-                hint: "Kỹ thuật JPQL để gộp nạp dữ liệu con, ➔ <span class='font-bold text-amber-600'>Tránh N+1</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 99. EntityGraph dùng để",
-                options: [
-                    "A. Giảm N+1",
-                    "B. Tạo Database",
-                    "C. Tạo Transaction",
-                    "D. Mapping URL"
-                ],
-                ans: [0],
-                hint: "Chỉ định đồ thị nạp dữ liệu, ➔ <span class='font-bold text-amber-600'>Giảm N+1</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 100. JPQL khác SQL ở chỗ",
-                options: [
-                    "A. Query theo bảng",
-                    "B. Query theo Entity",
-                    "C. Query theo Database",
-                    "D. Query theo JDBC"
+                    "A. MD5PasswordEncoder",
+                    "B. BCryptPasswordEncoder",
+                    "C. NoOpPasswordEncoder",
+                    "D. SHA256PasswordEncoder"
                 ],
                 ans: [1],
-                hint: "Ngôn ngữ truy vấn JPA hướng đối tượng ➔ <span class='font-bold text-amber-600'>Query theo Entity</span>"
+                hint: "Thuật toán băm mật khẩu bảo mật hàng đầu ➔ <span class='font-bold text-amber-600'>BCryptPasswordEncoder</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 99. Annotation nào của Spring Boot Test dùng để tạo và đưa một Mock Object vào Spring ApplicationContext để giả lập dữ liệu?",
+                options: [
+                    "A. @Mock",
+                    "B. @MockBean",
+                    "C. @Autowired",
+                    "D. @TestConfiguration"
+                ],
+                ans: [1],
+                hint: "Đăng ký Mock Object trực tiếp vào Spring context ➔ <span class='font-bold text-amber-600'>@MockBean</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 100. File cấu hình mặc định để tùy biến cổng chạy, kết nối database và các tham số khác của Spring Boot là gì?",
+                options: [
+                    "A. pom.xml",
+                    "B. application.properties (hoặc application.yml)",
+                    "C. web.xml",
+                    "D. settings.gradle"
+                ],
+                ans: [1],
+                hint: "File cấu hình chính của Spring Boot ➔ <span class='font-bold text-amber-600'>application.properties</span>"
             }
         ];
 
@@ -1561,6 +1561,7 @@
             loadQuestion();
         }
 
+        // Cập nhật thông tin câu hỏi
         function loadQuestion() {
             const qData = activeQuiz[currentQ];
             selectedOptions = [];
