@@ -78,11 +78,40 @@
                 <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập về Cú pháp, Kiểu dữ liệu, Biến, Xử lý chuỗi, Giải thích code và Pandas DataFrame thông qua các đoạn code ứng dụng.</p>
             </div>
 
-            <button id="btnStartPractice" onclick="startPractice()"
-                class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
-                Bắt đầu luyện tập 🚀
-            </button>
-        </div>
+            <!-- Chapter/Section Selection Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl pt-2">
+                <button onclick="selectChapterStart('part1')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Phần 1</span>
+                        <span class="text-xs text-slate-400">30 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Cơ bản & Đọc hiểu (Câu 1 - 30)</h4>
+                </button>
+
+                <button onclick="selectChapterStart('part2')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Phần 2</span>
+                        <span class="text-xs text-slate-400">30 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Cấu trúc điều khiển & Hàm (Câu 31 - 60)</h4>
+                </button>
+
+                <button onclick="selectChapterStart('part3')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Phần 3</span>
+                        <span class="text-xs text-slate-400">40 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Cú pháp, Biến & Chuỗi (Câu 61 - 100)</h4>
+                </button>
+
+                <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all sm:col-span-2 lg:col-span-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-700 bg-indigo-200 px-2 py-0.5 rounded-full">Tất cả</span>
+                        <span class="text-xs text-indigo-500 font-semibold">100 câu</span>
+                    </div>
+                    <h4 class="font-bold text-indigo-900 group-hover:text-indigo-700 transition-colors text-sm sm:text-base">Luyện tập tổng hợp (Tất cả 100 câu)</h4>
+                </button>
+            </div>
 
         <!-- Progress & Score -->
         <div id="quizHeader"
@@ -1248,7 +1277,7 @@
                 reviewWrongBadge: "✗ Sai",
                 btnReviewPrev: "⬅ Câu trước",
                 btnReviewNext: "Câu tiếp theo ➡",
-                restartBtn: "🔄 Làm lại bài thi",
+                restartBtn: "🔄 Chọn phần khác",
                 startScreenTitle: "Luyện Thi Trắc Nghiệm Python",
                 startScreenSubtitle: "Hệ thống trắc nghiệm ôn tập về Cú pháp, Kiểu dữ liệu, Biến, Xử lý chuỗi, Giải thích code và Pandas DataFrame thông qua các đoạn code ứng dụng.",
                 startBtn: "Bắt đầu luyện tập 🚀",
@@ -1271,9 +1300,18 @@
         let userAnswers = [];
         let activeQuiz = [];
         let reviewCurrentQ = 0;
+        let selectedChapter = 'all';
 
         function prepareQuiz() {
-            const sourceData = quizDataVi;
+            let sourceData = quizDataVi;
+            if (selectedChapter === 'part1') {
+                sourceData = quizDataVi.slice(0, 30);
+            } else if (selectedChapter === 'part2') {
+                sourceData = quizDataVi.slice(30, 60);
+            } else if (selectedChapter === 'part3') {
+                sourceData = quizDataVi.slice(60, 100);
+            }
+
             activeQuiz = sourceData.map(q => {
                 return {
                     type: q.type,
@@ -1286,13 +1324,17 @@
             });
         }
 
+        function selectChapterStart(chapter) {
+            selectedChapter = chapter;
+            startPractice();
+        }
+
         function updateLanguageUI() {
             const trans = uiTranslations[currentLanguage];
             document.getElementById('appTitle').innerText = trans.title;
             document.getElementById('appSubtitle').innerText = trans.subtitle;
             document.getElementById('startTitle').innerText = trans.startScreenTitle;
             document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
-            document.getElementById('btnStartPractice').innerText = trans.startBtn;
 
             document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
             document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
