@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
-# Trigger fresh deployment run to bypass duplicate artifact bug
+# Toggle deployment run to bypass GitHub deployment timeout
+
 
 on:
   push:
