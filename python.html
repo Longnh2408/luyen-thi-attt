@@ -247,172 +247,404 @@
 
     <script>
         const quizDataVi = [
-            // PHẦN I. CÚ PHÁP, BIẾN, TOÁN TỬ VÀ KIỂU DỮ LIỆU CƠ BẢN (1–25)
+            // CÂU 1 - 30 (BỘ ĐỀ ÔN TẬP ĐƯỢC CUNG CẤP)
             {
                 type: 'single',
-                desc: "Câu 1. Kết quả của đoạn mã sau là gì?",
-                code: "result = 0\nfor i in range(1, 10, 2):\n    if i % 3 == 0:\n        break\n    result += i\nprint(result)",
-                options: ["A. 1", "B. 4", "C. 9", "D. 0"],
-                ans: [0],
-                hint: "Vòng lặp `range(1, 10, 2)` duyệt qua các số lẻ: 1, 3... Khi gặp `i = 3`, điều kiện `3 % 3 == 0` thỏa mãn nên lệnh `break` dừng vòng lặp lập tức ➔ <span class='font-bold text-amber-600'>Kết quả là 1</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 2. Cú pháp unpacking list/tuple: `a, *b, c = [1, 2, 3, 4, 5]`. Giá trị của `b` là gì?",
+                desc: "Câu 1. Output của đoạn code sau là gì?",
+                code: "print('Hello, world!')\nprint(\"H\")",
                 options: [
-                    "A. [2, 3, 4]",
-                    "B. 2, 3, 4",
-                    "C. [3, 4]",
-                    "D. [2, 3, 4, 5]"
+                    "A. Hello world! H",
+                    "B. H",
+                    "C. Hello, world! H (H được in ở hàng mới)",
+                    "D. Error"
                 ],
-                ans: [0],
-                hint: "Unpacking với toán tử dấu sao `*` thu gom các phần tử ở giữa thành một ➔ <span class='font-bold text-amber-600'>List</span>"
+                ans: [2],
+                hint: "Mặc định hàm `print()` kết thúc bằng ký tự xuống dòng (`\\n`). Do đó, hai câu lệnh `print` liên tiếp sẽ in ra hai dòng riêng biệt ➔ <span class='font-bold text-amber-600'>Hello, world! và H nằm ở hàng mới</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 3. Đoạn mã sau thực hiện thao tác gì trên chuỗi?",
-                code: "text = \"a,b,c,d,e\"\nresult = text.split(\",\")[::-1]\nprint(result)",
-                options: ["A. ['e', 'd', 'c', 'b', 'a']", "B. \"e,d,c,b,a\"", "C. ['a', 'b', 'c', 'd', 'e']", "D. ['e', 'c', 'a']"],
-                ans: [0],
-                hint: "`split(\",\")` chia chuỗi thành danh sách, `[::-1]` đảo ngược thứ tự các phần tử của danh sách đó ➔ <span class='font-bold text-amber-600'>['e', 'd', 'c', 'b', 'a']</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 4. Output của đoạn code dưới đây là?",
-                code: "def process_tuple(t):\n    return t[1::2]\nmy_tuple = (1, 2, 3, 4, 5, 6, 7, 8)\nresult = process_tuple(my_tuple)\nprint(result)",
-                options: ["A. (2, 4, 6, 8)", "B. (1, 3, 5, 7)", "C. [2, 4, 6, 8]", "D. (2, 4, 6)"],
-                ans: [0],
-                hint: "Slicing `t[1::2]` bắt đầu từ index 1 và lấy cách quãng 2 phần tử ➔ <span class='font-bold text-amber-600'>(2, 4, 6, 8)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 5. Giá trị nào sau đây mang kiểu dữ liệu số phức?",
-                code: "",
-                options: ["A. 3 + 4i", "B. 3 + 4j", "C. complex(3, 4i)", "D. '3+4j'"],
-                ans: [1],
-                hint: "Số phức trong Python sử dụng ký tự `j` hoặc `J` để biểu diễn phần ảo ➔ <span class='font-bold text-amber-600'>3 + 4j</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 6. Chương trình sau đang gặp vấn đề ở dòng nào?",
-                code: "[1] s = 'Python programming'\n[2] print(s)\n[3] del s\n[4] print(s)",
-                options: ["A. Dòng [1]", "B. Dòng [2]", "C. Dòng [3]", "D. Dòng [4]"],
+                desc: "Câu 2. Đâu là kiểu dữ liệu số trong Python?",
+                options: [
+                    "A. Integer",
+                    "B. Complex",
+                    "C. Boolean",
+                    "D. Tất cả các phương án trên."
+                ],
                 ans: [3],
-                hint: "Câu lệnh `del s` đã xóa bỏ hoàn toàn biến `s` khỏi bộ nhớ, vì vậy dòng [4] khi cố in `s` sẽ báo lỗi NameError ➔ <span class='font-bold text-amber-600'>Dòng [4]</span>"
+                hint: "Trong Python, các kiểu `int` (Integer), `complex` (Số phức) và `bool` (Boolean - là lớp con của int, đại diện 0 và 1) đều được phân loại thuộc nhóm dữ liệu kiểu số ➔ <span class='font-bold text-amber-600'>Tất cả các phương án trên.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 7. Cho biết kết quả của phép tính sau với x = 5:",
-                code: "result = x**2 - 1 // 5 + 3 % 3 * 2\nprint(result)",
-                options: ["A. 25", "B. 24", "C. 27", "D. 23"],
-                ans: [0],
-                hint: "Thứ tự toán tử: `5**2` = 25. `1 // 5` = 0. `3 % 3 * 2` = 0 * 2 = 0. Kết quả: `25 - 0 + 0 = 25` ➔ <span class='font-bold text-amber-600'>25</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 8. Docstring được dùng để khai báo ghi chú cho hàm có thể được đặt trong dấu nào ngay sau tên hàm?",
-                code: "",
+                desc: "Câu 3. Trong số các phép gán sau đây, phép gán nào sẽ gây ra lỗi?",
                 options: [
-                    "A. Một cặp ngoặc kép đơn '...'",
-                    "B. Ba cặp ngoặc kép song hành \"\"\"...\"\"\" hoặc '''...'''",
-                    "C. Dấu thăng #...#",
-                    "D. Cặp ngoặc nhọn {...}"
+                    "A. a = b = c = 89",
+                    "B. a = 6, b = 8",
+                    "C. a, b, c = 1, 2, 3",
+                    "D. Không có phép gán nào trên đúng."
                 ],
                 ans: [1],
-                hint: "Docstring được viết bên trong cặp ba dấu nháy kép hoặc ba dấu nháy đơn đặt ngay dưới tiêu đề hàm ➔ <span class='font-bold text-amber-600'>\"\"\"...\"\"\" hoặc '''...'''</span>"
+                hint: "Cú pháp `a = 6, b = 8` không hợp lệ vì dấu phẩy ngăn cách gán không đi kèm với unpacking đúng cấu trúc. Cần viết `a, b = 6, 8` hoặc `a = 6; b = 8` ➔ <span class='font-bold text-amber-600'>a = 6, b = 8</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 9. Dấu nào sau đây dùng để chú thích từng dòng trong code Python?",
-                code: "",
-                options: ["A. Dấu gạch chéo kép //", "B. Dấu chấm phẩy ;", "C. Dấu thăng #", "D. Dấu gạch chéo ngược \\"],
+                desc: "Câu 4. Đâu là kiểu dữ liệu mutable (có thể thay đổi giá trị của đối tượng sau khi tạo)?",
+                options: [
+                    "A. String",
+                    "B. Tuple",
+                    "C. List",
+                    "D. Tất cả các phương án trên."
+                ],
                 ans: [2],
-                hint: "Python sử dụng ký tự `#` để viết chú thích (comment) đơn dòng ➔ <span class='font-bold text-amber-600'>Dấu thăng #</span>"
+                hint: "List là kiểu dữ liệu mutable (cho phép sửa đổi phần tử). String và Tuple là kiểu dữ liệu immutable (bất biến) ➔ <span class='font-bold text-amber-600'>List</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 10. Cho biết kết quả của đoạn lệnh sau:",
-                code: "result = 3 >= 4 and not(5 < 7) or 3**4 != (5 % 2)\nprint(result)",
-                options: ["A. True", "B. False", "C. None", "D. Error"],
+                desc: "Câu 5. Giá trị của biểu thức này là gì? 22% 3.0",
+                options: [
+                    "A. 7",
+                    "B. 1",
+                    "C. 1.0",
+                    "D. 7.0"
+                ],
+                ans: [2],
+                hint: "Phép chia lấy dư `22 % 3` bằng 1. Vì số chia là `3.0` (kiểu float) nên kết quả được ép kiểu ngầm định sang float là `1.0` ➔ <span class='font-bold text-amber-600'>1.0</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 6. D = [1, 23, 'hello', 1] thuộc kiểu dữ liệu nào?",
+                options: [
+                    "A. List",
+                    "B. Dictionary",
+                    "C. Array",
+                    "D. Tuple"
+                ],
                 ans: [0],
-                hint: "Vế trái của `or` là False. Vế phải `3**4 != (5 % 2)` tương đương `81 != 1` là True. Vậy `False or True` ra True ➔ <span class='font-bold text-amber-600'>True</span>"
+                hint: "Khai báo phần tử nằm trong cặp ngoặc vuông `[...]` tạo ra đối tượng thuộc kiểu ➔ <span class='font-bold text-amber-600'>List</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 11. Cho biết kết quả sau khi thực hiện lệnh sau:",
-                code: "print('Chào {0}', 'An')",
-                options: ["A. Chào An", "B. Chào {0} An", "C. Chào An An", "D. Chào {0}"],
+                desc: "Câu 7. Đoạn mã sau in ra gì trên console?",
+                code: "print(\"lion\" == \"cat\" or 99 != 88)",
+                options: [
+                    "A. False",
+                    "B. True",
+                    "C. ValueError xảy ra",
+                    "D. TypeError xảy ra"
+                ],
                 ans: [1],
-                hint: "Hàm print chỉ in 2 đối số cách nhau bởi dấu cách mặc định (do không gọi `.format()`) ➔ <span class='font-bold text-amber-600'>Chào {0} An</span>"
+                hint: "Vế trái `\"lion\" == \"cat\"` là False. Vế phải `99 != 88` là True. Phép toán `False or True` trả về ➔ <span class='font-bold text-amber-600'>True</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 12. Giá trị nào sau đây mang kiểu dữ liệu số thực (float)?",
-                code: "",
-                options: ["A. 15", "B. 2.5e3", "C. 3 + 0j", "D. int('12')"],
+                desc: "Câu 8. Kết quả của biểu thức này sẽ là gì?",
+                code: "print('p' + 'q' if '12'.isdigit() else 'r' + 's')",
+                options: [
+                    "A. pq",
+                    "B. rs",
+                    "C. pqrs",
+                    "D. pq12",
+                    "E. lỗi"
+                ],
+                ans: [0],
+                hint: "Hàm `'12'.isdigit()` kiểm tra chuỗi số trả về `True`. Toán tử 3 ngôi thực hiện vế trước `if` là ghép chuỗi `'p' + 'q'` tạo thành ➔ <span class='font-bold text-amber-600'>pq</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 9. Output của đoạn code sau:",
+                code: "a = True\nb = False\nc = True \nif not a or b:\n    print (\"a\")\nelif not a or not b and c:\n    print (\"b\")\nelif not a or b or not b and a:\n    print (\"c\")\nelse:\n    print (\"d\")",
+                options: [
+                    "A. a",
+                    "B. b",
+                    "C. c",
+                    "D. d"
+                ],
                 ans: [1],
-                hint: "Biểu diễn khoa học `2.5e3` đại diện cho giá trị thực `2500.0` ➔ <span class='font-bold text-amber-600'>2.5e3</span>"
+                hint: "Vòng điều kiện 1: `not a or b` -> `False or False` -> False.\nVòng điều kiện 2: `not a or not b and c` -> `False or True and True` -> `False or True` -> True. In ra ➔ <span class='font-bold text-amber-600'>b</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 13. Cho biết giá trị của y sau khi thực hiện đoạn lệnh:",
-                code: "x = 3\ny = 2 + xj",
-                options: ["A. 2+3j", "B. 5j", "C. NameError", "D. SyntaxError"],
+                desc: "Câu 10. Câu nào sau đây là vòng lặp for hợp lệ trong Python?",
+                options: [
+                    "A. for(i=0; i<n; i++)",
+                    "B. for i in range(0,5):",
+                    "C. for i in range(0,5)",
+                    "D. for i in range(5)"
+                ],
+                ans: [1],
+                hint: "Vòng lặp `for` hợp lệ trong Python bắt buộc phải có dấu hai chấm `:` ở cuối cấu trúc khai báo dòng lặp ➔ <span class='font-bold text-amber-600'>for i in range(0,5):</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 11. Trong dãy mã dưới đây, dãy nào sẽ được tạo ra từ dòng mã đã cho? range(5, 0, -2)",
+                options: [
+                    "A. 5 4 3 2 1 0 -1",
+                    "B. 5 4 3 2 1 0",
+                    "C. 5 3 1",
+                    "D. Không có trong các lựa chọn trên"
+                ],
                 ans: [2],
-                hint: "Khi dùng biến nhân với phần ảo, ta không thể viết liền `xj` vì Python sẽ coi đó là tên biến khác chưa được khai báo ➔ <span class='font-bold text-amber-600'>NameError</span>"
+                hint: "Chạy từ 5 lùi về sát 0 (không bao gồm 0) với khoảng nhảy là -2 đơn vị, tạo ra chuỗi giá trị: 5, 3, 1 ➔ <span class='font-bold text-amber-600'>5 3 1</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 14. Cho biết giá trị của x == y với:",
+                desc: "Câu 12. Output của đoạn chương trình sau:",
+                code: "output = \"\"\nx = -5\nwhile x < 0:\n    x = x + 1\n    output = output + str(x) + \" \"\nprint(output)",
+                options: [
+                    "A. 5 4 3 2 1",
+                    "B. -4 -3 -2 -1 0",
+                    "C. -5 -4 -3 -2 -1",
+                    "D. Đây là vòng lặp vô hạn nên sẽ không gì được in ra."
+                ],
+                ans: [1],
+                hint: "Mỗi vòng lặp, `x` tăng thêm 1 đơn vị trước khi ghép chuỗi, nên chuỗi nhận các giá trị từ -4, -3, -2, -1, đến 0 ➔ <span class='font-bold text-amber-600'>-4 -3 -2 -1 0</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 13. Output của đoạn chương trình sau:",
+                code: "sum = 0\nvalues = [1,3,5,7]\nfor number in values:\n    sum = sum + number\nprint(sum)",
+                options: [
+                    "A. 4",
+                    "B. 0",
+                    "C. 7",
+                    "D. 16"
+                ],
+                ans: [3],
+                hint: "Tổng tích lũy cộng dồn toàn bộ các phần tử trong mảng: 1 + 3 + 5 + 7 = 16 ➔ <span class='font-bold text-amber-600'>16</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 14. Một câu lệnh ______________ bỏ qua phần còn lại của vòng lặp và nhảy tới câu lệnh ngay sau vòng lặp.",
+                options: [
+                    "A. break",
+                    "B. continue",
+                    "C. if else",
+                    "D. pass"
+                ],
+                ans: [0],
+                hint: "Lệnh `break` dừng vòng lặp hiện tại ngay lập tức và nhảy đến dòng lệnh tiếp theo nằm ngoài khối lặp ➔ <span class='font-bold text-amber-600'>break</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 15. Chúng ta có thể thêm một hàng mới vào DataFrame bằng cách sử dụng phương thức _____________.",
+                options: [
+                    "A. rloc[ ]",
+                    "B. loc[ ]",
+                    "C. iloc[ ]",
+                    "D. Không có trong số các phương thức trên."
+                ],
+                ans: [1],
+                hint: "Sử dụng thuộc tính `.loc[nhãn_dòng_mới] = values` để thêm trực tiếp một hàng mới vào DataFrame ➔ <span class='font-bold text-amber-600'>loc[ ]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 16. Đoạn mã sau tạo một dataframe có tên là 'D1' với bao nhiêu cột?",
+                code: "import pandas as pd\ndicts = [{'a':10, 'b':20}, {'a':5, 'b':10, 'c':20}]\nD1 = pd.DataFrame(dicts)",
+                options: [
+                    "A. 1",
+                    "B. 2",
+                    "C. 3",
+                    "D. 4"
+                ],
+                ans: [2],
+                hint: "DataFrame tạo từ danh sách dict sẽ lấy tập hợp các key duy nhất làm cột. Các key xuất hiện là 'a', 'b', 'c' tương ứng 3 cột ➔ <span class='font-bold text-amber-600'>3</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 17. Chúng ta có thể tạo DataFrame từ nguồn dữ liệu nào?",
+                options: [
+                    "A. Mảng Numpy (Numpy arrays)",
+                    "B. Danh sách các từ điển (List of Dictionaries)",
+                    "C. Từ điển của các danh sách (Dictionary of Lists)",
+                    "D. Tất cả các phương án trên"
+                ],
+                ans: [3],
+                hint: "Pandas hỗ trợ khởi tạo DataFrame từ mảng NumPy, list chứa các dict, hoặc dict chứa các list ➔ <span class='font-bold text-amber-600'>Tất cả các phương án trên</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 18. Trong DataFrame, axis 0 đại diện cho thành phần nào?",
+                options: [
+                    "A. Các hàng (Rows)",
+                    "B. Các cột (Columns)",
+                    "C. Cả hai hàng và cột",
+                    "D. Không phải trong số các lựa chọn này"
+                ],
+                ans: [0],
+                hint: "Theo thiết lập trục của Pandas, `axis=0` biểu thị trục dọc đại diện cho dòng/hàng (Rows) ➔ <span class='font-bold text-amber-600'>Các hàng (Rows)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 19. Hàm nào sau đây được sử dụng để tải dữ liệu từ tệp CSV vào DataFrame?",
+                options: [
+                    "A. read.csv( )",
+                    "B. readcsv( )",
+                    "C. read_csv( )",
+                    "D. Read_csv( )"
+                ],
+                ans: [2],
+                hint: "Hàm chính thức của thư viện Pandas để đọc file CSV là `pd.read_csv()` ➔ <span class='font-bold text-amber-600'>read_csv( )</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 20. Để xóa một cột, tham số axis của hàm drop( ) được gán giá trị gì?",
+                options: [
+                    "A. 0",
+                    "B. 1",
+                    "C. 2",
+                    "D. 3"
+                ],
+                ans: [1],
+                hint: "Để drop cột trong DataFrame, ta truyền `axis=1`. Nếu `axis=0` sẽ xóa hàng ➔ <span class='font-bold text-amber-600'>1</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 21. Phương thức nào được sử dụng để xóa hàng hoặc cột trong DataFrame?",
+                options: [
+                    "A. delete( )",
+                    "B. del( )",
+                    "C. drop( )",
+                    "D. Không có trong số các phương án trên"
+                ],
+                ans: [2],
+                hint: "Phương thức `.drop()` dùng để xóa hàng/cột (trả về bản sao mới), trong khi `del` là từ khóa xóa tại chỗ ➔ <span class='font-bold text-amber-600'>drop( )</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 22. Viết cú pháp để chuyển vị DataFrame (hoán đổi hàng và cột).",
+                options: [
+                    "A. Df1=Df1.Tranpose()",
+                    "B. Df2=Df1.Transpose()",
+                    "C. Df1=Df1.T",
+                    "D. Df1.T=Df1"
+                ],
+                ans: [2],
+                hint: "Chuyển vị nhanh một DataFrame bằng cách gọi thuộc tính `.T` ➔ <span class='font-bold text-amber-600'>Df1=Df1.T</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 23. Lệnh `df = df.drop(['Name', 'Class', 'Rollno'], axis = 1)` thực hiện công việc gì?",
+                options: [
+                    "A. xóa ba cột có nhãn ‘Name’, ‘Class’ và ‘Rollno’",
+                    "B. xóa ba hàng có nhãn ‘Name’, ‘Class’ và ‘Rollno’",
+                    "C. xóa bất kỳ ba cột nào",
+                    "D. trả về lỗi"
+                ],
+                ans: [0],
+                hint: "Do chỉ định tham số trục cột `axis=1` nên hàm `.drop()` sẽ xóa các cột có tên trong danh sách ➔ <span class='font-bold text-amber-600'>xóa ba cột có nhãn ‘Name’, ‘Class’ và ‘Rollno’</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 24. Trong số các thuộc tính sau của DataFrame, thuộc tính nào hiển thị kích thước hàng và cột của DataFrame?",
+                options: [
+                    "A. shape",
+                    "B. size",
+                    "C. dimension",
+                    "D. values"
+                ],
+                ans: [0],
+                hint: "Thuộc tính `.shape` trả về kích thước DataFrame dưới dạng một tuple: `(số_dòng, số_cột)` ➔ <span class='font-bold text-amber-600'>shape</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 25. Chúng ta có thể sử dụng phương thức nào để hợp nhất hai DataFrame?",
+                options: [
+                    "A. merge( )",
+                    "B. join( )",
+                    "C. append( )",
+                    "D. drop( )"
+                ],
+                ans: [0],
+                hint: "Phương thức `pd.merge()` liên kết các bảng dữ liệu lại với nhau dựa trên cột chung ➔ <span class='font-bold text-amber-600'>merge( )</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 26. Viết mã Python để xóa cột 'fee' tại chỗ của khung dữ liệu (data frame).",
+                options: [
+                    "A. delete Df1[‘fee']",
+                    "B. drop Df1Col[‘Fee']",
+                    "C. del Df1[Col.‘fee']",
+                    "D. del Df1[‘fee']"
+                ],
+                ans: [3],
+                hint: "Sử dụng từ khóa hệ thống `del` kết hợp khóa cột để xóa trực tiếp cột: `del Df1['fee']` ➔ <span class='font-bold text-amber-600'>del Df1[‘fee']</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 27. Hàm nào được sử dụng để tìm các giá trị từ DataFrame D sử dụng số chỉ mục số nguyên?",
+                options: [
+                    "A. D.loc",
+                    "B. D.iloc",
+                    "C. D.index",
+                    "D. Không có trong số các lựa chọn này"
+                ],
+                ans: [1],
+                hint: "Để truy xuất theo chỉ số nguyên (integer location), ta dùng `.iloc` ➔ <span class='font-bold text-amber-600'>D.iloc</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 28. Trong Pandas, hàm/từ khóa được sử dụng để xóa một cột trong DataFrame là:",
+                options: [
+                    "A. Remove",
+                    "B. del",
+                    "C. Drop",
+                    "D. cancel"
+                ],
+                ans: [2],
+                hint: "Phương thức `.drop()` của DataFrame được sử dụng để loại bỏ hàng/cột ➔ <span class='font-bold text-amber-600'>Drop</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 29. Viết một câu lệnh để xóa hai cột có label là 2017 và 2016 trong DataFrame 'DF'.",
+                options: [
+                    "A. print(DF.drop([2017, 2016], axis=1))",
+                    "B. print(DF.drop((2017, 2016), axis=1))",
+                    "C. Cả hai câu trên",
+                    "D. print(DF.drop([2017,2016],axis=0))"
+                ],
+                ans: [2],
+                hint: "Hàm `.drop()` chấp nhận cả một list `[...]` hoặc tuple `(...)` chứa danh sách nhãn các cột cần xóa ➔ <span class='font-bold text-amber-600'>Cả hai câu trên</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 30. Để xem sự thay đổi trong dữ liệu qua một khoảng thời gian chúng ta có thể sử dụng biểu đồ nào?",
+                options: [
+                    "A. Line (Biểu đồ đường)",
+                    "B. Bar (Biểu đồ cột)",
+                    "C. Histogram (Biểu đồ tần suất)",
+                    "D. Pie (Biểu đồ tròn)"
+                ],
+                ans: [0],
+                hint: "Biểu đồ đường (Line plot) là công cụ tối ưu nhất biểu diễn xu hướng thay đổi dữ liệu theo chuỗi thời gian ➔ <span class='font-bold text-amber-600'>Line (Biểu đồ đường)</span>"
+            },
+
+            // CÂU 31 - 50 (CÁC DẠNG ĐỀ TRACING, GIẢI THUẬT & TOÁN TỬ KHÁC)
+            {
+                type: 'single',
+                desc: "Câu 31. Cho biết giá trị của biểu thức x == y với:",
                 code: "x = 3\ny = 2.9999999999999999\nprint(x == y)",
                 options: ["A. True", "B. False", "C. Error", "D. None"],
                 ans: [0],
-                hint: "Do giới hạn lưu trữ số thực dấu phẩy động 64-bit IEEE 754, giá trị `2.9999999999999999` sẽ bị làm tròn lên thành `3.0` ➔ <span class='font-bold text-amber-600'>True</span>"
+                hint: "Do giới hạn độ chính xác lưu trữ dấu phẩy động của chuẩn IEEE 754, giá trị `2.9999999999999999` tự động làm tròn lên thành `3.0` ➔ <span class='font-bold text-amber-600'>True</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 15. Cho biết kết quả của lệnh sau:",
-                code: "print(10 // 3, 10 % 3, 10 / 3, sep = \", \")",
-                options: [
-                    "A. 3, 1, 3.3333333333333335",
-                    "B. 3, 1, 3.33",
-                    "C. 3, 1, 3",
-                    "D. 3 1 3.3333333333333335"
-                ],
-                ans: [0],
-                hint: "Phép chia lấy nguyên `10 // 3 = 3`, chia dư `10 % 3 = 1`, chia thập phân `10 / 3 = 3.33333...` ➔ <span class='font-bold text-amber-600'>3, 1, 3.3333333333333335</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 16. Cho biết kết quả của câu lệnh sau là gì?",
-                code: "print(complex('2+8j'))",
-                options: ["A. (2+8j)", "B. 2+8j", "C. ValueError", "D. (2 + 8j)"],
-                ans: [0],
-                hint: "Hàm chuyển đổi chuỗi sang số phức trả về định dạng bao trong cặp ngoặc tròn ➔ <span class='font-bold text-amber-600'>(2+8j)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 17. Quy tắc đặt tên nào sau đây là đúng cho biến trong Python?",
-                options: [
-                    "A. 2_my_var = 10",
-                    "B. my-var = 10",
-                    "C. _my_var = 10",
-                    "D. my var = 10"
-                ],
-                ans: [2],
-                hint: "Tên biến chỉ có thể bắt đầu bằng chữ cái hoặc dấu gạch dưới `_`, không chứa dấu cách hay dấu gạch nối `-` ➔ <span class='font-bold text-amber-600'>_my_var = 10</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 18. Cho biết giá trị của biến x trong phép toán sau:",
+                desc: "Câu 32. Cho biết giá trị của biến x trong phép toán sau:",
                 code: "x = 2 - 3e2\nprint(x)",
                 options: ["A. -298.0", "B. -1.0", "C. -298", "D. 298.0"],
                 ans: [0],
-                hint: "Số mũ khoa học `3e2` bằng `300.0`. Vậy `2 - 300.0 = -298.0` ➔ <span class='font-bold text-amber-600'>-298.0</span>"
+                hint: "Số e biểu diễn khoa học: `3e2` = `300.0`. Do đó `2 - 300.0` = `-298.0` ➔ <span class='font-bold text-amber-600'>-298.0</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 19. Kết quả đầu ra của đoạn code sau là gì?",
+                desc: "Câu 33. Cho biết giá trị của y sau khi thực hiện đoạn lệnh:",
+                code: "x = 3\ny = 2 + xj",
+                options: ["A. 2+3j", "B. 5j", "C. NameError", "D. SyntaxError"],
+                ans: [2],
+                hint: "Không thể ghép tên biến và ký tự phần ảo `j` trực tiếp thành `xj` được vì Python sẽ coi đó là tên của một biến mới chưa khai báo ➔ <span class='font-bold text-amber-600'>NameError</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 34. Output của đoạn code dưới đây là?",
                 code: "x = [1, 2, 3]\ny = x\ny[0] = 100\nprint(x[0])",
                 options: ["A. 1", "B. 100", "C. IndexError", "D. None"],
                 ans: [1],
@@ -420,81 +652,19 @@
             },
             {
                 type: 'single',
-                desc: "Câu 20. Kết quả của biểu thức `bool([])` và `bool([0])` là gì?",
+                desc: "Câu 35. Quy tắc đặt tên nào sau đây là đúng cho biến Python?",
                 options: [
-                    "A. False và False",
-                    "B. True và True",
-                    "C. False và True",
-                    "D. True và False"
+                    "A. 2_my_var = 10",
+                    "B. my-var = 10",
+                    "C. _my_var = 10",
+                    "D. my var = 10"
                 ],
                 ans: [2],
-                hint: "Container rỗng là False | Container có phần tử (dù là 0) là True ➔ <span class='font-bold text-amber-600'>empty is False</span>"
+                hint: "Biến hợp lệ không được bắt đầu bằng số, không chứa dấu gạch ngang `-` hay khoảng trắng. Biến có thể bắt đầu bằng dấu gạch dưới `_` ➔ <span class='font-bold text-amber-600'>_my_var = 10</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 21. Cú pháp tạo Set rỗng là gì?",
-                options: [
-                    "A. s = {}",
-                    "B. s = set()",
-                    "C. s = []",
-                    "D. s = ()"
-                ],
-                ans: [1],
-                hint: "`{}` mặc định tạo dict rỗng ➔ <span class='font-bold text-amber-600'>set()</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 22. Biểu thức `3 or 5` trả về giá trị nào?",
-                options: [
-                    "A. True",
-                    "B. 3",
-                    "C. 5",
-                    "D. 8"
-                ],
-                ans: [1],
-                hint: "Toán tử logic `or` trả về giá trị truthy đầu tiên tìm thấy ➔ <span class='font-bold text-amber-600'>short-circuit or</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 23. Biểu thức `a = {1, 2, 3}; b = {3, 4, 5}`. Phép toán `a & b` trả về:",
-                options: [
-                    "A. {1, 2, 3, 4, 5}",
-                    "B. {3}",
-                    "C. {1, 2, 4, 5}",
-                    "D. Error"
-                ],
-                ans: [1],
-                hint: "Toán tử `&` đại diện cho phép giao (intersection) giữa 2 set ➔ <span class='font-bold text-amber-600'>Giao (Intersection)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 24. Tham số mặc định dạng mutable (ví dụ: `def append_to(element, target=[]):`) có nguy cơ gì?",
-                options: [
-                    "A. Báo lỗi cú pháp lập tức.",
-                    "B. Danh sách `target` được dùng chung qua các lần gọi hàm khác nhau, tích lũy giá trị cũ.",
-                    "C. Danh sách tự giải phóng sau mỗi lần gọi.",
-                    "D. Làm cho hàm chạy chậm hơn."
-                ],
-                ans: [1],
-                hint: "Tham số mặc định mutable chỉ khởi tạo 1 lần duy nhất khi định nghĩa hàm ➔ <span class='font-bold text-amber-600'>dùng chung qua các lần gọi</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 25. Hàm `zip([1, 2], ['a', 'b', 'c'])` sinh ra các cặp nào khi duyệt qua?",
-                options: [
-                    "A. (1, 'a'), (2, 'b'), (None, 'c')",
-                    "B. (1, 'a'), (2, 'b')",
-                    "C. (1, 'a'), (2, 'b'), (2, 'c')",
-                    "D. Báo lỗi do không bằng kích thước"
-                ],
-                ans: [1],
-                hint: "`zip` dừng lại khi iterator ngắn nhất kết thúc ➔ <span class='font-bold text-amber-600'>dừng theo đối tượng ngắn nhất</span>"
-            },
-
-            // PHẦN II. THUẬT TOÁN & GIẢI THUẬT (26–38)
-            {
-                type: 'single',
-                desc: "Câu 26. Độ phức tạp thời gian (Time Complexity) trung bình của việc tìm kiếm một phần tử trong Dictionary là bao nhiêu?",
+                desc: "Câu 36. Độ phức tạp thời gian (Time Complexity) trung bình của việc tìm kiếm một phần tử trong Dictionary là bao nhiêu?",
                 options: [
                     "A. O(N)",
                     "B. O(log N)",
@@ -502,23 +672,11 @@
                     "D. O(N log N)"
                 ],
                 ans: [2],
-                hint: "Dictionary được cài đặt bằng Bảng băm (Hash table) ➔ <span class='font-bold text-amber-600'>O(1)</span>"
+                hint: "Dictionary được triển khai dựa trên cơ chế bảng băm (hash table), hỗ trợ tra cứu khóa trung bình với độ phức tạp ➔ <span class='font-bold text-amber-600'>O(1)</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 27. Độ phức tạp thời gian khi chèn/xóa phần tử ở đầu một List (ví dụ: `list.insert(0, val)`) là:",
-                options: [
-                    "A. O(1)",
-                    "B. O(N)",
-                    "C. O(log N)",
-                    "D. O(N^2)"
-                ],
-                ans: [1],
-                hint: "Phải dịch chuyển tất cả các phần tử phía sau sang phải ➔ <span class='font-bold text-amber-600'>O(N)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 28. Để triển khai cấu trúc dữ liệu Hàng đợi (Queue - FIFO) hiệu quả với thao tác chèn/xóa ở 2 đầu đều đạt `O(1)`, ta nên dùng đối tượng nào trong Python?",
+                desc: "Câu 37. Để triển khai cấu trúc dữ liệu Hàng đợi (Queue - FIFO) hiệu quả với thao tác chèn/xóa ở 2 đầu đều đạt O(1), ta nên dùng đối tượng nào trong Python?",
                 options: [
                     "A. list",
                     "B. queue.Queue",
@@ -526,23 +684,11 @@
                     "D. array"
                 ],
                 ans: [2],
-                hint: "Double-ended queue tối ưu thêm/xóa 2 đầu ➔ <span class='font-bold text-amber-600'>collections.deque</span>"
+                hint: "Double-ended queue tối ưu hóa thêm/xóa cả hai đầu ➔ <span class='font-bold text-amber-600'>collections.deque</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 29. Thuật toán sắp xếp mặc định của hàm `sorted()` và `list.sort()` trong Python tên là gì?",
-                options: [
-                    "A. Quicksort",
-                    "B. Mergesort",
-                    "C. Timsort",
-                    "D. Bubblesort"
-                ],
-                ans: [2],
-                hint: "Giải thuật lai giữa Merge Sort và Insertion Sort ➔ <span class='font-bold text-amber-600'>Timsort</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 30. Thuật toán Tìm kiếm Nhị phân (Binary Search) yêu cầu mảng đầu vào phải có điều kiện gì?",
+                desc: "Câu 38. Thuật toán Tìm kiếm Nhị phân (Binary Search) yêu cầu mảng đầu vào phải có điều kiện gì?",
                 options: [
                     "A. Phải chứa toàn số nguyên.",
                     "B. Phải được sắp xếp theo thứ tự (tăng/giảm dần).",
@@ -550,23 +696,11 @@
                     "D. Không cần điều kiện gì."
                 ],
                 ans: [1],
-                hint: "Chia đôi không gian tìm kiếm dựa trên tính tuần tự ➔ <span class='font-bold text-amber-600'>Đã được sắp xếp</span>"
+                hint: "Binary Search hoạt động trên cơ chế chia đôi vùng tìm kiếm dựa trên tính tuần tự lớn bé ➔ <span class='font-bold text-amber-600'>Đã được sắp xếp</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 31. Thuật toán đệ quy tính số Fibonacci: `def fib(n): return fib(n-1) + fib(n-2)` có độ phức tạp thời gian là:",
-                options: [
-                    "A. O(N)",
-                    "B. O(N^2)",
-                    "C. O(2^N)",
-                    "D. O(log N)"
-                ],
-                ans: [2],
-                hint: "Tạo cây gọi hàm nhị phân trùng lặp rất lớn ➔ <span class='font-bold text-amber-600'>O(2^N)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 32. Trong Python, decorator tích hợp nào dùng để tự động áp dụng Memoization vào hàm đệ quy?",
+                desc: "Câu 39. Trong Python, decorator tích hợp nào dùng để tự động áp dụng Memoization vào hàm đệ quy?",
                 options: [
                     "A. @functools.cache (hoặc @lru_cache)",
                     "B. @functools.memoize",
@@ -574,23 +708,11 @@
                     "D. @property"
                 ],
                 ans: [0],
-                hint: "Least Recently Used Cache để lưu kết quả gọi hàm ➔ <span class='font-bold text-amber-600'>@functools.cache</span>"
+                hint: "Lưu trữ kết quả gọi hàm trước đó tránh tính toán lại ➔ <span class='font-bold text-amber-600'>@functools.cache (hoặc @lru_cache)</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 33. Kỹ thuật Con trỏ kép (Two Pointers) thường được ứng dụng hiệu quả cho bài toán nào?",
-                options: [
-                    "A. Tìm đường đi ngắn nhất trên đồ thị.",
-                    "B. Tìm cặp phần tử có tổng bằng K trên mảng đã sắp xếp.",
-                    "C. Duyệt cây nhị phân theo chiều sâu.",
-                    "D. Mã hóa dữ liệu."
-                ],
-                ans: [1],
-                hint: "Co hẹp không gian tìm kiếm từ 2 đầu mảng ➔ <span class='font-bold text-amber-600'>Mảng đã sắp xếp / Tìm cặp tổng</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 34. Kỹ thuật Cửa sổ trượt (Sliding Window) thường dùng để xử lý bài toán:",
+                desc: "Câu 40. Kỹ thuật Cửa sổ trượt (Sliding Window) thường dùng để xử lý bài toán:",
                 options: [
                     "A. Tìm kiếm phần tử trên cây.",
                     "B. Tìm chuỗi con hoặc mảng con liên tiếp thỏa mãn điều kiện tối ưu.",
@@ -598,23 +720,11 @@
                     "D. Tính lũy thừa nhanh."
                 ],
                 ans: [1],
-                hint: "Duy trì một khoảng liên tiếp di động trên mảng ➔ <span class='font-bold text-amber-600'>Mảng con liên tiếp</span>"
+                hint: "Sliding Window duy trì một phân đoạn liên tiếp thay đổi kích cỡ hoặc trượt đều qua mảng ➔ <span class='font-bold text-amber-600'>Tìm mảng con liên tiếp tối ưu</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 35. Cấu trúc dữ liệu nào hoạt động theo nguyên lý LIFO (Last In First Out)?",
-                options: [
-                    "A. Queue",
-                    "B. Stack",
-                    "C. Set",
-                    "D. Heap"
-                ],
-                ans: [1],
-                hint: "Ngăn xếp (Vào sau ra trước) ➔ <span class='font-bold text-amber-600'>Stack</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 36. Để xây dựng cấu trúc dữ liệu Min-Heap (Hàng đợi ưu tiên) trong Python, ta dùng module nào?",
+                desc: "Câu 41. Để xây dựng cấu trúc dữ liệu Min-Heap (Hàng đợi ưu tiên) trong Python, ta dùng module nào?",
                 options: [
                     "A. heap",
                     "B. priorityqueue",
@@ -622,73 +732,47 @@
                     "D. bisect"
                 ],
                 ans: [2],
-                hint: "Cung cấp thuật toán heap trên list thường ➔ <span class='font-bold text-amber-600'>heapq</span>"
-            },
-
-            // PHẦN III. PANDAS DATAFRAMES (37–50)
-            {
-                type: 'single',
-                desc: "Câu 37. Kích thước (shape) của DataFrame dưới đây là?",
-                code: "import pandas as pd\ndata = {\"A\": [1, 2], \"B\": [3, 4]}\ndf = pd.DataFrame(data)\nprint(df.shape)",
-                options: ["A. (2, 2)", "B. (4,)", "C. (2, 4)", "D. Error"],
-                ans: [0],
-                hint: "DataFrame có 2 dòng (hàng) và 2 cột ➔ <span class='font-bold text-amber-600'>(2, 2)</span>"
+                hint: "Cung cấp các hàm tạo cấu trúc đống nhị phân heap trực tiếp trên kiểu dữ liệu List ➔ <span class='font-bold text-amber-600'>heapq</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 38. Giá trị được lọc ra thông qua iloc chỉ mục số là gì?",
-                code: "# Cho df:\n#    Name  Age\n# 0  Jack   20\n# 1  Mary   22\nresult = df.iloc[1, 0]\nprint(result)",
-                options: ["A. Jack", "B. Mary", "C. 22", "D. 20"],
-                ans: [1],
-                hint: "iloc[hàng_index, cột_index] -> hàng index 1 là dòng thứ 2, cột 0 là 'Name' ➔ <span class='font-bold text-amber-600'>Mary</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 39. Kết quả in ra bằng định vị theo nhãn loc là gì?",
+                desc: "Câu 42. Lọc chỉ số nhãn dòng và nhãn cột trong DataFrame: df.loc[0, 'B'] trả về giá trị nào?",
                 code: "# Cho df:\n#    A   B\n# 0  5  10\n# 1  6  20\nresult = df.loc[0, 'B']\nprint(result)",
                 options: ["A. 5", "B. 6", "C. 10", "D. 20"],
                 ans: [2],
-                hint: "loc[dòng_nhãn, cột_nhãn] -> dòng nhãn 0, cột 'B' có giá trị 10 ➔ <span class='font-bold text-amber-600'>10</span>"
+                hint: "Định vị theo nhãn loc lấy hàng có nhãn 0, cột nhãn 'B' ➔ <span class='font-bold text-amber-600'>10</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 40. Đoạn mã lọc dòng sau trả về dòng chứa chỉ mục nào?",
+                desc: "Câu 43. Lọc các dòng có cột Age > 20: df[df['Age'] > 20] trả về dòng chứa chỉ mục nào?",
                 code: "# Cho df:\n#    Age\n# 0   15\n# 1   25\nresult = df[df['Age'] > 20]\nprint(result)",
                 options: ["A. Dòng index 0", "B. Dòng index 1", "C. Cả 2 dòng", "D. Không dòng nào"],
                 ans: [1],
-                hint: "Lọc các dòng có cột Age > 20, chỉ có 25 thỏa mãn ứng với index 1 ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
+                hint: "Chỉ dòng index 1 có giá trị Age=25 lớn hơn 20 thỏa mãn điều kiện lọc ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 41. Kết quả in ra tổng cột dưới đây là gì?",
+                desc: "Câu 44. Tính tổng toàn bộ các phần tử thuộc cột X: df['X'].sum() trả về giá trị nào?",
                 code: "import pandas as pd\ndf = pd.DataFrame({\"X\": [1, 2, 3]})\nprint(df[\"X\"].sum())",
                 options: ["A. 3", "B. 6", "C. 1", "D. Error"],
                 ans: [1],
-                hint: "Tính tổng toàn bộ các phần tử thuộc cột X: 1 + 2 + 3 ➔ <span class='font-bold text-amber-600'>6</span>"
+                hint: "Tổng giá trị cột X: 1 + 2 + 3 = 6 ➔ <span class='font-bold text-amber-600'>6</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 42. Câu lệnh điền NaN dưới đây thay đổi ô NaN thành giá trị nào?",
+                desc: "Câu 45. Câu lệnh điền NaN dưới đây thay đổi ô NaN thành giá trị nào?",
                 code: "# Cho df:\n#    Score\n# 0   80.0\n# 1    NaN\n# 2   90.0\nresult = df.fillna(0)\nprint(result)",
                 options: ["A. 90.0", "B. 0", "C. None", "D. Không thay đổi"],
                 ans: [1],
-                hint: "fillna(X) thay thế tất cả giá trị bị thiếu NaN thành X ➔ <span class='font-bold text-amber-600'>0</span>"
+                hint: "Hàm fillna(value) sẽ thay thế toàn bộ giá trị khuyết NaN trong bảng thành giá trị chỉ định ➔ <span class='font-bold text-amber-600'>0</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 43. Khi thực thi dropna(), hàng chứa nhãn index nào bị loại bỏ?",
+                desc: "Câu 46. Khi thực thi dropna(), hàng chứa nhãn index nào bị loại bỏ?",
                 code: "# Cho df:\n#    Score\n# 0   80.0\n# 1    NaN\n# 2   90.0\nresult = df.dropna()\nprint(result)",
                 options: ["A. Dòng index 0", "B. Dòng index 1", "C. Dòng index 2", "D. Cả 3 dòng"],
                 ans: [1],
-                hint: "dropna() loại bỏ toàn bộ hàng chứa bất kỳ giá trị khuyết thiếu NaN nào ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 44. Số lượng cột (shape[1]) của df2 sau khi drop cột là?",
-                code: "import pandas as pd\ndf = pd.DataFrame({\"A\": [1, 2, 3]})\ndf2 = df.drop(columns=[\"A\"])\nprint(df2.shape[1])",
-                options: ["A. 1", "B. 0", "C. 3", "D. Error"],
-                ans: [1],
-                hint: "Bảng ban đầu có 1 cột A, loại bỏ đi cột này thì số lượng cột còn lại là 0 ➔ <span class='font-bold text-amber-600'>0</span>"
+                hint: "dropna() xóa bỏ tất cả các dòng chứa ít nhất một phần tử khuyết NaN (dòng index 1) ➔ <span class='font-bold text-amber-600'>Dòng index 1</span>"
             },
             {
                 type: 'single',
