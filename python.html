@@ -4,159 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện Thi Trắc Nghiệm Python - Basic to Advanced</title>
+    <title>Luyện Thi Trắc Nghiệm Python</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .code-font {
-            font-family: 'Fira Code', monospace;
+            font-family: 'Inter', sans-serif;
         }
 
         .option-item {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
         }
 
         .selected {
             border-color: #3b82f6 !important;
             background-color: #eff6ff !important;
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
         }
 
         .correct {
             border-color: #10b981 !important;
-            background-color: #ecfdf5 !important;
+            background-color: #d1fae5 !important;
             color: #065f46 !important;
         }
 
         .wrong {
             border-color: #ef4444 !important;
-            background-color: #fef2f2 !important;
+            background-color: #fee2e2 !important;
             color: #991b1b !important;
         }
 
         .missed {
             border-color: #f59e0b !important;
-            background-color: #fffbeb !important;
+            background-color: #fef3c7 !important;
             color: #92400e !important;
+        }
+        
+        .code-font {
+            font-family: monospace;
         }
     </style>
 </head>
 
-<body class="bg-slate-900 min-h-screen w-full flex flex-col justify-start items-center text-slate-100 p-0 sm:p-4">
+<body class="bg-slate-50 min-h-screen w-full p-0 flex flex-col justify-start items-center">
 
     <div id="cardWrapper"
-        class="w-full min-h-screen sm:min-h-[90vh] max-w-4xl bg-slate-800 sm:rounded-3xl flex flex-col transition-all duration-300 shadow-2xl overflow-hidden border border-slate-700/50">
-        
+        class="w-full min-h-screen max-w-5xl bg-white flex flex-col transition-all duration-300 shadow-md">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 py-4 px-6 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 relative overflow-hidden">
-            <!-- Decorative python-like gradient background overlay -->
-            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"></div>
-            <div class="absolute -left-10 -top-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
-
-            <div class="text-center sm:text-left z-10">
-                <h1 id="appTitle" class="text-xl sm:text-3xl font-extrabold tracking-tight flex items-center justify-center sm:justify-start gap-2">
-                    <span class="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">Python</span> Mastery Quiz
-                </h1>
-                <p id="appSubtitle" class="text-blue-100/80 mt-1 text-xs sm:text-sm font-medium tracking-wide">
-                    🐍 Trắc nghiệm ôn tập từ Cơ bản đến Nâng cao
-                </p>
+        <div
+            class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
+            <div class="text-center sm:text-left">
+                <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm Python</h1>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Python Basic, OOP, Advanced Features & Concurrency</p>
             </div>
-            
-            <div class="text-center self-center sm:self-auto z-10">
-                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-900/40 hover:bg-slate-900/60 text-[11px] sm:text-xs font-semibold rounded-full border border-blue-400/20 transition-all text-blue-200">
+            <div class="text-center self-center sm:self-auto">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-700/50 hover:bg-indigo-700/80 text-[11px] sm:text-xs font-semibold rounded-full border border-indigo-500/30 transition-all text-indigo-100">
                     ☕ Luyện thi Java Web
                 </a>
             </div>
         </div>
 
         <!-- Start Screen -->
-        <div id="startScreen" class="p-8 flex flex-col justify-center items-center text-center flex-1 space-y-8 my-auto">
-            <div class="space-y-4">
-                <div class="relative flex items-center justify-center">
-                    <div class="absolute w-24 h-24 bg-blue-500/20 rounded-full animate-ping"></div>
-                    <div class="relative p-5 bg-slate-700 text-yellow-400 rounded-2xl text-5xl shadow-lg border border-slate-600">
-                        🐍
-                    </div>
+        <div id="startScreen"
+            class="p-6 sm:p-8 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex p-3 sm:p-4 bg-indigo-100 text-indigo-600 rounded-full text-3xl sm:text-4xl mb-1 sm:mb-2 animate-bounce">
+                    🐍
                 </div>
-                
-                <h2 id="startTitle" class="text-2xl sm:text-3xl font-extrabold text-white">Chinh Phục Python 100%</h2>
-                <p id="startSubtitle" class="text-slate-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-                    Hệ thống gồm 50 câu hỏi trắc nghiệm chất lượng cao. Ôn tập sâu sắc về cú pháp cơ bản, OOP, Decorators, Generator, Asyncio, GIL và cơ chế quản lý bộ nhớ trong Python.
-                </p>
+                <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm Python</h2>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập Python từ Cơ bản đến Nâng cao.</p>
             </div>
 
             <button id="btnStartPractice" onclick="startPractice()"
-                class="w-full sm:w-auto min-w-[200px] px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold text-base rounded-2xl transition-all shadow-lg hover:shadow-blue-500/20 transform active:scale-95">
+                class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
                 Bắt đầu luyện tập 🚀
             </button>
         </div>
 
-        <!-- Progress Bar & Score -->
+        <!-- Progress & Score -->
         <div id="quizHeader"
-            class="hidden justify-between items-center px-6 py-3 bg-slate-800/80 border-b border-slate-700/50 flex-shrink-0">
-            <div class="flex flex-col gap-1 w-full max-w-[250px]">
-                <span class="font-bold text-xs text-slate-400 uppercase tracking-wider" id="progressText">Câu 1 / 50</span>
-                <div class="w-full bg-slate-700 rounded-full h-1.5 overflow-hidden">
-                    <div id="progressBar" class="bg-blue-500 h-full rounded-full transition-all duration-300" style="width: 2%"></div>
-                </div>
-            </div>
+            class="hidden justify-between items-center px-4 sm:px-8 py-2 sm:py-3 bg-slate-50 border-b border-slate-200 flex-shrink-0">
+            <span class="font-semibold text-xs sm:text-base text-slate-600" id="progressText">Câu 1 / 50</span>
             <span
-                class="font-bold text-sm text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/20 shadow-sm"
+                class="font-semibold text-xs sm:text-base text-indigo-600 bg-indigo-100 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full"
                 id="scoreText">Điểm: 0</span>
         </div>
 
         <!-- Question Area -->
-        <div id="quizBody" class="hidden p-4 sm:p-8 flex flex-col justify-start flex-1">
+        <div id="quizBody" class="hidden p-3 sm:p-6 flex flex-col justify-start">
             <!-- Grid 2 cột trên Desktop, 1 cột trên Mobile -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start w-full max-w-7xl mx-auto flex-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start md:flex-1 w-full max-w-7xl mx-auto">
                 <!-- Cột trái: Đề bài, nút bấm và mẹo nhớ -->
-                <div class="space-y-4 text-left w-full">
-                    <div class="space-y-2">
-                        <p class="text-[10px] text-blue-400 font-bold tracking-widest uppercase" id="questionTypeHint">
-                            * Chọn 1 đáp án đúng nhất.
-                        </p>
-                        <h2 class="text-lg sm:text-xl font-bold text-white whitespace-pre-line leading-relaxed code-font bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50"
+                <div class="space-y-3 sm:space-y-4 text-left w-full">
+                    <!-- Question and Type Hint -->
+                    <div class="space-y-1">
+                        <h2 class="text-base sm:text-lg font-semibold text-slate-800 whitespace-pre-line leading-relaxed"
                             id="questionText">Đang tải câu hỏi...</h2>
+                        <p class="text-[10px] text-indigo-600 font-bold tracking-wide uppercase" id="questionTypeHint">
+                        </p>
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="flex flex-row gap-3 justify-between items-center bg-slate-700/30 p-2.5 rounded-xl border border-slate-700/40">
+                    <div
+                        class="flex flex-row gap-3 justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100 flex-shrink-0">
                         <button id="btnShowHint" onclick="showHint()"
-                            class="px-4 py-2 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 text-xs sm:text-sm font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-amber-500/20">
-                            Xem Mẹo Nhớ 💡
+                            class="flex-1 sm:flex-initial justify-center px-3 py-1.5 bg-amber-100 text-amber-700 hover:bg-amber-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            Xem Mẹo Nhớ
                         </button>
 
-                        <div class="flex gap-2">
+                        <div class="flex-1 sm:flex-initial flex gap-2 sm:gap-3">
                             <button id="btnConfirm" onclick="checkAnswer()"
-                                class="hidden px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-lg transition-colors shadow-md">
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
                                 Xác nhận
                             </button>
                             <button id="btnNext" onclick="nextQuestion()"
-                                class="hidden px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-lg transition-colors shadow-md">
+                                class="hidden w-full sm:w-auto justify-center px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shadow-sm">
                                 Tiếp theo ➡
                             </button>
                         </div>
                     </div>
 
                     <!-- Hint Box -->
-                    <div id="hintBox" class="hidden p-4 bg-amber-500/5 border-l-4 border-amber-500 rounded-r-2xl border border-slate-700/40">
+                    <div id="hintBox" class="hidden p-2.5 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
                         <div class="flex items-start">
-                            <span class="text-xl mr-3">💡</span>
+                            <span class="text-base sm:text-xl mr-2">💡</span>
                             <div>
                                 <h3 id="hintTitle"
-                                    class="font-bold text-amber-400 text-xs uppercase tracking-wide">Mẹo nhớ (Keyword)</h3>
-                                <p class="text-slate-300 mt-1 text-sm font-medium leading-relaxed" id="hintText"></p>
+                                    class="font-bold text-amber-800 text-[10px] sm:text-xs uppercase text-left">Mẹo nhớ
+                                    (Keyword)</h3>
+                                <p class="text-amber-900 mt-0.5 text-xs sm:text-sm font-medium text-left" id="hintText">
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Cột phải: Danh sách các đáp án lựa chọn -->
-                <div class="space-y-3 text-left w-full" id="optionsContainer">
+                <div class="space-y-2 text-left w-full" id="optionsContainer">
                     <!-- Các đáp án sẽ được render bằng JS -->
                 </div>
             </div>
@@ -164,54 +148,58 @@
 
         <!-- Report Area -->
         <div id="reportArea"
-            class="hidden p-4 sm:p-6 bg-slate-850 flex-1 flex flex-col justify-start overflow-y-auto">
+            class="hidden p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex-1 flex flex-col justify-start">
             <!-- Compact Single-Line Stats Row -->
             <div
-                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-800 px-5 py-3 rounded-2xl border border-slate-700/50 shadow-lg mb-4">
-                <div class="flex items-center gap-3">
-                    <span id="reportTitle" class="font-extrabold text-white text-base">Kết Quả Luyện Tập:</span>
-                    <span id="reportStatStatus" class="font-bold text-xs px-3 py-1 rounded-full">ĐẠT</span>
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm mb-3">
+                <div class="flex items-center gap-2">
+                    <span id="reportTitle" class="font-bold text-slate-800 text-sm sm:text-base">Kết Quả Luyện
+                        Tập:</span>
+                    <span id="reportStatStatus" class="font-bold text-xs px-2.5 py-0.5 rounded-full">ĐẠT</span>
                 </div>
                 <div
-                    class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 w-full sm:w-auto">
+                    class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-slate-600 w-full sm:w-auto">
                     <div>
-                        <span id="lblReportStatCorrect" class="font-medium text-slate-400">Số câu đúng:</span>
-                        <span id="reportStatCorrect" class="font-bold text-emerald-400 ml-1">0</span>
+                        <span id="lblReportStatCorrect" class="font-medium text-slate-500">Số câu đúng:</span>
+                        <span id="reportStatCorrect" class="font-bold text-emerald-600">0</span>
                     </div>
                     <div>
-                        <span id="lblReportStatPercent" class="font-medium text-slate-400">Tỷ lệ chính xác:</span>
-                        <span id="reportStatPercent" class="font-bold text-blue-400 ml-1">0%</span>
+                        <span id="lblReportStatPercent" class="font-medium text-slate-500">Tỷ lệ chính xác:</span>
+                        <span id="reportStatPercent" class="font-bold text-indigo-600">0%</span>
                     </div>
-                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã đạt yêu cầu.</div>
+                    <div id="reportEvaluation" class="text-slate-400 italic text-[11px] sm:text-xs">Tuyệt vời! Bạn đã
+                        đạt yêu cầu.</div>
                 </div>
             </div>
 
             <!-- Detailed Review Section -->
             <div
-                class="bg-slate-800 p-5 sm:p-6 rounded-3xl border border-slate-700/50 shadow-lg flex flex-col justify-between mb-2">
+                class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between mb-2">
                 <div
-                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-700 pb-3 mb-4 gap-2">
-                    <h4 class="text-base font-bold text-white flex items-center gap-2">
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-3 mb-4 gap-2 flex-shrink-0">
+                    <h4 class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
                         <span>📋</span> <span id="lblReviewTitle" class="font-bold">Xem lại bài làm:</span> <span
-                            id="reviewProgressText" class="text-blue-400 font-bold">Câu 1 / 50</span>
+                            id="reviewProgressText" class="text-indigo-600 font-semibold">Câu 1 / 50</span>
                     </h4>
-                    <span id="reviewResultBadge" class="px-3 py-1 text-xs font-bold rounded-full">✓ Đúng</span>
+                    <span id="reviewResultBadge" class="px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-full">✓
+                        Đúng</span>
                 </div>
 
                 <!-- Review Content Grid (Side-by-side) -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start mb-4 pr-1 sm:pr-2">
                     <!-- Left: Question & Hint -->
-                    <div class="space-y-4 text-left">
-                        <p class="text-base text-white font-bold whitespace-pre-line leading-relaxed code-font bg-slate-900/60 p-4 rounded-xl border border-slate-700/50"
+                    <div class="space-y-3 sm:space-y-4 text-left">
+                        <p class="text-sm sm:text-base text-slate-800 font-semibold whitespace-pre-line leading-relaxed"
                             id="reviewQuestionText"></p>
 
-                        <div id="reviewHintBox" class="p-4 bg-amber-500/5 border-l-4 border-amber-500 rounded-r-xl border border-slate-700/30">
+                        <div id="reviewHintBox" class="p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
                             <div class="flex items-start">
-                                <span class="text-xl mr-3">💡</span>
+                                <span class="text-lg sm:text-xl mr-2 sm:mr-3">💡</span>
                                 <div>
                                     <h3 id="reviewHintTitle"
-                                        class="font-bold text-amber-400 text-xs uppercase tracking-wide">Mẹo nhớ (Keyword)</h3>
-                                    <p class="text-slate-300 mt-1 text-sm font-medium leading-relaxed"
+                                        class="font-bold text-amber-800 text-xs sm:text-sm uppercase text-left">Mẹo nhớ
+                                        (Keyword)</h3>
+                                    <p class="text-amber-900 mt-1 text-left text-xs sm:text-sm font-medium"
                                         id="reviewHintText"></p>
                                 </div>
                             </div>
@@ -219,27 +207,27 @@
                     </div>
 
                     <!-- Right: Options -->
-                    <div class="space-y-2.5 text-left" id="reviewOptionsContainer">
+                    <div class="space-y-2.5 sm:space-y-3 text-left" id="reviewOptionsContainer">
                         <!-- Options will be rendered statically here -->
                     </div>
                 </div>
 
                 <!-- Review Navigation and Actions -->
                 <div
-                    class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-700 pt-4">
+                    class="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center border-t border-slate-100 pt-4 flex-shrink-0">
                     <div class="flex gap-2 w-full sm:w-auto">
                         <button id="btnReviewPrev" onclick="prevReviewQuestion()"
-                            class="w-1/2 sm:w-auto px-4 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex items-center justify-center gap-1">
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
                             ⬅ Câu trước
                         </button>
                         <button id="btnReviewNext" onclick="nextReviewQuestion()"
-                            class="w-1/2 sm:w-auto px-4 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex items-center justify-center gap-1">
+                            class="w-1/2 sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 text-sm sm:text-base font-medium rounded-lg transition-colors flex items-center justify-center gap-1">
                             Câu tiếp theo ➡
                         </button>
                     </div>
 
                     <button id="btnRestartQuiz" onclick="restartQuiz()"
-                        class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                        class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
                         🔄 Làm lại bài thi
                     </button>
                 </div>
@@ -853,13 +841,13 @@
 
         const uiTranslations = {
             vi: {
-                title: "Python Mastery Quiz",
-                subtitle: "🐍 Trắc nghiệm ôn tập từ Cơ bản đến Nâng cao",
+                title: "Luyện Thi Trắc Nghiệm Python",
+                subtitle: "Python Basic, OOP, Advanced Features & Concurrency",
                 progress: (curr, total) => `Câu ${curr} / ${total}`,
                 score: (score) => `Điểm: ${score}`,
                 confirmBtn: "Xác nhận",
                 nextBtn: "Tiếp theo ➡",
-                viewHintBtn: "Xem Mẹo Nhớ 💡",
+                viewHintBtn: "Xem Mẹo Nhớ",
                 hintTitle: "Mẹo nhớ (Keyword)",
                 reportTitle: "Kết Quả Luyện Tập",
                 reportStatCorrect: "Số câu đúng",
@@ -874,8 +862,8 @@
                 btnReviewPrev: "⬅ Câu trước",
                 btnReviewNext: "Câu tiếp theo ➡",
                 restartBtn: "🔄 Làm lại bài thi",
-                startScreenTitle: "Chinh Phục Python 100%",
-                startScreenSubtitle: "Hệ thống gồm 50 câu hỏi trắc nghiệm chất lượng cao. Ôn tập sâu sắc về cú pháp cơ bản, OOP, Decorators, Generator, Asyncio, GIL và cơ chế quản lý bộ nhớ trong Python.",
+                startScreenTitle: "Luyện Thi Trắc Nghiệm Python",
+                startScreenSubtitle: "Hệ thống trắc nghiệm ôn tập Python từ Cơ bản đến Nâng cao.",
                 startBtn: "Bắt đầu luyện tập 🚀",
                 selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
                 selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
@@ -940,7 +928,7 @@
 
         function updateLanguageUI() {
             const trans = uiTranslations[currentLanguage];
-            document.getElementById('appTitle').innerHTML = `Luyện Thi Trắc Nghiệm <span class="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">Python</span>`;
+            document.getElementById('appTitle').innerText = trans.title;
             document.getElementById('appSubtitle').innerText = trans.subtitle;
             document.getElementById('startTitle').innerText = trans.startScreenTitle;
             document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
@@ -976,14 +964,11 @@
             hasAnswered = false;
             const trans = uiTranslations[currentLanguage];
 
-            // Progress bar update
             document.getElementById('progressText').innerText = trans.progress(currentQ + 1, activeQuiz.length);
-            const percent = ((currentQ + 1) / activeQuiz.length) * 100;
-            document.getElementById('progressBar').style.width = `${percent}%`;
-
-            // Question content code font format (escapes code tags)
-            let qText = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-yellow-400 font-normal code-font'>$1</code>");
-            document.getElementById('questionText').innerHTML = qText;
+            
+            // Format inline code backticks to nice HTML spans
+            let formattedQ = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-red-600 font-semibold code-font'>$1</code>");
+            document.getElementById('questionText').innerHTML = formattedQ;
             document.getElementById('hintBox').classList.add('hidden');
             document.getElementById('btnNext').classList.add('hidden');
 
@@ -998,25 +983,24 @@
                 confirmBtn.classList.add('hidden');
             }
 
-            // Options List
             const optionsContainer = document.getElementById('optionsContainer');
             optionsContainer.innerHTML = '';
 
             qData.options.forEach((opt, index) => {
                 const div = document.createElement('div');
-                div.className = 'option-item p-3.5 sm:p-4 border border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl cursor-pointer text-slate-200 text-sm sm:text-base font-medium flex items-center gap-3 border border-slate-700';
+                div.className = 'option-item p-3 sm:p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 text-slate-700 text-sm sm:text-base font-medium flex items-center gap-3';
                 div.id = `option-${index}`;
 
-                // Code formatting within options
-                let optText = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1 py-0.5 rounded text-blue-300 font-normal code-font'>$1</code>");
+                // Code formatting inside option elements
+                let formattedOpt = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-100 px-1 py-0.5 rounded text-blue-600 font-semibold code-font'>$1</code>");
 
                 const iconHTML = qData.type === 'multi'
-                    ? `<div class="w-5 h-5 border border-slate-600 rounded flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`
-                    : `<div class="w-5 h-5 border border-slate-600 rounded-full flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`;
+                    ? `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`
+                    : `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0 flex items-center justify-center" id="icon-${index}"></div>`;
 
                 div.innerHTML = `
                     ${iconHTML}
-                    <span>${optText}</span>
+                    <span>${formattedOpt}</span>
                 `;
 
                 div.onclick = () => handleSelect(index);
@@ -1034,27 +1018,27 @@
             if (qData.type === 'single') {
                 if (selectedOptions.length > 0) {
                     const oldIndex = selectedOptions[0];
-                    document.getElementById(`option-${oldIndex}`).classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+                    document.getElementById(`option-${oldIndex}`).classList.remove('selected');
                     document.getElementById(`icon-${oldIndex}`).innerHTML = '';
-                    document.getElementById(`icon-${oldIndex}`).classList.remove('border-blue-500', 'bg-blue-500');
+                    document.getElementById(`icon-${oldIndex}`).classList.remove('border-blue-500');
                 }
 
                 selectedOptions = [index];
-                div.classList.add('selected', 'border-blue-500', 'bg-blue-950/20');
-                icon.classList.add('border-blue-500', 'bg-blue-500');
-                icon.innerHTML = `<div class="w-2.5 h-2.5 bg-white rounded-full"></div>`;
+                div.classList.add('selected');
+                icon.classList.add('border-blue-500');
+                icon.innerHTML = `<div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div>`;
 
                 checkAnswer();
             } else {
                 const pos = selectedOptions.indexOf(index);
                 if (pos === -1) {
                     selectedOptions.push(index);
-                    div.classList.add('selected', 'border-blue-500', 'bg-blue-950/20');
+                    div.classList.add('selected');
                     icon.classList.add('border-blue-500', 'bg-blue-500');
                     icon.innerHTML = `<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
                 } else {
                     selectedOptions.splice(pos, 1);
-                    div.classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+                    div.classList.remove('selected');
                     icon.classList.remove('border-blue-500', 'bg-blue-500');
                     icon.innerHTML = '';
                 }
@@ -1098,16 +1082,14 @@
                 const isSelected = selectedOptions.includes(index);
                 const isTrueAnswer = qData.ans.includes(index);
 
-                div.classList.remove('selected', 'border-blue-500', 'bg-blue-950/20');
+                div.classList.remove('selected');
 
                 if (isSelected && isTrueAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-emerald-100 text-sm sm:text-base font-medium flex items-center gap-3 correct';
+                    div.classList.add('correct');
                 } else if (isSelected && !isTrueAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-rose-100 text-sm sm:text-base font-medium flex items-center gap-3 wrong';
+                    div.classList.add('wrong');
                 } else if (!isSelected && isTrueAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-amber-100 text-sm sm:text-base font-medium flex items-center gap-3 missed';
-                } else {
-                    div.className = 'p-3.5 sm:p-4 border border-slate-700 opacity-40 rounded-xl text-slate-400 text-sm sm:text-base font-medium flex items-center gap-3 bg-slate-800/10';
+                    div.classList.add('missed');
                 }
             });
 
@@ -1148,10 +1130,10 @@
             const statusEl = document.getElementById('reportStatStatus');
             if (isPassed) {
                 statusEl.innerText = trans.statusPass;
-                statusEl.className = "font-bold text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex-shrink-0";
             } else {
                 statusEl.innerText = trans.statusFail;
-                statusEl.className = "font-bold text-xs px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30";
+                statusEl.className = "font-bold text-xs px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200 flex-shrink-0";
             }
 
             const evalEl = document.getElementById('reportEvaluation');
@@ -1180,13 +1162,13 @@
             const badgeEl = document.getElementById('reviewResultBadge');
             if (ansInfo.isCorrect) {
                 badgeEl.innerText = trans.reviewCorrectBadge;
-                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/20";
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800";
             } else {
                 badgeEl.innerText = trans.reviewWrongBadge;
-                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/20";
+                badgeEl.className = "px-3 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-800";
             }
 
-            let qText = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-yellow-400 font-normal code-font'>$1</code>");
+            let qText = qData.q.replace(/`([^`]+)`/g, "<code class='bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-red-600 font-semibold code-font'>$1</code>");
             document.getElementById('reviewQuestionText').innerHTML = qText;
             document.getElementById('reviewHintText').innerHTML = qData.hint;
 
@@ -1195,37 +1177,37 @@
 
             qData.options.forEach((opt, index) => {
                 const div = document.createElement('div');
-                div.className = 'p-3.5 sm:p-4 border rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
+                div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all';
 
                 const isSelected = ansInfo.selected.includes(index);
                 const isCorrectAnswer = qData.ans.includes(index);
 
-                let optText = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-900 px-1 py-0.5 rounded text-blue-300 font-normal code-font'>$1</code>");
+                let optText = opt.replace(/`([^`]+)`/g, "<code class='bg-slate-100 px-1 py-0.5 rounded text-blue-600 font-semibold code-font'>$1</code>");
 
                 let iconHTML = '';
                 if (qData.type === 'multi') {
-                    iconHTML = `<div class="w-5 h-5 border border-slate-600 rounded flex-shrink-0"></div>`;
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0"></div>`;
                 } else {
-                    iconHTML = `<div class="w-5 h-5 border border-slate-600 rounded-full flex-shrink-0"></div>`;
+                    iconHTML = `<div class="w-5 h-5 border-2 border-slate-300 rounded-full flex-shrink-0"></div>`;
                 }
 
                 if (isSelected && isCorrectAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-emerald-200 flex items-center gap-3 correct';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-emerald-500 bg-emerald-50 text-emerald-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-emerald-500 bg-emerald-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else if (isSelected && !isCorrectAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-rose-200 flex items-center gap-3 wrong';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-rose-500 bg-rose-50 text-rose-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else if (!isSelected && isCorrectAnswer) {
-                    div.className = 'p-3.5 sm:p-4 border-2 rounded-xl text-amber-200 flex items-center gap-3 missed';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-amber-500 bg-amber-50 text-amber-800';
                     iconHTML = qData.type === 'multi'
                         ? `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded flex-shrink-0 flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>`
                         : `<div class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-full flex-shrink-0 flex items-center justify-center text-white"><div class="w-2 h-2 bg-white rounded-full"></div></div>`;
                 } else {
-                    div.className = 'p-3.5 sm:p-4 border border-slate-700 bg-slate-800/10 text-slate-500 opacity-40 rounded-xl flex items-center gap-3';
+                    div.className = 'p-3 sm:p-4 border-2 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 transition-all border-slate-200 bg-white text-slate-500 opacity-60';
                 }
 
                 div.innerHTML = `
