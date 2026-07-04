@@ -57,7 +57,7 @@
             class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
                 <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm AI</h1>
-                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Trắc nghiệm tổng quan AI, Python & NumPy, Đạo đức AI, Hệ thống thông minh, Học máy & Hệ chuyên gia</p>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Trắc nghiệm lý thuyết, Python & NumPy, Đạo đức AI, Hệ thống thông minh, Bài toán tìm kiếm & Học máy</p>
             </div>
             <div class="text-center self-center sm:self-auto">
                 <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-700/50 hover:bg-indigo-700/80 text-[11px] sm:text-xs font-semibold rounded-full border border-indigo-500/30 transition-all text-indigo-100">
@@ -75,13 +75,83 @@
                     🤖
                 </div>
                 <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm AI</h2>
-                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập gồm 8 chương bao quát lý thuyết AI, lập trình Python & NumPy, đạo đức pháp luật, hệ thống thông minh, thuật toán tìm kiếm, học sâu và hệ chuyên gia.</p>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-xl mx-auto">Chọn một chương học cụ thể bên dưới để luyện tập hoặc chọn luyện tập tất cả các chương.</p>
             </div>
 
-            <button id="btnStartPractice" onclick="startPractice()"
-                class="w-full sm:w-auto max-w-xs px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95">
-                Bắt đầu luyện tập 🚀
-            </button>
+            <!-- Chapter Selection Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl pt-2">
+                <button onclick="selectChapterStart('ch1')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 1</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Tổng quan về AI</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch2')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 2</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Python & NumPy trong AI</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch3')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 3</span>
+                        <span class="text-xs text-slate-400">10 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Đạo đức & Pháp luật AI</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch4')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 4</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Hệ thống thông minh</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch5')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 5</span>
+                        <span class="text-xs text-slate-400">40 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Bài toán tìm kiếm</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch6')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 6</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Tìm kiếm Heuristic & Trò chơi</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch7')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 7</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Biểu diễn tri thức & Logic</h4>
+                </button>
+
+                <button onclick="selectChapterStart('ch8')" class="group p-4 bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Chương 8</span>
+                        <span class="text-xs text-slate-400">20 câu</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-sm sm:text-base">Học máy, Học sâu & Ứng dụng</h4>
+                </button>
+
+                <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all sm:col-span-2 lg:col-span-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-indigo-700 bg-indigo-200 px-2 py-0.5 rounded-full">Tất cả</span>
+                        <span class="text-xs text-indigo-500 font-semibold">170 câu</span>
+                    </div>
+                    <h4 class="font-bold text-indigo-900 group-hover:text-indigo-700 transition-colors text-sm sm:text-base">Luyện tập tổng hợp (Tất cả 8 chương)</h4>
+                </button>
+            </div>
         </div>
 
         <!-- Progress & Score -->
@@ -238,7 +308,7 @@
 
                     <button id="btnRestartQuiz" onclick="restartQuiz()"
                         class="w-full sm:w-auto px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2">
-                        🔄 Làm lại bài thi
+                        🔄 Chọn chương khác
                     </button>
                 </div>
             </div>
@@ -1021,359 +1091,1069 @@
                 hint: "Problem Generator giúp đưa ra các tình huống/thử nghiệm mới chưa có trong lịch sử để Agent khám phá và học thêm tri thức mới ➔ <span class='font-bold text-amber-600'>Gợi ý các hành động mới để Agent khám phá.</span>"
             },
 
-            // CHƯƠNG 5: CÁC GIẢI THUẬT TÌM KIẾM
+            // CHƯƠNG 5: BÀI TOÁN TÌM KIẾM
             {
                 type: 'single',
-                desc: "Câu 71. Thuật toán tìm kiếm theo chiều rộng (BFS) sử dụng cấu trúc dữ liệu nào để quản lý các trạng thái chờ duyệt?",
+                desc: "Câu 71. Trong AI, một bài toán tìm kiếm thường được xác định bởi các thành phần nào sau đây?",
                 options: [
-                    "A. Stack (Ngăn xếp).",
-                    "B. Queue (Hàng đợi).",
-                    "C. Đồ thị liên kết.",
-                    "D. Bảng băm (Hash Table)."
-                ],
-                ans: [1],
-                hint: "BFS duyệt các nút theo từng tầng nông trước sâu sau, tuân theo nguyên lý FIFO (vào trước ra trước) nên sử dụng cấu trúc Queue ➔ <span class='font-bold text-amber-600'>Queue (Hàng đợi).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 72. Thuật toán tìm kiếm theo chiều sâu (DFS) sử dụng cấu trúc dữ liệu nào để lưu trữ danh sách các nút biên?",
-                options: [
-                    "A. Queue (Hàng đợi).",
-                    "B. Stack (Ngăn xếp).",
-                    "C. Min-Heap.",
-                    "D. Array."
-                ],
-                ans: [1],
-                hint: "DFS khám phá đi sâu hết một nhánh trước khi quay lui, hoạt động theo nguyên lý LIFO (vào sau ra trước) nên sử dụng Stack hoặc đệ quy ➔ <span class='font-bold text-amber-600'>Stack (Ngăn xếp).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 73. Điểm khác biệt căn bản giữa Tìm kiếm mù (Uninformed Search) và Tìm kiếm có thông tin (Informed Search) là gì?",
-                options: [
-                    "A. Tìm kiếm mù có tốc độ chạy nhanh hơn.",
-                    "B. Tìm kiếm có thông tin sử dụng hàm Heuristic h(n) để ước lượng khoảng cách từ nút hiện tại đến đích.",
-                    "C. Tìm kiếm mù không thể tìm được trạng thái đích.",
-                    "D. Tìm kiếm có thông tin không cần biết trạng thái xuất phát."
-                ],
-                ans: [1],
-                hint: "Tìm kiếm có thông tin sử dụng thêm tri thức là hàm Heuristic h(n) để định hướng tìm kiếm giúp thu hẹp không gian duyệt nút ➔ <span class='font-bold text-amber-600'>Tìm kiếm có thông tin sử dụng hàm Heuristic h(n) để ước lượng khoảng cách từ nút hiện tại đến đích.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 74. Thuật toán A* sử dụng hàm đánh giá f(n) nào để chọn nút tiếp theo?",
-                options: [
-                    "A. f(n) = g(n)",
-                    "B. f(n) = h(n)",
-                    "C. f(n) = g(n) + h(n)",
-                    "D. f(n) = g(n) * h(n)"
-                ],
-                ans: [2],
-                hint: "Thuật toán A* kết hợp chi phí thực tế từ điểm đầu đến nút n là g(n) và chi phí ước lượng từ n tới đích là h(n) ➔ <span class='font-bold text-amber-600'>f(n) = g(n) + h(n)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 75. Một hàm Heuristic h(n) được coi là chấp nhận được (admissible) khi nào?",
-                options: [
-                    "A. h(n) luôn lớn hơn chi phí thực tế.",
-                    "B. h(n) không bao giờ lớn hơn chi phí thực tế tối ưu để đi từ n đến đích.",
-                    "C. h(n) luôn bằng 0.",
-                    "D. h(n) là số âm."
-                ],
-                ans: [1],
-                hint: "Heuristic admissible h(n) <= h*(n) đảm bảo thuật toán A* luôn tìm được giải pháp tối ưu ➔ <span class='font-bold text-amber-600'>h(n) không bao giờ lớn hơn chi phí thực tế tối ưu để đi từ n đến đích.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 76. Kỹ thuật Cắt tỉa Alpha - Beta (Alpha-Beta Pruning) giúp cải tiến thuật toán Minimax như thế nào?",
-                options: [
-                    "A. Thay đổi luật chơi của trò chơi để dễ thắng hơn.",
-                    "B. Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi quyết định tối ưu cuối cùng.",
-                    "C. Tăng số lượng nước đi của Agent.",
-                    "D. Giúp Agent đoán trước bài của đối thủ."
-                ],
-                ans: [1],
-                hint: "Cắt tỉa Alpha-Beta loại bỏ các nhánh cây tìm kiếm chắc chắn không ảnh hưởng đến quyết định của người chơi, giúp tăng tốc độ phản hồi ➔ <span class='font-bold text-amber-600'>Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi quyết định tối ưu cuối cùng.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 77. Nhược điểm lớn nhất của thuật toán tìm kiếm leo đồi (Hill Climbing) là gì?",
-                options: [
-                    "A. Tiêu tốn quá nhiều bộ nhớ để lưu trữ Stack.",
-                    "B. Bị kẹt tại các cực đại địa phương (Local Maxima).",
-                    "C. Tốc độ chạy rất chậm.",
-                    "D. Không thể tìm thấy đích nếu không có đồ thị."
-                ],
-                ans: [1],
-                hint: "Leo đồi chỉ đi lên bước tốt hơn lân cận nên dễ mắc kẹt tại đỉnh cục bộ có giá trị lớn hơn xung quanh nhưng nhỏ hơn giá trị tối ưu toàn cục ➔ <span class='font-bold text-amber-600'>Bị kẹt tại các cực đại địa phương (Local Maxima).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 78. Thuật toán tìm kiếm theo chiều sâu lặp lại (IDS - Iterative Deepening Search) giải quyết được nhược điểm nào của DFS và BFS?",
-                options: [
-                    "A. Tránh kẹt vô hạn của DFS và tiết kiệm bộ nhớ hơn BFS.",
-                    "B. Luôn chạy nhanh hơn cả DFS và BFS.",
-                    "C. Không cần định nghĩa trạng thái đích.",
-                    "D. Không sử dụng các cấu trúc Queue hay Stack."
+                    "A. Trạng thái bắt đầu, các hành động, mô hình chuyển trạng thái, kiểm tra mục tiêu và chi phí đường đi.",
+                    "B. Chỉ cần trạng thái bắt đầu và trạng thái mục tiêu.",
+                    "C. Các thuật toán lập trình Python và bộ nhớ RAM.",
+                    "D. Dữ liệu khách hàng và các cảm biến của Robot."
                 ],
                 ans: [0],
-                hint: "IDS kết hợp ưu điểm tiết kiệm bộ nhớ của DFS và tính tối ưu/hoàn chỉnh của BFS bằng cách giới hạn độ sâu lặp tăng dần ➔ <span class='font-bold text-amber-600'>Tránh kẹt vô hạn của DFS và tiết kiệm bộ nhớ hơn BFS.</span>"
+                hint: "Một bài toán tìm kiếm chuẩn chỉnh luôn có 5 thành phần cơ bản: Trạng thái xuất phát, tập các hành động khả thi, mô hình chuyển trạng thái chuyển từ nút này sang nút khác, bộ lọc kiểm tra mục tiêu và chi phí tích lũy ➔ <span class='font-bold text-amber-600'>Trạng thái bắt đầu, các hành động, mô hình chuyển trạng thái, kiểm tra mục tiêu và chi phí đường đi.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 72. Tập hợp tất cả các trạng thái có thể đạt tới từ trạng thái bắt đầu thông qua bất kỳ chuỗi hành động nào được gọi là gì?",
+                options: ["A. Search Tree.", "B. State Space.", "C. Action Set.", "D. Goal Test."],
+                ans: [1],
+                hint: "Không gian trạng thái (State Space) là tập hợp toàn bộ các trạng thái có khả năng được tạo ra từ điểm xuất phát ban đầu ➔ <span class='font-bold text-amber-600'>State Space.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 73. Thành phần State Space Graph là một thực thể toán học dùng để biểu diễn điều gì?",
+                options: [
+                    "A. Các nút trong cây tìm kiếm.",
+                    "B. Bản tóm tắt các cấu trúc dữ liệu của bài toán.",
+                    "C. Một đồ thị trong đó các nút là các trạng thái và các cung là các hành động.",
+                    "D. Lịch sử các bước di chuyển của Agent."
+                ],
+                ans: [2],
+                hint: "Đồ thị không gian trạng thái biểu thị trực quan dưới dạng đồ thị có hướng với các nút đỉnh là trạng thái và các cung kết nối là hành động chuyển đổi ➔ <span class='font-bold text-amber-600'>Một đồ thị trong đó các nút là các trạng thái và các cung là các hành động.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 74. Trong tìm kiếm theo chiều rộng (Breadth-First Search - BFS), cấu trúc dữ liệu nào thường được sử dụng để quản lý danh sách các nút đang chờ khám phá (Frontier)?",
+                options: ["A. Stack (LIFO).", "B. Queue (FIFO).", "C. Priority Queue.", "D. Linked List."],
+                ans: [1],
+                hint: "BFS duyệt lan theo chiều ngang của từng tầng nên bắt buộc dùng cơ chế hàng đợi FIFO để đảm bảo thứ tự duyệt công bằng ➔ <span class='font-bold text-amber-600'>Queue (FIFO).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 75. Thuật toán tìm kiếm nào luôn mở rộng nút nông nhất (nút có độ sâu thấp nhất) trong Frontier?",
+                options: [
+                    "A. Depth-First Search (DFS).",
+                    "B. Breadth-First Search (BFS).",
+                    "C. Uniform-Cost Search.",
+                    "D. Depth-Limited Search."
+                ],
+                ans: [1],
+                hint: "Do duyệt theo từng tầng, BFS luôn ưu tiên xử lý các nút ở gần gốc nhất (nút nông nhất) trước khi tiến xuống sâu ➔ <span class='font-bold text-amber-600'>Breadth-First Search (BFS).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 76. Ưu điểm chính của thuật toán Breadth-First Search (BFS) là gì?",
+                options: [
+                    "A. Tiết kiệm bộ nhớ nhất.",
+                    "B. Luôn tìm thấy giải pháp tối ưu nếu chi phí các bước là bằng nhau.",
+                    "C. Hoạt động tốt nhất trong không gian trạng thái vô hạn.",
+                    "D. Dễ cài đặt hơn tất cả các thuật toán khác."
+                ],
+                ans: [1],
+                hint: "BFS có tính tối ưu khi các bước chuyển trạng thái có trọng số bằng nhau (ví dụ đều bằng 1), vì nó luôn tìm thấy lời giải ở độ sâu d nhỏ nhất đầu tiên ➔ <span class='font-bold text-amber-600'>Luôn tìm thấy giải pháp tối ưu nếu chi phí các bước là bằng nhau.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 77. Nhược điểm lớn nhất của thuật toán Breadth-First Search (BFS) khi đối mặt với các bài toán thực tế phức tạp là gì?",
+                options: [
+                    "A. Không bao giờ tìm thấy mục tiêu.",
+                    "B. Độ phức tạp về thời gian và không gian (bộ nhớ) tăng theo hàm mũ.",
+                    "C. Chỉ hoạt động trên đồ thị có hướng.",
+                    "D. Luôn chọn đường đi có chi phí cao nhất."
+                ],
+                ans: [1],
+                hint: "Số lượng nút tăng nhanh theo hàm mũ O(b^d) khiến BFS nhanh chóng làm cạn kiệt dung lượng bộ nhớ RAM của máy tính trong các bài toán thực tế ➔ <span class='font-bold text-amber-600'>Độ phức tạp về thời gian và không gian (bộ nhớ) tăng theo hàm mũ.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 78. Thuật toán Depth-First Search (DFS) quản lý Frontier bằng cấu trúc dữ liệu nào?",
+                options: ["A. Queue (FIFO).", "B. Stack (LIFO).", "C. Priority Queue.", "D. Array."],
+                ans: [1],
+                hint: "DFS duyệt dọc hết một đường đi về phía sâu nhất rồi quay lui, do đó cấu trúc Stack LIFO là phù hợp nhất để lấy ra nút biên vừa được đưa vào sau cùng ➔ <span class='font-bold text-amber-600'>Stack (LIFO).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 79. Thuật toán tìm kiếm nào mở rộng nút sâu nhất trong Frontier hiện tại?",
+                options: [
+                    "A. Breadth-First Search.",
+                    "B. Depth-First Search.",
+                    "C. Uniform-Cost Search.",
+                    "D. Iterative Deepening Search."
+                ],
+                ans: [1],
+                hint: "DFS liên tục mở rộng nút sâu nhất cho đến khi chạm lá (nút không có con) thì mới quay lại duyệt nhánh khác ➔ <span class='font-bold text-amber-600'>Depth-First Search.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 80. Trong trường hợp không gian trạng thái là một cây hữu hạn, thuật toán Depth-First Search (DFS) có tính chất nào sau đây?",
+                options: ["A. Optimal.", "B. Complete.", "C. Tốn nhiều bộ nhớ hơn BFS.", "D. Luôn tìm thấy đường đi ngắn nhất."],
+                ans: [1],
+                hint: "Khi cây là hữu hạn, DFS chắc chắn sẽ duyệt hết các nhánh và tìm ra lời giải (Complete) dù không chắc chắn tìm được đường đi tối ưu đầu tiên ➔ <span class='font-bold text-amber-600'>Complete.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 81. Thuật toán Uniform-Cost Search (UCS) mở rộng nút nào trong Frontier?",
+                options: [
+                    "A. Nút có độ sâu nhỏ nhất.",
+                    "B. Nút có tổng chi phí đường đi g(n) từ nút bắt đầu là nhỏ nhất.",
+                    "C. Nút được đưa vào danh sách sau cùng.",
+                    "D. Nút ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "UCS quản lý Frontier bằng hàng đợi ưu tiên (Priority Queue) để luôn chọn nút có chi phí đường đi thực tế nhỏ nhất g(n) để mở rộng ➔ <span class='font-bold text-amber-600'>Nút có tổng chi phí đường đi g(n) từ nút bắt đầu là nhỏ nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 82. Để đảm bảo tính tối ưu, thuật toán Uniform-Cost Search yêu cầu chi phí của mỗi bước đi phải thỏa mãn điều kiện gì?",
+                options: [
+                    "A. Phải là hằng số bằng 1.",
+                    "B. Phải lớn hơn hoặc bằng một số dương epsilon nhỏ.",
+                    "C. Có thể là số âm.",
+                    "D. Không cần bất kỳ điều kiện nào."
+                ],
+                ans: [1],
+                hint: "Yêu cầu chi phí bước đi dương >= epsilon đảm bảo thuật toán không đi vào chu trình vô hạn có tổng chi phí nhỏ dần và đảm bảo tính hội tụ ➔ <span class='font-bold text-amber-600'>Phải lớn hơn hoặc bằng một số dương epsilon nhỏ.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 83. Thuật toán nào kết hợp được ưu điểm về bộ nhớ của DFS và tính tối ưu (với chi phí bước bằng nhau) của BFS?",
+                options: [
+                    "A. Depth-Limited Search.",
+                    "B. Iterative Deepening Search.",
+                    "C. Uniform-Cost Search.",
+                    "D. Bidirectional Search."
+                ],
+                ans: [1],
+                hint: "Iterative Deepening Search (Tìm kiếm sâu lặp) liên tục chạy DFS với giới hạn độ sâu d tăng dần, cho phép tiết kiệm RAM giống DFS mà vẫn đảm bảo tìm ra kết quả tối ưu ở độ sâu nhỏ nhất giống BFS ➔ <span class='font-bold text-amber-600'>Iterative Deepening Search.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 84. Trong thuật toán Iterative Deepening Search, điều gì xảy ra ở mỗi lần lặp?",
+                options: [
+                    "A. Giảm độ sâu tìm kiếm đi 1.",
+                    "B. Tăng giới hạn độ sâu (limit) và thực hiện lại tìm kiếm DFS từ đầu.",
+                    "C. Chuyển sang tìm kiếm BFS.",
+                    "D. Agent tự động thay đổi trạng thái mục tiêu."
+                ],
+                ans: [1],
+                hint: "Ở mỗi vòng lặp mới, IDS tăng limit lên 1 đơn vị và khởi chạy lại một tìm kiếm DFS hoàn chỉnh từ nút gốc ➔ <span class='font-bold text-amber-600'>Tăng giới hạn độ sâu (limit) và thực hiện lại tìm kiếm DFS từ đầu.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 85. Thành phần nào trong bài toán tìm kiếm dùng để xác định xem một trạng thái hiện tại có phải là kết quả mong muốn hay không?",
+                options: ["A. Path Cost.", "B. Goal Test.", "C. Successor Function.", "D. Initial State."],
+                ans: [1],
+                hint: "Goal Test (Bộ lọc mục tiêu) là phép kiểm thử logic đánh giá xem trạng thái hiện thời của bài toán đã trùng khớp với trạng thái đích hay chưa ➔ <span class='font-bold text-amber-600'>Goal Test.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 86. Khái niệm Branching Factor (b) trong cây tìm kiếm có nghĩa là gì?",
+                options: [
+                    "A. Độ sâu của cây.",
+                    "B. Số lượng nút con tối đa của một nút.",
+                    "C. Tổng số nút trong cây tìm kiếm.",
+                    "D. Số lượng mục tiêu trong bài toán."
+                ],
+                ans: [1],
+                hint: "Hệ số nhánh b đại diện cho số lượng nhánh rẽ tối đa (nút con) mà một nút có thể sinh ra ➔ <span class='font-bold text-amber-600'>Số lượng nút con tối đa của một nút.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 87. Tại sao việc kiểm tra các trạng thái đã lặp lại (Redundant paths) lại quan trọng trong thuật toán tìm kiếm trên đồ thị?",
+                options: [
+                    "A. Để làm cho thuật toán chạy chậm hơn.",
+                    "B. Để tránh việc lặp vô hạn và giảm bớt các tính toán không cần thiết.",
+                    "C. Vì máy tính không thể lưu trữ quá 10 trạng thái.",
+                    "D. Để đảm bảo chi phí đường đi luôn bằng 0."
+                ],
+                ans: [1],
+                hint: "Trong tìm kiếm đồ thị, nếu không lưu vết các trạng thái đã khám phá (visited), thuật toán sẽ dễ rơi vào vòng lặp vô hạn (chu trình) ➔ <span class='font-bold text-amber-600'>Để tránh việc lặp vô hạn và giảm bớt các tính toán không cần thiết.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 88. Một thuật toán tìm kiếm được gọi là Optimal khi nó thỏa mãn điều kiện nào?",
+                options: [
+                    "A. Luôn tìm thấy giải pháp trong thời gian nhanh nhất.",
+                    "B. Luôn tìm thấy giải pháp có chi phí thấp nhất.",
+                    "C. Không bao giờ sử dụng quá nhiều bộ nhớ.",
+                    "D. Có thể áp dụng cho mọi loại bài toán."
+                ],
+                ans: [1],
+                hint: "Tính tối ưu (Optimality) đảm bảo rằng thuật toán luôn trả về đường đi có chi phí tích lũy nhỏ nhất trong số các đường đi dẫn đến mục tiêu ➔ <span class='font-bold text-amber-600'>Luôn tìm thấy giải pháp có chi phí thấp nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 89. Nếu bài toán có không gian trạng thái là vô hạn và mục tiêu nằm ở một độ sâu hữu hạn, thuật toán nào chắc chắn KHÔNG tìm thấy mục tiêu?",
+                options: [
+                    "A. Breadth-First Search.",
+                    "B. Depth-First Search với nhánh vô hạn.",
+                    "C. Uniform-Cost Search.",
+                    "D. Iterative Deepening Search."
+                ],
+                ans: [1],
+                hint: "DFS sẽ đi sâu mãi mãi dọc theo nhánh vô hạn đó và không bao giờ có thể quay lui để tìm kiếm mục tiêu ở các nhánh nông khác ➔ <span class='font-bold text-amber-600'>Depth-First Search với nhánh vô hạn.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 90. Trong tìm kiếm hai chiều (Bidirectional Search), quá trình tìm kiếm dừng lại khi nào?",
+                options: [
+                    "A. Khi một trong hai hướng tìm thấy mục tiêu.",
+                    "B. Khi Frontier của hai hướng tìm kiếm gặp nhau (giao nhau).",
+                    "C. Khi bộ nhớ máy tính bị đầy.",
+                    "D. Khi Agent đi hết bản đồ."
+                ],
+                ans: [1],
+                hint: "Tìm kiếm hai chiều chạy đồng thời một luồng từ gốc xuôi đi và một luồng từ đích ngược về, chúng sẽ dừng lại và ghép đường đi khi biên Frontier của hai hướng giao nhau ➔ <span class='font-bold text-amber-600'>Khi Frontier của hai hướng tìm kiếm gặp nhau (giao nhau).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 91. Giả sử bạn đang giải bài toán 8-puzzle, một trạng thái của bài toán này là gì?",
+                options: [
+                    "A. Cách sắp xếp cụ thể của 8 con số trên khung 3 × 3.",
+                    "B. Hành động di chuyển một ô số.",
+                    "C. Số lượng các bước đã thực hiện.",
+                    "D. Thời gian cần thiết để giải bài toán."
+                ],
+                ans: [0],
+                hint: "Trạng thái (State) mô tả cách bố cục hình học cụ thể của các con số trên bảng tại một thời điểm ➔ <span class='font-bold text-amber-600'>Cách sắp xếp cụ thể của 8 con số trên khung 3 × 3.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 92. Trong bài toán tìm đường trên bản đồ, Path Cost thường được tính dựa trên yếu tố nào?",
+                options: [
+                    "A. Số lượng thành phố hiện có trên bản đồ.",
+                    "B. Khoảng cách thực tế hoặc thời gian di chuyển giữa các địa điểm.",
+                    "C. Tên của các thành phố.",
+                    "D. Màu sắc của các con đường trên bản đồ."
+                ],
+                ans: [1],
+                hint: "Chi phí đường đi là tổng trọng số các cạnh đi qua, ở đây là độ dài cây số thực tế hoặc thời gian tiêu tốn giữa các chặng hành trình ➔ <span class='font-bold text-amber-600'>Khoảng cách thực tế hoặc thời gian di chuyển giữa các địa điểm.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 93. Nếu một mê cung có các vòng lặp (cycles), thuật toán DFS không kiểm tra trạng thái đã thăm (visited) sẽ gặp hiện tượng gì?",
+                options: [
+                    "A. Tìm thấy lối thoát nhanh hơn.",
+                    "B. Rơi vào vòng lặp vô hạn và không bao giờ dừng lại.",
+                    "C. Tự động chuyển sang tìm kiếm BFS.",
+                    "D. Tiết kiệm được bộ nhớ."
+                ],
+                ans: [1],
+                hint: "Không lưu vết visited sẽ khiến DFS đi vòng quanh chu trình liên tục mà không thể thoát ra ngoài ➔ <span class='font-bold text-amber-600'>Rơi vào vòng lặp vô hạn và không bao giờ dừng lại.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 94. Thuật toán BFS sẽ tiêu tốn bộ nhớ nhiều nhất ở đâu?",
+                options: [
+                    "A. Ở trạng thái bắt đầu.",
+                    "B. Ở danh sách Frontier lưu trữ các nút ở mức sâu nhất hiện tại.",
+                    "C. Ở việc tính toán chi phí bước đi.",
+                    "D. Ở các ghi chú chú thích trong mã nguồn."
+                ],
+                ans: [1],
+                hint: "Frontier của BFS lưu trữ toàn bộ các nút ở biên ngoài cùng của tầng hiện tại, kích thước này tăng theo hàm mũ b^d và là điểm nghẽn bộ nhớ chính ➔ <span class='font-bold text-amber-600'>Ở danh sách Frontier lưu trữ các nút ở mức sâu nhất hiện tại.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 95. Tại sao trong bài toán tìm đường từ A đến B, ta lại ưu tiên UCS hơn BFS nếu các đoạn đường có độ dài khác nhau?",
+                options: [
+                    "A. Vì UCS luôn chạy nhanh hơn BFS.",
+                    "B. Vì BFS chỉ tìm đường đi có ít chặng nhất.",
+                    "C. Vì BFS không thể xử lý được đồ thị có trọng số.",
+                    "D. Vì UCS không cần dùng đến hàng đợi ưu tiên."
+                ],
+                ans: [1],
+                hint: "BFS chỉ tối ưu số chặng đi (số cạnh). Nếu chặng ngắn có cây số dài, chặng dài có cây số ngắn, BFS sẽ chọn sai đường đi có tổng chi phí thực tế tối ưu ➔ <span class='font-bold text-amber-600'>Vì BFS chỉ tìm đường đi có ít chặng nhất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 96. Với một bài toán có hệ số nhánh b = 2 và độ sâu mục tiêu d = 10, tổng số nút tối đa mà BFS phải khám phá là khoảng bao nhiêu?",
+                options: ["A. 20 nút.", "B. 1024 nút.", "C. 100 nút.", "D. 2 nút."],
+                ans: [1],
+                hint: "Số lượng nút tối đa ở tầng d là b^d = 2^10 = 1024 nút ➔ <span class='font-bold text-amber-600'>1024 nút.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 97. Trong trò chơi tìm đường trong mê cung lớn, nếu bộ nhớ máy tính của bạn rất hạn chế, bạn sẽ ưu tiên chọn thuật toán nào?",
+                options: [
+                    "A. Breadth-First Search.",
+                    "B. Depth-First Search.",
+                    "C. Uniform-Cost Search.",
+                    "D. Bidirectional Search."
+                ],
+                ans: [1],
+                hint: "DFS chỉ yêu cầu bộ nhớ lưu trữ tuyến tính O(b*d) thay vì hàm mũ O(b^d) giống BFS, nên cực kỳ tiết kiệm bộ nhớ ➔ <span class='font-bold text-amber-600'>Depth-First Search.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 98. Thuật toán Depth-Limited Search giải quyết vấn đề gì của DFS?",
+                options: [
+                    "A. Vấn đề chi phí đường đi quá cao.",
+                    "B. Vấn đề đi quá sâu vào các nhánh vô hạn.",
+                    "C. Vấn đề tìm thấy mục tiêu quá nhanh.",
+                    "D. Vấn đề lặp lại trạng thái bắt đầu."
+                ],
+                ans: [1],
+                hint: "Depth-Limited Search khống chế một giới hạn độ sâu tối đa (limit), ép DFS phải quay lui và không bị sa lầy vào các nhánh sâu vô tận ➔ <span class='font-bold text-amber-600'>Vấn đề đi quá sâu vào các nhánh vô hạn.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 99. Nếu ta đặt giới hạn độ sâu trong Depth-Limited Search nhỏ hơn độ sâu thực tế của mục tiêu, chuyện gì sẽ xảy ra?",
+                options: [
+                    "A. Thuật toán sẽ tìm thấy mục tiêu ở độ sâu nhỏ hơn.",
+                    "B. Thuật toán sẽ thất bại và không tìm thấy giải pháp (không đầy đủ).",
+                    "C. Thuật toán sẽ tự động tăng giới hạn độ sâu.",
+                    "D. Thuật toán sẽ trả về trạng thái gần mục tiêu nhất."
+                ],
+                ans: [1],
+                hint: "Thuật toán sẽ duyệt hết độ sâu giới hạn rồi kết luận không tìm thấy lời giải dù lời giải thực tế có tồn tại ở tầng sâu hơn ➔ <span class='font-bold text-amber-600'>Thuật toán sẽ thất bại và không tìm thấy giải pháp (không đầy đủ).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 100. Trong thuật toán IDS, việc thực hiện lại các tìm kiếm từ độ sâu 1 đến d − 1 có lãng phí thời gian không?",
+                options: [
+                    "A. Rất lãng phí, không nên sử dụng.",
+                    "B. Không đáng kể vì số lượng nút ở tầng sâu nhất (d) áp đảo tổng số nút ở các tầng phía trên.",
+                    "C. Có, nhưng máy tính hiện nay quá mạnh nên không cần quan tâm.",
+                    "D. Chỉ lãng phí nếu hệ số nhánh b = 1."
+                ],
+                ans: [1],
+                hint: "Do số nút tăng lũy thừa, tầng d chứa số lượng nút lớn xấp xỉ tổng tất cả các tầng trên gộp lại. Do đó việc duyệt lại tầng trên không ảnh hưởng nhiều đến thời gian chạy tổng thể ➔ <span class='font-bold text-amber-600'>Không đáng kể vì số lượng nút ở tầng sâu nhất (d) áp đảo tổng số nút ở các tầng phía trên.</span>"
             },
 
-            // CHƯƠNG 6: BIỂU DIỄN TRI THỨC & LOGIC
+            // CHƯƠNG 6: TÌM KIẾM HEURISTIC & TRÒ CHƠI
             {
                 type: 'single',
-                desc: "Câu 79. Lượng từ Với Mọi (Universal Quantifier) được ký hiệu bằng ký tự nào sau đây?",
-                options: ["A. \u2203", "B. \u2200", "C. \u00AC", "D. \u2192"],
+                desc: "Câu 101. Điểm khác biệt lớn nhất giữa Tìm kiếm Heuristic (Informed Search) và Tìm kiếm mù (Uninformed Search) là gì?",
+                options: [
+                    "A. Tìm kiếm Heuristic có tốc độ chậm hơn.",
+                    "B. Tìm kiếm Heuristic sử dụng thêm hàm đánh giá Heuristic h(n) để ước lượng khoảng cách tới đích.",
+                    "C. Tìm kiếm mù luôn tìm được đường đi có chi phí âm.",
+                    "D. Tìm kiếm Heuristic không cần biết trạng thái xuất phát."
+                ],
                 ans: [1],
-                hint: "Ký hiệu \u2200 đại diện cho lượng từ 'với mọi' (for all) trong logic vị từ ➔ <span class='font-bold text-amber-600'>\u2200</span>"
+                hint: "Hàm Heuristic h(n) cung cấp thông tin định lượng giúp ước lượng chi phí còn lại từ nút hiện tại đến đích ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 80. Ký hiệu \u2203 trong Logic vị từ bậc một biểu thị lượng từ nào?",
+                desc: "Câu 102. Hàm đánh giá của thuật toán A* được xác định bởi công thức nào?",
+                options: [
+                    "A. f(n) = g(n) + h(n).",
+                    "B. f(n) = g(n) - h(n).",
+                    "C. f(n) = g(n) * h(n).",
+                    "D. f(n) = max(g(n), h(n))."
+                ],
+                ans: [0],
+                hint: "A* kết hợp chi phí thực tế từ đầu tới n là g(n) và chi phí ước lượng từ n tới đích là h(n) ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 103. Thuật toán Tìm kiếm Tham lam (Greedy Best-First Search) chọn nút tiếp theo dựa trên tiêu chí nào?",
+                options: [
+                    "A. Chỉ chọn nút có g(n) nhỏ nhất.",
+                    "B. Chỉ chọn nút có h(n) nhỏ nhất (giá trị Heuristic gần đích nhất).",
+                    "C. Chọn nút có f(n) = g(n) + h(n) nhỏ nhất.",
+                    "D. Chọn ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "Tìm kiếm tham lam luôn ưu tiên nút có giá trị ước lượng h(n) nhỏ nhất, tức là có vẻ gần đích nhất ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 104. Tính chất 'chấp nhận được' (admissible) của một hàm Heuristic h(n) trong thuật toán A* yêu cầu điều gì?",
+                options: [
+                    "A. h(n) phải lớn hơn chi phí thực tế.",
+                    "B. h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n tới đích.",
+                    "C. h(n) phải bằng 1 với mọi nút.",
+                    "D. h(n) phải nhỏ hơn 0."
+                ],
+                ans: [1],
+                hint: "Heuristic admissible yêu cầu h(n) <= h*(n), tức không bao giờ đánh giá quá cao khoảng cách thực tế ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 105. Trong thuật toán Minimax cho các trò chơi đối kháng, Agent MAX sẽ chọn nước đi nào?",
+                options: [
+                    "A. Nước đi có giá trị nhỏ nhất của đối thủ.",
+                    "B. Nước đi tối đa hóa điểm số của mình (Max).",
+                    "C. Nước đi ngẫu nhiên.",
+                    "D. Nước đi có chi phí lớn nhất."
+                ],
+                ans: [1],
+                hint: "MAX đại diện cho đấu thủ muốn tối đa hóa điểm số mang lại thắng lợi cho mình ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 106. Tham số Alpha trong kỹ thuật cắt tỉa Alpha-Beta đại diện cho điều gì?",
+                options: [
+                    "A. Giá trị lớn nhất mà người chơi MIN có thể đạt được.",
+                    "B. Giá trị nhỏ nhất mà người chơi MAX chắc chắn đạt được cho đến nay.",
+                    "C. Chi phí của bước đi ban đầu.",
+                    "D. Độ sâu của cây trò chơi."
+                ],
+                ans: [1],
+                hint: "Alpha là giá trị tốt nhất (lớn nhất) cho MAX tìm được từ trước đến nay dọc theo bất kỳ đường dẫn nào ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 107. Tham số Beta trong kỹ thuật cắt tỉa Alpha-Beta đại diện cho điều gì?",
+                options: [
+                    "A. Giá trị lớn nhất mà người chơi MIN chắc chắn đạt được cho đến nay.",
+                    "B. Giá trị nhỏ nhất mà người chơi MAX có thể đạt được.",
+                    "C. Hệ số nhánh của cây trò chơi.",
+                    "D. Số lượng quân cờ còn lại."
+                ],
+                ans: [0],
+                hint: "Beta là giá trị tốt nhất (nhỏ nhất) cho MIN tìm được từ trước đến nay dọc theo đường đi ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 108. Một nhánh tìm kiếm trên cây trò chơi sẽ bị cắt tỉa (pruned) khi điều kiện nào sau đây xảy ra?",
+                options: [
+                    "A. Alpha < Beta.",
+                    "B. Alpha >= Beta.",
+                    "C. Alpha == 0.",
+                    "D. Beta == 0."
+                ],
+                ans: [1],
+                hint: "Khi Alpha >= Beta, người chơi ở tầng trên sẽ không chọn nhánh này nữa vì có lựa chọn khác tốt hơn, do đó ta cắt tỉa nhánh này ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 109. Thuật toán A* trên đồ thị (Graph Search) yêu cầu hàm Heuristic thỏa mãn tính chất nào để đảm bảo tính tối ưu mà không cần mở rộng lại các nút trong tập đóng?",
+                options: [
+                    "A. Tính chấp nhận được (Admissible).",
+                    "B. Tính nhất quán (Consistent / Monotonic).",
+                    "C. Tính tuyến tính.",
+                    "D. Tính ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "Consistent heuristic đảm bảo chi phí ước lượng luôn không giảm dọc theo đường đi, giữ tính tối ưu trên cấu trúc Graph Search ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 110. Trong trò chơi cờ vua, tại sao không thể dùng thuật toán Minimax thuần túy để duyệt hết cây trò chơi về trạng thái kết thúc?",
+                options: [
+                    "A. Do luật chơi quá khó lập trình.",
+                    "B. Do không gian trạng thái quá khổng lồ (Branching factor ~35, độ sâu trung bình ~80).",
+                    "C. Do cờ vua có yếu tố ngẫu nhiên (may rủi).",
+                    "D. Do Minimax không hoạt động trên trò chơi đối kháng."
+                ],
+                ans: [1],
+                hint: "Độ rộng nhánh lớn và độ sâu cao của cờ vua tạo ra khoảng 10^120 nút, bất khả thi để duyệt cạn kiệt ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 111. Thuật toán Monte Carlo Tree Search (MCTS) thường được sử dụng trong các hệ thống AI chơi cờ (như AlphaGo) gồm mấy bước chính?",
+                options: [
+                    "A. 2 bước: Chọn và Thực thi.",
+                    "B. 4 bước: Lựa chọn (Selection), Mở rộng (Expansion), Mô phỏng (Simulation), Lan truyền ngược (Backpropagation).",
+                    "C. 3 bước: Tìm kiếm, Phân tích, Lưu trữ.",
+                    "D. 5 bước."
+                ],
+                ans: [1],
+                hint: "MCTS chạy lặp đi lặp lại 4 pha Selection, Expansion, Simulation, Backpropagation để tìm kiếm giải pháp tối ưu cho không gian siêu rộng ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 112. Hàm Heuristic h(n) = 0 với mọi nút n làm cho thuật toán A* trở thành thuật toán nào?",
+                options: [
+                    "A. Depth-First Search.",
+                    "B. Uniform-Cost Search (UCS).",
+                    "C. Greedy Best-First Search.",
+                    "D. Hill Climbing."
+                ],
+                ans: [1],
+                hint: "Khi h(n) = 0, f(n) = g(n) + 0 = g(n) khiến A* hoạt động giống hệt thuật toán UCS ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 113. Độ lệch Heuristic h(n) so với chi phí thực tế h*(n) càng nhỏ thì điều gì xảy ra?",
+                options: [
+                    "A. Thuật toán A* chạy càng chậm.",
+                    "B. Số lượng nút cần mở rộng của A* càng ít (tiến gần đến đường đi tối ưu trực tiếp).",
+                    "C. Bộ nhớ tiêu tốn càng nhiều.",
+                    "D. Kết quả tìm được sẽ không tối ưu."
+                ],
+                ans: [1],
+                hint: "Heuristic càng tiệm cận chi phí thực h*(n) thì thuật toán A* càng duyệt tập trung và mở rộng cực ít nút ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 114. Thuật toán tìm kiếm cục bộ nào bắt đầu bằng cách sinh ngẫu nhiên một tập hợp các trạng thái, sau đó lai ghép (crossover) và đột biến (mutation) để chọn ra trạng thái tốt nhất?",
+                options: [
+                    "A. Hill Climbing.",
+                    "B. Simulated Annealing.",
+                    "C. Genetic Algorithm (Giải thuật di truyền).",
+                    "D. Local Beam Search."
+                ],
+                ans: [2],
+                hint: "Genetic Algorithm mô phỏng lý thuyết tiến hóa sinh học bằng việc lưu trữ quần thể và lai ghép đột biến các trạng thái ➔ <span class='font-bold text-amber-600'>C.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 115. Trong thuật toán Simulated Annealing (Mô phỏng luyện kim), tham số Nhiệt độ (Temperature - T) có vai trò gì?",
+                options: [
+                    "A. Đo lượng nhiệt tỏa ra của chip xử lý.",
+                    "B. Kiểm soát xác suất chấp nhận các nước đi tệ hơn để tránh bị kẹt ở cực trị địa phương (T giảm dần theo thời gian).",
+                    "C. Tăng độ sâu của cây tìm kiếm.",
+                    "D. Đóng vai trò là hàm Heuristic."
+                ],
+                ans: [1],
+                hint: " Simulated Annealing dùng nhiệt độ giảm dần để chấp nhận bước đi tệ ở đầu trận, giúp thoát khỏi cực trị địa phương ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 116. Thuật toán Local Beam Search khác thuật toán Hill Climbing ở điểm nào?",
+                options: [
+                    "A. Local Beam Search lưu trữ và theo dõi k trạng thái cùng lúc thay vì chỉ 1 trạng thái.",
+                    "B. Local Beam Search không cần hàm đánh giá.",
+                    "C. Local Beam Search hoạt động chậm hơn DFS.",
+                    "D. Không có sự khác biệt."
+                ],
+                ans: [0],
+                hint: "Beam Search song song hóa tìm kiếm cục bộ bằng cách giữ lại và cập nhật k nút tốt nhất ở mỗi lượt ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 117. Heuristic Manhattan Distance (Khoảng cách Manhattan) thích hợp sử dụng cho bài toán tìm đường nào?",
+                options: [
+                    "A. Di chuyển tự do theo mọi góc độ (360 độ).",
+                    "B. Di chuyển trên lưới chỉ theo 4 hướng (lên, xuống, trái, phải).",
+                    "C. Di chuyển trên lưới theo 8 hướng (kể cả đường chéo).",
+                    "D. Bài toán tìm kiếm sâu lặp."
+                ],
+                ans: [1],
+                hint: "Manhattan Distance phù hợp cho lưới đi vuông góc 4 hướng do nó tính theo quãng đường dọc + ngang |x1-x2| + |y1-y2| ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 118. Heuristic Euclidean Distance (Khoảng cách Euclid) là gì?",
+                options: [
+                    "A. Đường thẳng nối trực tiếp (chim bay) giữa hai điểm.",
+                    "B. Chi phí đi dọc theo các cạnh lưới vuông.",
+                    "C. Khoảng cách lớn nhất giữa tọa độ x và y.",
+                    "D. Tổng các nước đi của cờ vua."
+                ],
+                ans: [0],
+                hint: "Euclidean Distance là khoảng cách theo đường thẳng nối 2 điểm trong không gian Euclid ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 119. Thuật toán A* có tính đầy đủ (Complete) trong trường hợp nào?",
+                options: [
+                    "A. Chỉ khi không gian trạng thái là vô hạn.",
+                    "B. Khi hệ số nhánh hữu hạn và chi phí của mỗi bước đi lớn hơn hoặc bằng một số dương epsilon.",
+                    "C. Chỉ khi không sử dụng hàm Heuristic.",
+                    "D. Chắc chắn không bao giờ đầy đủ."
+                ],
+                ans: [1],
+                hint: "Điều kiện bước đi tối thiểu dương >= epsilon đảm bảo A* không bị kẹt lặp chu kỳ vô hạn có chi phí tiến về 0 ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 120. Khi thực hiện thuật toán Minimax có giới hạn độ sâu (Depth-limited Minimax), ta cần thành phần nào để ước lượng điểm số khi chưa chạm trạng thái kết thúc?",
+                options: [
+                    "A. Hàm đánh giá tĩnh (Evaluation Function).",
+                    "B. Cảm biến của xe tự lái.",
+                    "C. Trình tạo bài toán (Problem Generator).",
+                    "D. Các hàm logic mệnh đề."
+                ],
+                ans: [0],
+                hint: "Hàm đánh giá tĩnh giúp ước lượng nhanh điểm số lợi thế của trạng thái hiện thời khi ta không thể duyệt sâu tới cuối trận ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+
+            // CHƯƠNG 7: BIỂU DIỄN TRI THỨC & LOGIC
+            {
+                type: 'single',
+                desc: "Câu 121. Hệ chuyên gia (Expert System) thuộc cách tiếp cận nào của Trí tuệ nhân tạo?",
+                options: [
+                    "A. AI kết nối (Connectionist AI).",
+                    "B. AI ký hiệu (Symbolic AI).",
+                    "C. Học máy thống kê.",
+                    "D. AI hành vi."
+                ],
+                ans: [1],
+                hint: "Hệ chuyên gia dựa trên lập luận logic và các biểu diễn ký hiệu tường minh do con người xây dựng ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 122. Logic mệnh đề (Propositional Logic) không thể biểu diễn tốt điều nào sau đây?",
+                options: [
+                    "A. Phép toán hội (AND), tuyển (OR).",
+                    "B. Các khái niệm đối tượng cụ thể và mối quan hệ định lượng (ví dụ: 'Mọi sinh viên đều đi học').",
+                    "C. Các mệnh đề đúng sai cơ bản.",
+                    "D. Phép kéo theo (Implication)."
+                ],
+                ans: [1],
+                hint: "Logic mệnh đề chỉ coi mệnh đề là các biến đúng/sai, không có lượng từ (\u2200, \u2203) để liên kết thuộc tính đối tượng ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 123. Ký hiệu \u2200 trong Logic vị từ bậc một đại diện cho lượng từ nào?",
+                options: [
+                    "A. Lượng từ Tồn Tại.",
+                    "B. Lượng từ Với Mọi (Universal Quantifier).",
+                    "C. Phép hội.",
+                    "D. Phép kéo theo."
+                ],
+                ans: [1],
+                hint: "\u2200 đại diện cho lượng từ 'với mọi' (for all) ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 124. Ký hiệu \u2203 trong Logic vị từ bậc một đại diện cho lượng từ nào?",
                 options: [
                     "A. Lượng từ Với Mọi.",
                     "B. Lượng từ Tồn Tại (Existential Quantifier).",
                     "C. Phép phủ định.",
-                    "D. Phép hội."
+                    "D. Phép tương đương."
                 ],
                 ans: [1],
-                hint: "Ký hiệu \u2203 biểu thị lượng từ 'tồn tại ít nhất một' ➔ <span class='font-bold text-amber-600'>Lượng từ Tồn Tại (Existential Quantifier).</span>"
+                hint: "\u2203 đại diện cho lượng từ 'tồn tại ít nhất một' ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 81. Trong các phép toán logic mệnh đề, biểu thức P \u2192 Q tương đương logic với biểu thức nào sau đây?",
-                options: ["A. \u00ACP \u2228 Q", "B. P \u2227 \u00ACQ", "C. \u00ACP \u2227 Q", "D. P \u2228 Q"],
-                ans: [0],
-                hint: "Theo luật tương đương của phép kéo theo, biểu thức P \u2192 Q có giá trị logic giống hệt với \u00ACP \u2228 Q (phủ định P hoặc Q) ➔ <span class='font-bold text-amber-600'>\u00ACP \u2228 Q</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 82. Cơ chế suy diễn tiến (Forward Chaining) hoạt động theo nguyên lý nào?",
+                desc: "Câu 125. Trong logic mệnh đề, biểu thức P \u2192 Q có giá trị chân lý là Sai (False) khi nào?",
                 options: [
-                    "A. Hướng giả thuyết (Goal-driven) - đi ngược từ đích về dữ liệu.",
-                    "B. Hướng dữ liệu (Data-driven) - bắt đầu từ sự kiện sẵn có (Facts) để suy ra sự kiện mới cho đến khi đạt đích.",
-                    "C. Chọn ngẫu nhiên luật để chạy.",
-                    "D. Xóa cơ sở dữ liệu để tìm lại."
+                    "A. P đúng và Q đúng.",
+                    "B. P đúng và Q sai.",
+                    "C. P sai và Q đúng.",
+                    "D. P sai và Q sai."
                 ],
                 ans: [1],
-                hint: "Suy diễn tiến bắt đầu từ Facts và áp dụng rules xuôi dần để chứng minh đích ➔ <span class='font-bold text-amber-600'>Hướng dữ liệu (Data-driven) - bắt đầu từ sự kiện sẵn có (Facts) để suy ra sự kiện mới cho đến khi đạt đích.</span>"
+                hint: "Phép kéo theo chỉ nhận chân trị Sai khi giả thiết P đúng mà kết luận Q sai ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 83. Cơ chế suy diễn lùi (Backward Chaining) hoạt động theo nguyên lý nào?",
+                desc: "Câu 126. Biểu thức logic P \u2192 Q tương đương với biểu thức nào sau đây?",
                 options: [
-                    "A. Hướng dữ liệu (Data-driven).",
-                    "B. Hướng mục tiêu/giả thuyết (Goal-driven) - xuất phát từ mục tiêu cần chứng minh và đi ngược lại tìm các sự kiện hỗ trợ nó.",
-                    "C. Trộn ngẫu nhiên cơ sở dữ liệu.",
-                    "D. Bắt đầu từ luật đơn giản nhất."
-                ],
-                ans: [1],
-                hint: "Suy diễn lùi xuất phát từ Goal rồi kiểm tra xem các điều kiện tạo ra Goal đó có được Facts chứng minh hay không ➔ <span class='font-bold text-amber-600'>Hướng mục tiêu/giả thuyết (Goal-driven) - xuất phát từ mục tiêu cần chứng minh và đi ngược lại tìm các sự kiện hỗ trợ nó.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 84. Mạng ngữ nghĩa (Semantic Network) biểu diễn tri thức dưới dạng nào sau đây?",
-                options: [
-                    "A. Mảng số thực nhiều chiều.",
-                    "B. Đồ thị gồm các nút (khái niệm) và các cạnh có hướng có nhãn (quan hệ).",
-                    "C. Một tệp văn bản thô.",
-                    "D. Các bảng cơ sở dữ liệu quan hệ."
-                ],
-                ans: [1],
-                hint: "Mạng ngữ nghĩa sử dụng mô hình đồ thị nút và cạnh có tên nhãn để biểu thị các khái niệm và mối liên kết ngữ nghĩa giữa chúng ➔ <span class='font-bold text-amber-600'>Đồ thị gồm các nút (khái niệm) và các cạnh có hướng có nhãn (quan hệ).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 85. Ontology trong biểu diễn tri thức AI là gì?",
-                options: [
-                    "A. Một hệ điều hành chuyên dùng cho AI.",
-                    "B. Khung lý thuyết phân loại xác định các khái niệm, thực thể và quan hệ trong một lĩnh vực để máy tính trao đổi dữ liệu thống nhất.",
-                    "C. Cơ chế bảo mật dữ liệu.",
-                    "D. Một loại ngôn ngữ lập trình mới."
-                ],
-                ans: [1],
-                hint: "Ontology định nghĩa một mô hình cấu trúc hóa ngữ nghĩa giúp hệ thống hiểu và chia sẻ tri thức chung trong một miền ứng dụng ➔ <span class='font-bold text-amber-600'>Khung lý thuyết phân loại xác định các khái niệm, thực thể và quan hệ trong một lĩnh vực để máy tính trao đổi dữ liệu thống nhất.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 86. Phép giải (Resolution) trong logic thường kết hợp với phương pháp chứng minh nào để tìm câu trả lời?",
-                options: [
-                    "A. Chứng minh trực tiếp.",
-                    "B. Chứng minh phản chứng (Refutation).",
-                    "C. Quy nạp toán học.",
-                    "D. Trực giác."
-                ],
-                ans: [1],
-                hint: "Phép giải đưa phủ định của đích cần chứng minh vào tập luật và tìm ra mâu thuẫn để chứng minh đích đúng ➔ <span class='font-bold text-amber-600'>Chứng minh phản chứng (Refutation).</span>"
-            },
-
-            // CHƯƠNG 7: HỌC MÁY & HỌC SÂU
-            {
-                type: 'single',
-                desc: "Câu 87. Điểm khác biệt của học không giám sát (Unsupervised Learning) so với học có giám sát là gì?",
-                options: [
-                    "A. Nó cần nhiều RAM máy tính hơn.",
-                    "B. Dữ liệu huấn luyện đầu vào không được gán nhãn kết quả trước (no labels).",
-                    "C. Nó luôn cho kết quả dự báo chính xác hơn.",
-                    "D. Không sử dụng các mô hình toán học."
-                ],
-                ans: [1],
-                hint: "Học không giám sát hoạt động trên tập dữ liệu chưa gán nhãn, tìm kiếm các mẫu và phân nhóm cấu trúc tự động ➔ <span class='font-bold text-amber-600'>Dữ liệu huấn luyện đầu vào không được gán nhãn kết quả trước (no labels).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 88. Thuật toán K-Means thuộc nhóm học máy nào?",
-                options: [
-                    "A. Học có giám sát (Supervised Learning).",
-                    "B. Học không giám sát (Unsupervised Learning).",
-                    "C. Học tăng cường (Reinforcement Learning).",
-                    "D. Lập trình truyền thống."
-                ],
-                ans: [1],
-                hint: "K-Means là thuật toán phân cụm kinh điển thuộc nhóm Unsupervised Learning ➔ <span class='font-bold text-amber-600'>Học không giám sát (Unsupervised Learning).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 89. Vai trò chính của hàm kích hoạt (Activation Function) trong mạng nơ-ron là gì?",
-                options: [
-                    "A. Giảm số lượng tham số huấn luyện của mạng.",
-                    "B. Đưa tính chất phi tuyến (non-linear) vào mạng để biểu diễn các mối quan hệ phức tạp.",
-                    "C. Tăng tốc độ đọc ghi dữ liệu hình ảnh.",
-                    "D. Xóa bỏ nơ-ron bị lỗi."
-                ],
-                ans: [1],
-                hint: "Nhờ hàm kích hoạt phi tuyến (như ReLU, Sigmoid), mạng nơ-ron mới có khả năng xấp xỉ các hàm phi tuyến phức tạp ➔ <span class='font-bold text-amber-600'>Đưa tính chất phi tuyến (non-linear) vào mạng để biểu diễn các mối quan hệ phức tạp.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 90. Thuật toán Lan truyền ngược (Backpropagation) cập nhật trọng số của mạng nơ-ron bằng phương pháp nào?",
-                options: [
-                    "A. Chọn ngẫu nhiên trọng số mới.",
-                    "B. Tính toán đạo hàm sai số (gradient) và lan truyền ngược về trước để tối ưu bằng Gradient Descent.",
-                    "C. Tự động tăng giá trị trọng số lên 2 lần.",
-                    "D. Sử dụng hệ chuyên gia để dự đoán."
-                ],
-                ans: [1],
-                hint: "Lan truyền ngược là thuật toán nền tảng giúp mạng nơ-ron sâu học hỏi bằng cách điều chỉnh trọng số dựa trên sai số tính toán ➔ <span class='font-bold text-amber-600'>Tính toán đạo hàm sai số (gradient) và lan truyền ngược về trước để tối ưu bằng Gradient Descent.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 91. Mạng nơ-ron tích chập (CNN) được ứng dụng hiệu quả nhất trong lĩnh vực nào?",
-                options: [
-                    "A. Xử lý dữ liệu bảng thống kê.",
-                    "B. Xử lý hình ảnh (Computer Vision).",
-                    "C. Dịch thuật văn bản thuần túy.",
-                    "D. Phân tích âm thanh đơn giản."
-                ],
-                ans: [1],
-                hint: "Khả năng trích xuất đặc trưng không gian bằng các bộ lọc chập giúp CNN thống trị các bài toán xử lý ảnh số ➔ <span class='font-bold text-amber-600'>Xử lý hình ảnh (Computer Vision).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 92. Trong bài toán phân loại nhị phân (2 lớp), hàm kích hoạt nào thường được đặt ở lớp đầu ra để xuất xác suất?",
-                options: ["A. ReLU", "B. Sigmoid", "C. Softmax", "D. Tanh"],
-                ans: [1],
-                hint: "Hàm Sigmoid ép giá trị đầu ra vào khoảng (0, 1), đại diện cho xác suất của lớp dương tính trong phân loại nhị phân ➔ <span class='font-bold text-amber-600'>Sigmoid</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 93. Cơ chế tự chú ý (Self-Attention) trong mạng Transformer có ưu điểm vượt trội gì so với RNN truyền thống?",
-                options: [
-                    "A. Xử lý song song hiệu quả ngữ cảnh của toàn bộ các từ trong câu cùng lúc thay vì duyệt tuần tự.",
-                    "B. Tiêu tốn ít tài nguyên GPU hơn.",
-                    "C. Không cần dữ liệu lớn để huấn luyện.",
-                    "D. Phù hợp xử lý hình ảnh tĩnh."
+                    "A. \u00ACP \u2228 Q.",
+                    "B. P \u2227 \u00ACQ.",
+                    "C. \u00ACP \u2227 Q.",
+                    "D. P \u2228 Q."
                 ],
                 ans: [0],
-                hint: "Self-Attention của Transformer khắc phục điểm nghẽn tuần tự của RNN/LSTM, cho phép song song hóa cực tốt trên GPU ➔ <span class='font-bold text-amber-600'>Xử lý song song hiệu quả ngữ cảnh của toàn bộ các từ trong câu cùng lúc thay vì duyệt tuần tự.</span>"
+                hint: "Quy tắc biến đổi kéo theo tương đương: P \u2192 Q \u2261 \u00ACP \u2228 Q ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 127. Trong cơ sở tri thức (KB), khái niệm 'Entailment' (Kéo theo logic, ký hiệu KB \u22a8 \u03b1) nghĩa là gì?",
+                options: [
+                    "A. Mệnh đề \u03b1 luôn luôn đúng trong mọi mô hình mà KB đúng.",
+                    "B. KB và \u03b1 không liên quan đến nhau.",
+                    "C. Mệnh đề \u03b1 luôn luôn sai.",
+                    "D. KB và \u03b1 đều sai."
+                ],
+                ans: [0],
+                hint: "KB \u22a8 \u03b1 nghĩa là hễ KB đúng thì chắc chắn \u03b1 cũng phải đúng ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 128. Phương pháp chứng minh bằng Phép giải (Resolution) yêu cầu các mệnh đề phải đưa về dạng chuẩn nào?",
+                options: [
+                    "A. Dạng chuẩn hội (CNF - Conjunctive Normal Form).",
+                    "B. Dạng chuẩn tuyển (DNF).",
+                    "C. Chuẩn tắc Horn.",
+                    "D. Chuẩn tắc mệnh đề tự do."
+                ],
+                ans: [0],
+                hint: "Phép giải chỉ làm việc trên các mệnh đề dạng tuyển nối với nhau bởi phép hội (CNF) ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 129. Mệnh đề Horn (Horn Clause) là một mệnh đề tuyển có đặc điểm gì nổi bật?",
+                options: [
+                    "A. Không chứa phép phủ định nào.",
+                    "B. Có tối đa một vị từ dương (positive literal).",
+                    "C. Có vô số vị từ dương.",
+                    "D. Chỉ chứa phép hội."
+                ],
+                ans: [1],
+                hint: "Horn Clause chứa tối đa 1 phần tử không phủ định, cho phép suy dẫn nhanh trong thời gian tuyến tính ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 130. Cơ chế suy diễn tiến (Forward Chaining) bắt đầu từ đâu?",
+                options: [
+                    "A. Bắt đầu từ giả thuyết mục tiêu.",
+                    "B. Bắt đầu từ các sự kiện đã biết (Facts) và áp dụng các luật để suy ra sự kiện mới.",
+                    "C. Bắt đầu từ các luật phức tạp nhất.",
+                    "D. Bắt đầu từ cơ sở dữ liệu ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "Forward Chaining suy luận hướng dữ liệu (data-driven), tiến dần từ sự kiện ban đầu đến mục tiêu ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 131. Cơ chế suy diễn lùi (Backward Chaining) bắt đầu từ đâu?",
+                options: [
+                    "A. Bắt đầu từ các sự kiện đã biết.",
+                    "B. Bắt đầu từ mục tiêu (Goal) cần chứng minh, đi ngược lại tìm kiếm các sự kiện hỗ trợ nó.",
+                    "C. Bắt đầu từ các mệnh đề Horn.",
+                    "D. Bắt đầu ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "Backward Chaining suy luận hướng mục tiêu (goal-driven), đi ngược từ đích về kiểm chứng dữ kiện ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 132. Cấu trúc mạng ngữ nghĩa (Semantic Network) biểu diễn tri thức bằng cách nào?",
+                options: [
+                    "A. Sử dụng các câu lệnh SQL.",
+                    "B. Sử dụng một đồ thị có nhãn với các nút là đối tượng và các cung là mối quan hệ.",
+                    "C. Sử dụng mảng số thực.",
+                    "D. Sử dụng thuật toán học sâu."
+                ],
+                ans: [1],
+                hint: "Mạng ngữ nghĩa sử dụng cấu trúc đồ thị trực quan liên kết các nút khái niệm thông qua các quan hệ ngữ nghĩa ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 133. Khái niệm Frame (Khung) trong biểu diễn tri thức dùng để làm gì?",
+                options: [
+                    "A. Vẽ khung giao diện người dùng.",
+                    "B. Lưu trữ thông tin dưới dạng một tập hợp các thuộc tính (slots) và giá trị của chúng (values) cho một đối tượng.",
+                    "C. Đo lường tốc độ khung hình của camera.",
+                    "D. Đóng gói mã nguồn Python."
+                ],
+                ans: [1],
+                hint: "Frame biểu diễn tri thức dựa trên thuộc tính slots và giá trị values giúp lưu trữ tri thức phân cấp đối tượng ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 134. Ontology trong AI là gì?",
+                options: [
+                    "A. Một thư viện lập trình của C++.",
+                    "B. Sự mô tả tường minh và đặc tả các khái niệm, thực thể cùng mối quan hệ của một lĩnh vực chuyên môn.",
+                    "C. Thuật toán tìm kiếm heuristic.",
+                    "D. Thiết bị phần cứng của robot."
+                ],
+                ans: [1],
+                hint: "Ontology chuẩn hóa vốn tri thức chuyên ngành thành sơ đồ khái niệm máy tính có thể phân tích ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 135. Ngôn ngữ nào sau đây được W3C chuẩn hóa chuyên dùng để biểu diễn tri thức trên Semantic Web?",
+                options: [
+                    "A. HTML5.",
+                    "B. OWL (Web Ontology Language).",
+                    "C. Javascript.",
+                    "D. SQL."
+                ],
+                ans: [1],
+                hint: "OWL là ngôn ngữ chuẩn hóa chuyên dùng để xây dựng các mô hình Ontology ngữ nghĩa mạng toàn cầu ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 136. Phép chứng minh bằng phản chứng (Proof by Refutation) hoạt động ra sao?",
+                options: [
+                    "A. Chứng minh trực tiếp từ nguyên lý đầu.",
+                    "B. Thêm phủ định của mục tiêu vào KB và tìm kiếm sự mâu thuẫn (mệnh đề rỗng).",
+                    "C. Bắt chước các bước của con người.",
+                    "D. Đột biến ngẫu nhiên các luật."
+                ],
+                ans: [1],
+                hint: "Thêm phủ định giả thiết vào hệ luật và tìm ra mâu thuẫn chính là phương pháp phản chứng của phép giải ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 137. Trong hệ chuyên gia, thành phần nào đóng vai trò là 'bộ não' thực hiện suy luận logic?",
+                options: [
+                    "A. Knowledge Base (Cơ sở tri thức).",
+                    "B. Inference Engine (Công cụ suy diễn).",
+                    "C. User Interface (Giao diện người dùng).",
+                    "D. Explanation Facility."
+                ],
+                ans: [1],
+                hint: "Inference Engine là nhân xử lý suy luận điều phối logic của hệ chuyên gia ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 138. Điểm hạn chế lớn nhất của các hệ chuyên gia cổ điển (Expert Systems) là gì?",
+                options: [
+                    "A. Không thể chạy trên máy tính cấu hình yếu.",
+                    "B. Chi phí thu thập và duy trì tri thức từ chuyên gia con người rất lớn (knowledge acquisition bottleneck).",
+                    "C. Tốc độ tính toán chậm hơn học sâu.",
+                    "D. Chỉ chạy được trên hệ điều hành Linux."
+                ],
+                ans: [1],
+                hint: "Việc phỏng vấn chuyên gia thu thập tri thức thủ công tốn kém và khó bảo trì khi luật thay đổi ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 139. Trong logic vị từ, câu 'Mọi con mèo đều thích cá' được biểu diễn như thế nào?",
+                options: [
+                    "A. \u2200x (Cat(x) \u2227 LikeFish(x))",
+                    "B. \u2200x (Cat(x) \u2192 LikeFish(x))",
+                    "C. \u2203x (Cat(x) \u2192 LikeFish(x))",
+                    "D. \u2203x (Cat(x) \u2227 LikeFish(x))"
+                ],
+                ans: [1],
+                hint: "Logic vị từ dùng \u2200 kết hợp phép kéo theo \u2192 để biểu thị tính chất 'mọi đối tượng x nếu là Cat thì LikeFish' ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 140. Trong logic vị từ, câu 'Có ít nhất một sinh viên học giỏi AI' được biểu diễn như thế nào?",
+                options: [
+                    "A. \u2200x (Student(x) \u2192 GoodAtAI(x))",
+                    "B. \u2203x (Student(x) \u2227 GoodAtAI(x))",
+                    "C. \u2203x (Student(x) \u2192 GoodAtAI(x))",
+                    "D. \u2200x (Student(x) \u2227 GoodAtAI(x))"
+                ],
+                ans: [1],
+                hint: "Lượng từ tồn tại \u2203 đi kèm phép hội \u2227 để chỉ 'tồn tại thực thể x vừa là Student vừa GoodAtAI' ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
 
-            // CHƯƠNG 8: HỆ CHUYÊN GIA & ỨNG DỤNG THỰC TẾ
+            // CHƯƠNG 8: HỌC MÁY, HỌC SÂU & ỨNG DỤNG
             {
                 type: 'single',
-                desc: "Câu 94. Trong xử lý ngôn ngữ tự nhiên (NLP), kỹ thuật tách một câu thành danh sách các từ/token đơn lẻ được gọi là gì?",
-                options: ["A. Stemming", "B. Tokenization", "C. Embedding", "D. Parsing"],
-                ans: [1],
-                hint: "Tokenization phân rã chuỗi ký tự thô thành các từ/tokens độc lập để xử lý ngôn ngữ ➔ <span class='font-bold text-amber-600'>Tokenization</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 95. Word Embedding (như Word2Vec) biểu diễn từ vựng dưới dạng nào?",
+                desc: "Câu 141. Khái niệm Học máy (Machine Learning) được định nghĩa cơ bản là gì?",
                 options: [
-                    "A. Các chuỗi văn bản dịch sang tiếng Anh.",
-                    "B. Các vector số thực nhiều chiều mà các từ có ý nghĩa tương tự sẽ nằm gần nhau trong không gian vector.",
-                    "C. Các nhãn số nguyên từ 1 đến N.",
-                    "D. Các hình ảnh minh họa từ."
+                    "A. Việc lập trình sẵn tất cả các tình huống cho máy tính chạy.",
+                    "B. Lĩnh vực nghiên cứu cung cấp cho máy tính khả năng tự học hỏi từ dữ liệu mà không cần được lập trình chi tiết các quy tắc.",
+                    "C. Việc sản xuất các linh kiện phần cứng máy tính.",
+                    "D. Các thuật toán nén file."
                 ],
                 ans: [1],
-                hint: "Word Embedding ánh xạ ngôn ngữ tự nhiên vào không gian vector số học giúp máy tính hiểu ngữ nghĩa và tính toán độ tương quan ➔ <span class='font-bold text-amber-600'>Các vector số thực nhiều chiều mà các từ có ý nghĩa tương tự sẽ nằm gần nhau trong không gian vector.</span>"
+                hint: "Học máy cho phép hệ thống tự động nhận dạng khuôn mẫu và quy tắc ứng xử trực tiếp từ dữ liệu thực tế ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 96. Tác vụ Object Detection (Phát hiện đối tượng) trong Thị giác máy tính thực hiện việc gì?",
+                desc: "Câu 142. Thuật toán nào sau đây thuộc nhóm Học có giám sát (Supervised Learning)?",
                 options: [
-                    "A. Chỉ phân loại ảnh có hay không có vật thể.",
-                    "B. Định vị vị trí vật thể bằng khung bao (Bounding Box) đồng thời nhận diện tên vật thể đó.",
-                    "C. Làm mờ phông nền ảnh chụp.",
-                    "D. Thay đổi kích thước ảnh."
+                    "A. K-Means.",
+                    "B. Linear Regression (Hồi quy tuyến tính).",
+                    "C. PCA (Principal Component Analysis).",
+                    "D. Apriori."
                 ],
                 ans: [1],
-                hint: "Phát hiện đối tượng giải quyết đồng thời bài toán định vị (localization) và phân loại (classification) ➔ <span class='font-bold text-amber-600'>Định vị vị trí vật thể bằng khung bao (Bounding Box) đồng thời nhận diện tên vật thể đó.</span>"
+                hint: "Linear Regression học cách ánh xạ từ đầu vào đến nhãn đầu ra liên tục nên thuộc học có giám sát ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 97. Trong xe tự hành, cảm biến LiDAR giúp giải quyết nhiệm vụ chính nào?",
+                desc: "Câu 143. Thuật toán nào sau đây thuộc nhóm Học không giám sát (Unsupervised Learning)?",
                 options: [
-                    "A. Đo lượng tiêu thụ nhiên liệu.",
-                    "B. Quét tia laser phát hiện chướng ngại vật và tái tạo bản đồ 3D môi trường xung quanh xe.",
-                    "C. Nhận diện biển báo giao thông bằng camera thường.",
-                    "D. Dẫn đường qua vệ tinh GPS."
+                    "A. Decision Tree (Cây quyết định).",
+                    "B. K-Means Phân cụm.",
+                    "C. Logistic Regression.",
+                    "D. Random Forest."
                 ],
                 ans: [1],
-                hint: "LiDAR đo thời gian phản hồi của tia laser để tính toán khoảng cách vật cản và dựng mô hình đám mây điểm 3D môi trường ➔ <span class='font-bold text-amber-600'>Quét tia laser phát hiện chướng ngại vật và tái tạo bản đồ 3D môi trường xung quanh xe.</span>"
+                hint: "Phân cụm K-Means tìm cấu trúc phân cụm ngầm định trong tập dữ liệu không gán nhãn ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 98. Hệ thống AI AlphaFold của DeepMind giải quyết thành công bài toán khoa học nổi tiếng nào?",
+                desc: "Câu 144. Hiện tượng Quá khớp (Overfitting) xảy ra khi nào?",
                 options: [
-                    "A. Tạo ra trí tuệ nhân tạo tổng quát (AGI).",
+                    "A. Mô hình chạy quá nhanh trên máy tính.",
+                    "B. Mô hình học quá kỹ các chi tiết và nhiễu của dữ liệu huấn luyện, khiến dự báo trên dữ liệu kiểm thử mới bị sai lệch nhiều.",
+                    "C. Dữ liệu huấn luyện có quá ít thuộc tính.",
+                    "D. Mô hình hoạt động kém trên cả tập huấn luyện."
+                ],
+                ans: [1],
+                hint: "Mô hình overfit có độ chính xác huấn luyện cực cao nhưng mất khả năng suy rộng khi test dữ liệu mới ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 145. Hiện tượng Dưới khớp (Underfitting) xảy ra khi nào?",
+                options: [
+                    "A. Mô hình quá phức tạp so với dữ liệu.",
+                    "B. Mô hình quá đơn giản nên không học được cấu trúc của dữ liệu huấn luyện (lỗi cao trên cả tập train và test).",
+                    "C. Bộ nhớ RAM bị tràn.",
+                    "D. Mô hình đạt độ chính xác 100%."
+                ],
+                ans: [1],
+                hint: "Underfitting xảy ra khi mô hình quá thô sơ chưa nắm bắt được các đặc trưng căn bản của tập dữ liệu ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 146. Trong mạng nơ-ron nhân tạo, hàm kích hoạt (Activation Function) có vai trò chính là gì?",
+                options: [
+                    "A. Tăng tốc độ đọc dữ liệu đầu vào.",
+                    "B. Đưa tính phi tuyến (non-linear) vào mạng để học được các mẫu phức tạp.",
+                    "C. Giảm số chiều của dữ liệu.",
+                    "D. Khởi tạo trọng số ngẫu nhiên."
+                ],
+                ans: [1],
+                hint: "Hàm kích hoạt giúp phi tuyến hóa cấu trúc mạng nơ-ron để biểu diễn các hàm số phi tuyến phức tạp ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 147. Thuật toán Lan truyền ngược (Backpropagation) hoạt động dựa trên nguyên lý toán học nào?",
+                options: [
+                    "A. Quy tắc chuỗi đạo hàm (Chain Rule) để tính gradient sai số.",
+                    "B. Phép nhân ma trận nghịch đảo trực tiếp.",
+                    "C. Logic vị từ bậc một.",
+                    "D. Phép cộng vector đơn giản."
+                ],
+                ans: [0],
+                hint: "Quy tắc đạo hàm hàm hợp (Chain Rule) được dùng để lan truyền sai số và tính đạo hàm riêng cho từng tham số mạng ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 148. Mạng nơ-ron tích chập (CNN) trích xuất đặc trưng hình ảnh thông qua các phép toán nào?",
+                options: [
+                    "A. Phép giải logic.",
+                    "B. Phép nhân tích chập giữa bộ lọc (Filter/Kernel) và ma trận ảnh.",
+                    "C. Phép tìm kiếm leo đồi.",
+                    "D. Phép gán tham chiếu."
+                ],
+                ans: [1],
+                hint: "CNN quét các bộ lọc chập nhỏ qua ảnh để phát hiện các đặc trưng cục bộ (góc, biên) ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 149. Kiến trúc mạng nơ-ron nào chuyên biệt xử lý dữ liệu dạng chuỗi tuần tự (Sequential Data) như văn bản, âm thanh?",
+                options: [
+                    "A. CNN.",
+                    "B. RNN (Recurrent Neural Network).",
+                    "C. SVM.",
+                    "D. Linear Regression."
+                ],
+                ans: [1],
+                hint: "RNN có các nút phản hồi thời gian giúp lưu lại vết thông tin của chuỗi tuần tự đầu vào ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 150. Cơ chế chú ý (Self-Attention) trong mạng Transformer khắc phục nhược điểm nào của RNN?",
+                options: [
+                    "A. Khắc phục việc tính toán tuần tự chậm chạp, cho phép xử lý song song toàn bộ chuỗi từ cùng lúc trên GPU.",
+                    "B. Tăng độ phân giải của ảnh.",
+                    "C. Giúp lưu trữ mật khẩu an toàn hơn.",
+                    "D. Loại bỏ hoàn toàn nhu cầu về nhãn."
+                ],
+                ans: [0],
+                hint: "Self-Attention cho phép liên kết trực tiếp các từ xa nhau và song song hóa toàn bộ tính toán trên GPU ➔ <span class='font-bold text-amber-600'>A.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 151. Kỹ thuật Tokenization trong xử lý ngôn ngữ tự nhiên (NLP) thực hiện tác vụ nào?",
+                options: [
+                    "A. Mã hóa văn bản thành mã băm bảo mật.",
+                    "B. Chia một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).",
+                    "C. Dịch tự động ngôn ngữ.",
+                    "D. Nhận diện giọng nói."
+                ],
+                ans: [1],
+                hint: "Tách văn bản thô thành danh sách các tokens độc lập để làm sạch dữ liệu đầu vào ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 152. Word Embedding (như Word2Vec) biểu diễn từ vựng dưới dạng nào?",
+                options: [
+                    "A. Các ký tự văn bản thô.",
+                    "B. Các vector số thực nhiều chiều mà các từ có ngữ nghĩa gần nhau sẽ có khoảng cách vector gần nhau.",
+                    "C. Các số thứ tự từ 1 đến N.",
+                    "D. Các hình ảnh minh họa."
+                ],
+                ans: [1],
+                hint: "Word Embedding chuyển từ ngữ thô thành vector liên tục mang thuộc tính ngữ nghĩa không gian ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 153. Kỹ thuật trích xuất thông tin văn bản từ hình ảnh chụp hoặc tài liệu scan được gọi là gì?",
+                options: [
+                    "A. NLP.",
+                    "B. OCR (Optical Character Recognition).",
+                    "C. GAN.",
+                    "D. Word Embedding."
+                ],
+                ans: [1],
+                hint: "OCR chuyên nhận dạng ký tự quang học để chuyển ảnh scan tài liệu sang text chỉnh sửa được ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 154. Thuật toán YOLO nổi tiếng trong thị giác máy tính giải quyết tác vụ nào?",
+                options: [
+                    "A. Tạo sinh ảnh nghệ thuật.",
+                    "B. Phát hiện đối tượng trong thời gian thực (Real-time Object Detection).",
+                    "C. Dịch thuật ngôn ngữ.",
+                    "D. Phân tích tâm trạng văn bản."
+                ],
+                ans: [1],
+                hint: "YOLO (You Only Look Once) quét ảnh 1 lần cho phép khoanh vùng và định danh vật thể siêu nhanh thời gian thực ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 155. Ứng dụng lọc cộng tác (Collaborative Filtering) trong hệ thống khuyến nghị hoạt động dựa trên điều gì?",
+                options: [
+                    "A. Đặc tính văn bản mô tả của sản phẩm.",
+                    "B. Hành vi, tương tác và sở thích của các nhóm người dùng tương đồng.",
+                    "C. Giá tiền và khuyến mãi của sản phẩm.",
+                    "D. Thời gian cập nhật sản phẩm."
+                ],
+                ans: [1],
+                hint: "Lọc cộng tác tìm kiếm các người dùng có hành vi tương tự để gợi ý chéo sản phẩm cho nhau ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 156. Hiện tượng ảo tưởng (Hallucination) của LLM gây ra lo ngại lớn nhất nào khi ứng dụng thực tế?",
+                options: [
+                    "A. Làm cho máy chủ bị quá tải và sập nguồn.",
+                    "B. AI tự tin đưa ra các thông tin sai sự thật hoặc bịa đặt nhưng hành văn rất thuyết phục.",
+                    "C. Chatbot phản hồi quá chậm.",
+                    "D. Chatbot chỉ giao tiếp bằng tiếng Anh."
+                ],
+                ans: [1],
+                hint: "LLM sinh ra các câu từ logic nhưng sai lệch dữ kiện lịch sử/thực tế là nhược điểm Hallucination ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 157. LiDAR trên xe tự hành có vai trò chính là gì?",
+                options: [
+                    "A. Nhận diện biển báo giao thông.",
+                    "B. Quét tia laser phát hiện chướng ngại vật và dựng bản đồ khoảng cách 3D xung quanh xe.",
+                    "C. Kết nối Internet với vệ tinh.",
+                    "D. Điều khiển hệ thống phanh xe."
+                ],
+                ans: [1],
+                hint: "Cảm biến LiDAR bắn các xung laser quét không gian để dựng bản đồ khoảng cách 3D đám mây điểm cực kỳ chuẩn xác ➔ <span class='font-bold text-amber-600'>B.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 158. Hệ thống AlphaFold của DeepMind giải quyết thành công bài toán sinh học nào?",
+                options: [
+                    "A. Tìm vaccine phòng chống ung thư.",
                     "B. Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi Axit Amin.",
-                    "C. Điều khiển robot y tế tự phẫu thuật.",
-                    "D. Phát hiện mã độc trong mạng."
+                    "C. Bản đồ gen người.",
+                    "D. Nuôi cấy mô nhân tạo."
                 ],
                 ans: [1],
-                hint: "AlphaFold giải quyết bài toán cuộn gập protein tồn tại nửa thế kỷ, mở ra kỷ nguyên mới về sinh học cấu trúc và thiết kế thuốc ➔ <span class='font-bold text-amber-600'>Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi Axit Amin.</span>"
+                hint: "AlphaFold giải cấu trúc 3D cuộn gập protein từ chuỗi gen giúp tăng tốc độ thiết kế thuốc sinh học ➔ <span class='font-bold text-amber-600'>B.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 99. Hiện tượng 'Hallucination' (Ảo tưởng) trong các mô hình ngôn ngữ lớn (LLM) là gì?",
+                desc: "Câu 159. Kỹ thuật Fine-tuning trong huấn luyện LLM là gì?",
                 options: [
-                    "A. AI ngừng hoạt động đột ngột.",
-                    "B. AI tự tin tạo ra thông tin sai lệch, không có thật nhưng hành văn rất trôi chảy thuyết phục.",
-                    "C. AI chỉ hiểu ngôn ngữ lập trình Python.",
-                    "D. AI tự nhận thức và có cảm xúc."
+                    "A. Huấn luyện thêm một mô hình lớn đã được huấn luyện sẵn (pre-trained) trên một tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.",
+                    "B. Xóa bỏ hoàn toàn trọng số để học lại.",
+                    "C. Viết lại mã nguồn Python.",
+                    "D. Nén mô hình để chạy trên điện thoại."
                 ],
-                ans: [1],
-                hint: "Hallucination mô tả việc LLM sinh các câu từ nghe có vẻ hợp lý nhưng thực chất là sai lệch dữ kiện thực tế ➔ <span class='font-bold text-amber-600'>AI tự tin tạo ra thông tin sai lệch, không có thật nhưng hành văn rất trôi chảy thuyết phục.</span>"
+                ans: [0],
+                hint: "Fine-tuning huấn luyện tinh chỉnh mô hình nền tảng bằng tập dữ liệu hẹp để chuyên môn hóa chatbot ➔ <span class='font-bold text-amber-600'>A.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 100. Kỹ thuật Fine-tuning trong huấn luyện LLM là gì?",
+                desc: "Câu 160. Khái niệm Generative AI (AI tạo sinh) mô tả loại AI nào?",
                 options: [
-                    "A. Xóa bỏ cấu trúc mạng nơ-ron cũ.",
-                    "B. Huấn luyện thêm một mô hình đã được tiền huấn luyện (pre-trained) trên tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.",
-                    "C. Nén file mô hình để tiết kiệm ổ cứng.",
-                    "D. Tăng độ phân giải ảnh đầu vào."
+                    "A. AI chỉ dùng để phân loại email spam.",
+                    "B. AI có khả năng tạo ra nội dung mới (như văn bản, hình ảnh, âm thanh, mã nguồn) từ dữ liệu đã học.",
+                    "C. AI dùng để tối ưu hóa thuật toán tìm kiếm mê cung.",
+                    "D. Hệ thống robot lắp ráp tự động."
                 ],
                 ans: [1],
-                hint: "Fine-tuning tối ưu mô hình lớn nền tảng cho các nghiệp vụ hẹp (y tế, pháp luật) hiệu quả và ít tốn kém ➔ <span class='font-bold text-amber-600'>Huấn luyện thêm một mô hình đã được tiền huấn luyện (pre-trained) trên tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.</span>"
+                hint: "AI tạo sinh tự học phân phối xác suất dữ liệu cũ để tổng hợp sinh ra các kết quả nội dung hoàn toàn mới ➔ <span class='font-bold text-amber-600'>B.</span>"
             }
         ];
 
         const uiTranslations = {
             vi: {
                 title: "Luyện Thi Trắc Nghiệm AI",
-                subtitle: "Trắc nghiệm lý thuyết, Python & NumPy, Thuật toán & Ứng dụng AI",
+                subtitle: "Trắc nghiệm lý thuyết, Python & NumPy, Đạo đức AI, Bài toán tìm kiếm & Học máy",
                 progress: (curr, total) => `Câu ${curr} / ${total}`,
                 score: (score) => `Điểm: ${score}`,
                 confirmBtn: "Xác nhận",
@@ -1392,9 +2172,9 @@
                 reviewWrongBadge: "✗ Sai",
                 btnReviewPrev: "⬅ Câu trước",
                 btnReviewNext: "Câu tiếp theo ➡",
-                restartBtn: "🔄 Làm lại bài thi",
+                restartBtn: "🔄 Chọn chương khác",
                 startScreenTitle: "Luyện Thi Trắc Nghiệm AI",
-                startScreenSubtitle: "Hệ thống ôn tập lý thuyết Trí tuệ nhân tạo gồm 8 chương: tổng quan, Python & NumPy, đạo đức AI, hệ thống thông minh, thuật toán tìm kiếm, logic vị từ, học sâu và ứng dụng thực tế.",
+                startScreenSubtitle: "Chọn một chương học cụ thể bên dưới để luyện tập hoặc chọn luyện tập tất cả các chương.",
                 startBtn: "Bắt đầu luyện tập 🚀",
                 selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
                 selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
@@ -1403,7 +2183,7 @@
                 evalPerfect: "Xuất sắc! Bạn đã đạt điểm tuyệt đối! 🎉",
                 evalExcellent: "Tuyệt vời! Bạn đã nắm rất vững kiến thức! 🌟",
                 evalGood: "Khá tốt! Bạn đã vượt qua bài luyện tập! 👍",
-                evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các giải thích code bên dưới. 💪"
+                evalTryHarder: "Cần cố gắng thêm! Hãy xem kỹ các giải thích bên dưới. 💪"
             }
         };
 
@@ -1415,9 +2195,28 @@
         let userAnswers = [];
         let activeQuiz = [];
         let reviewCurrentQ = 0;
+        let selectedChapter = 'all';
 
         function prepareQuiz() {
-            const sourceData = quizDataVi;
+            let sourceData = quizDataVi;
+            if (selectedChapter === 'ch1') {
+                sourceData = quizDataVi.slice(0, 20);
+            } else if (selectedChapter === 'ch2') {
+                sourceData = quizDataVi.slice(20, 40);
+            } else if (selectedChapter === 'ch3') {
+                sourceData = quizDataVi.slice(40, 50);
+            } else if (selectedChapter === 'ch4') {
+                sourceData = quizDataVi.slice(50, 70);
+            } else if (selectedChapter === 'ch5') {
+                sourceData = quizDataVi.slice(70, 110);
+            } else if (selectedChapter === 'ch6') {
+                sourceData = quizDataVi.slice(110, 130);
+            } else if (selectedChapter === 'ch7') {
+                sourceData = quizDataVi.slice(130, 150);
+            } else if (selectedChapter === 'ch8') {
+                sourceData = quizDataVi.slice(150, 170);
+            }
+
             activeQuiz = sourceData.map(q => {
                 return {
                     type: q.type,
@@ -1430,13 +2229,17 @@
             });
         }
 
+        function selectChapterStart(chapter) {
+            selectedChapter = chapter;
+            startPractice();
+        }
+
         function updateLanguageUI() {
             const trans = uiTranslations[currentLanguage];
             document.getElementById('appTitle').innerText = trans.title;
             document.getElementById('appSubtitle').innerText = trans.subtitle;
             document.getElementById('startTitle').innerText = trans.startScreenTitle;
             document.getElementById('startSubtitle').innerText = trans.startScreenSubtitle;
-            document.getElementById('btnStartPractice').innerText = trans.startBtn;
 
             document.getElementById('lblReportStatCorrect').innerText = trans.reportStatCorrect;
             document.getElementById('lblReportStatPercent').innerText = trans.reportStatPercent;
@@ -1761,16 +2564,13 @@
             document.getElementById('scoreText').innerText = trans.score(0);
 
             document.getElementById('reportArea').classList.add('hidden');
-            document.getElementById('quizHeader').classList.remove('hidden');
-            document.getElementById('quizHeader').classList.add('flex');
-            document.getElementById('quizBody').classList.remove('hidden');
-
-            prepareQuiz();
-            loadQuestion();
+            document.getElementById('quizHeader').classList.add('hidden');
+            document.getElementById('quizBody').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
         }
 
         updateLanguageUI();
     </script>
 </body>
-<!-- Trigger rebuild -->
+
 </html>
