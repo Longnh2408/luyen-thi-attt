@@ -123,7 +123,7 @@
                 <button onclick="selectChapterStart('all')" class="group p-4 bg-indigo-50 border border-indigo-200 hover:border-indigo-500 hover:shadow-md rounded-xl text-left transition-all">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-bold text-indigo-700 bg-indigo-200 px-2 py-0.5 rounded-full">Tất cả</span>
-                        <span class="text-xs text-indigo-500 font-semibold">191 câu</span>
+                        <span class="text-xs text-indigo-500 font-semibold">206 câu</span>
                     </div>
                     <h4 class="font-bold text-indigo-900 group-hover:text-indigo-700 transition-colors text-sm sm:text-base">Luyện tập tổng hợp</h4>
                 </button>
@@ -2407,6 +2407,187 @@
                 ans: [0],
                 hint: "Hàm `type(obj)` trả về kiểu dữ liệu chính xác của obj là lớp `B`. Phép so sánh `B is A` là False. Hàm `isinstance(obj, A)` kiểm tra quan hệ kế thừa, do B kế thừa từ A nên kết quả trả về là True ➔ <span class='font-bold text-amber-600'>False True</span>"
             }
+,
+            {
+                type: 'single',
+                desc: "Câu 192. Kết quả của đoạn code sau là gì?\nclass Account:\n    def __init__(self, owner, amount):\n        self.owner = owner\n        self.__balance = amount\n\nacc = Account(\"An\", 1000)\nprint(acc.__balance)",
+                options: [
+                    "A. 1000",
+                    "B. AttributeError",
+                    "C. None",
+                    "D. An"
+                ],
+                ans: [1],
+                hint: "Trong Python, thuộc tính bắt đầu bằng hai dấu gạch dưới `__` (như `__balance`) là thuộc tính private. Trình thông dịch sẽ kích hoạt cơ chế 'Name Mangling' đổi tên thuộc tính này thành `_Account__balance`, do đó việc truy cập trực tiếp `acc.__balance` từ bên ngoài sẽ gây lỗi AttributeError ➔ <span class='font-bold text-amber-600'>AttributeError</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 193. Kết quả in ra màn hình của đoạn lệnh sau là gì?\nclass Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __str__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(1, 2)\nprint(str(p))",
+                options: [
+                    "A. Point(1, 2)",
+                    "B. <__main__.Point object at 0x...>",
+                    "C. Error",
+                    "D. (1, 2)"
+                ],
+                ans: [0],
+                hint: "Phương thức đặc biệt `__str__` (dunder method) định nghĩa chuỗi đại diện thân thiện cho đối tượng khi được gọi thông qua hàm `str()` hoặc `print()`. Nó sẽ trả về chuỗi 'Point(1, 2)' ➔ <span class='font-bold text-amber-600'>Point(1, 2)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 194. Kết quả của đoạn code sau là gì?\nclass Math:\n    @staticmethod\n    def add(x, y):\n        return x + y\n\nprint(Math.add(5, 10))",
+                options: [
+                    "A. 15",
+                    "B. TypeError",
+                    "C. Math",
+                    "D. None"
+                ],
+                ans: [0],
+                hint: "Decorator `@staticmethod` định nghĩa một phương thức tĩnh. Phương thức này hoạt động như một hàm bình thường, không cần tạo đối tượng (`instance`) của lớp và không nhận tham số đặc biệt như `self` hay `cls` làm đối số đầu tiên ➔ <span class='font-bold text-amber-600'>15</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 195. Giả sử file 'test.txt' chứa nội dung sau:\nHello Line 1\nHello Line 2\n\nCho biết kết quả in ra màn hình sau khi chạy lệnh:\nwith open('test.txt', 'r') as f:\n    lines = f.readlines()\nprint(len(lines))",
+                options: [
+                    "A. 2",
+                    "B. 1",
+                    "C. 0",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Câu lệnh `with` đóng vai trò là một Context Manager, đảm bảo file tự động đóng khi thoát khỏi khối lệnh. Phương thức `readlines()` đọc toàn bộ các dòng của file và trả về một danh sách chứa các chuỗi dòng đó, do đó `len(lines)` trả về 2 ➔ <span class='font-bold text-amber-600'>2</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 196. Đoạn chương trình sau in ra kết quả gì?\ndef division(a, b):\n    try:\n        result = a / b\n    except ZeroDivisionError:\n        return \"Zero\"\n    else:\n        return \"Success\"\n    finally:\n        print(\"Done \", end=\"\")\n\nprint(division(10, 2))",
+                options: [
+                    "A. Done Success",
+                    "B. Success Done",
+                    "C. Done Zero",
+                    "D. Success"
+                ],
+                ans: [0],
+                hint: "Phép toán `10 / 2` không lỗi nên khối `else` được chạy và chuẩn bị trả về 'Success'. Tuy nhiên, khối `finally` luôn được đảm bảo thực thi trước khi thoát hàm, nên nó in ra 'Done ' trước. Sau đó kết quả trả về 'Success' được lệnh print bên ngoài in ra tạo thành 'Done Success' ➔ <span class='font-bold text-amber-600'>Done Success</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 197. Đoạn chương trình sau sẽ in ra kết quả gì?\ntry:\n    x = int(\"abc\")\n    y = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Zero\")\nexcept ValueError:\n    print(\"Value\")",
+                options: [
+                    "A. Value",
+                    "B. Zero",
+                    "C. Value Zero",
+                    "D. ZeroDivisionError"
+                ],
+                ans: [0],
+                hint: "Chương trình thực thi tuần tự. Dòng `int(\"abc\")` lỗi ngay lập tức và ném ra ngoại lệ `ValueError`. Tiến trình nhảy thẳng tới khối `except ValueError` xử lý và in ra 'Value'. Phép toán chia cho 0 bên dưới không bao giờ được chạm tới ➔ <span class='font-bold text-amber-600'>Value</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 198. Kết quả in ra của đoạn chương trình dưới đây là gì?\ndef count_up(n):\n    for i in range(1, n + 1):\n        yield i\n\ngen = count_up(3)\nprint(next(gen), next(gen))",
+                options: [
+                    "A. 1 2",
+                    "B. 1 1",
+                    "C. 3 3",
+                    "D. 1 2 3"
+                ],
+                ans: [0],
+                hint: "Hàm sử dụng từ khóa `yield` là một generator function, trả về một generator object. Mỗi lần gọi `next()`, generator sẽ chạy tiếp đến câu lệnh yield tiếp theo và trả về giá trị. Lần gọi thứ nhất trả về 1, lần thứ hai trả về 2 ➔ <span class='font-bold text-amber-600'>1 2</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 199. Cho biết kết quả in ra của đoạn lệnh sau:\ndef my_decorator(func):\n    def wrapper():\n        print(\"1\", end=\"\")\n        func()\n        print(\"2\", end=\"\")\n    return wrapper\n\n@my_decorator\ndef greet():\n    print(\"Hello\", end=\"\")\n\ngreet()",
+                options: [
+                    "A. 1Hello2",
+                    "B. Hello12",
+                    "C. 12Hello",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Decorator `@my_decorator` bọc hàm `greet()` bằng hàm `wrapper()`. Khi gọi `greet()`, nó sẽ thực thi hàm `wrapper()`: in ra '1', chạy greet gốc in ra 'Hello', rồi in tiếp '2' ➔ <span class='font-bold text-amber-600'>1Hello2</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 200. Kết quả in ra của đoạn lệnh sau là gì?\nimport re\ntext = \"The password is 12345 and pin is 9999\"\nmatches = re.findall(r\"\\d{3,5}\", text)\nprint(matches)",
+                options: [
+                    "A. ['12345', '9999']",
+                    "B. ['123', '45', '999']",
+                    "C. ['12345', '999']",
+                    "D. ['123', '999']"
+                ],
+                ans: [0],
+                hint: "Hàm `re.findall()` tìm tất cả các chuỗi con khớp với pattern nhị phân. Biểu thức `\\d{3,5}` tìm các cụm chữ số liên tục có độ dài từ 3 đến 5 ký tự. Nó tìm được cụm '12345' (độ dài 5) và '9999' (độ dài 4) ➔ <span class='font-bold text-amber-600'>['12345', '9999']</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 201. Đoạn chương trình sau sẽ in ra gì?\nimport re\ntext = \"python in security\"\nm = re.match(r\"in\", text)\ns = re.search(r\"in\", text)\nprint(m is None, s is None)",
+                options: [
+                    "A. True False",
+                    "B. False True",
+                    "C. True True",
+                    "D. False False"
+                ],
+                ans: [0],
+                hint: "Hàm `re.match()` chỉ kiểm tra sự trùng khớp ngay tại **đầu chuỗi** (do 'python...' không bắt đầu bằng 'in' nên trả về None). Hàm `re.search()` tìm kiếm **trên toàn bộ chuỗi**, khớp từ 'in' ở giữa câu nên trả về một Match object ➔ <span class='font-bold text-amber-600'>True False</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 202. Kết quả của đoạn code dưới đây là gì?\nnames = [\"An\", \"Binh\"]\nscores = [9, 8, 7]\nresult = list(zip(names, scores))\nprint(result)",
+                options: [
+                    "A. [('An', 9), ('Binh', 8)]",
+                    "B. [('An', 9), ('Binh', 8), (None, 7)]",
+                    "C. Error",
+                    "D. [('An', 9), ('Binh', 8), ('Binh', 7)]"
+                ],
+                ans: [0],
+                hint: "Hàm `zip()` gộp các phần tử của các iterable lại theo cặp chỉ số tương ứng. Khi các danh sách đầu vào có độ dài khác nhau, `zip()` sẽ dừng lại ngay khi danh sách ngắn nhất kết thúc. Do đó, phần tử 7 ở scores bị bỏ qua ➔ <span class='font-bold text-amber-600'>[('An', 9), ('Binh', 8)]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 203. Kết quả in ra của câu lệnh dưới đây là gì?\ncolors = [\"red\", \"blue\"]\nfor index, val in enumerate(colors, start=1):\n    print(f\"{index}:{val}\", end=\" \")",
+                options: [
+                    "A. 1:red 2:blue",
+                    "B. 0:red 1:blue",
+                    "C. red:1 blue:2",
+                    "D. red:0 blue:1"
+                ],
+                ans: [0],
+                hint: "Hàm `enumerate(iterable, start)` lặp qua danh sách và trả về các cặp (chỉ số, giá trị). Đối số `start=1` thiết lập chỉ số bắt đầu đếm từ 1 thay vì mặc định là 0 ➔ <span class='font-bold text-amber-600'>1:red 2:blue</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 204. Kết quả in ra của đoạn chương trình sau là gì?\nnums = [1, 2, 3]\nsquared = map(lambda x: x**2, nums)\nprint(type(squared), list(squared))",
+                options: [
+                    "A. <class 'map'> [1, 4, 9]",
+                    "B. <class 'list'> [1, 4, 9]",
+                    "C. <class 'iterator'> [1, 4, 9]",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Hàm `map()` trong Python 3 không trả về một list mà trả về một map object (kiểu `<class 'map'>`) có tính chất iterator lưu trữ lười. Khi gọi `list(squared)` nó mới chuyển đổi toàn bộ giá trị thành list thực tế ➔ <span class='font-bold text-amber-600'><class 'map'> [1, 4, 9]</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 205. Kiểu dữ liệu in ra màn hình của biến obj là gì?\nimport json\ndata = '{\"name\": \"An\", \"age\": 20}'\nobj = json.loads(data)\nprint(type(obj))",
+                options: [
+                    "A. <class 'dict'>",
+                    "B. <class 'str'>",
+                    "C. <class 'json'>",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Hàm `json.loads()` giải mã một chuỗi JSON hợp lệ thành kiểu dữ liệu Python tương ứng. Ở đây chuỗi đại diện cho đối tượng JSON `{}` sẽ được chuyển thành một từ điển Python kiểu `<class 'dict'>` ➔ <span class='font-bold text-amber-600'><class 'dict'></span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 206. Kết quả in ra của đoạn lệnh sau là gì?\nfrom datetime import datetime\nd = datetime(2026, 7, 4)\nprint(d.strftime(\"%d/%m/%Y\"))",
+                options: [
+                    "A. 04/07/2026",
+                    "B. 2026/07/04",
+                    "C. 04-07-2026",
+                    "D. Error"
+                ],
+                ans: [0],
+                hint: "Phương thức `strftime()` định dạng một đối tượng datetime thành chuỗi theo định dạng mong muốn: `%d` là ngày có 2 chữ số (04), `%m` là tháng (07), `%Y` là năm đầy đủ (2026) ➔ <span class='font-bold text-amber-600'>04/07/2026</span>"
+            }
         ];
 
         const uiTranslations = {
@@ -2527,6 +2708,9 @@
                 indices.push(173);
                 indices.push(174);
                 indices.push(175);
+                indices.push(194);
+                indices.push(195);
+                indices.push(196);
                 sourceData = indices.map(idx => quizDataVi[idx]);
             } else if (selectedChapter === 'part2') {
                 const indices = [];
@@ -2544,6 +2728,11 @@
                 indices.push(143);
                 indices.push(146);
                 indices.push(150);
+                indices.push(191);
+                indices.push(192);
+                indices.push(193);
+                indices.push(197);
+                indices.push(198);
                 sourceData = indices.map(idx => quizDataVi[idx]);
             } else if (selectedChapter === 'part3') {
                 const indices = [];
@@ -2578,6 +2767,13 @@
                 indices.push(144);
                 indices.push(155);
                 indices.push(156);
+                indices.push(199);
+                indices.push(200);
+                indices.push(201);
+                indices.push(202);
+                indices.push(203);
+                indices.push(204);
+                indices.push(205);
                 sourceData = indices.map(idx => quizDataVi[idx]);
             } else if (selectedChapter === 'part4') {
                 const indices = [6, 7, 8, 9, 39, 60, 72, 81, 84, 88, 98, 99, 152, 153, 154, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190];
