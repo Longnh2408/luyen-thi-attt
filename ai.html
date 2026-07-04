@@ -57,7 +57,7 @@
             class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
                 <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm AI</h1>
-                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Trắc nghiệm tổng quan AI, Python & NumPy, Đạo đức AI, Thuật toán tìm kiếm, Biểu diễn tri thức, Học máy & Hệ chuyên gia</p>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Trắc nghiệm tổng quan AI, Python & NumPy, Đạo đức AI, Hệ thống thông minh, Học máy & Hệ chuyên gia</p>
             </div>
             <div class="text-center self-center sm:self-auto">
                 <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-700/50 hover:bg-indigo-700/80 text-[11px] sm:text-xs font-semibold rounded-full border border-indigo-500/30 transition-all text-indigo-100">
@@ -75,7 +75,7 @@
                     🤖
                 </div>
                 <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm AI</h2>
-                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập gồm 8 chương bao quát lý thuyết AI, lập trình Python & NumPy, đạo đức pháp luật, thuật toán tìm kiếm, logic vị từ, học sâu và hệ chuyên gia.</p>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập gồm 8 chương bao quát lý thuyết AI, lập trình Python & NumPy, đạo đức pháp luật, hệ thống thông minh, thuật toán tìm kiếm, học sâu và hệ chuyên gia.</p>
             </div>
 
             <button id="btnStartPractice" onclick="startPractice()"
@@ -670,703 +670,703 @@
             // CHƯƠNG 3: ĐẠO ĐỨC & PHÁP LUẬT TRONG AI
             {
                 type: 'single',
-                desc: "Câu 41. Định kiến thuật toán (Algorithmic Bias) xảy ra do nguyên nhân chủ yếu nào?",
+                desc: "Câu 41. Vấn đề nào sau đây mô tả sự không công bằng khi kết quả của hệ thống AI có xu hướng ưu tiên hoặc gây bất lợi cho một nhóm đối tượng cụ thể?",
                 options: [
-                    "A. Do lập trình viên cố ý phân biệt đối xử.",
-                    "B. Do dữ liệu huấn luyện không đại diện hoặc chứa định kiến lịch sử của con người.",
-                    "C. Do năng lực xử lý của GPU kém.",
-                    "D. Do mô hình AI quá nhỏ."
-                ],
-                ans: [1],
-                hint: "Algorithmic Bias phát sinh chủ yếu do tập dữ liệu huấn luyện bị thiên lệch, mất cân bằng hoặc phản ánh định kiến sẵn có trong xã hội ➔ <span class='font-bold text-amber-600'>Do dữ liệu huấn luyện không đại diện hoặc chứa định kiến lịch sử của con người.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 42. Thuật ngữ Deepfake dùng để chỉ công nghệ nào?",
-                options: [
-                    "A. Tự động hóa dịch thuật ngôn ngữ.",
-                    "B. Kỹ thuật tổng hợp hình ảnh/video giả mạo mô phỏng chân dung người thật bằng AI.",
-                    "C. Bảo mật thông tin đa lớp.",
-                    "D. Phát hiện lỗ hổng phần mềm."
-                ],
-                ans: [1],
-                hint: "Deepfake sử dụng các mạng học sâu (GANs) để tráo đổi khuôn mặt hoặc mô phỏng giọng nói của một người chân thực như thật ➔ <span class='font-bold text-amber-600'>Kỹ thuật tổng hợp hình ảnh/video giả mạo mô phỏng chân dung người thật bằng AI.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 43. Khái niệm Quyền riêng tư của dữ liệu (Data Privacy) yêu cầu điều gì khi huấn luyện AI?",
-                options: [
-                    "A. Dữ liệu người dùng phải được thu thập tự do mà không cần xin phép.",
-                    "B. Dữ liệu cá nhân phải được ẩn danh hóa và bảo vệ nghiêm ngặt.",
-                    "C. AI không được phép sử dụng bất kỳ dữ liệu số nào.",
-                    "D. Dữ liệu chỉ được lưu trữ trên giấy."
-                ],
-                ans: [1],
-                hint: "Data Privacy yêu cầu mọi thông tin định danh cá nhân phải được che giấu hoặc ẩn danh hóa trước khi đưa vào huấn luyện mô hình ➔ <span class='font-bold text-amber-600'>Dữ liệu cá nhân phải được ẩn danh hóa và bảo vệ nghiêm ngặt.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 44. Trách nhiệm giải trình (Accountability) trong AI nghĩa là gì?",
-                options: [
-                    "A. Máy tính tự chịu mọi hình phạt pháp lý.",
-                    "B. Tổ chức/cá nhân phát triển và vận hành AI phải chịu trách nhiệm về hậu quả của nó.",
-                    "C. Hệ thống tự động xóa toàn bộ mã nguồn khi có lỗi.",
-                    "D. Người dùng cuối phải chịu mọi trách nhiệm thay cho nhà phát triển."
-                ],
-                ans: [1],
-                hint: "Trách nhiệm giải trình nhấn mạnh thực thể con người (doanh nghiệp phát triển hoặc vận hành mô hình) phải chịu trách nhiệm pháp lý cho hành vi và lỗi của AI ➔ <span class='font-bold text-amber-600'>Tổ chức/cá nhân phát triển và vận hành AI phải chịu trách nhiệm về hậu quả của nó.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 45. Hiệp định AI Act của Liên minh Châu Âu (EU) phân loại rủi ro AI thành mấy nhóm chính?",
-                options: ["A. 2 nhóm", "B. 3 nhóm", "C. 4 nhóm", "D. 5 nhóm"],
-                ans: [2],
-                hint: "EU AI Act phân loại các hệ thống AI thành 4 cấp độ rủi ro: rủi ro không thể chấp nhận được, rủi ro cao, rủi ro hạn chế và rủi ro tối thiểu ➔ <span class='font-bold text-amber-600'>4 nhóm</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 46. Nguyên tắc Công bằng (Fairness) trong AI hướng tới điều gì?",
-                options: [
-                    "A. Đảm bảo mọi mô hình AI đều có tốc độ xử lý như nhau.",
-                    "B. Đảm bảo AI đưa ra quyết định không phân biệt đối xử dựa trên giới tính, chủng tộc, tôn giáo.",
-                    "C. Chia đều lợi nhuận bán hàng cho tất cả nhân viên.",
-                    "D. Bắt buộc mọi người dân phải sử dụng AI."
-                ],
-                ans: [1],
-                hint: "Sự công bằng yêu cầu thuật toán phải đối xử bình đẳng và đưa ra kết quả không thiên vị các thuộc tính nhạy cảm của các nhóm người khác nhau ➔ <span class='font-bold text-amber-600'>Đảm bảo AI đưa ra quyết định không phân biệt đối xử dựa trên giới tính, chủng tộc, tôn giáo.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 47. Vấn đề Bản quyền tác giả (Copyright) nổi bật nhất đối với Generative AI hiện nay là gì?",
-                options: [
-                    "A. Bản quyền của hệ điều hành chạy AI.",
-                    "B. Việc AI tự do sử dụng các tác phẩm nghệ thuật, văn bản có bản quyền để huấn luyện mà không xin phép.",
-                    "C. Giá tiền mua phần cứng GPU tăng cao.",
-                    "D. Lập trình viên không được sở hữu máy tính cá nhân."
-                ],
-                ans: [1],
-                hint: "Tranh chấp nổ ra do các mô hình AI tạo sinh tự động thu thập (web scraping) các tác phẩm nghệ thuật, bài viết được bảo hộ bản quyền để làm dữ liệu huấn luyện mà không trả phí ➔ <span class='font-bold text-amber-600'>Việc AI tự do sử dụng các tác phẩm nghệ thuật, văn bản có bản quyền để huấn luyện mà không xin phép.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 48. Kỹ thuật Adversarial Attack (Tấn công đối nghịch) nhắm vào mục tiêu gì?",
-                options: [
-                    "A. Phá hủy phần cứng vật lý của máy chủ.",
-                    "B. Đưa các nhiễu nhỏ vào dữ liệu đầu vào để đánh lừa mô hình AI đưa ra kết quả sai lệch.",
-                    "C. Đánh cắp thông tin tài khoản ngân hàng.",
-                    "D. Gửi hàng loạt email spam làm nghẽn mạng."
-                ],
-                ans: [1],
-                hint: "Tấn công đối nghịch tạo ra các thay đổi rất nhỏ trên dữ liệu đầu vào (như ảnh) khiến con người không nhận ra nhưng làm mô hình AI phân loại sai lệch hoàn toàn ➔ <span class='font-bold text-amber-600'>Đưa các nhiễu nhỏ vào dữ liệu đầu vào để đánh lừa mô hình AI đưa ra kết quả sai lệch.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 49. Khái niệm Autonomous Weapons (Vũ khí tự hành) sử dụng AI gây ra mối lo ngại đạo đức lớn nhất nào?",
-                options: [
-                    "A. Tốc độ di chuyển của vũ khí quá chậm.",
-                    "B. Khả năng tự động đưa ra quyết định tiêu diệt sinh mạng mà không có sự kiểm soát trực tiếp của con người.",
-                    "C. Chi phí bảo trì vũ khí đắt đỏ.",
-                    "D. Trọng lượng của vũ khí quá nặng."
-                ],
-                ans: [1],
-                hint: "Việc giao phó quyết định tước đoạt sinh mạng con người cho các thuật toán tự động mà thiếu sự can thiệp và kiểm soát đạo đức của con người là lo ngại lớn nhất ➔ <span class='font-bold text-amber-600'>Khả năng tự động đưa ra quyết định tiêu diệt sinh mạng mà không có sự kiểm soát trực tiếp của con người.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 50. Giải pháp nào giúp kiểm tra mức độ thiên vị của một mô hình học máy?",
-                options: [
-                    "A. Tăng dung lượng RAM máy chủ.",
-                    "B. Sử dụng các bộ dữ liệu kiểm thử cân bằng và tính toán các chỉ số đo lường công bằng (Fairness Metrics).",
-                    "C. Đổi ngôn ngữ lập trình sang C++.",
-                    "D. Tắt máy tính và khởi động lại."
-                ],
-                ans: [1],
-                hint: "Đánh giá sự thiên vị đòi hỏi kiểm nghiệm hiệu năng của mô hình một cách định lượng trên các phân khúc dữ liệu khác nhau để đo tính công bằng ➔ <span class='font-bold text-amber-600'>Sử dụng các bộ dữ liệu kiểm thử cân bằng và tính toán các chỉ số đo lường công bằng (Fairness Metrics).</span>"
-            },
-
-            // CHƯƠNG 4: CÁC THUẬT TOÁN TÌM KIẾM
-            {
-                type: 'single',
-                desc: "Câu 51. Thuật toán tìm kiếm theo chiều rộng (BFS - Breadth-First Search) sử dụng cấu trúc dữ liệu nào để lưu trạng thái chờ duyệt?",
-                options: ["A. Stack (Ngăn xếp)", "B. Queue (Hàng đợi)", "C. Tree (Cây)", "D. Hash Table (Bảng băm)"],
-                ans: [1],
-                hint: "BFS duyệt các nút theo từng tầng từ nông đến sâu, tuân theo nguyên lý FIFO (vào trước ra trước) nên sử dụng cấu trúc Queue ➔ <span class='font-bold text-amber-600'>Queue (Hàng đợi)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 52. Thuật toán tìm kiếm theo chiều sâu (DFS - Depth-First Search) sử dụng cấu trúc dữ liệu nào để quản lý các nút?",
-                options: ["A. Queue (Hàng đợi)", "B. Stack (Ngăn xếp)", "C. Array (Mảng)", "D. Heap (Đống)"],
-                ans: [1],
-                hint: "DFS khám phá đi sâu hết một nhánh trước khi quay lui, hoạt động theo nguyên lý LIFO (vào sau ra trước) nên sử dụng cấu trúc Stack hoặc đệ quy ➔ <span class='font-bold text-amber-600'>Stack (Ngăn xếp)</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 53. Điểm khác biệt lớn nhất giữa Tìm kiếm mù (Uninformed Search) và Tìm kiếm Heuristic (Informed Search) là gì?",
-                options: [
-                    "A. Tìm kiếm mù luôn tìm được đường đi ngắn nhất.",
-                    "B. Tìm kiếm Heuristic sử dụng tri thức bổ trợ (hàm đánh giá) để định hướng tìm kiếm hiệu quả hơn.",
-                    "C. Tìm kiếm mù có tốc độ chạy nhanh hơn tìm kiếm Heuristic.",
-                    "D. Tìm kiếm Heuristic không cần biết trạng thái đích."
-                ],
-                ans: [1],
-                hint: "Tìm kiếm Informed sử dụng thông tin định lượng để đánh giá khoảng cách từ nút hiện tại tới đích (thông qua hàm Heuristic), giúp giảm thiểu tối đa số lượng nút cần tìm kiếm ➔ <span class='font-bold text-amber-600'>Tìm kiếm Heuristic sử dụng tri thức bổ trợ (hàm đánh giá) để định hướng tìm kiếm hiệu quả hơn.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 54. Thuật toán A* (A-Star) kết hợp hai thành phần nào để tính toán giá trị hàm đánh giá f(n)?",
-                options: [
-                    "A. Chi phí đi từ trạng thái bắt đầu g(n) và ước lượng chi phí đến đích h(n).",
-                    "B. Độ sâu của nút và số lượng nút con.",
-                    "C. Thời gian chạy và dung lượng bộ nhớ.",
-                    "D. Trọng số của đồ thị và số lượng cung."
+                    "A. Algorithmic Bias (Định kiến thuật toán).",
+                    "B. Data Privacy (Quyền riêng tư dữ liệu).",
+                    "C. Transparency (Tính minh bạch).",
+                    "D. Accountability (Trách nhiệm giải trình)."
                 ],
                 ans: [0],
-                hint: "Hàm đánh giá f(n) của A* là tổng của g(n) (chi phí thực tế từ điểm đầu đến nút n) và h(n) (chi phí ước lượng từ n đến đích) ➔ <span class='font-bold text-amber-600'>Chi phí đi từ trạng thái bắt đầu g(n) và ước lượng chi phí đến đích h(n).</span>"
+                hint: "Định kiến thuật toán (Algorithmic Bias) xảy ra khi dữ liệu đầu vào bị lệch hoặc thuật toán bị lỗi thiết kế thiên vị nhóm này và làm bất lợi nhóm khác ➔ <span class='font-bold text-amber-600'>Algorithmic Bias (Định kiến thuật toán).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 55. Điều kiện để một hàm Heuristic h(n) được coi là chấp nhận được (admissible) trong thuật toán A* là gì?",
+                desc: "Câu 42. Trong đạo đức AI, khái niệm nào yêu cầu các nhà phát triển phải giải thích được cách thức và lý do hệ thống đưa ra một quyết định cụ thể?",
+                options: [
+                    "A. Security.",
+                    "B. Explainability (Khả năng giải thích).",
+                    "C. Efficiency.",
+                    "D. Profitability."
+                ],
+                ans: [1],
+                hint: "Khả năng giải thích (Explainability) hoặc tính diễn giải của AI (Interpretability) là yêu cầu minh bạch hóa cách đi từ input tới output của mô hình ➔ <span class='font-bold text-amber-600'>Explainability (Khả năng giải thích).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 43. Thuật ngữ nào dùng để chỉ tình trạng các mô hình AI tạo ra các thông tin sai lệch nhưng trình bày chúng một cách rất thuyết phục?",
+                options: [
+                    "A. Optimization.",
+                    "B. Generalization.",
+                    "C. Hallucination.",
+                    "D. Deepfake."
+                ],
+                ans: [2],
+                hint: "Hiện tượng ảo tưởng (Hallucination) xảy ra khi mô hình ngôn ngữ sinh văn bản chứa dữ kiện sai lệch nhưng được viết cực kỳ mạch lạc trôi chảy ➔ <span class='font-bold text-amber-600'>Hallucination.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 44. Quyền nào sau đây cho phép cá nhân yêu cầu các tổ chức xóa bỏ dữ liệu cá nhân của họ khỏi hệ thống lưu trữ và huấn luyện AI?",
+                options: [
+                    "A. Right to be forgotten (Quyền được lãng quên).",
+                    "B. Right to access.",
+                    "C. Right to data portability.",
+                    "D. Right to rectification."
+                ],
+                ans: [0],
+                hint: "Quyền được lãng quên (Right to be forgotten) cho phép cá nhân yêu cầu xóa bỏ hoàn toàn dấu vết dữ liệu của mình trên không gian số ➔ <span class='font-bold text-amber-600'>Right to be forgotten (Quyền được lãng quên).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 45. Khung pháp lý nào của Liên minh Châu Âu (EU) được coi là tiêu chuẩn toàn cầu về bảo vệ dữ liệu cá nhân mà các hệ thống AI phải tuân thủ?",
+                options: [
+                    "A. IEEE Standard.",
+                    "B. GDPR (General Data Protection Regulation).",
+                    "C. ISO 9001.",
+                    "D. NIST Framework."
+                ],
+                ans: [1],
+                hint: "GDPR là quy định bảo vệ dữ liệu cá nhân gắt gao nhất thế giới, định hình luật bảo mật thông tin toàn cầu ➔ <span class='font-bold text-amber-600'>GDPR (General Data Protection Regulation).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 46. Khi một chiếc xe tự lái gây tai nạn, việc xác định ai là người chịu trách nhiệm pháp lý (chủ xe, lập trình viên hay hãng xe) liên quan đến khái niệm nào?",
+                options: [
+                    "A. Liability.",
+                    "B. Sustainability.",
+                    "C. Scalability.",
+                    "D. Usability."
+                ],
+                ans: [0],
+                hint: "Liability (Trách nhiệm pháp lý) đề cập đến việc gán trách nhiệm bồi thường hoặc xử lý trước pháp luật khi có thiệt hại xảy ra ➔ <span class='font-bold text-amber-600'>Liability.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 47. Kỹ thuật sử dụng AI để thay đổi khuôn mặt hoặc giọng nói của một người trong video nhằm mục đích lừa đảo hoặc bôi nhọ được gọi là gì?",
+                options: [
+                    "A. Data mining.",
+                    "B. Deepfake.",
+                    "C. Face recognition.",
+                    "D. Blockchain."
+                ],
+                ans: [1],
+                hint: "Deepfake sử dụng mạng sinh đối kháng GANs để ghép khuôn mặt hoặc giọng nói giả vào video của người khác một cách cực kỳ tinh vi ➔ <span class='font-bold text-amber-600'>Deepfake.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 48. Tại sao dữ liệu huấn luyện (Training Data) bị thiếu hụt hoặc không đa dạng lại gây ra rủi ro về đạo đức?",
+                options: [
+                    "A. Làm tăng chi phí vận hành hệ thống.",
+                    "B. Dẫn đến các quyết định mang tính phân biệt đối xử và sai lệch thực tế.",
+                    "C. Làm cho máy tính xử lý chậm hơn.",
+                    "D. Làm giảm dung lượng lưu trữ của máy chủ."
+                ],
+                ans: [1],
+                hint: "Nếu dữ liệu thiếu tính đa diện (ví dụ chỉ chứa ảnh nam giới da sáng), mô hình khi hoạt động trên nhóm dân số khác sẽ hoạt động rất kém và thiên vị ➔ <span class='font-bold text-amber-600'>Dẫn đến các quyết định mang tính phân biệt đối xử và sai lệch thực tế.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 49. Nguyên tắc đạo đức nào nhấn mạnh rằng AI nên được phát triển để hỗ trợ và nâng cao năng lực của con người thay vì thay thế hoàn toàn quyền kiểm soát của con người?",
+                options: [
+                    "A. Human-in-the-loop.",
+                    "B. Black-box processing.",
+                    "C. Autonomous supremacy.",
+                    "D. Algorithmic dictatorship."
+                ],
+                ans: [0],
+                hint: "Nguyên tắc Human-in-the-loop quy định con người phải đóng vai trò kiểm duyệt, giám sát hoặc có tiếng nói quyết định cuối cùng trong chuỗi hành động của AI ➔ <span class='font-bold text-amber-600'>Human-in-the-loop.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 50. Việc sử dụng hệ thống nhận diện khuôn mặt ở nơi công cộng thường gây ra các cuộc tranh luận gay gắt nhất về vấn đề gì?",
+                options: [
+                    "A. Hardware performance.",
+                    "B. Mass surveillance.",
+                    "C. Electricity consumption.",
+                    "D. Internet bandwidth."
+                ],
+                ans: [1],
+                hint: "Giám sát hàng loạt (Mass surveillance) thông qua nhận diện khuôn mặt công cộng đe dọa nghiêm trọng quyền tự do đi lại và quyền riêng tư cá nhân của công dân ➔ <span class='font-bold text-amber-600'>Mass surveillance.</span>"
+            },
+
+            // CHƯƠNG 4: HỆ THỐNG THÔNG MINH
+            {
+                type: 'single',
+                desc: "Câu 51. Trong lý thuyết về hệ thống thông minh, một Agent (Tác tử) được định nghĩa là gì?",
+                options: [
+                    "A. Một thực thể có khả năng nhận thức môi trường thông qua các cảm biến và tác động lên môi trường đó thông qua các bộ phận thực thi.",
+                    "B. Một chương trình máy tính chỉ chạy trong môi trường ngoại tuyến.",
+                    "C. Một bộ phận phần cứng không có khả năng tương tác với dữ liệu bên ngoài.",
+                    "D. Một cơ sở dữ liệu dùng để lưu trữ các thông tin về AI."
+                ],
+                ans: [0],
+                hint: "Agent nhận đầu vào qua cảm biến (sensors) và tương tác ngược lại môi trường bằng các cơ cấu chấp hành (actuators) ➔ <span class='font-bold text-amber-600'>Một thực thể có khả năng nhận thức môi trường thông qua các cảm biến và tác động lên môi trường đó thông qua các bộ phận thực thi.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 52. Thành phần nào của Agent dùng để nhận biết môi trường xung quanh?",
+                options: ["A. Actuators.", "B. Sensors.", "C. Inference Engine.", "D. Knowledge Base."],
+                ans: [1],
+                hint: "Sensors (Cảm biến) giúp Agent thu nhận tín hiệu vật lý hoặc số từ môi trường bên ngoài ➔ <span class='font-bold text-amber-600'>Sensors.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 53. Khái niệm Percept trong hệ thống thông minh dùng để chỉ điều gì?",
+                options: [
+                    "A. Tập các hành động của Agent có thể thực hiện được tại một thời điểm.",
+                    "B. Trạng thái của môi trường mà Agent nhận được tại một thời điểm nhất định.",
+                    "C. Một thuật toán xử lý dữ liệu số mà Agent thực hiện.",
+                    "D. Tốc độ phản hồi của hệ thống Agent."
+                ],
+                ans: [1],
+                hint: "Percept là nội dung cảm nhận đầu vào mà cảm biến của Agent nhận được tại một thời điểm đơn lẻ cụ thể ➔ <span class='font-bold text-amber-600'>Trạng thái của môi trường mà Agent nhận được tại một thời điểm nhất định.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 54. Một Agent được coi là Rational (Hợp lý) nếu nó thực hiện hành động nhằm mục đích gì?",
+                options: [
+                    "A. Thực hiện hành động nhanh nhất có thể.",
+                    "B. Luôn bắt chước hành động của con người một cách tuyệt đối.",
+                    "C. Tối đa hóa giá trị kỳ vọng của chỉ số hiệu suất.",
+                    "D. Tiết kiệm năng lượng nhất cho hệ thống máy chủ."
+                ],
+                ans: [2],
+                hint: "Hợp lý ở đây được định nghĩa toán học là tối đa hóa hiệu suất làm việc mong đợi dựa trên tri thức và thông tin cảm nhận của Agent ➔ <span class='font-bold text-amber-600'>Tối đa hóa giá trị kỳ vọng của chỉ số hiệu suất.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 55. Trong cấu trúc mã PEAS để thiết kế Agent, chữ E đại diện cho thành phần nào?",
+                options: ["A. Execution.", "B. Efficiency.", "C. Environment (Môi trường).", "D. Evidence."],
+                ans: [2],
+                hint: "PEAS viết tắt của: Performance (Hiệu suất), Environment (Môi trường), Actuators (Thực thi), Sensors (Cảm biến) ➔ <span class='font-bold text-amber-600'>Environment (Môi trường).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 56. Đặc điểm nào sau đây mô tả một môi trường Fully Observable?",
+                options: [
+                    "A. Agent có thể cảm nhận toàn diện của môi trường tại thời điểm ban đầu.",
+                    "B. Agent có thể cảm nhận toàn diện của môi trường tại mỗi thời điểm.",
+                    "C. Môi trường luôn thay đổi khi Agent đang suy nghĩ.",
+                    "D. Chỉ có một phần nhỏ dữ liệu được cung cấp cho Agent."
+                ],
+                ans: [1],
+                hint: "Quan sát toàn diện nghĩa là cảm biến của Agent thu nhận được toàn bộ khía cạnh thông tin liên quan đến quyết định tại mọi thời điểm ➔ <span class='font-bold text-amber-600'>Agent có thể cảm nhận toàn diện của môi trường tại mỗi thời điểm.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 57. Một môi trường được gọi là Deterministic (Xác định) khi nào?",
+                options: [
+                    "A. Khi trạng thái tiếp theo của môi trường được quyết định hoàn toàn bởi trạng thái hiện tại và hành động của Agent.",
+                    "B. Khi trạng thái tiếp theo của môi trường được quyết định hoàn toàn bởi trạng thái hiện tại.",
+                    "C. Khi trạng thái tiếp theo của môi trường được quyết định hoàn toàn bởi trạng thái quá khứ và hành động của Agent.",
+                    "D. Khi trạng thái tiếp theo của môi trường được quyết định hoàn toàn bởi hành động của Agent."
+                ],
+                ans: [0],
+                hint: "Môi trường xác định không có yếu tố ngẫu nhiên, trạng thái kế tiếp được tính toán tường minh dựa vào trạng thái hiện tại và hành động của Agent ➔ <span class='font-bold text-amber-600'>Khi trạng thái tiếp theo của môi trường được quyết định hoàn toàn bởi trạng thái hiện tại và hành động của Agent.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 58. Môi trường chơi cờ vua (Chess) được phân loại là loại môi trường nào sau đây?",
+                options: [
+                    "A. Stochastic và Continuous.",
+                    "B. Discrete (Rời rạc) và Static (Tĩnh).",
+                    "C. Partially Observable và Dynamic.",
+                    "D. Continuous và Multi-agent."
+                ],
+                ans: [1],
+                hint: "Cờ vua có các nước đi chia rõ rệt (Discrete) và bàn cờ không tự thay đổi khi đấu thủ chưa đi quân (Static) ➔ <span class='font-bold text-amber-600'>Discrete (Rời rạc) và Static (Tĩnh).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 59. Loại Agent nào là đơn giản nhất, chỉ hoạt động dựa trên các quy tắc Condition-action rules mà không quan tâm đến lịch sử nhận thức?",
+                options: [
+                    "A. Model-based reflex agents.",
+                    "B. Simple reflex agents.",
+                    "C. Goal-based agents.",
+                    "D. Learning agents."
+                ],
+                ans: [1],
+                hint: "Simple reflex agent (tác tử phản xạ đơn giản) ánh xạ trực tiếp nhận cảm hiện tại thành hành động theo nguyên tắc: Nếu gặp A thì làm B ➔ <span class='font-bold text-amber-600'>Simple reflex agents.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 60. Thành phần nào trong một Learning Agent chịu trách nhiệm đưa ra các thay đổi để cải thiện hiệu suất của Agent trong tương lai?",
+                options: [
+                    "A. Performance element.",
+                    "B. Learning element (Thành phần học).",
+                    "C. Critic.",
+                    "D. Problem generator."
+                ],
+                ans: [1],
+                hint: "Learning element có chức năng tự đánh giá hiệu quả hoạt động cũ và rút ra luật cải tiến cho hành vi tương lai ➔ <span class='font-bold text-amber-600'>Learning element (Thành phần học).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 61. Nếu thiết kế một Robot hút bụi tự động, thành phần Actuators của nó sẽ bao gồm những gì?",
+                options: [
+                    "A. Camera và cảm biến va chạm.",
+                    "B. Bánh xe, chổi quét và bộ phận hút.",
+                    "C. Bản đồ căn nhà và lịch trình làm việc.",
+                    "D. Pin và bộ vi xử lý trung tâm."
+                ],
+                ans: [1],
+                hint: "Actuators (Cơ cấu chấp hành) là các bộ phận thực thể giúp Robot tác động vật lý trực tiếp lên phòng (di chuyển, quét bụi) ➔ <span class='font-bold text-amber-600'>Bánh xe, chổi quét và bộ phận hút.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 62. Môi trường lái xe tự động trong thực tế (Automated Driving) thuộc loại nào?",
+                options: [
+                    "A. Static (vì con đường không thay đổi).",
+                    "B. Dynamic (vì các phương tiện khác và người đi bộ luôn di chuyển).",
+                    "C. Fully Observable (vì xe có camera 360 độ).",
+                    "D. Discrete (vì xe chỉ có thể rẽ trái hoặc rẽ phải)."
+                ],
+                ans: [1],
+                hint: "Lái xe là tác vụ phức tạp bậc nhất do môi trường thay đổi liên tục khi xe di chuyển (Dynamic) và không thể quan sát toàn diện mọi góc khuất (Partially Observable) ➔ <span class='font-bold text-amber-600'>Dynamic (vì các phương tiện khác và người đi bộ luôn di chuyển).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 63. Khi tham gia một trò chơi bài (như Poker), môi trường này có đặc điểm gì nổi bật về tính quan sát?",
+                options: [
+                    "A. Fully Observable vì mọi người đều thấy bài trên bàn.",
+                    "B. Partially Observable vì Agent không biết các lá bài đối thủ đang cầm.",
+                    "C. Deterministic vì luật chơi đã cố định.",
+                    "D. Single-agent vì mỗi người tự chơi phần mình."
+                ],
+                ans: [1],
+                hint: "Do Agent không biết được trạng thái ẩn (lá bài úp của đối phương) nên đây là môi trường quan sát một phần ➔ <span class='font-bold text-amber-600'>Partially Observable vì Agent không biết các lá bài đối thủ đang cầm.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 64. Một Agent tư vấn chứng khoán hoạt động trong môi trường có tính chất nào?",
+                options: [
+                    "A. Stochastic do biến động thị trường khó dự báo chính xác tuyệt đối.",
+                    "B. Static vì dữ liệu lịch sử không thay đổi.",
+                    "C. Discrete vì giá cổ phiếu chỉ nhảy theo từng bước cố định.",
+                    "D. Episodic vì mỗi lần mua bán không liên quan đến nhau."
+                ],
+                ans: [0],
+                hint: "Chứng khoán chịu ảnh hưởng bởi vô số nhiễu động ngẫu nhiên, mang tính ngẫu nhiên/nhiễu (Stochastic) cực kỳ lớn ➔ <span class='font-bold text-amber-600'>Stochastic do biến động thị trường khó dự báo chính xác tuyệt đối.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 65. Sự khác biệt chính giữa Goal-based Agent và Utility-based Agent là gì?",
+                options: [
+                    "A. Một bên có mục tiêu, một bên thì không.",
+                    "B. Utility-based Agent có thể so sánh giữa các mục tiêu để chọn ra hành động tốt nhất (hạnh phúc nhất/hiệu quả nhất).",
+                    "C. Goal-based Agent luôn hoạt động nhanh hơn.",
+                    "D. Không có sự khác biệt, hai khái niệm này là một."
+                ],
+                ans: [1],
+                hint: "Utility-based Agent bổ sung thêm hàm lợi ích (Utility function) định lượng hóa mức độ ưu tiên giữa nhiều mục tiêu khác nhau để chọn ra giải pháp tối ưu nhất ➔ <span class='font-bold text-amber-600'>Utility-based Agent có thể so sánh giữa các mục tiêu để chọn ra hành động tốt nhất (hạnh phúc nhất/hiệu quả nhất).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 66. Tại sao môi trường Continuous (Liên tục) lại khó xử lý hơn môi trường Discrete (Rời rạc)?",
+                options: [
+                    "A. Vì nó có vô số trạng thái và hành động khả thi tại mỗi thời điểm.",
+                    "B. Vì nó tiêu tốn ít bộ nhớ hơn.",
+                    "C. Vì nó không yêu cầu cảm biến phức tạp.",
+                    "D. Vì nó chỉ tồn tại trong các trò chơi đơn giản."
+                ],
+                ans: [0],
+                hint: "Môi trường liên tục có không gian trạng thái vô hạn (ví dụ tốc độ, hướng vô lăng) thay vì hữu hạn đếm được (như ô cờ), yêu cầu tính toán tích phân/vi phân phức tạp ➔ <span class='font-bold text-amber-600'>Vì nó có vô số trạng thái và hành động khả thi tại mỗi thời điểm.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 67. Trong mô hình PEAS cho một hệ thống Tự động chấm bài trắc nghiệm, thành phần Performance có thể là gì?",
+                options: [
+                    "A. Máy quét hình ảnh bài thi.",
+                    "B. Độ chính xác của kết quả chấm bài.",
+                    "C. Tập hợp các bài thi của sinh viên.",
+                    "D. Phần mềm xử lý ảnh."
+                ],
+                ans: [1],
+                hint: "Performance (Chỉ số hiệu quả) đo lường chất lượng hệ thống, ở đây là tỷ lệ chấm đúng và tính chính xác của điểm số ➔ <span class='font-bold text-amber-600'>Độ chính xác của kết quả chấm bài.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 68. Nếu một Agent chơi trò chơi Oẳn tù tì, môi trường này mang tính chất gì?",
+                options: [
+                    "A. Competitive Multi-agent.",
+                    "B. Collaborative Multi-agent.",
+                    "C. Single-agent.",
+                    "D. Static."
+                ],
+                ans: [0],
+                hint: "Oẳn tù tì có 2 người chơi đối kháng nhau trực tiếp, mục tiêu của người này mâu thuẫn trực tiếp với đối phương ➔ <span class='font-bold text-amber-600'>Competitive Multi-agent.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 69. Một hệ thống AI chẩn đoán bệnh từ ảnh X-quang được coi là loại Agent nào nếu nó chỉ đưa ra kết luận dựa trên tấm ảnh hiện tại?",
+                options: [
+                    "A. Simple reflex agent.",
+                    "B. Learning agent.",
+                    "C. Goal-based agent.",
+                    "D. Utility-based agent."
+                ],
+                ans: [0],
+                hint: "Quyết định chỉ căn cứ vào ảnh X-quang hiện tại mà không cần quan tâm lịch sử trước đó chính là cơ chế của Tác tử phản xạ đơn giản ➔ <span class='font-bold text-amber-600'>Simple reflex agent.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 70. Thành phần Problem Generator trong Learning Agent có vai trò gì?",
+                options: [
+                    "A. Sửa các lỗi mà Agent gặp phải.",
+                    "B. Gợi ý các hành động mới để Agent khám phá.",
+                    "C. Tạo ra các bài toán khó để làm chậm tốc độ của Agent.",
+                    "D. Lưu trữ toàn bộ dữ liệu nhận thức cũ."
+                ],
+                ans: [1],
+                hint: "Problem Generator giúp đưa ra các tình huống/thử nghiệm mới chưa có trong lịch sử để Agent khám phá và học thêm tri thức mới ➔ <span class='font-bold text-amber-600'>Gợi ý các hành động mới để Agent khám phá.</span>"
+            },
+
+            // CHƯƠNG 5: CÁC GIẢI THUẬT TÌM KIẾM
+            {
+                type: 'single',
+                desc: "Câu 71. Thuật toán tìm kiếm theo chiều rộng (BFS) sử dụng cấu trúc dữ liệu nào để quản lý các trạng thái chờ duyệt?",
+                options: [
+                    "A. Stack (Ngăn xếp).",
+                    "B. Queue (Hàng đợi).",
+                    "C. Đồ thị liên kết.",
+                    "D. Bảng băm (Hash Table)."
+                ],
+                ans: [1],
+                hint: "BFS duyệt các nút theo từng tầng nông trước sâu sau, tuân theo nguyên lý FIFO (vào trước ra trước) nên sử dụng cấu trúc Queue ➔ <span class='font-bold text-amber-600'>Queue (Hàng đợi).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 72. Thuật toán tìm kiếm theo chiều sâu (DFS) sử dụng cấu trúc dữ liệu nào để lưu trữ danh sách các nút biên?",
+                options: [
+                    "A. Queue (Hàng đợi).",
+                    "B. Stack (Ngăn xếp).",
+                    "C. Min-Heap.",
+                    "D. Array."
+                ],
+                ans: [1],
+                hint: "DFS khám phá đi sâu hết một nhánh trước khi quay lui, hoạt động theo nguyên lý LIFO (vào sau ra trước) nên sử dụng Stack hoặc đệ quy ➔ <span class='font-bold text-amber-600'>Stack (Ngăn xếp).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 73. Điểm khác biệt căn bản giữa Tìm kiếm mù (Uninformed Search) và Tìm kiếm có thông tin (Informed Search) là gì?",
+                options: [
+                    "A. Tìm kiếm mù có tốc độ chạy nhanh hơn.",
+                    "B. Tìm kiếm có thông tin sử dụng hàm Heuristic h(n) để ước lượng khoảng cách từ nút hiện tại đến đích.",
+                    "C. Tìm kiếm mù không thể tìm được trạng thái đích.",
+                    "D. Tìm kiếm có thông tin không cần biết trạng thái xuất phát."
+                ],
+                ans: [1],
+                hint: "Tìm kiếm có thông tin sử dụng thêm tri thức là hàm Heuristic h(n) để định hướng tìm kiếm giúp thu hẹp không gian duyệt nút ➔ <span class='font-bold text-amber-600'>Tìm kiếm có thông tin sử dụng hàm Heuristic h(n) để ước lượng khoảng cách từ nút hiện tại đến đích.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 74. Thuật toán A* sử dụng hàm đánh giá f(n) nào để chọn nút tiếp theo?",
+                options: [
+                    "A. f(n) = g(n)",
+                    "B. f(n) = h(n)",
+                    "C. f(n) = g(n) + h(n)",
+                    "D. f(n) = g(n) * h(n)"
+                ],
+                ans: [2],
+                hint: "Thuật toán A* kết hợp chi phí thực tế từ điểm đầu đến nút n là g(n) và chi phí ước lượng từ n tới đích là h(n) ➔ <span class='font-bold text-amber-600'>f(n) = g(n) + h(n)</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 75. Một hàm Heuristic h(n) được coi là chấp nhận được (admissible) khi nào?",
                 options: [
                     "A. h(n) luôn lớn hơn chi phí thực tế.",
-                    "B. h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n đến đích.",
-                    "C. h(n) luôn bằng 0 với mọi nút.",
-                    "D. h(n) phải là một số âm."
+                    "B. h(n) không bao giờ lớn hơn chi phí thực tế tối ưu để đi từ n đến đích.",
+                    "C. h(n) luôn bằng 0.",
+                    "D. h(n) là số âm."
                 ],
                 ans: [1],
-                hint: "Heuristic được coi là admissible nếu nó luôn đánh giá thấp hơn hoặc bằng chi phí thực tế tối ưu (không bao giờ đánh giá quá cao chi phí thực tế) ➔ <span class='font-bold text-amber-600'>h(n) không bao giờ vượt quá chi phí thực tế tối ưu để đi từ n đến đích.</span>"
+                hint: "Heuristic admissible h(n) <= h*(n) đảm bảo thuật toán A* luôn tìm được giải pháp tối ưu ➔ <span class='font-bold text-amber-600'>h(n) không bao giờ lớn hơn chi phí thực tế tối ưu để đi từ n đến đích.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 56. Thuật toán tìm kiếm tham lam (Greedy Best-First Search) chọn nút tiếp theo dựa trên tiêu chí nào?",
+                desc: "Câu 76. Kỹ thuật Cắt tỉa Alpha - Beta (Alpha-Beta Pruning) giúp cải tiến thuật toán Minimax như thế nào?",
                 options: [
-                    "A. Chỉ dựa trên hàm Heuristic h(n) (chọn nút có vẻ gần đích nhất).",
-                    "B. Chỉ dựa trên chi phí đường đi thực tế g(n).",
-                    "C. Tổng chi phí f(n) = g(n) + h(n).",
-                    "D. Lựa chọn ngẫu nhiên các nút con."
+                    "A. Thay đổi luật chơi của trò chơi để dễ thắng hơn.",
+                    "B. Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi quyết định tối ưu cuối cùng.",
+                    "C. Tăng số lượng nước đi của Agent.",
+                    "D. Giúp Agent đoán trước bài của đối thủ."
+                ],
+                ans: [1],
+                hint: "Cắt tỉa Alpha-Beta loại bỏ các nhánh cây tìm kiếm chắc chắn không ảnh hưởng đến quyết định của người chơi, giúp tăng tốc độ phản hồi ➔ <span class='font-bold text-amber-600'>Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi quyết định tối ưu cuối cùng.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 77. Nhược điểm lớn nhất của thuật toán tìm kiếm leo đồi (Hill Climbing) là gì?",
+                options: [
+                    "A. Tiêu tốn quá nhiều bộ nhớ để lưu trữ Stack.",
+                    "B. Bị kẹt tại các cực đại địa phương (Local Maxima).",
+                    "C. Tốc độ chạy rất chậm.",
+                    "D. Không thể tìm thấy đích nếu không có đồ thị."
+                ],
+                ans: [1],
+                hint: "Leo đồi chỉ đi lên bước tốt hơn lân cận nên dễ mắc kẹt tại đỉnh cục bộ có giá trị lớn hơn xung quanh nhưng nhỏ hơn giá trị tối ưu toàn cục ➔ <span class='font-bold text-amber-600'>Bị kẹt tại các cực đại địa phương (Local Maxima).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 78. Thuật toán tìm kiếm theo chiều sâu lặp lại (IDS - Iterative Deepening Search) giải quyết được nhược điểm nào của DFS và BFS?",
+                options: [
+                    "A. Tránh kẹt vô hạn của DFS và tiết kiệm bộ nhớ hơn BFS.",
+                    "B. Luôn chạy nhanh hơn cả DFS và BFS.",
+                    "C. Không cần định nghĩa trạng thái đích.",
+                    "D. Không sử dụng các cấu trúc Queue hay Stack."
                 ],
                 ans: [0],
-                hint: "Tìm kiếm tham lam chỉ lựa chọn nút kế tiếp có giá trị Heuristic h(n) nhỏ nhất (có vẻ gần đích nhất) mà bỏ qua chi phí tích lũy g(n) ➔ <span class='font-bold text-amber-600'>Chỉ dựa trên hàm Heuristic h(n) (chọn nút có vẻ gần đích nhất).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 57. Trong lý thuyết trò chơi đối kháng (Game Playing), thuật toán Minimax được dùng để làm gì?",
-                options: [
-                    "A. Tìm đường đi ngắn nhất trong mê cung.",
-                    "B. Tối thiểu hóa tổn thất tối đa của người chơi bằng cách giả định đối thủ cũng chơi tối ưu.",
-                    "C. Phân cụm dữ liệu khách hàng.",
-                    "D. Nén hình ảnh số."
-                ],
-                ans: [1],
-                hint: "Thuật toán Minimax tìm kiếm nước đi tối ưu bằng cách giả định người chơi muốn tối đa hóa điểm mình (MAX), trong khi đối thủ muốn tối thiểu hóa điểm của mình (MIN) ➔ <span class='font-bold text-amber-600'>Tối thiểu hóa tổn thất tối đa của người chơi bằng cách giả định đối thủ cũng chơi tối ưu.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 58. Kỹ thuật Cắt tỉa Alpha-Beta (Alpha-Beta Pruning) giúp cải tiến thuật toán Minimax như thế nào?",
-                options: [
-                    "A. Tăng dung lượng bộ nhớ lưu trữ cây trò chơi.",
-                    "B. Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi kết quả lựa chọn tối ưu.",
-                    "C. Làm cho trò chơi kết thúc nhanh hơn.",
-                    "D. Thay đổi luật chơi của trò chơi."
-                ],
-                ans: [1],
-                hint: "Alpha-Beta Pruning cắt bỏ các nhánh cây tìm kiếm chắc chắn không ảnh hưởng đến quyết định cuối cùng, giúp giảm độ phức tạp thời gian đáng kể ➔ <span class='font-bold text-amber-600'>Giảm số lượng nút cần duyệt trên cây trò chơi mà không làm thay đổi kết quả lựa chọn tối ưu.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 59. Thuật toán Tìm kiếm leo đồi (Hill Climbing) có thể gặp phải nhược điểm lớn nào sau đây?",
-                options: [
-                    "A. Luôn rơi vào vòng lặp vô hạn.",
-                    "B. Bị kẹt tại các cực trị địa phương (Local Maxima).",
-                    "C. Không thể bắt đầu nếu đồ thị có chu trình.",
-                    "D. Tiêu tốn quá nhiều bộ nhớ lưu trữ Stack."
-                ],
-                ans: [1],
-                hint: "Leo đồi chỉ nhìn quanh các nút lân cận và đi lên, nên dễ bị mắc kẹt tại đỉnh của các đồi nhỏ cục bộ (Local Maxima) mà không thể tới đỉnh cao nhất toàn cục ➔ <span class='font-bold text-amber-600'>Bị kẹt tại các cực trị địa phương (Local Maxima).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 60. BFS là thuật toán tìm kiếm tối ưu (optimal) trong trường hợp nào?",
-                options: [
-                    "A. Đồ thị có chu trình.",
-                    "B. Chi phí giữa các bước chuyển trạng thái (trọng số các cạnh) là bằng nhau.",
-                    "C. Có nhiều trạng thái đích.",
-                    "D. Không có lời giải."
-                ],
-                ans: [1],
-                hint: "Khi chi phí bước đi là đồng nhất (cạnh không trọng số hoặc trọng số bằng nhau), BFS luôn tìm thấy đường đi ngắn nhất (ít cạnh nhất) đầu tiên tới đích ➔ <span class='font-bold text-amber-600'>Chi phí giữa các bước chuyển trạng thái (trọng số các cạnh) là bằng nhau.</span>"
+                hint: "IDS kết hợp ưu điểm tiết kiệm bộ nhớ của DFS và tính tối ưu/hoàn chỉnh của BFS bằng cách giới hạn độ sâu lặp tăng dần ➔ <span class='font-bold text-amber-600'>Tránh kẹt vô hạn của DFS và tiết kiệm bộ nhớ hơn BFS.</span>"
             },
 
-            // CHƯƠNG 5: BIỂU DIỄN TRI THỨC & LOGIC
+            // CHƯƠNG 6: BIỂU DIỄN TRI THỨC & LOGIC
             {
                 type: 'single',
-                desc: "Câu 61. Logic mệnh đề (Propositional Logic) không thể biểu diễn tốt điều nào sau đây?",
-                options: [
-                    "A. Các mệnh đề đúng/sai đơn giản.",
-                    "B. Phép kéo theo và phép hội/tuyển.",
-                    "C. Các đối tượng cụ thể và mối quan hệ định lượng giữa chúng (ví dụ: 'Mọi con người đều phải chết').",
-                    "D. Giá trị chân lý của biểu thức."
-                ],
-                ans: [2],
-                hint: "Logic mệnh đề chỉ xử lý các khẳng định thô, thiếu cấu trúc vị từ và lượng từ để định lượng hay mô tả thuộc tính các đối tượng riêng lẻ ➔ <span class='font-bold text-amber-600'>Các đối tượng cụ thể và mối quan hệ định lượng giữa chúng (ví dụ: 'Mọi con người đều phải chết').</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 62. Lượng từ Với Mọi (Universal Quantifier) được ký hiệu bằng ký tự nào?",
+                desc: "Câu 79. Lượng từ Với Mọi (Universal Quantifier) được ký hiệu bằng ký tự nào sau đây?",
                 options: ["A. \u2203", "B. \u2200", "C. \u00AC", "D. \u2192"],
                 ans: [1],
-                hint: "Ký hiệu toán học và logic đại diện cho lượng từ 'với mọi' là \u2200 ➔ <span class='font-bold text-amber-600'>\u2200</span>"
+                hint: "Ký hiệu \u2200 đại diện cho lượng từ 'với mọi' (for all) trong logic vị từ ➔ <span class='font-bold text-amber-600'>\u2200</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 63. Ký hiệu \u2203 đại diện cho lượng từ nào trong Logic vị từ bậc một (First-Order Logic)?",
+                desc: "Câu 80. Ký hiệu \u2203 trong Logic vị từ bậc một biểu thị lượng từ nào?",
                 options: [
-                    "A. Lượng từ Với Mọi (Universal Quantifier).",
+                    "A. Lượng từ Với Mọi.",
                     "B. Lượng từ Tồn Tại (Existential Quantifier).",
                     "C. Phép phủ định.",
-                    "D. Phép kéo theo."
+                    "D. Phép hội."
                 ],
                 ans: [1],
-                hint: "Ký hiệu logic \u2203 đại diện cho lượng từ 'tồn tại ít nhất một đối tượng' thỏa mãn mệnh đề ➔ <span class='font-bold text-amber-600'>Lượng từ Tồn Tại (Existential Quantifier).</span>"
+                hint: "Ký hiệu \u2203 biểu thị lượng từ 'tồn tại ít nhất một' ➔ <span class='font-bold text-amber-600'>Lượng từ Tồn Tại (Existential Quantifier).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 64. Trong Logic, biểu thức P \u2192 Q tương đương logic với biểu thức nào sau đây?",
+                desc: "Câu 81. Trong các phép toán logic mệnh đề, biểu thức P \u2192 Q tương đương logic với biểu thức nào sau đây?",
                 options: ["A. \u00ACP \u2228 Q", "B. P \u2227 \u00ACQ", "C. \u00ACP \u2227 Q", "D. P \u2228 Q"],
                 ans: [0],
                 hint: "Theo luật tương đương của phép kéo theo, biểu thức P \u2192 Q có giá trị logic giống hệt với \u00ACP \u2228 Q (phủ định P hoặc Q) ➔ <span class='font-bold text-amber-600'>\u00ACP \u2228 Q</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 65. Phương pháp suy diễn tiến (Forward Chaining) trong hệ thống dựa trên luật (Rule-based Systems) bắt đầu từ đâu?",
+                desc: "Câu 82. Cơ chế suy diễn tiến (Forward Chaining) hoạt động theo nguyên lý nào?",
                 options: [
-                    "A. Bắt đầu từ giả thuyết/mục tiêu và tìm luật để chứng minh.",
-                    "B. Bắt đầu từ các sự kiện đã biết (Facts) để suy ra các sự kiện mới cho đến khi đạt đích.",
-                    "C. Lựa chọn ngẫu nhiên các luật.",
-                    "D. Đọc dữ liệu từ cơ sở dữ liệu ngoài."
+                    "A. Hướng giả thuyết (Goal-driven) - đi ngược từ đích về dữ liệu.",
+                    "B. Hướng dữ liệu (Data-driven) - bắt đầu từ sự kiện sẵn có (Facts) để suy ra sự kiện mới cho đến khi đạt đích.",
+                    "C. Chọn ngẫu nhiên luật để chạy.",
+                    "D. Xóa cơ sở dữ liệu để tìm lại."
                 ],
                 ans: [1],
-                hint: "Suy diễn tiến là cơ chế hướng dữ liệu (data-driven), bắt đầu từ tập tri thức sự kiện ban đầu để áp dụng luật và suy dẫn xuôi về đích ➔ <span class='font-bold text-amber-600'>Bắt đầu từ các sự kiện đã biết (Facts) để suy ra các sự kiện mới cho đến khi đạt đích.</span>"
+                hint: "Suy diễn tiến bắt đầu từ Facts và áp dụng rules xuôi dần để chứng minh đích ➔ <span class='font-bold text-amber-600'>Hướng dữ liệu (Data-driven) - bắt đầu từ sự kiện sẵn có (Facts) để suy ra sự kiện mới cho đến khi đạt đích.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 66. Phương pháp suy diễn lùi (Backward Chaining) bắt đầu từ đâu?",
+                desc: "Câu 83. Cơ chế suy diễn lùi (Backward Chaining) hoạt động theo nguyên lý nào?",
                 options: [
-                    "A. Đi từ các sự kiện ban đầu để rút ra luật.",
-                    "B. Bắt đầu từ mục tiêu (Goal) cần chứng minh, tìm ngược lại các sự kiện cần thiết để hỗ trợ mục tiêu đó.",
-                    "C. Không có điểm bắt đầu cố định.",
-                    "D. Duyệt ngẫu nhiên đồ thị."
+                    "A. Hướng dữ liệu (Data-driven).",
+                    "B. Hướng mục tiêu/giả thuyết (Goal-driven) - xuất phát từ mục tiêu cần chứng minh và đi ngược lại tìm các sự kiện hỗ trợ nó.",
+                    "C. Trộn ngẫu nhiên cơ sở dữ liệu.",
+                    "D. Bắt đầu từ luật đơn giản nhất."
                 ],
                 ans: [1],
-                hint: "Suy diễn lùi là cơ chế hướng mục tiêu (goal-driven), đi ngược từ kết luận giả thuyết để tìm kiếm các sự kiện chứng minh giả thuyết đó là đúng ➔ <span class='font-bold text-amber-600'>Bắt đầu từ mục tiêu (Goal) cần chứng minh, tìm ngược lại các sự kiện cần thiết để hỗ trợ mục tiêu đó.</span>"
+                hint: "Suy diễn lùi xuất phát từ Goal rồi kiểm tra xem các điều kiện tạo ra Goal đó có được Facts chứng minh hay không ➔ <span class='font-bold text-amber-600'>Hướng mục tiêu/giả thuyết (Goal-driven) - xuất phát từ mục tiêu cần chứng minh và đi ngược lại tìm các sự kiện hỗ trợ nó.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 67. Cấu trúc biểu diễn tri thức dạng Mạng ngữ nghĩa (Semantic Web/Semantic Network) biểu diễn thông tin dưới dạng nào?",
+                desc: "Câu 84. Mạng ngữ nghĩa (Semantic Network) biểu diễn tri thức dưới dạng nào sau đây?",
                 options: [
-                    "A. Bảng dữ liệu hai chiều.",
-                    "B. Đồ thị gồm các nút (đối tượng) và các cạnh có nhãn (mối quan hệ).",
-                    "C. Một danh sách các luật Đúng/Sai.",
-                    "D. Các tệp văn bản thô."
+                    "A. Mảng số thực nhiều chiều.",
+                    "B. Đồ thị gồm các nút (khái niệm) và các cạnh có hướng có nhãn (quan hệ).",
+                    "C. Một tệp văn bản thô.",
+                    "D. Các bảng cơ sở dữ liệu quan hệ."
                 ],
                 ans: [1],
-                hint: "Mạng ngữ nghĩa sử dụng cấu trúc đồ thị liên kết, trong đó các nút đại diện cho thực thể và các cung có nhãn kết nối mô tả quan hệ ngữ nghĩa giữa chúng ➔ <span class='font-bold text-amber-600'>Đồ thị gồm các nút (đối tượng) và các cạnh có nhãn (mối quan hệ).</span>"
+                hint: "Mạng ngữ nghĩa sử dụng mô hình đồ thị nút và cạnh có tên nhãn để biểu thị các khái niệm và mối liên kết ngữ nghĩa giữa chúng ➔ <span class='font-bold text-amber-600'>Đồ thị gồm các nút (khái niệm) và các cạnh có hướng có nhãn (quan hệ).</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 68. Khái niệm Bản đồ tri thức (Ontology) trong AI dùng để làm gì?",
+                desc: "Câu 85. Ontology trong biểu diễn tri thức AI là gì?",
                 options: [
-                    "A. Biểu diễn cấu trúc địa lý của một khu vực.",
-                    "B. Định nghĩa tường minh các khái niệm, thực thể và mối quan hệ trong một lĩnh vực cụ thể để máy tính hiểu được.",
-                    "C. Lưu trữ mật khẩu người dùng.",
-                    "D. Vẽ sơ đồ tư duy của con người."
+                    "A. Một hệ điều hành chuyên dùng cho AI.",
+                    "B. Khung lý thuyết phân loại xác định các khái niệm, thực thể và quan hệ trong một lĩnh vực để máy tính trao đổi dữ liệu thống nhất.",
+                    "C. Cơ chế bảo mật dữ liệu.",
+                    "D. Một loại ngôn ngữ lập trình mới."
                 ],
                 ans: [1],
-                hint: "Ontology thiết lập cấu trúc từ vựng, định nghĩa các lớp đối tượng và quan hệ đặc thù của một chuyên ngành hẹp giúp hệ thống máy tính chia sẻ tri thức tự động ➔ <span class='font-bold text-amber-600'>Định nghĩa tường minh các khái niệm, thực thể và mối quan hệ trong một lĩnh vực cụ thể để máy tính hiểu được.</span>"
+                hint: "Ontology định nghĩa một mô hình cấu trúc hóa ngữ nghĩa giúp hệ thống hiểu và chia sẻ tri thức chung trong một miền ứng dụng ➔ <span class='font-bold text-amber-600'>Khung lý thuyết phân loại xác định các khái niệm, thực thể và quan hệ trong một lĩnh vực để máy tính trao đổi dữ liệu thống nhất.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 69. Thuật ngữ Resolution (Phép giải) trong logic dùng để chứng minh điều gì?",
+                desc: "Câu 86. Phép giải (Resolution) trong logic thường kết hợp với phương pháp chứng minh nào để tìm câu trả lời?",
                 options: [
-                    "A. Rút gọn kích thước biểu thức mệnh đề.",
-                    "B. Chứng minh tính mâu thuẫn (bằng phản chứng) để kiểm tra một mệnh đề có là hệ quả logic của một tập mệnh đề hay không.",
-                    "C. Tính toán độ phân giải của hình ảnh số.",
-                    "D. So sánh độ chính xác của hai thuật toán."
+                    "A. Chứng minh trực tiếp.",
+                    "B. Chứng minh phản chứng (Refutation).",
+                    "C. Quy nạp toán học.",
+                    "D. Trực giác."
                 ],
                 ans: [1],
-                hint: "Phép giải chứng minh giả thuyết bằng cách giả định phủ định của giả thuyết đó và kết hợp phép hội để tìm ra mâu thuẫn (mệnh đề rỗng) ➔ <span class='font-bold text-amber-600'>Chứng minh tính mâu thuẫn (bằng phản chứng) để kiểm tra một mệnh đề có là hệ quả logic của một tập mệnh đề hay không.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 70. Một hệ chuyên gia (Expert System) lưu giữ tri thức chuyên môn của con người dưới dạng phổ biến nào?",
-                options: [
-                    "A. Các hàm số học phức tạp.",
-                    "B. Tập hợp các luật dạng NẾU - THÌ (IF-THEN Rules).",
-                    "C. Các khối mã nhị phân.",
-                    "D. Các mảng số thực."
-                ],
-                ans: [1],
-                hint: "Tri thức chuyên gia trong hệ thống dựa trên tri thức thường được mã hóa trực quan dưới dạng các luật logic IF-THEN ➔ <span class='font-bold text-amber-600'>Tập hợp các luật dạng NẾU - THÌ (IF-THEN Rules).</span>"
+                hint: "Phép giải đưa phủ định của đích cần chứng minh vào tập luật và tìm ra mâu thuẫn để chứng minh đích đúng ➔ <span class='font-bold text-amber-600'>Chứng minh phản chứng (Refutation).</span>"
             },
 
-            // CHƯƠNG 6: HỌC MÁY & HỌC SÂU
+            // CHƯƠNG 7: HỌC MÁY & HỌC SÂU
             {
                 type: 'single',
-                desc: "Câu 71. Trong Học máy có giám sát (Supervised Learning), dữ liệu huấn luyện bắt buộc phải có thành phần nào?",
+                desc: "Câu 87. Điểm khác biệt của học không giám sát (Unsupervised Learning) so với học có giám sát là gì?",
                 options: [
-                    "A. Nhãn kết quả (Labels/Targets).",
-                    "B. Các thuộc tính ẩn.",
-                    "C. Các hàm chi phí phức tạp.",
-                    "D. Toàn bộ là số nguyên dương."
+                    "A. Nó cần nhiều RAM máy tính hơn.",
+                    "B. Dữ liệu huấn luyện đầu vào không được gán nhãn kết quả trước (no labels).",
+                    "C. Nó luôn cho kết quả dự báo chính xác hơn.",
+                    "D. Không sử dụng các mô hình toán học."
+                ],
+                ans: [1],
+                hint: "Học không giám sát hoạt động trên tập dữ liệu chưa gán nhãn, tìm kiếm các mẫu và phân nhóm cấu trúc tự động ➔ <span class='font-bold text-amber-600'>Dữ liệu huấn luyện đầu vào không được gán nhãn kết quả trước (no labels).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 88. Thuật toán K-Means thuộc nhóm học máy nào?",
+                options: [
+                    "A. Học có giám sát (Supervised Learning).",
+                    "B. Học không giám sát (Unsupervised Learning).",
+                    "C. Học tăng cường (Reinforcement Learning).",
+                    "D. Lập trình truyền thống."
+                ],
+                ans: [1],
+                hint: "K-Means là thuật toán phân cụm kinh điển thuộc nhóm Unsupervised Learning ➔ <span class='font-bold text-amber-600'>Học không giám sát (Unsupervised Learning).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 89. Vai trò chính của hàm kích hoạt (Activation Function) trong mạng nơ-ron là gì?",
+                options: [
+                    "A. Giảm số lượng tham số huấn luyện của mạng.",
+                    "B. Đưa tính chất phi tuyến (non-linear) vào mạng để biểu diễn các mối quan hệ phức tạp.",
+                    "C. Tăng tốc độ đọc ghi dữ liệu hình ảnh.",
+                    "D. Xóa bỏ nơ-ron bị lỗi."
+                ],
+                ans: [1],
+                hint: "Nhờ hàm kích hoạt phi tuyến (như ReLU, Sigmoid), mạng nơ-ron mới có khả năng xấp xỉ các hàm phi tuyến phức tạp ➔ <span class='font-bold text-amber-600'>Đưa tính chất phi tuyến (non-linear) vào mạng để biểu diễn các mối quan hệ phức tạp.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 90. Thuật toán Lan truyền ngược (Backpropagation) cập nhật trọng số của mạng nơ-ron bằng phương pháp nào?",
+                options: [
+                    "A. Chọn ngẫu nhiên trọng số mới.",
+                    "B. Tính toán đạo hàm sai số (gradient) và lan truyền ngược về trước để tối ưu bằng Gradient Descent.",
+                    "C. Tự động tăng giá trị trọng số lên 2 lần.",
+                    "D. Sử dụng hệ chuyên gia để dự đoán."
+                ],
+                ans: [1],
+                hint: "Lan truyền ngược là thuật toán nền tảng giúp mạng nơ-ron sâu học hỏi bằng cách điều chỉnh trọng số dựa trên sai số tính toán ➔ <span class='font-bold text-amber-600'>Tính toán đạo hàm sai số (gradient) và lan truyền ngược về trước để tối ưu bằng Gradient Descent.</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 91. Mạng nơ-ron tích chập (CNN) được ứng dụng hiệu quả nhất trong lĩnh vực nào?",
+                options: [
+                    "A. Xử lý dữ liệu bảng thống kê.",
+                    "B. Xử lý hình ảnh (Computer Vision).",
+                    "C. Dịch thuật văn bản thuần túy.",
+                    "D. Phân tích âm thanh đơn giản."
+                ],
+                ans: [1],
+                hint: "Khả năng trích xuất đặc trưng không gian bằng các bộ lọc chập giúp CNN thống trị các bài toán xử lý ảnh số ➔ <span class='font-bold text-amber-600'>Xử lý hình ảnh (Computer Vision).</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 92. Trong bài toán phân loại nhị phân (2 lớp), hàm kích hoạt nào thường được đặt ở lớp đầu ra để xuất xác suất?",
+                options: ["A. ReLU", "B. Sigmoid", "C. Softmax", "D. Tanh"],
+                ans: [1],
+                hint: "Hàm Sigmoid ép giá trị đầu ra vào khoảng (0, 1), đại diện cho xác suất của lớp dương tính trong phân loại nhị phân ➔ <span class='font-bold text-amber-600'>Sigmoid</span>"
+            },
+            {
+                type: 'single',
+                desc: "Câu 93. Cơ chế tự chú ý (Self-Attention) trong mạng Transformer có ưu điểm vượt trội gì so với RNN truyền thống?",
+                options: [
+                    "A. Xử lý song song hiệu quả ngữ cảnh của toàn bộ các từ trong câu cùng lúc thay vì duyệt tuần tự.",
+                    "B. Tiêu tốn ít tài nguyên GPU hơn.",
+                    "C. Không cần dữ liệu lớn để huấn luyện.",
+                    "D. Phù hợp xử lý hình ảnh tĩnh."
                 ],
                 ans: [0],
-                hint: "Học có giám sát bắt buộc phải có nhãn đầu ra Y đi kèm với đặc trưng đầu vào X để mô hình đối chiếu và tối ưu sai số ➔ <span class='font-bold text-amber-600'>Nhãn kết quả (Labels/Targets).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 72. Thuật toán nào sau đây thuộc nhóm Học không giám sát (Unsupervised Learning)?",
-                options: [
-                    "A. Linear Regression (Hồi quy tuyến tính).",
-                    "B. K-Means Clustering (Phân cụm K-Means).",
-                    "C. Support Vector Machine (SVM).",
-                    "D. Decision Tree (Cây quyết định)."
-                ],
-                ans: [1],
-                hint: "K-Means không cần dữ liệu nhãn đầu ra, nó phân cụm dữ liệu tự động dựa trên mức độ tương đồng và khoảng cách các đặc trưng ➔ <span class='font-bold text-amber-600'>K-Means Clustering (Phân cụm K-Means).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 73. Hiện tượng Quá khớp (Overfitting) xảy ra khi nào?",
-                options: [
-                    "A. Mô hình hoạt động kém trên cả tập huấn luyện và tập kiểm thử.",
-                    "B. Mô hình học quá kỹ dữ liệu huấn luyện (bao gồm cả nhiễu) dẫn đến khả năng tổng quát hóa kém trên dữ liệu mới.",
-                    "C. Mô hình tính toán quá nhanh.",
-                    "D. Dữ liệu huấn luyện có quá ít thuộc tính."
-                ],
-                ans: [1],
-                hint: "Mô hình overfit giống như việc 'học vẹt', đạt điểm tối đa trên tập ôn luyện nhưng không có khả năng suy rộng chính xác khi gặp dữ liệu thực tế mới ➔ <span class='font-bold text-amber-600'>Mô hình học quá kỹ dữ liệu huấn luyện (bao gồm cả nhiễu) dẫn đến khả năng tổng quát hóa kém trên dữ liệu mới.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 74. Hàm kích hoạt (Activation Function) trong mạng nơ-ron nhân tạo có vai trò chính là gì?",
-                options: [
-                    "A. Giảm số lượng tham số của mạng.",
-                    "B. Giúp mạng học được các mối quan hệ phi tuyến (non-linear) phức tạp.",
-                    "C. Tăng tốc độ đọc dữ liệu từ ổ cứng.",
-                    "D. Xóa bỏ các nơ-ron không hoạt động."
-                ],
-                ans: [1],
-                hint: "Hàm kích hoạt đưa tính phi tuyến vào mạng nơ-ron, giúp mô hình biểu diễn được các hàm toán học phức tạp thay vì chỉ là các phép biến đổi tuyến tính đơn thuần ➔ <span class='font-bold text-amber-600'>Giúp mạng học được các mối quan hệ phi tuyến (non-linear) phức tạp.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 75. Thuật toán Lan truyền ngược (Backpropagation) được dùng để làm gì trong mạng nơ-ron?",
-                options: [
-                    "A. Khởi tạo trọng số ngẫu nhiên.",
-                    "B. Tính toán gradient của hàm mất mát theo các trọng số để cập nhật chúng ngược từ đầu ra về đầu vào.",
-                    "C. Xóa các lớp ẩn của mạng.",
-                    "D. Chuyển đổi dữ liệu hình ảnh sang văn bản."
-                ],
-                ans: [1],
-                hint: "Backpropagation lan truyền sai số từ lớp đầu ra ngược về các lớp trước, tính đạo hàm riêng (gradient) để thuật toán tối ưu cập nhật trọng số mạng ➔ <span class='font-bold text-amber-600'>Tính toán gradient của hàm mất mát theo các trọng số để cập nhật chúng ngược từ đầu ra về đầu vào.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 76. Thuật toán hồi quy tuyến tính (Linear Regression) được sử dụng cho bài toán nào?",
-                options: [
-                    "A. Phân loại ảnh chó và mèo.",
-                    "B. Dự đoán một giá trị liên tục (Regression).",
-                    "C. Phân nhóm khách hàng.",
-                    "D. Giảm chiều dữ liệu."
-                ],
-                ans: [1],
-                hint: "Hồi quy tuyến tính khớp một đường thẳng/mặt phẳng tối ưu để dự đoán giá trị liên tục (như giá nhà, nhiệt độ) ➔ <span class='font-bold text-amber-600'>Dự đoán một giá trị liên tục (Regression).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 77. Đâu là hàm mất mát (Loss Function) phổ biến cho bài toán phân loại nhị phân (Binary Classification)?",
-                options: [
-                    "A. Mean Squared Error (MSE).",
-                    "B. Binary Cross-Entropy.",
-                    "C. Mean Absolute Error (MAE).",
-                    "D. R-squared."
-                ],
-                ans: [1],
-                hint: "Binary Cross-Entropy đo lường sai số khoảng cách giữa phân phối xác suất dự báo và nhãn thực tế của bài toán phân loại 2 lớp ➔ <span class='font-bold text-amber-600'>Binary Cross-Entropy.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 78. Mạng nơ-ron tích chập (CNN - Convolutional Neural Network) thường hoạt động hiệu quả nhất trên loại dữ liệu nào?",
-                options: [
-                    "A. Dữ liệu bảng (Tabular Data).",
-                    "B. Dữ liệu hình ảnh (Image Data).",
-                    "C. Dữ liệu âm thanh thô.",
-                    "D. Dữ liệu văn bản không cấu trúc."
-                ],
-                ans: [1],
-                hint: "Các phép toán tích chập trong CNN trích xuất các đặc trưng không gian đa lớp của điểm ảnh hiệu quả nhất, đưa nó thành kiến trúc tiêu chuẩn cho Computer Vision ➔ <span class='font-bold text-amber-600'>Dữ liệu hình ảnh (Image Data).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 79. Mạng nơ-ron tái phát (RNN - Recurrent Neural Network) được thiết kế chuyên biệt để xử lý loại dữ liệu nào?",
-                options: [
-                    "A. Dữ liệu dạng bảng tĩnh.",
-                    "B. Dữ liệu dạng chuỗi/thời gian (Sequential Data như văn bản, âm thanh).",
-                    "C. Dữ liệu hình ảnh độ phân giải cao.",
-                    "D. Dữ liệu nhị phân thuần túy."
-                ],
-                ans: [1],
-                hint: "RNN lưu trữ trạng thái ẩn (hidden state) có tính tuần tự, giúp ghi nhớ ngữ cảnh lịch sử phù hợp cho dữ liệu văn bản, thời tiết, chứng khoán ➔ <span class='font-bold text-amber-600'>Dữ liệu dạng chuỗi/thời gian (Sequential Data như văn bản, âm thanh).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 80. Kiến trúc mạng Transformer (được giới thiệu năm 2017) nổi bật nhờ cơ chế nào?",
-                options: [
-                    "A. Cơ chế chú ý (Self-Attention mechanism).",
-                    "B. Cơ chế tích chập nhiều lớp.",
-                    "C. Cơ chế học tăng cường thử và sai.",
-                    "D. Cơ chế suy diễn hệ chuyên gia."
-                ],
-                ans: [0],
-                hint: "Cơ chế Self-Attention cho phép Transformer tính toán song song mức độ liên quan ngữ nghĩa giữa toàn bộ các từ trong câu cùng lúc ➔ <span class='font-bold text-amber-600'>Cơ chế chú ý (Self-Attention mechanism).</span>"
-            },
-
-            // CHƯƠNG 7: XỬ LÝ NGÔN NGỮ TỰ NHIÊN & THỊ GIÁC MÁY TÍNH
-            {
-                type: 'single',
-                desc: "Câu 81. Trong xử lý ngôn ngữ tự nhiên (NLP), kỹ thuật Tokenization là gì?",
-                options: [
-                    "A. Mã hóa bảo mật thông tin tài khoản.",
-                    "B. Chia nhỏ một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).",
-                    "C. Dịch tự động từ ngôn ngữ này sang ngôn ngữ khác.",
-                    "D. Sửa lỗi chính tả trong văn bản."
-                ],
-                ans: [1],
-                hint: "Tokenization phân rã chuỗi ký tự dài thành các mảnh từ vựng cấu trúc (tokens) phục vụ cho các bước xử lý sau ➔ <span class='font-bold text-amber-600'>Chia nhỏ một đoạn văn bản thành các đơn vị từ hoặc cụm từ nhỏ hơn (tokens).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 82. Mục đích của kỹ thuật Stemming và Lemmatization trong NLP là gì?",
-                options: [
-                    "A. Tìm các từ đồng nghĩa.",
-                    "B. Đưa các từ biến thể về dạng gốc hoặc dạng từ điển của chúng.",
-                    "C. Loại bỏ các ký tự đặc biệt.",
-                    "D. Tách đoạn văn thành các câu riêng biệt."
-                ],
-                ans: [1],
-                hint: "Các kỹ thuật này chuẩn hóa từ ngữ, giảm thiểu sự phức tạp ngữ pháp bằng cách thu gọn các biến thể từ về gốc từ hoặc từ điển ➔ <span class='font-bold text-amber-600'>Đưa các từ biến thể về dạng gốc hoặc dạng từ điển của chúng.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 83. TF-IDF trong xử lý văn bản dùng để làm gì?",
-                options: [
-                    "A. Tính độ tương đồng giữa hai hình ảnh.",
-                    "B. Đánh giá mức độ quan trọng của một từ trong một tài liệu hoặc toàn bộ tập văn bản.",
-                    "C. Nén file văn bản.",
-                    "D. Phân tích cú pháp câu."
-                ],
-                ans: [1],
-                hint: "TF-IDF cân bằng tần suất xuất hiện của từ trong văn bản cụ thể và tần suất xuất hiện của nó trong toàn bộ thư viện tài liệu để gán trọng số ý nghĩa ➔ <span class='font-bold text-amber-600'>Đánh giá mức độ quan trọng của một từ trong một tài liệu hoặc toàn bộ tập văn bản.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 84. Word Embedding (như Word2Vec) thực hiện chuyển đổi gì?",
-                options: [
-                    "A. Chuyển đổi file pdf sang file docx.",
-                    "B. Biểu diễn các từ thành các vector số thực nhiều chiều sao cho các từ có ngữ nghĩa gần nhau sẽ có vector nằm gần nhau.",
-                    "C. Dịch từ tiếng Anh sang tiếng Việt.",
-                    "D. Chuyển văn bản thành giọng nói."
-                ],
-                ans: [1],
-                hint: "Nhờ Word Embedding, máy tính có thể thực hiện các phép tính khoảng cách không gian (Cosine Similarity) để hiểu quan hệ ngữ nghĩa giữa các từ dạng số ➔ <span class='font-bold text-amber-600'>Biểu diễn các từ thành các vector số thực nhiều chiều sao cho các từ có ngữ nghĩa gần nhau sẽ có vector nằm gần nhau.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 85. Trong thị giác máy tính, tác vụ Object Detection (Phát hiện đối tượng) giải quyết vấn đề gì?",
-                options: [
-                    "A. Chỉ phân loại xem trong ảnh có đối tượng nào hay không.",
-                    "B. Định vị vị trí đối tượng bằng khung bao (Bounding Box) và đồng thời phân loại đối tượng đó.",
-                    "C. Vẽ lại bức ảnh bằng nét chì.",
-                    "D. Thay đổi độ sáng của ảnh."
-                ],
-                ans: [1],
-                hint: "Object Detection không chỉ nhận diện vật thể là gì (classification) mà còn phải tìm ra chính xác tọa độ vị trí của nó (localization) ➔ <span class='font-bold text-amber-600'>Định vị vị trí đối tượng bằng khung bao (Bounding Box) và đồng thời phân loại đối tượng đó.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 86. Tác vụ Image Segmentation (Phân đoạn hình ảnh) ở mức pixel là gì?",
-                options: [
-                    "A. Cắt ảnh thành 4 phần bằng nhau.",
-                    "B. Phân loại từng pixel trong ảnh thuộc về đối tượng hay lớp cụ thể nào.",
-                    "C. Giảm độ phân giải của ảnh.",
-                    "D. Chuyển ảnh màu sang ảnh đen trắng."
-                ],
-                ans: [1],
-                hint: "Phân đoạn ảnh tô màu nhận dạng từng pixel cụ thể để tìm ra đường biên đối tượng chính xác tuyệt đối ở mức chi tiết ➔ <span class='font-bold text-amber-600'>Phân loại từng pixel trong ảnh thuộc về đối tượng hay lớp cụ thể nào.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 87. Bộ lọc (Filter/Kernel) trong phép toán tích chập hình ảnh có nhiệm vụ gì?",
-                options: [
-                    "A. Xóa ảnh khỏi bộ nhớ.",
-                    "B. Trích xuất các đặc trưng biên (edges), góc, hoặc họa tiết từ hình ảnh gốc.",
-                    "C. Phóng to kích thước hình ảnh lên nhiều lần.",
-                    "D. Lưu trữ thẻ metadata của ảnh."
-                ],
-                ans: [1],
-                hint: "Bộ lọc toán học quét qua ma trận điểm ảnh để nhấn mạnh các đặc trưng hình học như biên ngang, biên dọc, góc lượn ➔ <span class='font-bold text-amber-600'>Trích xuất các đặc trưng biên (edges), góc, hoặc họa tiết từ hình ảnh gốc.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 88. Thuật toán YOLO (You Only Look Once) nổi tiếng trong thị giác máy tính nhờ đặc điểm nào?",
-                options: [
-                    "A. Cho kết quả chính xác 100% trong mọi điều kiện.",
-                    "B. Có tốc độ phát hiện đối tượng cực nhanh trong thời gian thực (Real-time).",
-                    "C. Không cần huấn luyện trên dữ liệu ảnh.",
-                    "D. Chỉ chạy được trên CPU điện thoại."
-                ],
-                ans: [1],
-                hint: "YOLO đưa toàn bộ ảnh vào xử lý qua mạng nơ-ron một lần duy nhất, loại bỏ việc duyệt khung bao chậm chạp nên tối ưu tốc độ thời gian thực ➔ <span class='font-bold text-amber-600'>Có tốc độ phát hiện đối tượng cực nhanh trong thời gian thực (Real-time).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 89. Thư viện mã nguồn mở phổ biến nhất cho các tác vụ Thị giác máy tính truyền thống và tiền xử lý ảnh là gì?",
-                options: ["A. NLTK", "B. OpenCV", "C. Pandas", "D. Requests"],
-                ans: [1],
-                hint: "OpenCV (Open Source Computer Vision Library) là tiêu chuẩn vàng cung cấp hàng ngàn thuật toán xử lý ảnh số ➔ <span class='font-bold text-amber-600'>OpenCV</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 90. Ứng dụng OCR (Optical Character Recognition) thực hiện công việc gì?",
-                options: [
-                    "A. Chuyển giọng nói thành văn bản chữ viết.",
-                    "B. Nhận dạng và chuyển đổi chữ viết tay hoặc chữ in trong hình ảnh thành văn bản số chỉnh sửa được.",
-                    "C. Tìm kiếm hình ảnh tương đồng trên Google.",
-                    "D. Bảo mật dữ liệu hình ảnh."
-                ],
-                ans: [1],
-                hint: "OCR trích xuất thông tin văn bản từ hình ảnh chụp hóa đơn, tài liệu scan, biển số xe thành chữ viết lưu trữ máy tính ➔ <span class='font-bold text-amber-600'>Nhận dạng và chuyển đổi chữ viết tay hoặc chữ in trong hình ảnh thành văn bản số chỉnh sửa được.</span>"
+                hint: "Self-Attention của Transformer khắc phục điểm nghẽn tuần tự của RNN/LSTM, cho phép song song hóa cực tốt trên GPU ➔ <span class='font-bold text-amber-600'>Xử lý song song hiệu quả ngữ cảnh của toàn bộ các từ trong câu cùng lúc thay vì duyệt tuần tự.</span>"
             },
 
             // CHƯƠNG 8: HỆ CHUYÊN GIA & ỨNG DỤNG THỰC TẾ
             {
                 type: 'single',
-                desc: "Câu 91. Hệ chuyên gia (Expert System) thuộc cách tiếp cận nào của AI?",
-                options: [
-                    "A. AI kết nối (Connectionist AI / Học máy).",
-                    "B. AI ký hiệu (Symbolic AI / Dựa trên tri thức luật).",
-                    "C. AI tiến hóa (Evolutionary AI).",
-                    "D. AI dựa trên hành vi sinh học."
-                ],
+                desc: "Câu 94. Trong xử lý ngôn ngữ tự nhiên (NLP), kỹ thuật tách một câu thành danh sách các từ/token đơn lẻ được gọi là gì?",
+                options: ["A. Stemming", "B. Tokenization", "C. Embedding", "D. Parsing"],
                 ans: [1],
-                hint: "Hệ chuyên gia sử dụng cách tiếp cận ký hiệu (Symbolic) và suy luận logic tường minh từ con người thay vì học tự động từ dữ liệu số ➔ <span class='font-bold text-amber-600'>AI ký hiệu (Symbolic AI / Dựa trên tri thức luật).</span>"
+                hint: "Tokenization phân rã chuỗi ký tự thô thành các từ/tokens độc lập để xử lý ngôn ngữ ➔ <span class='font-bold text-amber-600'>Tokenization</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 92. Trong hệ chuyên gia, thành phần Inference Engine (Công cụ suy diễn) đóng vai trò gì?",
+                desc: "Câu 95. Word Embedding (như Word2Vec) biểu diễn từ vựng dưới dạng nào?",
                 options: [
-                    "A. Lưu trữ dữ liệu thô từ người dùng.",
-                    "B. Áp dụng các luật logic lên cơ sở tri thức để suy ra thông tin mới hoặc đưa ra quyết định.",
-                    "C. Nhập dữ liệu từ bàn phím.",
-                    "D. Hiển thị giao diện đồ họa cho bác sĩ."
+                    "A. Các chuỗi văn bản dịch sang tiếng Anh.",
+                    "B. Các vector số thực nhiều chiều mà các từ có ý nghĩa tương tự sẽ nằm gần nhau trong không gian vector.",
+                    "C. Các nhãn số nguyên từ 1 đến N.",
+                    "D. Các hình ảnh minh họa từ."
                 ],
                 ans: [1],
-                hint: "Công cụ suy diễn chứa thuật toán điều phối lập luận (như suy diễn tiến hoặc lùi) để đưa ra câu trả lời dựa trên cơ sở tri thức sẵn có ➔ <span class='font-bold text-amber-600'>Áp dụng các luật logic lên cơ sở tri thức để suy ra thông tin mới hoặc đưa ra quyết định.</span>"
+                hint: "Word Embedding ánh xạ ngôn ngữ tự nhiên vào không gian vector số học giúp máy tính hiểu ngữ nghĩa và tính toán độ tương quan ➔ <span class='font-bold text-amber-600'>Các vector số thực nhiều chiều mà các từ có ý nghĩa tương tự sẽ nằm gần nhau trong không gian vector.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 93. Hệ thống khuyến nghị (Recommendation System) lọc cộng tác (Collaborative Filtering) đưa ra gợi ý dựa trên yếu tố nào?",
+                desc: "Câu 96. Tác vụ Object Detection (Phát hiện đối tượng) trong Thị giác máy tính thực hiện việc gì?",
                 options: [
-                    "A. Chỉ dựa trên giá tiền của sản phẩm.",
-                    "B. Dựa trên hành vi và sở thích của các người dùng tương đồng khác.",
-                    "C. Dựa trên mô tả chi tiết bằng văn bản của sản phẩm.",
-                    "D. Lựa chọn ngẫu nhiên các sản phẩm mới."
+                    "A. Chỉ phân loại ảnh có hay không có vật thể.",
+                    "B. Định vị vị trí vật thể bằng khung bao (Bounding Box) đồng thời nhận diện tên vật thể đó.",
+                    "C. Làm mờ phông nền ảnh chụp.",
+                    "D. Thay đổi kích thước ảnh."
                 ],
                 ans: [1],
-                hint: "Lọc cộng tác khai thác mối quan hệ tương quan hành vi (mua, xem, đánh giá) giữa các người dùng có cùng xu hướng để gợi ý chéo sản phẩm cho nhau ➔ <span class='font-bold text-amber-600'>Dựa trên hành vi và sở thích của các người dùng tương đồng khác.</span>"
+                hint: "Phát hiện đối tượng giải quyết đồng thời bài toán định vị (localization) và phân loại (classification) ➔ <span class='font-bold text-amber-600'>Định vị vị trí vật thể bằng khung bao (Bounding Box) đồng thời nhận diện tên vật thể đó.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 94. Mô hình ngôn ngữ lớn (LLM) như ChatGPT hoạt động theo nguyên lý cơ bản nào khi sinh văn bản?",
+                desc: "Câu 97. Trong xe tự hành, cảm biến LiDAR giúp giải quyết nhiệm vụ chính nào?",
                 options: [
-                    "A. Sao chép trực tiếp các bài viết trên Wikipedia.",
-                    "B. Dự đoán từ tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh các từ trước đó.",
-                    "C. Truy vấn trực tiếp cơ sở dữ liệu SQL.",
-                    "D. Do con người gõ trực tiếp từ xa."
+                    "A. Đo lượng tiêu thụ nhiên liệu.",
+                    "B. Quét tia laser phát hiện chướng ngại vật và tái tạo bản đồ 3D môi trường xung quanh xe.",
+                    "C. Nhận diện biển báo giao thông bằng camera thường.",
+                    "D. Dẫn đường qua vệ tinh GPS."
                 ],
                 ans: [1],
-                hint: "LLM hoạt động dựa trên mô hình ngôn ngữ tự hồi quy (autoregressive language modeling), liên tục dự đoán phân phối xác suất của token/từ tiếp theo ➔ <span class='font-bold text-amber-600'>Dự đoán từ tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh các từ trước đó.</span>"
+                hint: "LiDAR đo thời gian phản hồi của tia laser để tính toán khoảng cách vật cản và dựng mô hình đám mây điểm 3D môi trường ➔ <span class='font-bold text-amber-600'>Quét tia laser phát hiện chướng ngại vật và tái tạo bản đồ 3D môi trường xung quanh xe.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 95. Trong xe tự hành, cảm biến LiDAR được sử dụng để làm gì?",
+                desc: "Câu 98. Hệ thống AI AlphaFold của DeepMind giải quyết thành công bài toán khoa học nổi tiếng nào?",
                 options: [
-                    "A. Đo nhiệt độ của động cơ xe.",
-                    "B. Phát tia laser để quét và tạo bản đồ 3D khoảng cách của môi trường xung quanh xe.",
-                    "C. Kết nối Internet tốc độ cao.",
-                    "D. Phát nhạc giải trí trong xe."
+                    "A. Tạo ra trí tuệ nhân tạo tổng quát (AGI).",
+                    "B. Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi Axit Amin.",
+                    "C. Điều khiển robot y tế tự phẫu thuật.",
+                    "D. Phát hiện mã độc trong mạng."
                 ],
                 ans: [1],
-                hint: "LiDAR liên tục phóng các chùm tia laser cực nhanh để dựng hình không gian 3D đám mây điểm (point cloud) giúp đo đạc khoảng cách vật thể chuẩn xác tới từng milimet ➔ <span class='font-bold text-amber-600'>Phát tia laser để quét và tạo bản đồ 3D khoảng cách của môi trường xung quanh xe.</span>"
+                hint: "AlphaFold giải quyết bài toán cuộn gập protein tồn tại nửa thế kỷ, mở ra kỷ nguyên mới về sinh học cấu trúc và thiết kế thuốc ➔ <span class='font-bold text-amber-600'>Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi Axit Amin.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 96. Lợi thế lớn nhất của AI trong phân tích tài chính (như giao dịch thuật toán - Algorithmic Trading) là gì?",
+                desc: "Câu 99. Hiện tượng 'Hallucination' (Ảo tưởng) trong các mô hình ngôn ngữ lớn (LLM) là gì?",
                 options: [
-                    "A. Đảm bảo lợi nhuận 100% không bao giờ lỗ.",
-                    "B. Khả năng phân tích lượng lớn dữ liệu thị trường và thực hiện giao dịch ở tốc độ mili giây vượt qua giới hạn con người.",
-                    "C. Tự động in thêm tiền khi cần.",
-                    "D. Loại bỏ hoàn toàn sự tồn tại của các ngân hàng."
+                    "A. AI ngừng hoạt động đột ngột.",
+                    "B. AI tự tin tạo ra thông tin sai lệch, không có thật nhưng hành văn rất trôi chảy thuyết phục.",
+                    "C. AI chỉ hiểu ngôn ngữ lập trình Python.",
+                    "D. AI tự nhận thức và có cảm xúc."
                 ],
                 ans: [1],
-                hint: "AI có thể theo dõi hàng ngàn mã chứng khoán theo thời gian thực và tự đặt lệnh giao dịch ở tốc độ chớp mắt để khai thác các chênh lệch giá nhỏ nhất ➔ <span class='font-bold text-amber-600'>Khả năng phân tích lượng lớn dữ liệu thị trường và thực hiện giao dịch ở tốc độ mili giây vượt qua giới hạn con người.</span>"
+                hint: "Hallucination mô tả việc LLM sinh các câu từ nghe có vẻ hợp lý nhưng thực chất là sai lệch dữ kiện thực tế ➔ <span class='font-bold text-amber-600'>AI tự tin tạo ra thông tin sai lệch, không có thật nhưng hành văn rất trôi chảy thuyết phục.</span>"
             },
             {
                 type: 'single',
-                desc: "Câu 97. AI tạo sinh (Generative AI) KHÔNG bao gồm mô hình nào sau đây?",
+                desc: "Câu 100. Kỹ thuật Fine-tuning trong huấn luyện LLM là gì?",
                 options: [
-                    "A. GAN (Generative Adversarial Network).",
-                    "B. Diffusion Models (Mô hình khuếch tán).",
-                    "C. K-Nearest Neighbors (KNN).",
-                    "D. Variational Autoencoders (VAE)."
-                ],
-                ans: [2],
-                hint: "KNN là mô hình học máy phân loại cơ bản dựa trên khoảng cách của K điểm lân cận, không có khả năng sinh dữ liệu mới ➔ <span class='font-bold text-amber-600'>K-Nearest Neighbors (KNN).</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 98. Hệ thống AI AlphaFold của DeepMind đã giải quyết thành công bài toán sinh học nổi tiếng nào?",
-                options: [
-                    "A. Tìm ra thuốc đặc trị mọi loại virus.",
-                    "B. Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi axit amin.",
-                    "C. Nhân bản vô tính động vật có vú.",
-                    "D. Tăng tốc độ quang hợp của cây xanh."
+                    "A. Xóa bỏ cấu trúc mạng nơ-ron cũ.",
+                    "B. Huấn luyện thêm một mô hình đã được tiền huấn luyện (pre-trained) trên tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.",
+                    "C. Nén file mô hình để tiết kiệm ổ cứng.",
+                    "D. Tăng độ phân giải ảnh đầu vào."
                 ],
                 ans: [1],
-                hint: "AlphaFold giải quyết bài toán cuộn gập protein có tuổi đời 50 năm của sinh học lập trình, mở ra kỷ nguyên mới về phát triển thuốc và sinh học phân tử ➔ <span class='font-bold text-amber-600'>Dự đoán cấu trúc cuộn gập 3D của Protein từ chuỗi axit amin.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 99. Khi tích hợp chatbot AI vào hệ thống chăm sóc khách hàng của doanh nghiệp, nhược điểm 'Hallucination' (Ảo tưởng) của AI có thể gây ra hậu quả gì?",
-                options: [
-                    "A. Chatbot phản hồi khách hàng quá nhanh.",
-                    "B. Chatbot tự tin đưa ra các thông tin sai sự thật hoặc không có căn cứ pháp lý.",
-                    "C. Hệ thống bị sập nguồn điện đột ngột.",
-                    "D. Chatbot chỉ nói được tiếng Anh."
-                ],
-                ans: [1],
-                hint: "Ảo tưởng (Hallucination) là hiện tượng mô hình ngôn ngữ lớn tự sinh các luận điểm sai thực tế nhưng được hành văn cực kỳ trôi chảy thuyết phục dễ gây hiểu lầm ➔ <span class='font-bold text-amber-600'>Chatbot tự tin đưa ra các thông tin sai sự thật hoặc không có căn cứ pháp lý.</span>"
-            },
-            {
-                type: 'single',
-                desc: "Câu 100. Kỹ thuật Fine-tuning trong huấn luyện LLM nghĩa là gì?",
-                options: [
-                    "A. Xóa toàn bộ trọng số của mô hình để học lại từ đầu.",
-                    "B. Điều chỉnh hoặc huấn luyện thêm mô hình đã được tiền huấn luyện (pre-trained) trên một bộ dữ liệu nhỏ, chuyên biệt cho tác vụ cụ thể.",
-                    "C. Thay đổi card đồ họa GPU của máy chủ.",
-                    "D. Giảm kích thước file lưu trữ mô hình."
-                ],
-                ans: [1],
-                hint: "Fine-tuning là bước huấn luyện bổ sung mô hình lớn sẵn có bằng dữ liệu miền cụ thể để chuyên môn hóa chatbot cho một nghiệp vụ hẹp với giá thành rẻ ➔ <span class='font-bold text-amber-600'>Điều chỉnh hoặc huấn luyện thêm mô hình đã được tiền huấn luyện (pre-trained) trên một bộ dữ liệu nhỏ, chuyên biệt cho tác vụ cụ thể.</span>"
+                hint: "Fine-tuning tối ưu mô hình lớn nền tảng cho các nghiệp vụ hẹp (y tế, pháp luật) hiệu quả và ít tốn kém ➔ <span class='font-bold text-amber-600'>Huấn luyện thêm một mô hình đã được tiền huấn luyện (pre-trained) trên tập dữ liệu nhỏ chuyên biệt cho tác vụ cụ thể.</span>"
             }
         ];
 
@@ -1394,7 +1394,7 @@
                 btnReviewNext: "Câu tiếp theo ➡",
                 restartBtn: "🔄 Làm lại bài thi",
                 startScreenTitle: "Luyện Thi Trắc Nghiệm AI",
-                startScreenSubtitle: "Hệ thống ôn tập lý thuyết Trí tuệ nhân tạo gồm 8 chương: tổng quan, Python & NumPy, đạo đức AI, thuật toán tìm kiếm, logic vị từ, học máy, xử lý ảnh & ngôn ngữ tự nhiên, hệ chuyên gia.",
+                startScreenSubtitle: "Hệ thống ôn tập lý thuyết Trí tuệ nhân tạo gồm 8 chương: tổng quan, Python & NumPy, đạo đức AI, hệ thống thông minh, thuật toán tìm kiếm, logic vị từ, học sâu và ứng dụng thực tế.",
                 startBtn: "Bắt đầu luyện tập 🚀",
                 selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
                 selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
@@ -1772,5 +1772,5 @@
         updateLanguageUI();
     </script>
 </body>
-
+<!-- Trigger rebuild -->
 </html>
