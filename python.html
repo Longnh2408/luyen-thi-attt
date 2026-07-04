@@ -1282,36 +1282,15 @@
         function prepareQuiz() {
             const sourceData = quizDataVi;
             activeQuiz = sourceData.map(q => {
-                const optionsWithIndex = q.options.map((opt, idx) => ({
-                    text: opt.replace(/^[A-F]\.\s*/, ''),
-                    originalIndex: idx
-                }));
-
-                shuffle(optionsWithIndex);
-
-                const newOptions = optionsWithIndex.map((item, idx) => {
-                    const prefix = String.fromCharCode(65 + idx) + ". ";
-                    return prefix + item.text;
-                });
-
-                const newAns = [];
-                optionsWithIndex.forEach((item, idx) => {
-                    if (q.ans.includes(item.originalIndex)) {
-                        newAns.push(idx);
-                    }
-                });
-
                 return {
                     type: q.type,
                     desc: q.desc,
                     code: q.code,
-                    options: newOptions,
-                    ans: newAns,
+                    options: q.options,
+                    ans: q.ans,
                     hint: q.hint
                 };
             });
-
-            shuffle(activeQuiz);
         }
 
         function updateLanguageUI() {
