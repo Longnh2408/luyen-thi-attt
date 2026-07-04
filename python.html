@@ -1699,12 +1699,10 @@
             document.getElementById('scoreText').innerText = trans.score(0);
 
             document.getElementById('reportArea').classList.add('hidden');
-            document.getElementById('quizHeader').classList.remove('hidden');
-            document.getElementById('quizHeader').classList.add('flex');
-            document.getElementById('quizBody').classList.remove('hidden');
-
-            prepareQuiz();
-            loadQuestion();
+            document.getElementById('quizHeader').classList.add('hidden');
+            document.getElementById('quizHeader').classList.remove('flex');
+            document.getElementById('quizBody').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
         }
 
         updateLanguageUI();
