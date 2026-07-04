@@ -54,7 +54,7 @@
             class="bg-indigo-600 py-3 px-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between flex-shrink-0 gap-2 sm:gap-3">
             <div class="text-center sm:text-left">
                 <h1 id="appTitle" class="text-lg sm:text-2xl font-bold">Luyện Thi Trắc Nghiệm Python</h1>
-                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Python Basic, OOP, Advanced Features & Concurrency</p>
+                <p id="appSubtitle" class="text-indigo-200 mt-0.5 text-[11px] sm:text-sm">Cú pháp, Giải thuật, Kiểu dữ liệu & Pandas DataFrame</p>
             </div>
             <div class="text-center self-center sm:self-auto">
                 <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-700/50 hover:bg-indigo-700/80 text-[11px] sm:text-xs font-semibold rounded-full border border-indigo-500/30 transition-all text-indigo-100">
@@ -72,7 +72,7 @@
                     🐍
                 </div>
                 <h2 id="startTitle" class="text-xl sm:text-2xl font-extrabold text-slate-800">Luyện Thi Trắc Nghiệm Python</h2>
-                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập Python từ Cơ bản đến Nâng cao.</p>
+                <p id="startSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">Hệ thống trắc nghiệm ôn tập về Thuật toán, Cú pháp, Giải thuật, Kiểu dữ liệu, Biến và Pandas DataFrame.</p>
             </div>
 
             <button id="btnStartPractice" onclick="startPractice()"
@@ -237,612 +237,617 @@
 
     <script>
         const quizDataVi = [
+            // PHẦN 1. CÚ PHÁP, BIẾN & KIỂU DỮ LIỆU
             {
                 type: 'single',
-                q: "Câu 1. Đâu là kết quả của biểu thức: `3 * 'Abc'`?",
+                q: "Câu 1. Cú pháp unpacking list/tuple: `a, *b, c = [1, 2, 3, 4, 5]`. Giá trị của `b` là gì?",
                 options: [
-                    "A. Error",
-                    "B. AbcAbcAbc",
-                    "C. Abc 3",
-                    "D. ['Abc', 'Abc', 'Abc']"
-                ],
-                ans: [1],
-                hint: "Nhân chuỗi trong Python ➔ <span class='font-bold text-amber-600'>Sao chép chuỗi N lần</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 2. Kiểu dữ liệu nào sau đây là IMMUTABLE (không thể thay đổi sau khi tạo)?",
-                options: [
-                    "A. list",
-                    "B. dict",
-                    "C. set",
-                    "D. tuple"
-                ],
-                ans: [3],
-                hint: "Tuple và String là ➔ <span class='font-bold text-amber-600'>Immutable</span> (List, Dict, Set là Mutable)"
-            },
-            {
-                type: 'single',
-                q: "Câu 3. Phương thức nào dùng để thêm phần tử vào cuối một List?",
-                options: [
-                    "A. add()",
-                    "B. insert()",
-                    "C. append()",
-                    "D. push()"
-                ],
-                ans: [2],
-                hint: "Thêm phần tử vào cuối danh sách ➔ <span class='font-bold text-amber-600'>append()</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 4. Kết quả của `[x**2 for x in range(5) if x % 2 == 0]` là gì?",
-                options: [
-                    "A. [0, 4, 16]",
-                    "B. [0, 1, 4, 9, 16]",
-                    "C. [4, 16]",
-                    "D. [0, 4, 8]"
+                    "A. [2, 3, 4]",
+                    "B. 2, 3, 4",
+                    "C. [3, 4]",
+                    "D. [2, 3, 4, 5]"
                 ],
                 ans: [0],
-                hint: "List comprehension cho x chẵn (0, 2, 4) bình phương ➔ <span class='font-bold text-amber-600'>[0, 4, 16]</span>"
+                hint: "Unpacking với toán tử dấu sao `*` thu gom các phần tử ở giữa thành một ➔ <span class='font-bold text-amber-600'>List</span>"
             },
             {
                 type: 'single',
-                q: "Câu 5. Sự khác biệt chính giữa List và Tuple trong Python là?",
+                q: "Câu 2. Cách đảo ngược một chuỗi/list `s` bằng slicing là gì?",
                 options: [
-                    "A. List chứa được nhiều kiểu dữ liệu khác nhau, Tuple thì không.",
-                    "B. List là Mutable (có thể sửa đổi), Tuple là Immutable (không thể sửa đổi).",
-                    "C. Tuple có tốc độ truy xuất chậm hơn List.",
-                    "D. List sử dụng ngoặc đơn `()`, Tuple sử dụng ngoặc vuông `[]`."
+                    "A. s[::]",
+                    "B. s[::-1]",
+                    "C. s[-1::]",
+                    "D. s[1::-1]"
                 ],
                 ans: [1],
-                hint: "Khác biệt cốt lõi ➔ <span class='font-bold text-amber-600'>List: Mutable | Tuple: Immutable</span>"
+                hint: "Bước nhảy (step) âm đảo ngược ➔ <span class='font-bold text-amber-600'>s[::-1]</span>"
             },
             {
                 type: 'single',
-                q: "Câu 6. Cách nào để xóa tất cả phần tử trong một Dictionary?",
+                q: "Câu 3. Cho `x = [1, 2]`. Biểu thức `x.extend([3, 4])` và `x.append([5, 6])` làm thay đổi `x` thành gì?",
                 options: [
-                    "A. dict.remove()",
-                    "B. dict.delete()",
-                    "C. dict.clear()",
-                    "D. dict.pop()"
+                    "A. [1, 2, 3, 4, [5, 6]]",
+                    "B. [1, 2, [3, 4], [5, 6]]",
+                    "C. [1, 2, 3, 4, 5, 6]",
+                    "D. [1, 2, [3, 4, 5, 6]]"
+                ],
+                ans: [0],
+                hint: "`extend` giải phóng phần tử | `append` thêm nguyên cụm ➔ <span class='font-bold text-amber-600'>extend rã list, append giữ list</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 4. Cho `d = {'a': 1, 'b': 2}`. Câu lệnh `d.get('c', 3)` trả về gì?",
+                options: [
+                    "A. KeyError",
+                    "B. None",
+                    "C. 3",
+                    "D. 0"
                 ],
                 ans: [2],
-                hint: "Xóa sạch dictionary ➔ <span class='font-bold text-amber-600'>clear()</span>"
+                hint: "Hàm `.get()` trả về giá trị mặc định nếu key không tồn tại ➔ <span class='font-bold text-amber-600'>trả về default value</span>"
             },
             {
                 type: 'single',
-                q: "Câu 7. Biểu thức `set([1, 2, 2, 3, 3, 3])` sẽ trả về kết quả gì?",
+                q: "Câu 5. Sự khác biệt về mutability giữa `list` và `set` là gì?",
                 options: [
-                    "A. {1, 2, 2, 3, 3, 3}",
-                    "B. {1, 2, 3}",
-                    "C. [1, 2, 3]",
-                    "D. (1, 2, 3)"
+                    "A. Cả hai đều immutable.",
+                    "B. List mutable, Set mutable nhưng phần tử bên trong Set bắt buộc phải hashable (immutable).",
+                    "C. List immutable, Set mutable.",
+                    "D. Cả hai đều chứa được các đối tượng unhashable như List."
                 ],
                 ans: [1],
-                hint: "Tập hợp (Set) trong Python ➔ <span class='font-bold text-amber-600'>Chỉ chứa phần tử duy nhất (no duplicates)</span>"
+                hint: "Phần tử của set phải hashable (như int, str, tuple) ➔ <span class='font-bold text-amber-600'>set items must be hashable</span>"
             },
             {
                 type: 'single',
-                q: "Câu 8. Để lấy tất cả các cặp key-value trong một Dictionary, ta dùng phương thức nào?",
+                q: "Câu 6. Kết quả của biểu thức `bool([])` và `bool([0])` là gì?",
                 options: [
-                    "A. keys()",
-                    "B. values()",
-                    "C. items()",
-                    "D. get()"
+                    "A. False và False",
+                    "B. True và True",
+                    "C. False và True",
+                    "D. True và False"
                 ],
                 ans: [2],
-                hint: "Trả về cặp (key, value) ➔ <span class='font-bold text-amber-600'>items()</span>"
+                hint: "Container rỗng là False | Container có phần tử (dù là 0) là True ➔ <span class='font-bold text-amber-600'>empty is False</span>"
             },
             {
                 type: 'single',
-                q: "Câu 9. Trong khai báo hàm, `*args` được dùng để nhận:",
+                q: "Câu 7. Cú pháp tạo Set rỗng là gì?",
                 options: [
-                    "A. Danh sách các đối số truyền theo dạng keyword (dict)",
-                    "B. Số lượng đối số vị trí tùy ý (positional arguments dưới dạng tuple)",
-                    "C. Một đối số mặc định",
-                    "D. Lỗi cú pháp"
+                    "A. s = {}",
+                    "B. s = set()",
+                    "C. s = []",
+                    "D. s = ()"
                 ],
                 ans: [1],
-                hint: "`*args` ➔ <span class='font-bold text-amber-600'>Tuple các đối số vị trí tùy ý</span>"
+                hint: "`{}` mặc định tạo dict rỗng ➔ <span class='font-bold text-amber-600'>set()</span>"
             },
             {
                 type: 'single',
-                q: "Câu 10. Còn `**kwargs` được dùng để nhận:",
+                q: "Câu 8. Đoạn code: `a = [1, 2]; b = a; b.append(3)`. Giá trị của `a` là gì?",
                 options: [
-                    "A. Số lượng đối số vị trí tùy ý dưới dạng tuple",
-                    "B. Danh sách các đối số truyền theo dạng key-value (keyword arguments dưới dạng dict)",
-                    "C. Địa chỉ bộ nhớ của hàm",
-                    "D. Biến toàn cục"
+                    "A. [1, 2]",
+                    "B. [1, 2, 3]",
+                    "C. Error",
+                    "D. [3]"
                 ],
                 ans: [1],
-                hint: "`**kwargs` ➔ <span class='font-bold text-amber-600'>Dict các đối số dạng keyword</span>"
+                hint: "Phép gán list sao chép tham chiếu, trỏ chung vùng nhớ ➔ <span class='font-bold text-amber-600'>cùng trỏ tới 1 vùng nhớ</span>"
             },
             {
                 type: 'single',
-                q: "Câu 11. Đâu là kết quả của phép toán logic: `True and not False or False`?",
+                q: "Câu 9. Biểu thức `3 or 5` trả về giá trị nào?",
+                options: [
+                    "A. True",
+                    "B. 3",
+                    "C. 5",
+                    "D. 8"
+                ],
+                ans: [1],
+                hint: "Toán tử logic `or` trả về giá trị truthy đầu tiên tìm thấy ➔ <span class='font-bold text-amber-600'>short-circuit or</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 10. Biểu thức `3 and 5` trả về giá trị nào?",
+                options: [
+                    "A. True",
+                    "B. 3",
+                    "C. 5",
+                    "D. None"
+                ],
+                ans: [2],
+                hint: "Toán tử logic `and` trả về giá trị cuối cùng nếu tất cả đều truthy ➔ <span class='font-bold text-amber-600'>short-circuit and</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 11. Đoạn code `x = 10; def f(): global x; x = 20; f()` sẽ thay đổi biến `x` toàn cục thành:",
+                options: [
+                    "A. 10",
+                    "B. 20",
+                    "C. Error",
+                    "D. None"
+                ],
+                ans: [1],
+                hint: "Từ khóa `global` cho phép ghi đè biến ngoài hàm ➔ <span class='font-bold text-amber-600'>global</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 12. Phép so sánh `==` so sánh gì, và `is` so sánh gì?",
+                options: [
+                    "A. Cả hai đều so sánh địa chỉ bộ nhớ.",
+                    "B. `==` so sánh giá trị (value), `is` so sánh địa chỉ ô nhớ (identity).",
+                    "C. `==` so sánh địa chỉ ô nhớ, `is` so sánh giá trị.",
+                    "D. Không có sự khác biệt."
+                ],
+                ans: [1],
+                hint: "`==` so sánh giá trị | `is` so sánh ID vùng nhớ ➔ <span class='font-bold text-amber-600'>==: value, is: identity</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 13. Kết quả của `type(lambda x: x)` là gì?",
+                options: [
+                    "A. function",
+                    "B. class",
+                    "C. lambda",
+                    "D. object"
+                ],
+                ans: [0],
+                hint: "Hàm lambda thực chất là đối tượng thuộc class ➔ <span class='font-bold text-amber-600'>function</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 14. Biểu thức `a = {1, 2, 3}; b = {3, 4, 5}`. Phép toán `a & b` trả về:",
+                options: [
+                    "A. {1, 2, 3, 4, 5}",
+                    "B. {3}",
+                    "C. {1, 2, 4, 5}",
+                    "D. Error"
+                ],
+                ans: [1],
+                hint: "Toán tử `&` đại diện cho phép giao (intersection) giữa 2 set ➔ <span class='font-bold text-amber-600'>Giao (Intersection)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 15. Toán tử `^` giữa hai set (ví dụ: `a ^ b`) đại diện cho phép toán nào?",
+                options: [
+                    "A. Phép hợp (Union)",
+                    "B. Phép giao (Intersection)",
+                    "C. Hiệu đối xứng (Symmetric Difference - lấy phần tử chỉ thuộc 1 trong 2 set)",
+                    "D. Phép lũy thừa"
+                ],
+                ans: [2],
+                hint: "Hiệu đối xứng ➔ <span class='font-bold text-amber-600'>Symmetric Difference</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 16. Tham số mặc định dạng mutable (ví dụ: `def append_to(element, target=[]):`) có nguy cơ gì?",
+                options: [
+                    "A. Báo lỗi cú pháp lập tức.",
+                    "B. Danh sách `target` được dùng chung qua các lần gọi hàm khác nhau, tích lũy giá trị cũ.",
+                    "C. Danh sách tự giải phóng sau mỗi lần gọi.",
+                    "D. Làm cho hàm chạy chậm hơn."
+                ],
+                ans: [1],
+                hint: "Tham số mặc định mutable chỉ khởi tạo 1 lần duy nhất khi định nghĩa hàm ➔ <span class='font-bold text-amber-600'>dùng chung qua các lần gọi</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 17. Cách khắc phục tham số mặc định mutable chuẩn PEP8 là gì?",
+                options: [
+                    "A. Sử dụng `target=list()`",
+                    "B. Sử dụng `target=None` và kiểm tra bên trong hàm: `if target is None: target = []`",
+                    "C. Sử dụng `target=tuple()`",
+                    "D. Không thể khắc phục được"
+                ],
+                ans: [1],
+                hint: "Gán mặc định là None rồi khởi tạo bên trong ➔ <span class='font-bold text-amber-600'>target=None</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 18. Biểu thức `1.0 == 1` trả về gì?",
                 options: [
                     "A. True",
                     "B. False",
-                    "C. None",
-                    "D. Error"
+                    "C. Error",
+                    "D. None"
                 ],
                 ans: [0],
-                hint: "Độ ưu tiên: `not` -> `and` -> `or` ➔ <span class='font-bold text-amber-600'>True</span>"
+                hint: "Python tự ép kiểu số khi so sánh giá trị ➔ <span class='font-bold text-amber-600'>True</span>"
             },
             {
                 type: 'single',
-                q: "Câu 12. Hàm `isinstance(obj, class)` dùng để làm gì?",
+                q: "Câu 19. Hàm `zip([1, 2], ['a', 'b', 'c'])` sinh ra các cặp nào khi duyệt qua?",
                 options: [
-                    "A. Tạo một instance mới của class",
-                    "B. Kiểm tra xem một đối tượng có phải là một thực thể của một class cụ thể hay không",
-                    "C. Xóa đối tượng khỏi bộ nhớ",
-                    "D. Sao chép đối tượng"
+                    "A. (1, 'a'), (2, 'b'), (None, 'c')",
+                    "B. (1, 'a'), (2, 'b')",
+                    "C. (1, 'a'), (2, 'b'), (2, 'c')",
+                    "D. Báo lỗi do không bằng kích thước"
                 ],
                 ans: [1],
-                hint: "Kiểm tra lớp của đối tượng ➔ <span class='font-bold text-amber-600'>isinstance()</span>"
+                hint: "`zip` dừng lại khi iterator ngắn nhất kết thúc ➔ <span class='font-bold text-amber-600'>dừng theo đối tượng ngắn nhất</span>"
             },
             {
                 type: 'single',
-                q: "Câu 13. Hàm nào dùng để lấy độ dài của một chuỗi, list hoặc tuple?",
+                q: "Câu 20. Kiểu dữ liệu số nào trong Python có độ chính xác vô hạn (chỉ giới hạn bởi bộ nhớ RAM)?",
                 options: [
-                    "A. length()",
-                    "B. size()",
-                    "C. len()",
-                    "D. count()"
+                    "A. float",
+                    "B. int",
+                    "C. complex",
+                    "D. decimal"
+                ],
+                ans: [1],
+                hint: "Kiểu số nguyên trong Python 3 có kích thước động ➔ <span class='font-bold text-amber-600'>int</span>"
+            },
+
+            // PHẦN 2. THUẬT TOÁN & GIẢI THUẬT
+            {
+                type: 'single',
+                q: "Câu 21. Độ phức tạp thời gian (Time Complexity) trung bình của việc tìm kiếm một phần tử trong Dictionary là bao nhiêu?",
+                options: [
+                    "A. O(N)",
+                    "B. O(log N)",
+                    "C. O(1)",
+                    "D. O(N log N)"
                 ],
                 ans: [2],
-                hint: "Trả về độ dài đối tượng ➔ <span class='font-bold text-amber-600'>len()</span>"
+                hint: "Dictionary được cài đặt bằng Bảng băm (Hash table) ➔ <span class='font-bold text-amber-600'>O(1)</span>"
             },
             {
                 type: 'single',
-                q: "Câu 14. Toán tử `is` trong Python dùng để kiểm tra:",
+                q: "Câu 22. Độ phức tạp thời gian khi chèn/xóa phần tử ở đầu một List (ví dụ: `list.insert(0, val)`) là:",
                 options: [
-                    "A. Sự bằng nhau về giá trị (value equality)",
-                    "B. Hai biến có cùng trỏ tới một địa chỉ bộ nhớ hay không (identity equality)",
-                    "C. Sự tồn tại của phần tử trong tập hợp",
-                    "D. Kiểu dữ liệu của biến"
+                    "A. O(1)",
+                    "B. O(N)",
+                    "C. O(log N)",
+                    "D. O(N^2)"
                 ],
                 ans: [1],
-                hint: "`is` so sánh địa chỉ bộ nhớ (id), còn `==` so sánh giá trị ➔ <span class='font-bold text-amber-600'>Địa chỉ bộ nhớ</span>"
+                hint: "Phải dịch chuyển tất cả các phần tử phía sau sang phải ➔ <span class='font-bold text-amber-600'>O(N)</span>"
             },
             {
                 type: 'single',
-                q: "Câu 15. Câu lệnh `pass` trong Python có chức năng gì?",
+                q: "Câu 23. Để triển khai cấu trúc dữ liệu Hàng đợi (Queue - FIFO) hiệu quả với thao tác chèn/xóa ở 2 đầu đều đạt `O(1)`, ta nên dùng đối tượng nào trong Python?",
                 options: [
-                    "A. Bỏ qua và kết thúc vòng lặp ngay lập tức",
-                    "B. Là một lệnh rỗng (placeholder) dùng để giữ cú pháp hợp lệ mà không thực hiện hành động nào",
-                    "C. Trả về giá trị của hàm",
-                    "D. Nhảy đến khối lệnh tiếp theo"
-                ],
-                ans: [1],
-                hint: "Lệnh rỗng giữ chỗ ➔ <span class='font-bold text-amber-600'>pass</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 16. Để định nghĩa phương thức khởi tạo của một class trong Python, ta dùng phương thức dunder nào?",
-                options: [
-                    "A. __new__",
-                    "B. __init__",
-                    "C. __construct__",
-                    "D. __start__"
-                ],
-                ans: [1],
-                hint: "Constructor khởi tạo thuộc tính thực thể ➔ <span class='font-bold text-amber-600'>__init__</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 17. Tham số `self` trong phương thức của Class đại diện cho:",
-                options: [
-                    "A. Bản thân Class đó",
-                    "B. Đối tượng thực thể hiện tại của Class đó (instance)",
-                    "C. Hàm cha của phương thức đó",
-                    "D. Biến toàn cục của module"
-                ],
-                ans: [1],
-                hint: "Đại diện cho instance hiện tại ➔ <span class='font-bold text-amber-600'>self</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 18. Sự khác biệt giữa `__str__` và `__repr__` là gì?",
-                options: [
-                    "A. __str__ hướng tới lập trình viên (debugging), __repr__ hướng tới người dùng cuối.",
-                    "B. __str__ hướng tới người dùng cuối (dễ đọc), __repr__ hướng tới lập trình viên (rõ ràng, đại diện chính xác để debug).",
-                    "C. Cả hai hoàn toàn giống nhau.",
-                    "D. __repr__ dùng để chuyển đối tượng thành số."
-                ],
-                ans: [1],
-                hint: "__str__ readable (người dùng) | __repr__ unambiguous (developer/debug) ➔ <span class='font-bold text-amber-600'>str: user, repr: developer</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 19. Từ khóa `yield` trong Python được dùng để tạo ra:",
-                options: [
-                    "A. Một hàm đệ quy",
-                    "B. Một Class trừu tượng",
-                    "C. Một Generator (cho phép sinh dữ liệu tuần tự từng phần tử để tiết kiệm bộ nhớ)",
-                    "D. Một Decorator"
+                    "A. list",
+                    "B. queue.Queue",
+                    "C. collections.deque",
+                    "D. array"
                 ],
                 ans: [2],
-                hint: "Sinh chuỗi tuần tự tiết kiệm RAM ➔ <span class='font-bold text-amber-600'>Generator / yield</span>"
+                hint: "Double-ended queue tối ưu thêm/xóa 2 đầu ➔ <span class='font-bold text-amber-600'>collections.deque</span>"
             },
             {
                 type: 'single',
-                q: "Câu 20. Decorator trong Python là gì?",
+                q: "Câu 24. Thuật toán sắp xếp mặc định của hàm `sorted()` và `list.sort()` trong Python tên là gì?",
                 options: [
-                    "A. Một mẫu thiết kế để trang trí giao diện",
-                    "B. Một hàm nhận một hàm khác làm tham số và thay đổi hành vi của nó mà không cần sửa đổi trực tiếp code của hàm đó",
-                    "C. Lớp kế thừa từ mọi lớp khác",
-                    "D. Cơ chế mã hóa code"
-                ],
-                ans: [1],
-                hint: "Hàm wrapper thay đổi hành vi hàm khác ➔ <span class='font-bold text-amber-600'>Decorator</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 21. Annotation `@property` trong Python dùng để:",
-                options: [
-                    "A. Biến một phương thức của Class thành một Getter (truy cập như một thuộc tính thường không cần dấu ngoặc `()`)",
-                    "B. Định nghĩa một thuộc tính chỉ đọc của lớp",
-                    "C. Định nghĩa một phương thức tĩnh",
-                    "D. Tăng tốc độ thực thi hàm"
-                ],
-                ans: [0],
-                hint: "Biến phương thức thành thuộc tính truy cập trực tiếp ➔ <span class='font-bold text-amber-600'>@property</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 22. Sự khác biệt giữa `@staticmethod` và `@classmethod` là gì?",
-                options: [
-                    "A. @staticmethod nhận lớp làm tham số đầu tiên, @classmethod thì không.",
-                    "B. @staticmethod không nhận tham số ngầm định nào, @classmethod nhận bản thân lớp (`cls`) làm tham số đầu tiên.",
-                    "C. Cả hai đều bắt buộc nhận tham số `self`.",
-                    "D. Không có sự khác biệt nào."
-                ],
-                ans: [1],
-                hint: "staticmethod độc lập | classmethod nhận `cls` làm tham số đầu ➔ <span class='font-bold text-amber-600'>cls parameter</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 23. Câu lệnh `with` trong Python (ví dụ: `with open('file.txt') as f:`) được dùng để triển khai cơ chế nào?",
-                options: [
-                    "A. Vòng lặp tối ưu",
-                    "B. Quản lý bối cảnh (Context Manager, tự động đóng file/giải phóng tài nguyên khi kết thúc khối lệnh)",
-                    "C. Bắt lỗi ngoại lệ",
-                    "D. Đa luồng"
-                ],
-                ans: [1],
-                hint: "Tự động đóng tệp/giải phóng tài nguyên ➔ <span class='font-bold text-amber-600'>Context Manager / with</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 24. Để bắt lỗi ngoại lệ cụ thể trong Python, ta dùng cú pháp:",
-                options: [
-                    "A. try ... catch",
-                    "B. try ... except",
-                    "C. try ... error",
-                    "D. try ... rescue"
-                ],
-                ans: [1],
-                hint: "Bắt lỗi trong Python ➔ <span class='font-bold text-amber-600'>try - except</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 25. Khối lệnh `finally` trong cấu trúc `try-except-finally` sẽ chạy khi nào?",
-                options: [
-                    "A. Chỉ chạy khi có lỗi xảy ra",
-                    "B. Chỉ chạy khi không có lỗi xảy ra",
-                    "C. Luôn luôn chạy, bất kể có lỗi xảy ra hay không (thường dùng dọn dẹp tài nguyên)",
-                    "D. Không bao giờ chạy nếu có lệnh return ở try"
+                    "A. Quicksort",
+                    "B. Mergesort",
+                    "C. Timsort",
+                    "D. Bubblesort"
                 ],
                 ans: [2],
-                hint: "Luôn luôn được thực thi ➔ <span class='font-bold text-amber-600'>finally</span>"
+                hint: "Giải thuật lai giữa Merge Sort và Insertion Sort ➔ <span class='font-bold text-amber-600'>Timsort</span>"
             },
             {
                 type: 'single',
-                q: "Câu 26. Để kích hoạt/ném ra một Exception trong Python, ta dùng từ khóa nào?",
+                q: "Câu 25. Độ phức tạp thời gian trường hợp xấu nhất (Worst-case) của Timsort là:",
                 options: [
-                    "A. throw",
-                    "B. raise",
-                    "C. trigger",
-                    "D. fire"
+                    "A. O(N)",
+                    "B. O(N log N)",
+                    "C. O(N^2)",
+                    "D. O(log N)"
                 ],
                 ans: [1],
-                hint: "Ném lỗi chủ động ➔ <span class='font-bold text-amber-600'>raise</span>"
+                hint: "Kế thừa tính chất tối ưu của Merge Sort ➔ <span class='font-bold text-amber-600'>O(N log N)</span>"
             },
             {
                 type: 'single',
-                q: "Câu 27. Phương thức dunder nào dùng để làm cho một thực thể của Class có thể gọi được như một hàm (ví dụ: `obj()`)?",
+                q: "Câu 26. Thuật toán Tìm kiếm Nhị phân (Binary Search) yêu cầu mảng đầu vào phải có điều kiện gì?",
                 options: [
-                    "A. __init__",
-                    "B. __call__",
-                    "C. __invoke__",
-                    "D. __run__"
+                    "A. Phải chứa toàn số nguyên.",
+                    "B. Phải được sắp xếp theo thứ tự (tăng/giảm dần).",
+                    "C. Phải có độ dài là lũy thừa của 2.",
+                    "D. Không cần điều kiện gì."
                 ],
                 ans: [1],
-                hint: "Làm đối tượng callable ➔ <span class='font-bold text-amber-600'>__call__</span>"
+                hint: "Chia đôi không gian tìm kiếm dựa trên tính tuần tự ➔ <span class='font-bold text-amber-600'>Đã được sắp xếp</span>"
             },
             {
                 type: 'single',
-                q: "Câu 28. Lớp nào là lớp cơ sở tối cao của tất cả các lớp trong Python 3?",
+                q: "Câu 27. Để tìm kiếm nhị phân trên một danh sách đã sắp xếp trong Python, ta có thể dùng module tích hợp nào?",
                 options: [
-                    "A. Base",
-                    "B. Main",
-                    "C. object",
-                    "D. Root"
-                ],
-                ans: [2],
-                hint: "Lớp cha tối cao của mọi kiểu dữ liệu ➔ <span class='font-bold text-amber-600'>object</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 29. Đa kế thừa trong Python giải quyết tranh chấp phương thức trùng tên bằng thuật toán nào?",
-                options: [
-                    "A. DFS (Depth First Search)",
-                    "B. MRO (Method Resolution Order, sử dụng thuật toán C3 Serialization)",
-                    "C. BFS (Breadth First Search)",
-                    "D. LIFO (Last In First Out)"
-                ],
-                ans: [1],
-                hint: "Thứ tự phân giải phương thức đa kế thừa ➔ <span class='font-bold text-amber-600'>MRO / C3 Serialization</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 30. Hàm ẩn danh (Anonymous function) trong Python được định nghĩa bằng từ khóa:",
-                options: [
-                    "A. def",
-                    "B. func",
-                    "C. lambda",
-                    "D. anonymous"
-                ],
-                ans: [2],
-                hint: "Hàm ẩn danh ngắn gọn trên 1 dòng ➔ <span class='font-bold text-amber-600'>lambda</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 31. Đâu là kết quả của biểu thức: `list(map(lambda x: x * 2, [1, 2, 3]))`?",
-                options: [
-                    "A. [2, 4, 6]",
-                    "B. [1, 2, 3]",
-                    "C. [1, 2, 3, 1, 2, 3]",
-                    "D. [2, 2, 2]"
-                ],
-                ans: [0],
-                hint: "Ánh xạ nhân đôi phần tử list ➔ <span class='font-bold text-amber-600'>[2, 4, 6]</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 32. Sự khác biệt giữa `shallow copy` và `deep copy` trong module `copy` là gì?",
-                options: [
-                    "A. Shallow copy tạo bản sao của các đối tượng lồng nhau, deep copy thì không.",
-                    "B. Shallow copy chỉ sao chép tham chiếu của các đối tượng con; deep copy sao chép đệ quy toàn bộ nội dung đối tượng gốc độc lập.",
-                    "C. Shallow copy chạy chậm hơn deep copy.",
-                    "D. Deep copy chỉ dùng được cho kiểu số."
-                ],
-                ans: [1],
-                hint: "shallow: copy tham chiếu con | deep: nhân bản đệ quy độc lập ➔ <span class='font-bold text-amber-600'>copy.deepcopy</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 33. Để nối các chuỗi trong một list thành một chuỗi duy nhất với ký tự phân tách, ta dùng:",
-                options: [
-                    "A. Phương thức `join()` của chuỗi phân tách (ví dụ: `'-'.join(['A', 'B'])`)",
-                    "B. Phương thức `concat()` của list",
-                    "C. Toán tử cộng trực tiếp `+`",
-                    "D. Hàm `join()` toàn cục"
-                ],
-                ans: [0],
-                hint: "Nối chuỗi trong danh sách ➔ <span class='font-bold text-amber-600'>'separator'.join(list)</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 34. Namespace trong Python hoạt động theo thứ tự ưu tiên tìm kiếm biến nào?",
-                options: [
-                    "A. LEGB (Local ➔ Enclosing ➔ Global ➔ Built-in)",
-                    "B. GEBL (Global ➔ Enclosing ➔ Built-in ➔ Local)",
-                    "C. LIFO (Last In First Out)",
-                    "D. FIFO (First In First Out)"
-                ],
-                ans: [0],
-                hint: "Quy tắc phạm vi biến trong Python ➔ <span class='font-bold text-amber-600'>LEGB</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 35. Để truy cập và sửa đổi biến toàn cục bên trong một hàm, ta dùng từ khóa nào?",
-                options: [
-                    "A. nonlocal",
-                    "B. global",
-                    "C. outer",
-                    "D. public"
-                ],
-                ans: [1],
-                hint: "Khai báo biến thuộc phạm vi toàn cục ➔ <span class='font-bold text-amber-600'>global</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 36. GIL (Global Interpreter Lock) trong CPython có tác dụng gì?",
-                options: [
-                    "A. Giúp mã nguồn chạy nhanh hơn gấp nhiều lần",
-                    "B. Khóa trình thông dịch để chỉ có duy nhất 1 luồng (thread) thực thi mã máy Python tại một thời điểm (đảm bảo thread-safe cho bộ nhớ)",
-                    "C. Tự động mã hóa tệp tin Python thành file exe",
-                    "D. Ngăn không cho RAM bị tràn"
-                ],
-                ans: [1],
-                hint: "Khóa độc quyền bảo vệ bộ nhớ, giới hạn đa luồng CPU ➔ <span class='font-bold text-amber-600'>GIL</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 37. Vì có GIL, cách tốt nhất để chạy các tác vụ tính toán nặng ngốn nhiều CPU (CPU-bound) song song thực sự là:",
-                options: [
-                    "A. Sử dụng module `threading`",
-                    "B. Sử dụng module `multiprocessing` (chạy trên nhiều process riêng biệt với các interpreter riêng)",
-                    "C. Sử dụng thư viện `asyncio`",
-                    "D. Sử dụng đệ quy"
-                ],
-                ans: [1],
-                hint: "CPU-bound ➔ <span class='font-bold text-amber-600'>multiprocessing</span> (để bypass GIL)"
-            },
-            {
-                type: 'single',
-                q: "Câu 38. Thư viện `asyncio` của Python dựa trên cơ chế nào dưới đây để quản lý bất đồng bộ?",
-                options: [
-                    "A. Multi-threading",
-                    "B. Multi-processing",
-                    "C. Single-threaded Event Loop (vòng lặp sự kiện đơn luồng sử dụng coroutines)",
-                    "D. Tạo tiến trình hệ thống mới"
-                ],
-                ans: [2],
-                hint: "Quản lý tác vụ bất đồng bộ đơn luồng ➔ <span class='font-bold text-amber-600'>Event Loop</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 39. Từ khóa nào dùng để định nghĩa một coroutine trong Python?",
-                options: [
-                    "A. async def",
-                    "B. await def",
-                    "C. defer",
-                    "D. promise"
-                ],
-                ans: [0],
-                hint: "Định nghĩa hàm bất đồng bộ ➔ <span class='font-bold text-amber-600'>async def</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 40. Từ khóa `await` chỉ được phép xuất hiện ở đâu?",
-                options: [
-                    "A. Ở bất kỳ vị trí nào trong mã nguồn Python",
-                    "B. Chỉ bên trong các hàm được định nghĩa với `async def`",
-                    "C. Chỉ trong hàm khởi tạo `__init__`",
-                    "D. Chỉ bên ngoài các class"
-                ],
-                ans: [1],
-                hint: "Chỉ sử dụng trong coroutine ➔ <span class='font-bold text-amber-600'>Hàm async def</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 41. Metaclass trong Python là gì?",
-                options: [
-                    "A. Một class chứa các thuật toán tối ưu hóa",
-                    "B. Một lớp của các lớp (class tạo ra class, chịu trách nhiệm định nghĩa cách các class khác được sinh ra)",
-                    "C. Lớp cha của kiểu dữ liệu `object`",
-                    "D. Công cụ kiểm thử mã nguồn"
-                ],
-                ans: [1],
-                hint: "Bản thiết kế của Class (Class factory) ➔ <span class='font-bold text-amber-600'>Metaclass</span> (mặc định là `type`)"
-            },
-            {
-                type: 'single',
-                q: "Câu 42. Sự khác biệt cốt lõi giữa `__new__` và `__init__` là gì?",
-                options: [
-                    "A. __init__ tạo ra thực thể đối tượng, __new__ khởi tạo giá trị cho thực thể đó.",
-                    "B. __new__ chịu trách nhiệm tạo ra thực thể (instance) mới và trả về nó; __init__ chịu trách nhiệm khởi tạo các giá trị của thực thể sau khi nó đã được tạo.",
-                    "C. Cả hai chạy song song độc lập.",
-                    "D. Python chỉ chạy 1 trong 2 phương thức tùy thuộc vào tham số truyền vào."
-                ],
-                ans: [1],
-                hint: "`__new__` là static method tạo instance | `__init__` là instance method gán thuộc tính ➔ <span class='font-bold text-amber-600'>new: tạo, init: khởi tạo</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 43. Làm thế nào để tạo một class tùy biến kế thừa từ metaclass?",
-                options: [
-                    "A. Kế thừa từ class `type` (ví dụ: `class MyMeta(type):`)",
-                    "B. Kế thừa từ class `object`",
-                    "C. Khai báo thuộc tính `@metaclass`",
-                    "D. Khai báo hàm `__meta__`"
-                ],
-                ans: [0],
-                hint: "Định nghĩa metaclass tùy chỉnh ➔ <span class='font-bold text-amber-600'>Kế thừa type</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 44. Để giới hạn thuộc tính của một instance và tối ưu hóa bộ nhớ (không tạo thuộc tính động thông qua `__dict__`), ta dùng biến đặc biệt nào?",
-                options: [
-                    "A. __slots__",
-                    "B. __props__",
-                    "C. __limits__",
-                    "D. __dict__"
-                ],
-                ans: [0],
-                hint: "Tiết kiệm RAM bằng cách cố định thuộc tính instance ➔ <span class='font-bold text-amber-600'>__slots__</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 45. Cơ chế quản lý bộ nhớ của Python hoạt động chính bằng cách nào?",
-                options: [
-                    "A. Dựa hoàn toàn vào Garbage Collection kiểu Mark-and-Sweep",
-                    "B. Đếm tham chiếu (Reference Counting) kết hợp giải quyết tham chiếu vòng bằng Cycle-detecting Garbage Collector",
-                    "C. Giải phóng thủ công bởi lập trình viên",
-                    "D. Xóa ngẫu nhiên các biến sau thời gian timeout"
-                ],
-                ans: [1],
-                hint: "Cơ chế dọn dẹp RAM cốt lõi ➔ <span class='font-bold text-amber-600'>Reference Counting</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 46. Module nào cung cấp các kiểu dữ liệu nâng cao như `Counter`, `defaultdict`, `namedtuple` và `deque`?",
-                options: [
-                    "A. collections",
-                    "B. itertools",
-                    "C. functools",
+                    "A. bisect",
+                    "B. binary",
+                    "C. search",
                     "D. math"
                 ],
                 ans: [0],
-                hint: "Các cấu trúc dữ liệu tối ưu nâng cao ➔ <span class='font-bold text-amber-600'>collections</span>"
+                hint: "Module hỗ trợ chèn phần tử giữ nguyên thứ tự sắp xếp ➔ <span class='font-bold text-amber-600'>bisect</span>"
             },
             {
                 type: 'single',
-                q: "Câu 47. Hàm `filter(function, iterable)` trả về kết quả gì?",
+                q: "Câu 28. Thuật toán đệ quy tính số Fibonacci: `def fib(n): return fib(n-1) + fib(n-2)` có độ phức tạp thời gian là:",
                 options: [
-                    "A. Một list đã được lọc phần tử",
-                    "B. Một generator/iterator chứa các phần tử của iterable thỏa mãn điều kiện hàm function trả về True",
-                    "C. Một dictionary",
-                    "D. Tổng các phần tử thỏa mãn điều kiện"
-                ],
-                ans: [1],
-                hint: "Bộ lọc dữ liệu dạng lặp ➔ <span class='font-bold text-amber-600'>Iterator/Generator</span>"
-            },
-            {
-                type: 'single',
-                q: "Câu 48. Hàm `reduce()` trong Python 3 được đặt ở module nào?",
-                options: [
-                    "A. builtins",
-                    "B. collections",
-                    "C. functools",
-                    "D. itertools"
+                    "A. O(N)",
+                    "B. O(N^2)",
+                    "C. O(2^N)",
+                    "D. O(log N)"
                 ],
                 ans: [2],
-                hint: "Gom nhóm/tích lũy mảng ➔ <span class='font-bold text-amber-600'>functools.reduce</span>"
+                hint: "Tạo cây gọi hàm nhị phân trùng lặp rất lớn ➔ <span class='font-bold text-amber-600'>O(2^N)</span>"
             },
             {
                 type: 'single',
-                q: "Câu 49. Lệnh `pip` dùng để:",
+                q: "Câu 29. Kỹ thuật tối ưu hóa đệ quy bằng cách lưu lại kết quả của các bài toán con đã giải quyết gọi là gì?",
                 options: [
-                    "A. Biên dịch mã Python sang mã máy C",
-                    "B. Quản lý và cài đặt các thư viện gói bên ngoài (packages) cho Python từ PyPI",
-                    "C. Tạo môi trường ảo",
-                    "D. Định dạng mã nguồn Python"
+                    "A. Recursion",
+                    "B. Memoization (Quy hoạch động)",
+                    "C. Backtracking",
+                    "D. Greedy"
                 ],
                 ans: [1],
-                hint: "Trình quản lý thư viện của Python ➔ <span class='font-bold text-amber-600'>pip</span>"
+                hint: "Cache kết quả hàm đệ quy để tránh tính toán lại ➔ <span class='font-bold text-amber-600'>Memoization</span>"
             },
             {
                 type: 'single',
-                q: "Câu 50. Tại sao nên dùng môi trường ảo (Virtual Environment - `venv`) trong dự án Python?",
+                q: "Câu 30. Trong Python, decorator tích hợp nào dùng để tự động áp dụng Memoization vào hàm đệ quy?",
                 options: [
-                    "A. Để tăng tốc độ thực thi của code",
-                    "B. Để tạo một không gian cô lập cài đặt các thư viện cụ thể của dự án mà không ảnh hưởng tới thư viện chung của hệ thống",
-                    "C. Để mã hóa bảo mật mã nguồn dự án",
-                    "D. Để kết nối cơ sở dữ liệu nhanh hơn"
+                    "A. @functools.cache (hoặc @lru_cache)",
+                    "B. @functools.memoize",
+                    "C. @functools.wrap",
+                    "D. @property"
+                ],
+                ans: [0],
+                hint: "Least Recently Used Cache để lưu kết quả gọi hàm ➔ <span class='font-bold text-amber-600'>@functools.cache</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 31. Kỹ thuật Con trỏ kép (Two Pointers) thường được ứng dụng hiệu quả cho bài toán nào?",
+                options: [
+                    "A. Tìm đường đi ngắn nhất trên đồ thị.",
+                    "B. Tìm cặp phần tử có tổng bằng K trên mảng đã sắp xếp.",
+                    "C. Duyệt cây nhị phân theo chiều sâu.",
+                    "D. Mã hóa dữ liệu."
                 ],
                 ans: [1],
-                hint: "Cô lập thư viện dự án ➔ <span class='font-bold text-amber-600'>venv (Virtual Environment)</span>"
+                hint: "Co hẹp không gian tìm kiếm từ 2 đầu mảng ➔ <span class='font-bold text-amber-600'>Mảng đã sắp xếp / Tìm cặp tổng</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 32. Kỹ thuật Cửa sổ trượt (Sliding Window) thường dùng để xử lý bài toán:",
+                options: [
+                    "A. Tìm kiếm phần tử trên cây.",
+                    "B. Tìm chuỗi con hoặc mảng con liên tiếp thỏa mãn điều kiện tối ưu.",
+                    "C. Sắp xếp danh sách liên kết.",
+                    "D. Tính lũy thừa nhanh."
+                ],
+                ans: [1],
+                hint: "Duy trì một khoảng liên tiếp di động trên mảng ➔ <span class='font-bold text-amber-600'>Mảng con liên tiếp</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 33. Cấu trúc dữ liệu nào hoạt động theo nguyên lý LIFO (Last In First Out)?",
+                options: [
+                    "A. Queue",
+                    "B. Stack",
+                    "C. Set",
+                    "D. Heap"
+                ],
+                ans: [1],
+                hint: "Ngăn xếp (Vào sau ra trước) ➔ <span class='font-bold text-amber-600'>Stack</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 34. Để xây dựng cấu trúc dữ liệu Min-Heap (Hàng đợi ưu tiên) trong Python, ta dùng module nào?",
+                options: [
+                    "A. heap",
+                    "B. priorityqueue",
+                    "C. heapq",
+                    "D. bisect"
+                ],
+                ans: [2],
+                hint: "Cung cấp thuật toán heap trên list thường ➔ <span class='font-bold text-amber-600'>heapq</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 35. Thuật toán sắp xếp Heap Sort có độ phức tạp thời gian trong mọi trường hợp là:",
+                options: [
+                    "A. O(N)",
+                    "B. O(N log N)",
+                    "C. O(N^2)",
+                    "D. O(1)"
+                ],
+                ans: [1],
+                hint: "Đưa N phần tử vào heap và lấy ra ➔ <span class='font-bold text-amber-600'>O(N log N)</span>"
+            },
+
+            // PHẦN 3. PANDAS & DATAFRAMES
+            {
+                type: 'single',
+                q: "Câu 36. Thư viện Pandas thường được import theo quy ước chuẩn nào?",
+                options: [
+                    "A. import pandas as pd",
+                    "B. import pandas as p",
+                    "C. import pandas_df as df",
+                    "D. import pd"
+                ],
+                ans: [0],
+                hint: "Alias quy ước trong khoa học dữ liệu ➔ <span class='font-bold text-amber-600'>import pandas as pd</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 37. Cấu trúc dữ liệu 2 chiều đại diện cho bảng dữ liệu có dòng và cột trong Pandas tên là gì?",
+                options: [
+                    "A. Series",
+                    "B. Panel",
+                    "C. DataFrame",
+                    "D. Matrix"
+                ],
+                ans: [2],
+                hint: "Bảng dữ liệu có nhãn cột và nhãn dòng ➔ <span class='font-bold text-amber-600'>DataFrame</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 38. Cú pháp tạo một DataFrame từ một Dictionary dạng `{'col1': [1, 2], 'col2': [3, 4]}` là gì?",
+                options: [
+                    "A. pd.DataFrame.from(dict)",
+                    "B. pd.DataFrame({'col1': [1, 2], 'col2': [3, 4]})",
+                    "C. pd.create_df(dict)",
+                    "D. pd.DataFrame.values(dict)"
+                ],
+                ans: [1],
+                hint: "Khởi tạo trực tiếp bằng class ➔ <span class='font-bold text-amber-600'>pd.DataFrame(dict)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 39. Sự khác biệt chính giữa `.loc` và `.iloc` trong Pandas DataFrame là gì?",
+                options: [
+                    "A. .loc lọc theo dòng, .iloc lọc theo cột.",
+                    "B. .loc dựa trên nhãn (label-based index), .iloc dựa trên vị trí số nguyên (integer-based position index).",
+                    "C. .loc nhanh hơn .iloc.",
+                    "D. .iloc chỉ lấy được 1 hàng đơn lẻ."
+                ],
+                ans: [1],
+                hint: "`.loc`: Lọc theo Tên/Nhãn | `.iloc`: Lọc theo Chỉ số index số nguyên ➔ <span class='font-bold text-amber-600'>loc: label, iloc: integer index</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 40. Để chọn ra 5 dòng đầu tiên của DataFrame `df`, phương thức tối ưu là gì?",
+                options: [
+                    "A. df.first(5)",
+                    "B. df.head()",
+                    "C. df.show(5)",
+                    "D. df.iloc[5]"
+                ],
+                ans: [1],
+                hint: "Trả về N dòng đầu tiên (mặc định N=5) ➔ <span class='font-bold text-amber-600'>head()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 41. Cú pháp để lấy ra một cột có tên là `'Age'` dưới dạng một Series là gì?",
+                options: [
+                    "A. df.get_column('Age')",
+                    "B. df['Age']",
+                    "C. df.loc['Age']",
+                    "D. df.iloc['Age']"
+                ],
+                ans: [1],
+                hint: "Sử dụng ngoặc vuông truy cập cột như dict key ➔ <span class='font-bold text-amber-600'>df['Age']</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 42. Đoạn code nào dùng để lọc các dòng trong `df` có cột `'Score'` lớn hơn 80?",
+                options: [
+                    "A. df[df['Score'] > 80]",
+                    "B. df.filter('Score > 80')",
+                    "C. df.where(df['Score'] > 80)",
+                    "D. df.select('Score') > 80"
+                ],
+                ans: [0],
+                hint: "Lọc boolean indexing trong Pandas ➔ <span class='font-bold text-amber-600'>df[df['col'] > val]</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 43. Để xem tóm tắt thông tin các cột, kiểu dữ liệu và số lượng giá trị phi-null của DataFrame, ta dùng phương thức nào?",
+                options: [
+                    "A. df.describe()",
+                    "B. df.info()",
+                    "C. df.summary()",
+                    "D. df.dtypes"
+                ],
+                ans: [1],
+                hint: "Hiển thị cấu trúc metadata chi tiết của DataFrame ➔ <span class='font-bold text-amber-600'>info()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 44. Phương thức `df.describe()` trả về thông tin gì?",
+                options: [
+                    "A. Mô tả định dạng các cột.",
+                    "B. Các chỉ số thống kê mô tả cơ bản của các cột số (mean, std, min, max, count, quartiles).",
+                    "C. 5 dòng đầu và 5 dòng cuối của bảng.",
+                    "D. Danh sách tên cột."
+                ],
+                ans: [1],
+                hint: "Thống kê định lượng ➔ <span class='font-bold text-amber-600'>describe()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 45. Để nhóm dữ liệu theo cột `'City'` và tính trung bình cộng cột `'Income'`, câu lệnh đúng là gì?",
+                options: [
+                    "A. df.groupby('City')['Income'].mean()",
+                    "B. df.group('City').mean('Income')",
+                    "C. df.groupby('City').mean()",
+                    "D. pd.mean(df, by='City')"
+                ],
+                ans: [0],
+                hint: "Nhóm (groupby) + Trích xuất cột + Tính trung bình ➔ <span class='font-bold text-amber-600'>df.groupby('col1')['col2'].mean()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 46. Phương thức nào dùng để điền các giá trị thay thế vào những ô bị khuyết (NaN) trong DataFrame?",
+                options: [
+                    "A. df.dropna()",
+                    "B. df.fillna()",
+                    "C. df.replace_na()",
+                    "D. df.clean()"
+                ],
+                ans: [1],
+                hint: "Điền giá trị rỗng ➔ <span class='font-bold text-amber-600'>fillna()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 47. Để xóa bỏ hoàn toàn các dòng chứa ít nhất một giá trị khuyết (NaN) khỏi `df`, ta dùng lệnh gì?",
+                options: [
+                    "A. df.remove_nan()",
+                    "B. df.fillna(None)",
+                    "C. df.dropna()",
+                    "D. df.clear_nan()"
+                ],
+                ans: [2],
+                hint: "Drop missing values ➔ <span class='font-bold text-amber-600'>dropna()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 48. Phép toán nào dùng để gộp hai DataFrame theo hàng dọc (dưới dạng ghép nối chồng dòng lên nhau)?",
+                options: [
+                    "A. pd.merge(df1, df2)",
+                    "B. pd.concat([df1, df2], axis=0)",
+                    "C. df1.join(df2)",
+                    "D. pd.concat([df1, df2], axis=1)"
+                ],
+                ans: [1],
+                hint: "Ghép theo hàng dọc ➔ <span class='font-bold text-amber-600'>pd.concat(..., axis=0)</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 49. Để thực hiện liên kết hai DataFrame dựa trên một hoặc nhiều cột khóa chung (tương tự SQL JOIN), ta dùng hàm nào?",
+                options: [
+                    "A. pd.concat()",
+                    "B. pd.merge()",
+                    "C. df1.append(df2)",
+                    "D. pd.zip()"
+                ],
+                ans: [1],
+                hint: "SQL-like join ➔ <span class='font-bold text-amber-600'>pd.merge()</span>"
+            },
+            {
+                type: 'single',
+                q: "Câu 50. Để xóa một cột có tên `'Salary'` khỏi DataFrame `df` và trả về một DataFrame mới, ta dùng lệnh gì?",
+                options: [
+                    "A. df.drop(columns=['Salary'])",
+                    "B. df.delete('Salary')",
+                    "C. df.remove('Salary')",
+                    "D. df.pop_column('Salary')"
+                ],
+                ans: [0],
+                hint: "Xóa hàng hoặc cột dựa trên tên ➔ <span class='font-bold text-amber-600'>df.drop(columns=[...])</span>"
             }
         ];
 
         const uiTranslations = {
             vi: {
                 title: "Luyện Thi Trắc Nghiệm Python",
-                subtitle: "Python Basic, OOP, Advanced Features & Concurrency",
+                subtitle: "Cú pháp, Giải thuật, Kiểu dữ liệu & Pandas DataFrame",
                 progress: (curr, total) => `Câu ${curr} / ${total}`,
                 score: (score) => `Điểm: ${score}`,
                 confirmBtn: "Xác nhận",
@@ -863,7 +868,7 @@
                 btnReviewNext: "Câu tiếp theo ➡",
                 restartBtn: "🔄 Làm lại bài thi",
                 startScreenTitle: "Luyện Thi Trắc Nghiệm Python",
-                startScreenSubtitle: "Hệ thống trắc nghiệm ôn tập Python từ Cơ bản đến Nâng cao.",
+                startScreenSubtitle: "Hệ thống trắc nghiệm ôn tập về Thuật toán, Cú pháp, Giải thuật, Kiểu dữ liệu, Biến và Pandas DataFrame.",
                 startBtn: "Bắt đầu luyện tập 🚀",
                 selectSingleHint: "* Chọn 1 đáp án đúng nhất.",
                 selectMultiHint: (count) => `* Chú ý: Câu hỏi này có ${count} đáp án đúng. Hãy chọn tất cả rồi bấm "Xác nhận".`,
